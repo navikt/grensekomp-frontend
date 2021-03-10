@@ -13,7 +13,7 @@ export const defaultBulkState = (state?: BulkState): BulkState => {
   );
 };
 
-interface BulkItems {
+export interface BulkItems {
   fnr: string;
   fnrError?: string;
   orgnr: string;
