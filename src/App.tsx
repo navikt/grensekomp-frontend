@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Organisasjon } from '@navikt/bedriftsmeny/lib/organisasjon';
+import Side from './components/Side';
 
 interface ApplicationProps {
   arbeidsgivere?: Array<Organisasjon>;
@@ -8,7 +9,7 @@ interface ApplicationProps {
   loginServiceUrl?: string;
 }
 
-export const Application = ({}: ApplicationProps) => <h1>grensekomp</h1>;
+export const Application = ({}: ApplicationProps) => <Side sidetittel='Grensekomp'>grensekomp</Side>;
 
 const App = () => (
   <BrowserRouter basename='grensekomp'>
