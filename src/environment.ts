@@ -23,7 +23,7 @@ class Environment {
       case EnvironmentType.PREPROD_DEV:
         return 'https://grensekomp.dev.nav.no';
       default:
-        return 'https://grensekomp.dev.nav.no';
+        return 'https://fritakagp.dev.nav.no';
     }
   }
 
