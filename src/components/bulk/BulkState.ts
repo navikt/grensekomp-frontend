@@ -14,25 +14,23 @@ export const defaultBulkState = (state?: BulkState): BulkState => {
 };
 
 interface BulkItems {
-  fnr: string;
+  uniqueKey?: string;
+  fnr?: string;
   fnrError?: string;
-  orgnr: string;
-  orngrError?: string;
-  fom: Dato;
+  fom?: Dato;
   fomError?: string;
-  tom: Dato;
+  tom?: Dato;
   tomError?: string;
+  dager?: number;
+  dagerError?: string;
+  beloep?: number;
+  beloepError?: string;
 }
 
 export default interface BulkState extends ValidationState {
   items: BulkItems[];
-  feilmeldinger: Array<FeiloppsummeringFeil>;
-  validated?: boolean;
-  progress?: boolean;
-  kvittering?: boolean;
+  orgnr?: string;
+  orngrError?: string;
   bekreft?: boolean;
   bekreftError?: string;
-  error?: boolean;
-  login?: boolean;
-  submitting?: boolean;
 }
