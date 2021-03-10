@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Forside = () => {
-  return <div>Forside</div>;
+const Kvittering = () => {
+  return <div>Kvittering</div>;
 };
 
-export default Forside;
+export default Kvittering;

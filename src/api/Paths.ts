@@ -1,0 +1,3 @@
+export const Paths = {
+  Bulk: '/api/v1/bulk'
+};

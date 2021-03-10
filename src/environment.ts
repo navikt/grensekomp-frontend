@@ -12,7 +12,7 @@ class Environment {
       case EnvironmentType.PREPROD_DEV:
         return 'https://grensekomp.dev.nav.no/local/cookie-please?subject=10107400090&redirect=XXX?loggedIn=true';
       default:
-        return 'https://grensekomp.dev.nav.no/local/cookie-please?subject=10107400090&redirect=XXX?loggedIn=true';
+        return 'https://fritakagp.dev.nav.no/local/cookie-please?subject=10107400090&redirect=XXX?loggedIn=true';
     }
   }
 
@@ -23,7 +23,7 @@ class Environment {
       case EnvironmentType.PREPROD_DEV:
         return 'https://grensekomp.dev.nav.no';
       default:
-        return 'https://grensekomp.dev.nav.no';
+        return 'https://fritakagp.dev.nav.no';
     }
   }
 

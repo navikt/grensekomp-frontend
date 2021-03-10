@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Forside = () => {
-  return <div>Forside</div>;
+const BulkInnsending = () => {
+  return <div>BulkInnsending</div>;
 };
 
-export default Forside;
+export default BulkInnsending;
