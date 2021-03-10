@@ -2,9 +2,9 @@ import React from 'react';
 import ModalWrapper from 'nav-frontend-modal';
 import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 import { Innholdstittel } from 'nav-frontend-typografi';
-import InternLenke from './InternLenke';
 import lenker from '../lenker';
 import injectRedirectPath from '../../utils/injectRedirectPath';
+import InternLenke from '../felles/InternLenke';
 
 interface LoggetUtAdvarselProps {
   onClose: Function;
