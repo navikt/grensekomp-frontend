@@ -26,7 +26,7 @@ describe('App', () => {
     act(() => {
       render(makeRouter('/'), container);
     });
-    expect(container).toContain('grensekomp');
+    expect(container).toContainHTML('grensekomp');
   });
 
   const makeRouter = (path: string) => {
