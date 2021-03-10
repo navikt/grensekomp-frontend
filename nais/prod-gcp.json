@@ -1,0 +1,6 @@
+{
+  "ingress": "https://arbeidsgiver.nav.no/grensekomp",
+  "namespace": "helsearbeidsgiver",
+  "vault-enabled": false,
+  "webproxy-enabled": false
+}
