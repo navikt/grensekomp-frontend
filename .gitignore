@@ -1,0 +1,23 @@
+.idea/
+*.iml
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+
+*.log*
+/src/react-app-env.d.ts
+*.css
+.eslintcache
+/server/node_modules
+.vscode

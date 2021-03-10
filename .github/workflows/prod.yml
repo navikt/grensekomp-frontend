@@ -1,0 +1,59 @@
+name: Produksjon
+
+on:
+  release:
+    types: [released]
+
+env:
+  APP: grensekomp-frontend
+  IMAGE: ghcr.io/navikt/grensekomp-frontend:${{ github.sha }}
+  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+
+  Bygg:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - run: npm ci
+      - run: npm run-script build
+      - uses: actions/upload-artifact@v2
+        with:
+          name: grensekomp-frontend-artifact
+          path: ${{ github.workspace }}/build/**/*
+
+  Docker:
+    needs: [Bygg]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/download-artifact@v2
+        with:
+          name: grensekomp-frontend-artifact
+          path: build
+      - name: Login to GitHub Packages Docker Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ secrets.GHCR_PUSH_USERNAME }}
+          password: ${{ secrets.GHCR_PUSH_TOKEN }}
+      - name: Build and publish Docker image
+        run: |
+          docker build --pull --tag ${{ env.IMAGE }}  .
+          docker push ${{ env.IMAGE }}
+
+  Deploy:
+    needs: [Docker]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: nais/deploy/actions/deploy@master
+        env:
+          TEAM: helsearbeidsgiver
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          CLUSTER: prod-gcp
+          RESOURCE: naiserator.yaml
+          VARS: nais/prod-gcp.json
+          REF: ${{ env.COMMIT }}
+          IMAGE: ${{ env.IMAGE }}
