@@ -1,5 +1,5 @@
 import React from 'react';
-import Side from '../Side';
+import Side from '../felles/side';
 import Alertstripe from 'nav-frontend-alertstriper';
 
 export const TilgangsfeilSide = () => {
