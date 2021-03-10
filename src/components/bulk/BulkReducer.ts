@@ -113,4 +113,4 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
   }
 };
 
-export default GravidKravReducer;
+export default BulkReducer;
