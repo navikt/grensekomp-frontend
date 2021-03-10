@@ -15,7 +15,7 @@ export const ApplicationRoutes = () => (
       <Route path={lenker.Bulkinnsending} exact={true} render={() => <Bulkinnsending />} />
       <Route path={lenker.BulkKvittering} exact={true} render={() => <Kvittering />} />
       <Route path={lenker.TokenFornyet} exact={true} render={() => <TokenFornyet />} />
-      <Route path={lenker.Home} render={() => <Enkeltinnsending />} />
+      <Route path={lenker.Home} render={() => <Forside />} />
     </Switch>
   </div>
 );

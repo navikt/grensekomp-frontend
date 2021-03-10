@@ -1,11 +1,13 @@
 import { FeiloppsummeringFeil } from 'nav-frontend-skjema';
 import { ValidationState } from '../../validation/ValidationState';
 import { Dato } from '../../utils/Dato';
+import mockBulk from '../../mockData/mockBulk';
+import BulkItem from './BulkItem';
 
 export const defaultBulkState = (state?: BulkState): BulkState => {
   return Object.assign(
     {
-      items: [],
+      items: mockBulk,
       bekreft: false,
       feilmeldinger: Array<FeiloppsummeringFeil>()
     },
@@ -13,22 +15,8 @@ export const defaultBulkState = (state?: BulkState): BulkState => {
   );
 };
 
-export interface BulkItems {
-  uniqueKey?: string;
-  fnr?: string;
-  fnrError?: string;
-  fom?: Dato;
-  fomError?: string;
-  tom?: Dato;
-  tomError?: string;
-  dager?: number;
-  dagerError?: string;
-  beloep?: number;
-  beloepError?: string;
-}
-
 export default interface BulkState extends ValidationState {
-  items: BulkItems[];
+  items: BulkItem[];
   orgnr?: string;
   orngrError?: string;
   bekreft?: boolean;

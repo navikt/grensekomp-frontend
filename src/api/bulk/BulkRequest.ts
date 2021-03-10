@@ -1,7 +1,7 @@
-import { BulkItems } from '../../components/bulk/BulkState';
+import BulkItem from '../../components/bulk/BulkItem';
 
 interface BulkRequest {
-  items: BulkItems[];
+  items: BulkItem[];
 }
 
 export default BulkRequest;

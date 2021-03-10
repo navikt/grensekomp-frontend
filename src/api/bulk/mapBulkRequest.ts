@@ -1,7 +1,7 @@
 import BulkRequest from './BulkRequest';
-import { BulkItems } from '../../components/bulk/BulkState';
+import BulkItem from '../../components/bulk/BulkItem';
 
-const mapBulkRequest = (items: BulkItems[]): BulkRequest => {
+const mapBulkRequest = (items: BulkItem[]): BulkRequest => {
   return {
     items: items
   };

@@ -7,6 +7,8 @@ import { LoginChecking } from './LoginChecking';
 import isLoggedInFromUrl from './isLoggedInFromUrl';
 import dayjs from 'dayjs';
 import { LoginExpiryResponse } from '../../api/loginexpiry/LoginExpiryResponse';
+import env from '../../environment';
+import { redirectUrl } from './redirectUrl';
 
 const LoginContext = createContext({});
 
@@ -24,6 +26,7 @@ export const LoginProvider = ({ baseUrl, children, status = LoginStatus.Checking
       GetLoginExpiry(baseUrl).then((loginExpiryResponse) => {
         if (isUndefinedOrExpiredTimestamp(loginExpiryResponse)) {
           if (isExpiredTokenTimestamp(loginExpiryResponse)) {
+            window.location.href = redirectUrl(env.loginServiceUrl, window.location.href);
             setExpiry(LoginStatus.MustLogin);
           } else if (isLoggedInFromUrl()) {
             setExpiry(LoginStatus.Failed);

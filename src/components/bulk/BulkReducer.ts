@@ -1,7 +1,8 @@
 import BulkState, { defaultBulkState } from './BulkState';
-import { Actions, BulkActions, Payload } from './BulkActions';
+import { Actions, BulkActions } from './BulkActions';
 import { parseDateTilDato } from '../../utils/Dato';
 import { v4 as uuid } from 'uuid';
+import validateBulk from './validateBulk';
 
 const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
   const nextState = Object.assign({}, state);
@@ -11,70 +12,72 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
   switch (action.type) {
     case Actions.Orgnr:
       nextState.orgnr = payload?.orgnr;
-      return nextState; // validateBulk(nextState);
+      return validateBulk(nextState);
 
     case Actions.Fnr:
-      if (payload?.itemId !== undefined) {
-        nextState.items[payload.itemId].fnr = payload.fnr;
+      if (payload?.itemId === undefined) {
+        throw new Error('itemId kan ikke være undefined');
       }
-      return nextState; // validateBulk(nextState);
+      nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.fnr = payload.fnr;
+      return validateBulk(nextState);
 
     case Actions.Fra:
-      if (payload?.itemId !== undefined) {
-        if (payload?.fra === undefined) {
-          nextState.items[payload.itemId].fom = undefined;
-        } else {
-          nextState.items[payload.itemId].fom = parseDateTilDato(payload.fra);
-        }
+      if (payload?.itemId === undefined) {
+        throw new Error('itemId kan ikke være undefined');
       }
-
-      return nextState; // validateBulk(nextState);
+      if (payload?.fra === undefined) {
+        nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.fom = undefined;
+      } else {
+        nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.fom = parseDateTilDato(payload.fra);
+      }
+      return validateBulk(nextState);
 
     case Actions.Til:
-      if (payload?.itemId !== undefined) {
-        if (payload?.til === undefined) {
-          nextState.items[payload.itemId].tom = undefined;
-        } else {
-          nextState.items[payload.itemId].tom = parseDateTilDato(payload.til);
-        }
+      if (payload?.itemId === undefined) {
+        throw new Error('itemId kan ikke være undefined');
       }
-      return nextState; // validateBulk(nextState);
+      if (payload?.til === undefined) {
+        nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.tom = undefined;
+      } else {
+        nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.tom = parseDateTilDato(payload.til);
+      }
+      return validateBulk(nextState);
 
     case Actions.Dager:
-      if (payload?.itemId !== undefined) {
-        nextState.items[payload?.itemId].dager = payload?.dager;
+      if (payload?.itemId === undefined) {
+        throw new Error('itemId kan ikke være undefined');
       }
-      return nextState; // validateBulk(nextState);
+      nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.dager = payload.dager;
+      return validateBulk(nextState);
 
     case Actions.Beloep:
       if (payload?.itemId !== undefined) {
-        nextState.items[payload.itemId].beloep = payload?.beloep;
+        nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.beloep = payload.beloep;
       }
-      return nextState; // validateBulk(nextState);
+      return validateBulk(nextState);
 
     case Actions.Bekreft:
       nextState.bekreft = payload?.bekreft;
-      return nextState; // validateBulk(nextState);
+      return validateBulk(nextState);
 
     case Actions.Progress:
       nextState.progress = payload?.progress;
-      return nextState; // validateBulk(nextState);
+      return validateBulk(nextState);
 
     case Actions.Kvittering:
       nextState.kvittering = payload?.kvittering;
-      return nextState; // validateBulk(nextState);
+      return validateBulk(nextState);
 
     case Actions.NotAuthorized:
       nextState.notAuthorized = false;
       return nextState;
 
-    // case Actions.Validate:
-    //   nextState.validated = true;
-    //   const validatedState = validateBulk(nextState);
-    //   validatedState.isOpenKontrollsporsmaalLonn = showKontrollsporsmaalLonn(validatedState);
-    //   validatedState.submitting = validatedState.feilmeldinger?.length === 0;
-    //   validatedState.progress = validatedState.submitting;
-    //   return validatedState;
+    case Actions.Validate:
+      nextState.validated = true;
+      const validatedState = validateBulk(nextState);
+      validatedState.submitting = validatedState.feilmeldinger?.length === 0;
+      validatedState.progress = validatedState.submitting;
+      return validatedState;
 
     // case Actions.HandleResponse:
     //   if (payload?.response == undefined) {
@@ -85,24 +88,16 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
     //   nextState.submitting = false;
     //   return mapResponse(payload.response, nextState, mapBulkFeilmeldinger) as BulkState;
 
-    // case Actions.OpenKontrollsporsmaalLonn:
-    //   nextState.isOpenKontrollsporsmaalLonn = true;
-    //   return nextState;
-    //
-    // case Actions.CloseKontrollsporsmaalLonn:
-    //   nextState.isOpenKontrollsporsmaalLonn = false;
-    //   return nextState;
-
     case Actions.AddItem:
       const key = uuid();
       nextState.items = nextState.items ? [...nextState.items, { uniqueKey: key }] : [{ uniqueKey: key }];
       return nextState;
 
     case Actions.DeleteItem:
-      if (payload?.itemId) {
-        nextState.items.splice(payload?.itemId, 1);
+      if (payload?.itemId === undefined) {
+        throw Error('Missing itemid');
       }
-
+      nextState.items = state.items.filter((i) => i.uniqueKey !== payload.itemId);
       return nextState;
 
     case Actions.Reset:

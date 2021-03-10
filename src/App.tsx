@@ -31,7 +31,7 @@ export const Application = ({
 );
 
 const App = () => (
-  <BrowserRouter basename='fritak-agp'>
+  <BrowserRouter basename='grensekomp'>
     <Application />
   </BrowserRouter>
 );
