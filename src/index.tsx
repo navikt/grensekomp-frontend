@@ -7,14 +7,17 @@ import Modal from 'react-modal';
 import '@navikt/bedriftsmeny/lib/bedriftsmeny.css';
 import { version } from '../package.json';
 import * as Sentry from '@sentry/browser';
+import env, { EnvironmentType } from '../environment';
 
 // @ts-ignore
 document.querySelector('meta[name=buildNr]').setAttribute('content', version);
 
-Sentry.init({
-  dsn: 'https://fe8f051bd96d419c95b3c1d414874479@sentry.gc.nav.no/73',
-  environment: 'dev'
-});
+if (env.environmentMode !== EnvironmentType.LOCAL) {
+  Sentry.init({
+    dsn: 'https://fe8f051bd96d419c95b3c1d414874479@sentry.gc.nav.no/73',
+    environment: 'dev'
+  });
+}
 
 Modal.setAppElement('#root');
 
