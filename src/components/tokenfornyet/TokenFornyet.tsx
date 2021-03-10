@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Forside = () => {
-  return <div>Forside</div>;
+const TokenFornyet = () => {
+  return <div>TokenFornyet</div>;
 };
 
-export default Forside;
+export default TokenFornyet;

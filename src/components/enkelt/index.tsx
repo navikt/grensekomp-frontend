@@ -1,2 +1,2 @@
-import EnkelInnsending from './EnkelInnsending';
-export default EnkelInnsending;
+import EnkeltInnsending from './EnkeltInnsending';
+export default EnkeltInnsending;
