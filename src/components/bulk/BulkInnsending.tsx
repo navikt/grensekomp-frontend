@@ -21,7 +21,7 @@ import InternLenke from '../felles/InternLenke';
 import environment from '../../environment';
 import postBulk from '../../api/bulk/postBulk';
 import mapBulkRequest from '../../api/bulk/mapBulkRequest';
-import Side from '../felles/side';
+import Side from '../felles/Side';
 import Kvittering from '../kvittering';
 
 interface BulkInnsendingProps {
