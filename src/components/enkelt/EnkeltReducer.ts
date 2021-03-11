@@ -1,12 +1,12 @@
-import BulkState, { defaultBulkState } from './BulkState';
-import { Actions, BulkActions } from './BulkActions';
 import { parseDateTilDato } from '../../utils/Dato';
 import { v4 as uuid } from 'uuid';
-import validateBulk from './validateBulk';
 import mapResponse from '../../api/mapResponse';
-import mapBulkFeilmeldinger from './mapBulkFeilmeldinger';
+import EnkeltState, { defaultEnkeltState } from './EnkeltState';
+import { Actions, EnkeltActions } from './EnkeltActions';
+import validateEnkelt from './validateEnkelt';
+import mapEnkeltFeilmeldinger from './mapEnkeltFeilmeldinger';
 
-const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
+const EnkeltReducer = (state: EnkeltState, action: EnkeltActions): EnkeltState => {
   const nextState = Object.assign({}, state);
   const { payload } = action;
   nextState.items = nextState.items ? nextState.items : [{ uniqueKey: uuid() }];
@@ -14,14 +14,11 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
   switch (action.type) {
     case Actions.Orgnr:
       nextState.orgnr = payload?.orgnr;
-      return validateBulk(nextState);
+      return validateEnkelt(nextState);
 
     case Actions.Fnr:
-      if (payload?.itemId === undefined) {
-        throw new Error('itemId kan ikke være undefined');
-      }
-      nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.fnr = payload.fnr;
-      return validateBulk(nextState);
+      nextState.fnr = payload?.fnr;
+      return validateEnkelt(nextState);
 
     case Actions.Fra:
       if (payload?.itemId === undefined) {
@@ -32,7 +29,7 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
       } else {
         nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.fom = parseDateTilDato(payload.fra);
       }
-      return validateBulk(nextState);
+      return validateEnkelt(nextState);
 
     case Actions.Til:
       if (payload?.itemId === undefined) {
@@ -43,33 +40,33 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
       } else {
         nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.tom = parseDateTilDato(payload.til);
       }
-      return validateBulk(nextState);
+      return validateEnkelt(nextState);
 
     case Actions.Dager:
       if (payload?.itemId === undefined) {
         throw new Error('itemId kan ikke være undefined');
       }
       nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.dager = payload.dager;
-      return validateBulk(nextState);
+      return validateEnkelt(nextState);
 
     case Actions.Beloep:
       if (payload?.itemId === undefined) {
         throw new Error('itemId kan ikke være undefined');
       }
       nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.beloep = payload.beloep;
-      return validateBulk(nextState);
+      return validateEnkelt(nextState);
 
     case Actions.Bekreft:
       nextState.bekreft = payload?.bekreft;
-      return validateBulk(nextState);
+      return validateEnkelt(nextState);
 
     case Actions.Progress:
       nextState.progress = payload?.progress;
-      return validateBulk(nextState);
+      return validateEnkelt(nextState);
 
     case Actions.Kvittering:
       nextState.kvittering = payload?.kvittering;
-      return validateBulk(nextState);
+      return validateEnkelt(nextState);
 
     case Actions.NotAuthorized:
       nextState.notAuthorized = false;
@@ -77,7 +74,7 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
 
     case Actions.Validate:
       nextState.validated = true;
-      const validatedState = validateBulk(nextState);
+      const validatedState = validateEnkelt(nextState);
       validatedState.submitting = validatedState.feilmeldinger?.length === 0;
       validatedState.progress = validatedState.submitting;
       return validatedState;
@@ -89,7 +86,7 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
       nextState.validated = false;
       nextState.progress = false;
       nextState.submitting = false;
-      return mapResponse(payload.response, nextState, mapBulkFeilmeldinger) as BulkState;
+      return mapResponse(payload.response, nextState, mapEnkeltFeilmeldinger) as EnkeltState;
 
     case Actions.AddItem:
       const key = uuid();
@@ -104,11 +101,11 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
       return nextState;
 
     case Actions.Reset:
-      return Object.assign({}, defaultBulkState());
+      return Object.assign({}, defaultEnkeltState());
 
     default:
       throw new Error(`Ugyldig action: ${action.type}`);
   }
 };
 
-export default BulkReducer;
+export default EnkeltReducer;
