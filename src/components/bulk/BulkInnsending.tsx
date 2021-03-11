@@ -21,8 +21,9 @@ import InternLenke from '../felles/InternLenke';
 import environment from '../../environment';
 import postBulk from '../../api/bulk/postBulk';
 import mapBulkRequest from '../../api/bulk/mapBulkRequest';
-import Side from '../felles/Side';
 import Kvittering from '../kvittering';
+import Side from '../felles/side';
+import { useArbeidsgiver } from '../../context/arbeidsgiver/ArbeidsgiverContext';
 
 interface BulkInnsendingProps {
   state?: BulkState;
@@ -42,6 +43,7 @@ const toDate = (dato: Dato | undefined): Date | undefined => {
 
 const BulkInnsending = (props: BulkInnsendingProps) => {
   const [state, dispatch] = useReducer(BulkReducer, props.state, defaultBulkState);
+  const { arbeidsgiverId } = useArbeidsgiver();
   const handleCloseServerFeil = () => {
     dispatch({ type: Actions.HideServerError });
   };
@@ -55,6 +57,12 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
     });
     return false;
   };
+  useEffect(() => {
+    dispatch({
+      type: Actions.Orgnr,
+      payload: { orgnr: arbeidsgiverId }
+    });
+  }, [arbeidsgiverId]);
   useEffect(() => {
     if (state.validated === true && state.progress === true && state.submitting === true) {
       postBulk(environment.baseUrl, mapBulkRequest(state)).then((response) => {
@@ -103,6 +111,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                       </Column>
                       <Column md='2'>
                         <Fnr
+                          id={'fnr_' + item.uniqueKey}
                           fnr={item.fnr}
                           label='Fødselsnummer'
                           placeholder='Fødselsnummer'
@@ -120,6 +129,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                       </Column>
                       <Column md='2'>
                         <DatoVelger
+                          id={'fom_' + item.uniqueKey}
                           dato={toDate(item.fom)}
                           feilmelding={item.fomError}
                           label='Fom'
@@ -137,6 +147,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                       </Column>
                       <Column md='2'>
                         <DatoVelger
+                          id={'tom_' + item.uniqueKey}
                           dato={toDate(item.tom)}
                           feilmelding={item.tomError}
                           label='Tom'
@@ -154,6 +165,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                       </Column>
                       <Column md='2'>
                         <Input
+                          id={'dager_' + item.uniqueKey}
                           label='Dager'
                           placeholder='Antall'
                           feil={item.dagerError}
@@ -171,6 +183,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                       </Column>
                       <Column md='2'>
                         <Input
+                          id={'beloeop_' + item.uniqueKey}
                           label='Beløp'
                           placeholder='Kr'
                           feil={item.beloepError}
