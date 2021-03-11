@@ -32,14 +32,14 @@ const validateBulk = (state: BulkState): BulkState => {
     item.dagerError = !item.dager ? 'Må fylles ut' : undefined;
     item.beloepError = !item.beloep ? 'Må fylles ut' : undefined;
 
-    item.beloepError = isNumericString(item.beloep) && !item.beloepError ? undefined : 'Beløp må være tall';
+    item.beloepError = isNumericString(item.beloep) || item.beloepError ? item.beloepError : 'Beløp må være tall';
 
-    item.dagerError = isNumericString(item.dager) && !item.dagerError ? undefined : 'Dager må være tall';
+    item.dagerError = isNumericString(item.dager) || item.dagerError ? item.dagerError : 'Dager må være tall';
 
     item.fnrError = validateFnr(item.fnr, state.validated);
 
-    item.fomError = validateFra(item.fom, !!state.validated);
-    item.tomError = validateTil(item.fom, item.tom, !!state.validated);
+    item.fomError = validateFra(item.fom, state.validated);
+    item.tomError = validateTil(item.fom, item.tom, state.validated);
   });
 
   if (!nextState.bekreft) {

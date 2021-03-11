@@ -1,12 +1,12 @@
 import { Dato } from '../utils/Dato';
-import isAfterMinDate from '../utils/isAfterMinDate';
+import isBeforeMinDate from '../utils/isBeforeMinDate';
 
-export const validateFra = (fra: Dato | undefined, required: boolean): string | undefined => {
-  if (!fra?.value) {
-    return required ? 'Mangler fra dato' : undefined;
+export const validateFra = (fra: Dato | undefined, required: boolean = false): string | undefined => {
+  if (required && !fra?.value) {
+    return 'Mangler fra dato';
   }
 
-  if (required && isAfterMinDate(fra)) {
+  if (required && fra?.value && isBeforeMinDate(fra)) {
     return 'Dato kan bare være fra og med 29.01.2021';
   }
 
