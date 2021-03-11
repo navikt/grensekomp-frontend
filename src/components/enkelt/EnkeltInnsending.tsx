@@ -13,7 +13,7 @@ import { Hovedknapp } from 'nav-frontend-knapper';
 import BekreftOpplysningerPanel from '../felles/BekreftOpplysningerPanel';
 import Feilmeldingspanel from '../felles/Feilmeldingspanel';
 import { Actions } from '../bulk/BulkActions';
-import Side from '../felles/side';
+import Side from '../felles/Side';
 
 const EnkeltInnsending = () => {
   const state = {

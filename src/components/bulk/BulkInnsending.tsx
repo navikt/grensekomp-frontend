@@ -22,8 +22,8 @@ import environment from '../../environment';
 import postBulk from '../../api/bulk/postBulk';
 import mapBulkRequest from '../../api/bulk/mapBulkRequest';
 import Kvittering from '../kvittering';
-import Side from '../felles/side';
 import { useArbeidsgiver } from '../../context/arbeidsgiver/ArbeidsgiverContext';
+import Side from '../felles/Side';
 
 interface BulkInnsendingProps {
   state?: BulkState;
