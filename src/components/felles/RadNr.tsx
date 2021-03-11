@@ -5,6 +5,6 @@ interface RadNrProps {
   nr: number;
 }
 
-const RadNr = (props: RadNrProps) => <div className='rad-nr'>{props.nr + 1}</div>;
+const RadNr = (props: RadNrProps) => <div className='rad-nr'>{props.nr}</div>;
 
 export default RadNr;
