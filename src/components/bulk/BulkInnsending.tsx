@@ -95,22 +95,22 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
 
               <Skillelinje />
 
-              <Panel id='gravidside-panel-ansatte2' className='gravidside-panel-ansatte2'>
+              <Panel>
                 <SkjemaGruppe aria-live='polite'>
                   {state.items?.map((item, index) => (
                     <Row key={item.uniqueKey}>
-                      <Column md='1'>
+                      <Column md='1' className='bulk-kolonne-1'>
                         <b className='skjemaelement__label'>Nr.</b>
                         <div style={{ lineHeight: '1.375rem', padding: '0.5rem', marginBottom: '0.5rem' }}>
                           {index + 1}
                         </div>
                       </Column>
-                      <Column md='2'>
+                      <Column md='2' className='bulk-kolonne-2'>
                         <Fnr
                           id={'fnr_' + item.uniqueKey}
                           fnr={item.fnr}
-                          label='Fødselsnummer'
-                          placeholder='Fødselsnummer'
+                          label='Identitetsnummer'
+                          placeholder='11 siffer'
                           feilmelding={item.fnrError}
                           onChange={(event) => {
                             dispatch({
@@ -123,7 +123,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           }}
                         />
                       </Column>
-                      <Column md='2'>
+                      <Column md='2' className='bulk-kolonne-3'>
                         <DatoVelger
                           id={'fom_' + item.uniqueKey}
                           dato={toDate(item.fom)}
@@ -141,7 +141,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           }}
                         />
                       </Column>
-                      <Column md='2'>
+                      <Column md='2' className='bulk-kolonne-4'>
                         <DatoVelger
                           id={'tom_' + item.uniqueKey}
                           dato={toDate(item.tom)}
@@ -159,7 +159,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           }}
                         />
                       </Column>
-                      <Column md='2'>
+                      <Column md='2' className='bulk-kolonne-5'>
                         <Input
                           id={'dager_' + item.uniqueKey}
                           label={
@@ -182,7 +182,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           }}
                         />
                       </Column>
-                      <Column md='2'>
+                      <Column md='2' className='bulk-kolonne-6'>
                         <Input
                           id={'beloeop_' + item.uniqueKey}
                           label={
@@ -205,7 +205,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           }}
                         />
                       </Column>
-                      <Column md='1'>
+                      <Column md='1' className='bulk-kolonne-7'>
                         <Slettknapp
                           onClick={(event) => {
                             dispatch({
