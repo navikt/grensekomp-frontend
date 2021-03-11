@@ -3,7 +3,7 @@ const isNumericString = (probableNumber: string | undefined) => {
     return false;
   }
 
-  return /^[0-9.,]+$/.test(probableNumber);
+  return /^[0-9]{1,2}([,][0-9]{1,2})?$/.test(probableNumber);
 };
 
 export default isNumericString;
