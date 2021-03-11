@@ -9,7 +9,7 @@ import Fnr from '../felles/Fnr';
 import { DatoVelger } from '@navikt/helse-arbeidsgiver-felles-frontend';
 import BekreftOpplysningerPanel from '../felles/BekreftOpplysningerPanel';
 import Feilmeldingspanel from '../felles/Feilmeldingspanel';
-import { Hovedknapp } from 'nav-frontend-knapper';
+import { Flatknapp, Hovedknapp } from 'nav-frontend-knapper';
 import LoggetUtAdvarsel from '../login/LoggetUtAdvarsel';
 import BulkReducer from './BulkReducer';
 import BulkState, { defaultBulkState } from './BulkState';
@@ -23,6 +23,7 @@ import Kvittering from '../kvittering';
 import { useArbeidsgiver } from '../../context/arbeidsgiver/ArbeidsgiverContext';
 import Side from '../felles/Side';
 import toDate from '../../utils/toDate';
+import Hjelpetekst from 'nav-frontend-hjelpetekst';
 
 interface BulkInnsendingProps {
   state?: BulkState;
@@ -91,7 +92,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                   {state.items?.map((item, index) => (
                     <Row key={item.uniqueKey}>
                       <Column md='1'>
-                        <b className='skjemaelement__label'>Nr</b>
+                        <b className='skjemaelement__label'>Nr.</b>
                         <div style={{ lineHeight: '1.375rem', padding: '0.5rem', marginBottom: '0.5rem' }}>
                           {index + 1}
                         </div>
@@ -153,7 +154,12 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                       <Column md='2'>
                         <Input
                           id={'dager_' + item.uniqueKey}
-                          label='Dager'
+                          label={
+                            <div style={{ display: 'flex' }}>
+                              Antall dager
+                              <Hjelpetekst style={{ marginLeft: '0.5rem' }}>Kommer snart...</Hjelpetekst>
+                            </div>
+                          }
                           placeholder='Antall'
                           feil={item.dagerError}
                           value={item.dager}
@@ -171,7 +177,12 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                       <Column md='2'>
                         <Input
                           id={'beloeop_' + item.uniqueKey}
-                          label='Beløp'
+                          label={
+                            <div style={{ display: 'flex' }}>
+                              Beløp
+                              <Hjelpetekst style={{ marginLeft: '0.5rem' }}>Kommer snart...</Hjelpetekst>
+                            </div>
+                          }
                           placeholder='Kr'
                           feil={item.beloepError}
                           value={item.beloep}
@@ -203,7 +214,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                   <Row>
                     <Column md='1'></Column>
                     <Column md='6'>
-                      <InternLenke
+                      <Flatknapp
                         onClick={(event) => {
                           dispatch({
                             type: Actions.AddItem,
@@ -212,7 +223,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                         }}
                       >
                         + Legg til enda en ansatt
-                      </InternLenke>
+                      </Flatknapp>
                     </Column>
                   </Row>
                 </SkjemaGruppe>

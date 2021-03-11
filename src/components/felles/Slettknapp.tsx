@@ -1,5 +1,6 @@
 import React from 'react';
-import InternLenke from '../felles/InternLenke';
+import { Flatknapp } from 'nav-frontend-knapper';
+import './Slettknapp.sass';
 
 const DeleteIcon = () => (
   <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
@@ -16,10 +17,9 @@ interface slettknappProps {
 
 const Slettknapp = ({ onClick }: slettknappProps) => {
   return (
-    <InternLenke onClick={onClick} className={'slettknapp'}>
+    <Flatknapp onClick={onClick} className={'slettknapp'}>
       <DeleteIcon />
-      <span>Slett</span>
-    </InternLenke>
+    </Flatknapp>
   );
 };
 
