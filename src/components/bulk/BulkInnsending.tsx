@@ -51,7 +51,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
   };
   return (
     <Side
-      bedriftsmeny={false}
+      bedriftsmeny={true}
       className='bulkinnsending'
       sidetittel='Søknadsskjema'
       title='Søknad om inntektssikring for utestengte EØS-borgere'
@@ -74,14 +74,17 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
 
               <Skillelinje />
 
-              <Panel id='gravidside-panel-ansatte' className='gravidside-panel-ansatte'>
+              <Panel id='gravidside-panel-ansatte2' className='gravidside-panel-ansatte2'>
                 <SkjemaGruppe aria-live='polite'>
                   {state.items.map((item) => (
                     <Row key={item.uniqueKey}>
+                      <Column md='1'>
+                        <b>Nr</b>
+                      </Column>
                       <Column md='2'>
                         <Fnr
                           fnr={item.fnr}
-                          label='Fødsels'
+                          label='Fødselsnummer'
                           placeholder='Fødselsnummer'
                           feilmelding={item.fnrError}
                           onChange={(event) => {
@@ -100,6 +103,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           dato={toDate(item.fom)}
                           feilmelding={item.fomError}
                           label='Fom'
+                          placeholder='dd.mm.åå'
                           onChange={(dato) => {
                             dispatch({
                               type: Actions.Fra,
@@ -116,6 +120,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           dato={toDate(item.tom)}
                           feilmelding={item.tomError}
                           label='Tom'
+                          placeholder='dd.mm.åå'
                           onChange={(dato) => {
                             dispatch({
                               type: Actions.Til,
@@ -147,7 +152,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                       <Column md='2'>
                         <Input
                           label='Beløp'
-                          placeholder='Beløp'
+                          placeholder='Kr'
                           feil={item.beloepError}
                           value={item.beloep}
                           onChange={(event) => {
@@ -161,8 +166,9 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           }}
                         />
                       </Column>
-                      <Column md='2'>
+                      <Column md='1'>
                         <Knapp
+                          style={{ width: 'auto' }}
                           onClick={(event) => {
                             dispatch({
                               type: Actions.DeleteItem,
@@ -177,21 +183,23 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                       </Column>
                     </Row>
                   ))}
+                  <Row>
+                    <Column md='1'></Column>
+                    <Column md='2'>
+                      <Knapp
+                        onClick={(event) => {
+                          dispatch({
+                            type: Actions.AddItem,
+                            payload: {}
+                          });
+                        }}
+                      >
+                        Legg til enda en ansatt
+                      </Knapp>
+                    </Column>
+                  </Row>
                 </SkjemaGruppe>
               </Panel>
-
-              <Skillelinje />
-
-              <Knapp
-                onClick={(event) => {
-                  dispatch({
-                    type: Actions.AddItem,
-                    payload: {}
-                  });
-                }}
-              >
-                Ny person
-              </Knapp>
 
               <Skillelinje />
 
@@ -209,7 +217,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
               <Feilmeldingspanel feilmeldinger={state.feilmeldinger} />
 
               <Panel>
-                <Hovedknapp onClick={handleSubmitClicked}>Send søknad</Hovedknapp>
+                <Hovedknapp onClick={handleSubmitClicked}>Send krav om refusjon</Hovedknapp>
               </Panel>
             </div>
           )}
