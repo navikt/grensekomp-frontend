@@ -13,7 +13,7 @@ import { Hovedknapp } from 'nav-frontend-knapper';
 import BekreftOpplysningerPanel from '../felles/BekreftOpplysningerPanel';
 import Feilmeldingspanel from '../felles/Feilmeldingspanel';
 import Side from '../felles/side';
-import { Actions, EnkeltActions } from './EnkeltActions';
+import { Actions } from '../bulk/BulkActions';
 
 const EnkeltInnsending = () => {
   const state = {
@@ -39,7 +39,7 @@ const EnkeltInnsending = () => {
     return true;
   };
 
-  const dispatch = (response: EnkeltActions) => {
+  const dispatch = (response) => {
     return true;
   };
 
