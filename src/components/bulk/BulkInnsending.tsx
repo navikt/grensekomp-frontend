@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import Side from '../felles/Side';
 import { Column, Row } from 'nav-frontend-grid';
 import ServerFeilAdvarsel from '../felles/ServerFeilAdvarsel';
@@ -19,6 +19,9 @@ import { Dato } from '../../utils/Dato';
 import dayjs from 'dayjs';
 import Slettknapp from '../felles/Slettknapp';
 import InternLenke from '../felles/InternLenke';
+import environment from '../../environment';
+import postBulk from '../../api/bulk/postBulk';
+import mapBulkRequest from '../../api/bulk/mapBulkRequest';
 
 interface BulkInnsendingProps {
   state?: BulkState;
@@ -39,23 +42,33 @@ const toDate = (dato: Dato | undefined): Date | undefined => {
 const BulkInnsending = (props: BulkInnsendingProps) => {
   const [state, dispatch] = useReducer(BulkReducer, props.state, defaultBulkState);
   const handleCloseServerFeil = () => {
-    return true;
+    dispatch({ type: Actions.HideServerError });
   };
   const handleCloseNotAuthorized = () => {
-    return true;
+    dispatch({ type: Actions.NotAuthorized });
   };
   const handleSubmitClicked = () => {
     dispatch({
       type: Actions.Validate,
       payload: {}
     });
-    return true;
+    return false;
   };
+  useEffect(() => {
+    if (state.validated === true && state.progress === true && state.submitting === true) {
+      postBulk(environment.baseUrl, mapBulkRequest(state)).then((response) => {
+        dispatch({
+          type: Actions.HandleResponse,
+          payload: { response: response }
+        });
+      });
+    }
+  }, [state.validated, state.progress, state.feilmeldinger, state.submitting, state.bekreft]);
   return (
     <Side
       bedriftsmeny={true}
       className='bulkinnsending'
-      sidetittel='Søknadsskjema'
+      sidetittel='Refusjonssøknad for grensearbeidere'
       title='Søknad om inntektssikring for utestengte EØS-borgere'
       subtitle='Bulkinnsending'
     >
@@ -78,7 +91,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
 
               <Panel id='gravidside-panel-ansatte2' className='gravidside-panel-ansatte2'>
                 <SkjemaGruppe aria-live='polite'>
-                  {state.items.map((item, index) => (
+                  {state.items?.map((item, index) => (
                     <Row key={item.uniqueKey}>
                       <Column md='1'>
                         <b className='skjemaelement__label'>Nr</b>

@@ -10,7 +10,7 @@ const validateBulk = (state: BulkState): BulkState => {
   const nextState = Object.assign({}, state);
   const feilmeldinger = new Array<FeiloppsummeringFeil>();
 
-  nextState.items.forEach((item) => {
+  nextState.items?.forEach((item) => {
     if (!item.fnr) {
       item.fnrError = 'Må fylles ut';
     } else {

@@ -17,7 +17,8 @@ export enum Actions {
   NotAuthorized,
   KontrollDager,
   AddItem,
-  DeleteItem
+  DeleteItem,
+  HideServerError
 }
 
 export interface BulkActions {

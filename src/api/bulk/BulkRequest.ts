@@ -1,7 +1,5 @@
-import BulkItem from '../../components/bulk/BulkItem';
+import Ansatt from './Ansatt';
 
-interface BulkRequest {
-  items: BulkItem[];
-}
+interface BulkRequest extends Array<Ansatt> {}
 
 export default BulkRequest;

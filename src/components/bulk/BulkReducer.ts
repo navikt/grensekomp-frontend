@@ -3,6 +3,11 @@ import { Actions, BulkActions } from './BulkActions';
 import { parseDateTilDato } from '../../utils/Dato';
 import { v4 as uuid } from 'uuid';
 import validateBulk from './validateBulk';
+import mapResponse from '../../api/mapResponse';
+import mapBulkFeilmeldinger from './mapBulkFeilmeldinger';
+
+const findItemByUniqueKey = (bulkState: BulkState, uniqueKey: string) =>
+  bulkState.items?.find((item) => item.uniqueKey === uniqueKey);
 
 const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
   const nextState = Object.assign({}, state);
@@ -79,14 +84,14 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
       validatedState.progress = validatedState.submitting;
       return validatedState;
 
-    // case Actions.HandleResponse:
-    //   if (payload?.response == undefined) {
-    //     throw new Error('Du må spesifisere response');
-    //   }
-    //   nextState.validated = false;
-    //   nextState.progress = false;
-    //   nextState.submitting = false;
-    //   return mapResponse(payload.response, nextState, mapBulkFeilmeldinger) as BulkState;
+    case Actions.HandleResponse:
+      if (payload?.response == undefined) {
+        throw new Error('Du må spesifisere response');
+      }
+      nextState.validated = false;
+      nextState.progress = false;
+      nextState.submitting = false;
+      return mapResponse(payload.response, nextState, mapBulkFeilmeldinger) as BulkState;
 
     case Actions.AddItem:
       const key = uuid();
@@ -97,7 +102,7 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
       if (payload?.itemId === undefined) {
         throw Error('Missing itemid');
       }
-      nextState.items = state.items.filter((i) => i.uniqueKey !== payload.itemId);
+      nextState.items = state.items?.filter((i) => i.uniqueKey !== payload.itemId);
       return nextState;
 
     case Actions.Reset:
