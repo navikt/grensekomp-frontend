@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import Side from '../felles/side';
+import Side from '../felles/Side';
 import { Column, Row } from 'nav-frontend-grid';
 import ServerFeilAdvarsel from '../felles/ServerFeilAdvarsel';
 import Panel from 'nav-frontend-paneler';

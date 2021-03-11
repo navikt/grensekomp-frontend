@@ -12,7 +12,7 @@ import '@navikt/helse-arbeidsgiver-felles-frontend/src/components/DatoVelger.css
 import { Hovedknapp } from 'nav-frontend-knapper';
 import BekreftOpplysningerPanel from '../felles/BekreftOpplysningerPanel';
 import Feilmeldingspanel from '../felles/Feilmeldingspanel';
-import Side from '../felles/side';
+import Side from '../felles/Side';
 import { Actions } from '../bulk/BulkActions';
 
 const EnkeltInnsending = () => {
