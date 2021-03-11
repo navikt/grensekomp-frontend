@@ -2,20 +2,18 @@ import React, { useEffect, useReducer } from 'react';
 import { Column, Row } from 'nav-frontend-grid';
 import ServerFeilAdvarsel from '../felles/ServerFeilAdvarsel';
 import Panel from 'nav-frontend-paneler';
-import { Ingress, Systemtittel } from 'nav-frontend-typografi';
+import { Ingress } from 'nav-frontend-typografi';
 import Skillelinje from '../felles/Skillelinje';
-import { FnrInput, Input, Label, SkjemaGruppe } from 'nav-frontend-skjema';
+import { Input, SkjemaGruppe } from 'nav-frontend-skjema';
 import Fnr from '../felles/Fnr';
 import { DatoVelger } from '@navikt/helse-arbeidsgiver-felles-frontend';
 import BekreftOpplysningerPanel from '../felles/BekreftOpplysningerPanel';
 import Feilmeldingspanel from '../felles/Feilmeldingspanel';
-import { Hovedknapp, Knapp } from 'nav-frontend-knapper';
+import { Hovedknapp } from 'nav-frontend-knapper';
 import LoggetUtAdvarsel from '../login/LoggetUtAdvarsel';
 import BulkReducer from './BulkReducer';
 import BulkState, { defaultBulkState } from './BulkState';
 import { Actions } from './BulkActions';
-import { Dato } from '../../utils/Dato';
-import dayjs from 'dayjs';
 import Slettknapp from '../felles/Slettknapp';
 import InternLenke from '../felles/InternLenke';
 import environment from '../../environment';
@@ -24,22 +22,11 @@ import mapBulkRequest from '../../api/bulk/mapBulkRequest';
 import Kvittering from '../kvittering';
 import { useArbeidsgiver } from '../../context/arbeidsgiver/ArbeidsgiverContext';
 import Side from '../felles/Side';
+import toDate from '../../utils/toDate';
 
 interface BulkInnsendingProps {
   state?: BulkState;
 }
-
-const toDate = (dato: Dato | undefined): Date | undefined => {
-  if (!dato) {
-    return;
-  }
-  if (!dato.month || !dato.day || !dato.year) {
-    return;
-  }
-  return dayjs(
-    dato.year + '-' + (dato.month < 10 ? '0' : '') + dato.month + '-' + (dato!!.day < 10 ? '0' : '') + dato.day
-  ).toDate();
-};
 
 const BulkInnsending = (props: BulkInnsendingProps) => {
   const [state, dispatch] = useReducer(BulkReducer, props.state, defaultBulkState);
