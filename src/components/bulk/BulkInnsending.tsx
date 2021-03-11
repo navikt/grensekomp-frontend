@@ -25,7 +25,9 @@ import toDate from '../../utils/toDate';
 import Hjelpetekst from 'nav-frontend-hjelpetekst';
 import './LeggTilKnapp.sass';
 import Lenke from 'nav-frontend-lenker';
-import './BulkInnsenindg.sass';
+import './BulkInnsending.sass';
+import RadNr from '../felles/RadNr';
+import HjelpeLabel from '../felles/HjelpeLabel';
 
 interface BulkInnsendingProps {
   state?: BulkState;
@@ -102,9 +104,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                     <Row key={item.uniqueKey} className='bulk-innsending__rad'>
                       <Column md='1' className='bulk-kolonne-1'>
                         <b className='skjemaelement__label'>Nr.</b>
-                        <div style={{ lineHeight: '1.375rem', padding: '0.5rem', marginBottom: '0.5rem' }}>
-                          {index + 1}
-                        </div>
+                        <RadNr nr={index + 1} />
                       </Column>
                       <Column md='2' className='bulk-kolonne-2'>
                         <Fnr
@@ -163,12 +163,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                       <Column md='2' className='bulk-kolonne-5'>
                         <Input
                           id={'dager_' + item.uniqueKey}
-                          label={
-                            <div style={{ display: 'flex' }}>
-                              Antall dager
-                              <Hjelpetekst style={{ marginLeft: '0.5rem' }}>Kommer snart...</Hjelpetekst>
-                            </div>
-                          }
+                          label={<HjelpeLabel label='Antall dager'>Kommer snart...</HjelpeLabel>}
                           placeholder='Antall'
                           feil={item.dagerError}
                           value={item.dager}
@@ -186,12 +181,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                       <Column md='2' className='bulk-kolonne-6'>
                         <Input
                           id={'beloeop_' + item.uniqueKey}
-                          label={
-                            <div style={{ display: 'flex' }}>
-                              Beløp
-                              <Hjelpetekst style={{ marginLeft: '0.5rem' }}>Kommer snart...</Hjelpetekst>
-                            </div>
-                          }
+                          label={<HjelpeLabel label='Beløp'>Kommer snart...</HjelpeLabel>}
                           placeholder='Kr'
                           feil={item.beloepError}
                           value={item.beloep}
