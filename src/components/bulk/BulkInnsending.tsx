@@ -17,6 +17,8 @@ import BulkState, { defaultBulkState } from './BulkState';
 import { Actions } from './BulkActions';
 import { Dato } from '../../utils/Dato';
 import dayjs from 'dayjs';
+import Slettknapp from '../felles/Slettknapp';
+import InternLenke from '../felles/InternLenke';
 
 interface BulkInnsendingProps {
   state?: BulkState;
@@ -76,10 +78,13 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
 
               <Panel id='gravidside-panel-ansatte2' className='gravidside-panel-ansatte2'>
                 <SkjemaGruppe aria-live='polite'>
-                  {state.items.map((item) => (
+                  {state.items.map((item, index) => (
                     <Row key={item.uniqueKey}>
                       <Column md='1'>
-                        <b>Nr</b>
+                        <b className='skjemaelement__label'>Nr</b>
+                        <div style={{ lineHeight: '1.375rem', padding: '0.5rem', marginBottom: '0.5rem' }}>
+                          {index + 1}
+                        </div>
                       </Column>
                       <Column md='2'>
                         <Fnr
@@ -167,8 +172,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                         />
                       </Column>
                       <Column md='1'>
-                        <Knapp
-                          style={{ width: 'auto' }}
+                        <Slettknapp
                           onClick={(event) => {
                             dispatch({
                               type: Actions.DeleteItem,
@@ -177,16 +181,14 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               }
                             });
                           }}
-                        >
-                          Slett
-                        </Knapp>
+                        />
                       </Column>
                     </Row>
                   ))}
                   <Row>
                     <Column md='1'></Column>
-                    <Column md='2'>
-                      <Knapp
+                    <Column md='6'>
+                      <InternLenke
                         onClick={(event) => {
                           dispatch({
                             type: Actions.AddItem,
@@ -194,8 +196,8 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           });
                         }}
                       >
-                        Legg til enda en ansatt
-                      </Knapp>
+                        + Legg til enda en ansatt
+                      </InternLenke>
                     </Column>
                   </Row>
                 </SkjemaGruppe>
