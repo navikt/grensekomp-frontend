@@ -1,4 +1,4 @@
-const validateNumber = (probableNumber: string | undefined) => {
+const isNumericString = (probableNumber: string | undefined) => {
   if (probableNumber === undefined) {
     return false;
   }
@@ -6,4 +6,4 @@ const validateNumber = (probableNumber: string | undefined) => {
   return /^[0-9.,]+$/.test(probableNumber);
 };
 
-export default validateNumber;
+export default isNumericString;
