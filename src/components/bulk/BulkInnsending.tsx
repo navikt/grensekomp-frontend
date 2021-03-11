@@ -22,6 +22,7 @@ import environment from '../../environment';
 import postBulk from '../../api/bulk/postBulk';
 import mapBulkRequest from '../../api/bulk/mapBulkRequest';
 import Side from '../felles/side';
+import Kvittering from '../kvittering';
 
 interface BulkInnsendingProps {
   state?: BulkState;
@@ -75,6 +76,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
       <Row>
         <ServerFeilAdvarsel isOpen={state.serverError} onClose={handleCloseServerFeil} />
         <Column>
+          {state.kvittering === true && <Kvittering />}
           {state.progress != true && state.kvittering != true && (
             <div>
               <Panel>
