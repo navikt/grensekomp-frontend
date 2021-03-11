@@ -38,8 +38,8 @@ const validateBulk = (state: BulkState): BulkState => {
 
     item.fnrError = validateFnr(item.fnr, state.validated);
 
-    // item.fomError = validateFra(item.fom, state.validated);
-    // item.tomError = validateTil(item.fom, item.tom, state.validated);
+    item.fomError = validateFra(item.fom, !!state.validated);
+    item.tomError = validateTil(item.fom, item.tom, !!state.validated);
   });
 
   if (!nextState.bekreft) {
