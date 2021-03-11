@@ -5,8 +5,12 @@ import isValidFnr from '../../utils/isValidFnr';
 import { validateFnr } from '../../utils/validateFnr';
 import validateTil from '../../validation/validateTil';
 import validateFra from '../../validation/validateFra';
-import stringishToNumber from '../../utils/stringishToNumber';
 import isNumericString from '../../utils/isNumericString';
+import hasFnrError from '../../validation/hasFnrError';
+import hasFomError from '../../validation/hasFomError';
+import hasTomError from '../../validation/hasTomError';
+import hasDagerError from '../../validation/hasDagerError';
+import hasBeloepError from '../../validation/hasBeloepError';
 
 const validateBulk = (state: BulkState): BulkState => {
   if (!state.validated) {
@@ -45,6 +49,26 @@ const validateBulk = (state: BulkState): BulkState => {
   if (!nextState.bekreft) {
     nextState.bekreftError = 'Bekreft at opplysningene er korrekt';
     pushFeilmelding('bekreftFeilmeldingId', 'Bekreft at opplysningene er korrekt', feilmeldinger);
+  }
+
+  if (hasFnrError(nextState.items)) {
+    pushFeilmelding('fnr', 'Fødselsnummer må fylles ut', feilmeldinger);
+  }
+
+  if (hasFomError(nextState.items)) {
+    pushFeilmelding('fra', 'Fra dato må fylles ut', feilmeldinger);
+  }
+
+  if (hasTomError(nextState.items)) {
+    pushFeilmelding('til', 'Til dato må fylles ut', feilmeldinger);
+  }
+
+  if (hasDagerError(nextState.items)) {
+    pushFeilmelding('dager', 'Antall dager må fylles ut', feilmeldinger);
+  }
+
+  if (hasBeloepError(nextState.items)) {
+    pushFeilmelding('beloep', 'Beløp må fylles ut', feilmeldinger);
   }
 
   nextState.feilmeldinger = feilmeldinger;
