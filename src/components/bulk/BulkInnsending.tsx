@@ -14,7 +14,7 @@ import LoggetUtAdvarsel from '../login/LoggetUtAdvarsel';
 import BulkReducer from './BulkReducer';
 import BulkState, { defaultBulkState } from './BulkState';
 import { Actions } from './BulkActions';
-import Slettknapp from '../felles/Slettknapp';
+import Slettknapp from '../felles/knapper/Slettknapp';
 import environment from '../../environment';
 import postBulk from '../../api/bulk/postBulk';
 import mapBulkRequest from '../../api/bulk/mapBulkRequest';
@@ -23,11 +23,12 @@ import { useArbeidsgiver } from '../../context/arbeidsgiver/ArbeidsgiverContext'
 import Side from '../felles/Side';
 import toDate from '../../utils/toDate';
 import Hjelpetekst from 'nav-frontend-hjelpetekst';
-import './LeggTilKnapp.sass';
+import '../felles/knapper/LeggTilKnapp.sass';
 import Lenke from 'nav-frontend-lenker';
 import './BulkInnsending.sass';
 import RadNr from '../felles/RadNr';
 import HjelpeLabel from '../felles/HjelpeLabel';
+import LeggTilKnapp from '../felles/knapper/LeggTilKnapp';
 
 interface BulkInnsendingProps {
   state?: BulkState;
@@ -213,8 +214,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                   <Row>
                     <Column md='1' className='bulk-kolonne-1'></Column>
                     <Column md='6'>
-                      <Flatknapp
-                        className='leggtil-knapp'
+                      <LeggTilKnapp
                         onClick={(event) => {
                           dispatch({
                             type: Actions.AddItem,
@@ -223,7 +223,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                         }}
                       >
                         + Legg til enda en ansatt
-                      </Flatknapp>
+                      </LeggTilKnapp>
                     </Column>
                   </Row>
                 </SkjemaGruppe>
