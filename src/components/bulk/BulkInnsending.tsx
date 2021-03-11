@@ -64,7 +64,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
         });
       });
     }
-  }, [state.validated, state.progress, state.feilmeldinger, state.submitting, state.bekreft]);
+  }, [state.validated, state.progress, state.feilmeldinger, state.submitting, state.bekreft, state]);
   return (
     <Side
       bedriftsmeny={true}
