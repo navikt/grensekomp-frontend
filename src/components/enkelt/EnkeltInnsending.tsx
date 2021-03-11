@@ -51,12 +51,11 @@ const EnkeltInnsending = () => {
       title='Søknad om inntektssikring for utestengte EØS-borgere'
       subtitle='Enkeltinnsending'
     >
-      <div>EnkeltInnsending</div>;
-      <Row>
-        <ServerFeilAdvarsel isOpen={state.serverError} onClose={handleCloseServerFeil} />
-        <Column>
-          {state.progress != true && state.kvittering != true && (
-            <div>
+      <ServerFeilAdvarsel isOpen={state.serverError} onClose={handleCloseServerFeil} />
+      {state.progress != true && (
+        <>
+          <Row>
+            <Column>
               <Panel>
                 <Ingress>
                   Når sykefraværet handler om korona, dekker NAV sykepenger fra dag 4 i de 16 dagene arbeidsgiveren
@@ -66,37 +65,39 @@ const EnkeltInnsending = () => {
                 </Ingress>
                 <Ingress>Alle felter må fylles ut om ikke annet er oppgitt</Ingress>
               </Panel>
-
-              <Skillelinje />
-
-              <Panel id='gravidside-panel-ansatte' className='gravidside-panel-ansatte'>
-                <SkjemaGruppe aria-live='polite'>
+            </Column>
+          </Row>
+          <Skillelinje />
+          <Row>
+            <Panel id='gravidside-panel-ansatte' className='gravidside-panel-ansatte'>
+              <SkjemaGruppe aria-live='polite'>
+                <Row>
+                  <Column>
+                    <Systemtittel>Hvilken arbeidstaker gjelder søknaden?</Systemtittel>
+                    <br />
+                    <Fnr
+                      label='Fødselsnummer (11 siffer)'
+                      fnr={state.fnr}
+                      placeholder='11 siffer'
+                      feilmelding={state.fnrError}
+                      onValidate={() => {}}
+                      onChange={(fnr: string) =>
+                        dispatch({
+                          type: Actions.Fnr,
+                          payload: { fnr: fnr }
+                        })
+                      }
+                    />
+                  </Column>
+                  <Skillelinje />
                   <Row>
-                    <Column md='3' xs='12'>
-                      <Systemtittel>Hvilken arbeidstaker gjelder søknaden?</Systemtittel>
-                      <br />
-                      <Fnr
-                        label='Fødselsnummer (11 siffer)'
-                        fnr={state.fnr}
-                        placeholder='11 siffer'
-                        feilmelding={state.fnrError}
-                        onValidate={() => {}}
-                        onChange={(fnr: string) =>
-                          dispatch({
-                            type: Actions.Fnr,
-                            payload: { fnr: fnr }
-                          })
-                        }
-                      />
-                    </Column>
-                    <Skillelinje />
                     <Column md='3' xs='12'>
                       <Systemtittel>Hvilken periode var den ansatte borte?</Systemtittel>
                       <br />
                       <DatoVelger
                         className='termindato'
-                        id='termindato'
-                        label='Termindato (dersom kjent)'
+                        id='fradato'
+                        label=''
                         onChange={(fra: Date) => {
                           dispatch({
                             type: Actions.Fra,
@@ -106,8 +107,8 @@ const EnkeltInnsending = () => {
                       />
                       <DatoVelger
                         className='termindato'
-                        id='termindato'
-                        label='Termindato (dersom kjent)'
+                        id='tildato'
+                        label=''
                         onChange={(til: Date) => {
                           dispatch({
                             type: Actions.Til,
@@ -118,32 +119,31 @@ const EnkeltInnsending = () => {
                     </Column>
                     <Column md='3' xs='12'></Column>
                   </Row>
-                </SkjemaGruppe>
-              </Panel>
+                </Row>
+              </SkjemaGruppe>
+            </Panel>
+          </Row>
+          <Skillelinje />
 
-              <Skillelinje />
+          <BekreftOpplysningerPanel
+            checked={state.bekreft || false}
+            feil={state.bekreftError}
+            onChange={() =>
+              dispatch({
+                type: Actions.Bekreft,
+                payload: { bekreft: !state.bekreft }
+              })
+            }
+          />
 
-              <BekreftOpplysningerPanel
-                checked={state.bekreft || false}
-                feil={state.bekreftError}
-                onChange={() =>
-                  dispatch({
-                    type: Actions.Bekreft,
-                    payload: { bekreft: !state.bekreft }
-                  })
-                }
-              />
+          <Feilmeldingspanel feilmeldinger={state.feilmeldinger} />
 
-              <Feilmeldingspanel feilmeldinger={state.feilmeldinger} />
-
-              <Panel>
-                <Hovedknapp onClick={handleSubmitClicked}>Send søknad</Hovedknapp>
-              </Panel>
-            </div>
-          )}
-        </Column>
-        {state.notAuthorized && <LoggetUtAdvarsel onClose={handleCloseNotAuthorized} />}
-      </Row>
+          <Panel>
+            <Hovedknapp onClick={handleSubmitClicked}>Send søknad</Hovedknapp>
+          </Panel>
+        </>
+      )}
+      {state.notAuthorized && <LoggetUtAdvarsel onClose={handleCloseNotAuthorized} />}
     </Side>
   );
 };
