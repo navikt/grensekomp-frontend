@@ -2,8 +2,8 @@ import ValidationResponse from '../../api/ValidationResponse';
 import { FeiloppsummeringFeil } from 'nav-frontend-skjema';
 import { lagFeil } from '../lagFeil';
 import BulkState from './BulkState';
-import { getIndexByProperyPath } from './getIndexByPropertyPath';
-import { getSubName } from './getSubName';
+import { getIndexByProperyPath } from '../../utils/getIndexByPropertyPath';
+import { getSubName } from '../../utils/getSubName';
 
 const mapBulkFeilmeldinger = (response: ValidationResponse, state: BulkState): FeiloppsummeringFeil[] => {
   const feilmeldinger = new Array<FeiloppsummeringFeil>();
