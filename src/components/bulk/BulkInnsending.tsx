@@ -9,7 +9,7 @@ import Fnr from '../felles/Fnr';
 import { DatoVelger } from '@navikt/helse-arbeidsgiver-felles-frontend';
 import BekreftOpplysningerPanel from '../felles/BekreftOpplysningerPanel';
 import Feilmeldingspanel from '../felles/Feilmeldingspanel';
-import { Flatknapp, Hovedknapp } from 'nav-frontend-knapper';
+import { Hovedknapp } from 'nav-frontend-knapper';
 import LoggetUtAdvarsel from '../login/LoggetUtAdvarsel';
 import BulkReducer from './BulkReducer';
 import BulkState, { defaultBulkState } from './BulkState';
@@ -22,7 +22,6 @@ import Kvittering from '../kvittering';
 import { useArbeidsgiver } from '../../context/arbeidsgiver/ArbeidsgiverContext';
 import Side from '../felles/Side';
 import toDate from '../../utils/toDate';
-import Hjelpetekst from 'nav-frontend-hjelpetekst';
 import '../felles/knapper/LeggTilKnapp.sass';
 import Lenke from 'nav-frontend-lenker';
 import './BulkInnsending.sass';
@@ -130,7 +129,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           id={'fom_' + item.uniqueKey}
                           dato={toDate(item.fom)}
                           feilmelding={item.fomError}
-                          label='Fom'
+                          label='Fra'
                           placeholder='dd.mm.åå'
                           onChange={(dato) => {
                             dispatch({
@@ -148,7 +147,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           id={'tom_' + item.uniqueKey}
                           dato={toDate(item.tom)}
                           feilmelding={item.tomError}
-                          label='Tom'
+                          label='Til'
                           placeholder='dd.mm.åå'
                           onChange={(dato) => {
                             dispatch({
