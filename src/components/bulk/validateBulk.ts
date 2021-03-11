@@ -2,6 +2,9 @@ import BulkState from './BulkState';
 import { FeiloppsummeringFeil } from 'nav-frontend-skjema';
 import { pushFeilmelding } from '../../validation/pushFeilmelding';
 import isValidFnr from '../../utils/isValidFnr';
+import { validateFnr } from '../../utils/validateFnr';
+import validateTil from '../../validation/validateTil';
+import validateFra from '../../validation/validateFra';
 
 const validateBulk = (state: BulkState): BulkState => {
   if (!state.validated) {
@@ -24,6 +27,10 @@ const validateBulk = (state: BulkState): BulkState => {
     item.tomError = !item.tom ? 'Må fylles ut' : undefined;
     item.dagerError = !item.dager ? 'Må fylles ut' : undefined;
     item.beloepError = !item.beloep ? 'Må fylles ut' : undefined;
+
+    item.fnrError = validateFnr(item.fnr, state.validated);
+    // item.fomError = validateFra(item.fom, state.validated);
+    // item.tomError = validateTil(item.fom, item.tom, state.validated);
   });
 
   if (!nextState.bekreft) {
