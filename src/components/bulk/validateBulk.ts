@@ -6,6 +6,7 @@ import { validateFnr } from '../../utils/validateFnr';
 import validateTil from '../../validation/validateTil';
 import validateFra from '../../validation/validateFra';
 import stringishToNumber from '../../utils/stringishToNumber';
+import validateNumber from '../../validation/validateNumber';
 
 const validateBulk = (state: BulkState): BulkState => {
   if (!state.validated) {
@@ -31,9 +32,12 @@ const validateBulk = (state: BulkState): BulkState => {
     item.dagerError = !item.dager ? 'Må fylles ut' : undefined;
     item.beloepError = !item.beloep ? 'Må fylles ut' : undefined;
 
-    // item.beloepError = stringishToNumber(item.beloep) ? undefined : 'Feil';
+    item.beloepError = validateNumber(item.beloep) && !item.beloepError ? undefined : 'Beløp må være tall';
+
+    item.dagerError = validateNumber(item.dager) && !item.dagerError ? undefined : 'Dager må være tall';
 
     item.fnrError = validateFnr(item.fnr, state.validated);
+
     // item.fomError = validateFra(item.fom, state.validated);
     // item.tomError = validateTil(item.fom, item.tom, state.validated);
   });
