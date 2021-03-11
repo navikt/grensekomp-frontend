@@ -17,7 +17,7 @@ interface slettknappProps {
 
 const Slettknapp = ({ onClick }: slettknappProps) => {
   return (
-    <Flatknapp onClick={onClick} className={'slettknapp'}>
+    <Flatknapp onClick={onClick} className={'slett-knapp'}>
       <DeleteIcon />
     </Flatknapp>
   );

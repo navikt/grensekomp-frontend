@@ -15,7 +15,6 @@ import BulkReducer from './BulkReducer';
 import BulkState, { defaultBulkState } from './BulkState';
 import { Actions } from './BulkActions';
 import Slettknapp from '../felles/Slettknapp';
-import InternLenke from '../felles/InternLenke';
 import environment from '../../environment';
 import postBulk from '../../api/bulk/postBulk';
 import mapBulkRequest from '../../api/bulk/mapBulkRequest';
@@ -24,6 +23,8 @@ import { useArbeidsgiver } from '../../context/arbeidsgiver/ArbeidsgiverContext'
 import Side from '../felles/Side';
 import toDate from '../../utils/toDate';
 import Hjelpetekst from 'nav-frontend-hjelpetekst';
+import './LeggTilKnapp.sass';
+import Lenke from 'nav-frontend-lenker';
 
 interface BulkInnsendingProps {
   state?: BulkState;
@@ -66,7 +67,6 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
       bedriftsmeny={true}
       className='bulkinnsending'
       sidetittel='Refusjonssøknad for grensearbeidere'
-      title='Søknad om inntektssikring for utestengte EØS-borgere'
       subtitle='Bulkinnsending'
     >
       <Row>
@@ -77,12 +77,20 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
             <div>
               <Panel>
                 <Ingress>
-                  Når sykefraværet handler om korona, dekker NAV sykepenger fra dag 4 i de 16 dagene arbeidsgiveren
-                  vanligvis skal betale. Den ansatte må være smittet, mistenkt smittet eller i pålagt karantene.Refusjon
-                  kan gis for dager fra og med 16. mars. Se mer informasjon om refusjonsordningen. Det kan ikke søkes om
-                  refusjon for fravær på grunn av stengte skoler eller barnehager
+                  <p>
+                    Du kan få refundert lønn til ansatte som ikke kommer seg på jobb i Norge på grunn av strenge
+                    innreiserestriksjoner. Ordningen gjelder fra 29. januar da innreiseforbudet ble innført, og varer så
+                    lenge innreiseforbudet for arbeidstakere gjelder.
+                  </p>
+                  <p>
+                    Kompensasjonen er 70 prosent av sykepengegrunnlaget, begrenset opp til 6 ganger&nbsp;
+                    <Lenke href='https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden'>
+                      folketrygdens grunnbeløp
+                    </Lenke>
+                    . Det gis bare kompensasjon for dager som den ansatte faktisk skulle ha jobbet. Alle felter må
+                    fylles ut om ikke annet er oppgitt
+                  </p>
                 </Ingress>
-                <Ingress>Alle felter må fylles ut om ikke annet er oppgitt</Ingress>
               </Panel>
 
               <Skillelinje />
@@ -215,6 +223,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                     <Column md='1'></Column>
                     <Column md='6'>
                       <Flatknapp
+                        className='leggtil-knapp'
                         onClick={(event) => {
                           dispatch({
                             type: Actions.AddItem,
