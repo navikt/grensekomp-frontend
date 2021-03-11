@@ -1,5 +1,3 @@
-import isValidFnr from './isValidFnr';
-import testFnr from '../mockData/testFnr';
 import isNumericString from './isNumericString';
 
 describe('isNumericString', () => {
