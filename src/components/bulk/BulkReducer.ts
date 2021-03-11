@@ -56,9 +56,10 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
       return validateBulk(nextState);
 
     case Actions.Beloep:
-      if (payload?.itemId !== undefined) {
-        nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.beloep = payload.beloep;
+      if (payload?.itemId === undefined) {
+        throw new Error('itemId kan ikke være undefined');
       }
+      nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.beloep = payload.beloep;
       return validateBulk(nextState);
 
     case Actions.Bekreft:

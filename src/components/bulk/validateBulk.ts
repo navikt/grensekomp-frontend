@@ -5,6 +5,7 @@ import isValidFnr from '../../utils/isValidFnr';
 import { validateFnr } from '../../utils/validateFnr';
 import validateTil from '../../validation/validateTil';
 import validateFra from '../../validation/validateFra';
+import stringishToNumber from '../../utils/stringishToNumber';
 
 const validateBulk = (state: BulkState): BulkState => {
   if (!state.validated) {
@@ -12,6 +13,8 @@ const validateBulk = (state: BulkState): BulkState => {
   }
   const nextState = Object.assign({}, state);
   const feilmeldinger = new Array<FeiloppsummeringFeil>();
+
+  // virksomhetsnummer sjekk
 
   nextState.items?.forEach((item) => {
     if (!item.fnr) {
@@ -27,6 +30,8 @@ const validateBulk = (state: BulkState): BulkState => {
     item.tomError = !item.tom ? 'Må fylles ut' : undefined;
     item.dagerError = !item.dager ? 'Må fylles ut' : undefined;
     item.beloepError = !item.beloep ? 'Må fylles ut' : undefined;
+
+    // item.beloepError = stringishToNumber(item.beloep) ? undefined : 'Feil';
 
     item.fnrError = validateFnr(item.fnr, state.validated);
     // item.fomError = validateFra(item.fom, state.validated);
