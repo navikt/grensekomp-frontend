@@ -1,5 +1,4 @@
 import React, { useEffect, useReducer } from 'react';
-import Side from '../felles/Side';
 import { Column, Row } from 'nav-frontend-grid';
 import ServerFeilAdvarsel from '../felles/ServerFeilAdvarsel';
 import Panel from 'nav-frontend-paneler';
@@ -22,6 +21,7 @@ import InternLenke from '../felles/InternLenke';
 import environment from '../../environment';
 import postBulk from '../../api/bulk/postBulk';
 import mapBulkRequest from '../../api/bulk/mapBulkRequest';
+import Side from '../felles/side';
 
 interface BulkInnsendingProps {
   state?: BulkState;
