@@ -19,6 +19,7 @@ const Slettknapp = ({ onClick }: slettknappProps) => {
   return (
     <Flatknapp onClick={onClick} className={'slett-knapp'}>
       <DeleteIcon />
+      &nbsp;Slett
     </Flatknapp>
   );
 };

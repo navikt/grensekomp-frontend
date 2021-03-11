@@ -25,6 +25,7 @@ import toDate from '../../utils/toDate';
 import Hjelpetekst from 'nav-frontend-hjelpetekst';
 import './LeggTilKnapp.sass';
 import Lenke from 'nav-frontend-lenker';
+import './BulkInnsenindg.sass';
 
 interface BulkInnsendingProps {
   state?: BulkState;
@@ -65,7 +66,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
   return (
     <Side
       bedriftsmeny={true}
-      className='bulkinnsending'
+      className='bulk-innsending'
       sidetittel='Refusjonssøknad for grensearbeidere'
       subtitle='Bulkinnsending'
     >
@@ -98,7 +99,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
               <Panel>
                 <SkjemaGruppe aria-live='polite'>
                   {state.items?.map((item, index) => (
-                    <Row key={item.uniqueKey}>
+                    <Row key={item.uniqueKey} className='bulk-innsending__rad'>
                       <Column md='1' className='bulk-kolonne-1'>
                         <b className='skjemaelement__label'>Nr.</b>
                         <div style={{ lineHeight: '1.375rem', padding: '0.5rem', marginBottom: '0.5rem' }}>
@@ -220,7 +221,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                     </Row>
                   ))}
                   <Row>
-                    <Column md='1'></Column>
+                    <Column md='1' className='bulk-kolonne-1'></Column>
                     <Column md='6'>
                       <Flatknapp
                         className='leggtil-knapp'
