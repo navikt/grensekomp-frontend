@@ -7,7 +7,6 @@ const hasDagerError = (items: BulkItem[] | undefined) => {
 
   const itemWithError = items.find((item) => item.dagerError !== undefined);
 
-  debugger;
   return itemWithError !== undefined;
 };
 

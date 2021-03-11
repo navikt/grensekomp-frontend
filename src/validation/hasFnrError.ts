@@ -7,7 +7,6 @@ const hasFnrError = (items: BulkItem[] | undefined) => {
 
   const itemWithError = items.find((item) => item.fnrError !== undefined);
 
-  debugger;
   return itemWithError !== undefined;
 };
 

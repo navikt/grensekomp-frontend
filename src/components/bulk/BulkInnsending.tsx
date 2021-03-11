@@ -28,6 +28,7 @@ import './BulkInnsending.sass';
 import RadNr from '../felles/RadNr';
 import HjelpeLabel from '../felles/HjelpeLabel';
 import LeggTilKnapp from '../felles/knapper/LeggTilKnapp';
+import dayjs from 'dayjs';
 
 interface BulkInnsendingProps {
   state?: BulkState;
@@ -36,6 +37,9 @@ interface BulkInnsendingProps {
 const BulkInnsending = (props: BulkInnsendingProps) => {
   const [state, dispatch] = useReducer(BulkReducer, props.state, defaultBulkState);
   const { arbeidsgiverId } = useArbeidsgiver();
+  const minDate = dayjs('2021-01-29').toDate();
+  const maxDate = new Date();
+
   const handleCloseServerFeil = () => {
     dispatch({ type: Actions.HideServerError });
   };
@@ -131,6 +135,8 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           feilmelding={item.fomError}
                           label='Fra'
                           placeholder='dd.mm.åå'
+                          minDate={minDate}
+                          maxDate={maxDate}
                           onChange={(dato) => {
                             dispatch({
                               type: Actions.Fra,
@@ -149,6 +155,8 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           feilmelding={item.tomError}
                           label='Til'
                           placeholder='dd.mm.åå'
+                          minDate={minDate}
+                          maxDate={maxDate}
                           onChange={(dato) => {
                             dispatch({
                               type: Actions.Til,

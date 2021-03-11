@@ -7,7 +7,6 @@ const hasBeloepError = (items: BulkItem[] | undefined) => {
 
   const itemWithError = items.find((item) => item.beloepError !== undefined);
 
-  debugger;
   return itemWithError !== undefined;
 };
 
