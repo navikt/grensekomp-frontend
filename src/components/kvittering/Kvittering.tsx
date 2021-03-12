@@ -9,7 +9,7 @@ const Kvittering = () => (
   <Side
     bedriftsmeny={false}
     className='bulk-kvittering'
-    sidetittel='Refusjonssøknad for grensearbeidere'
+    sidetittel='Refusjon for lønn ved innreiseforbud'
     subtitle='Bulkinnsending'
   >
     <Row>

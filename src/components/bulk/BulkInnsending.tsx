@@ -75,7 +75,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
     <Side
       bedriftsmeny={true}
       className='bulk-innsending'
-      sidetittel='Refusjonssøknad for grensearbeidere'
+      sidetittel='Refusjon for lønn ved innreiseforbud'
       subtitle='Bulkinnsending'
     >
       <Row>
@@ -87,25 +87,28 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
               <Panel>
                 <Ingress>
                   Du kan få refundert lønn til ansatte som ikke kommer seg på jobb i Norge på grunn av strenge
-                  innreiserestriksjoner. Ordningen gjelder fra 29. januar da innreiseforbudet ble innført, og varer så
-                  lenge innreiseforbudet for arbeidstakere gjelder.
+                  innreiserestriksjoner.
                 </Ingress>
               </Panel>
               <Panel>
-                <Ingress>
-                  Kompensasjonen er 70 prosent av sykepengegrunnlaget, begrenset opp til 6 ganger&nbsp;
-                  <Lenke href='https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden'>
-                    folketrygdens grunnbeløp
-                  </Lenke>
-                  . Det gis bare kompensasjon for dager som den ansatte faktisk skulle ha jobbet. Alle felter må fylles
-                  ut om ikke annet er oppgitt
+                <Ingress style={{ marginLeft: '3rem' }}>
+                  <li>Ordningen gjelder fra 29. januar da innreiseforbudet ble innført</li>
+                  <li>
+                    Kompensasjonen er 70% av sykepengegrunnlaget, begrenset opp til 6 ganger &nbsp;
+                    <Lenke href='https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden'>
+                      folketrygdens grunnbeløp
+                    </Lenke>
+                  </li>
+                  <li>Ferie brukt for å kompensere for manglende inntekt kan refunderes (kryss av)</li>
+                  <li>Det gis bare kompensasjon for dager som den ansatte faktisk skulle ha jobbet.</li>
+                  <li>Alle felter må fylles ut.</li>
                 </Ingress>
               </Panel>
 
               <Skillelinje />
 
               <Panel>
-                <SkjemaGruppe aria-live='polite'>
+                <SkjemaGruppe aria-live='polite' legend='Oppgi ansatte, arbeidsgiverperiode og beløp'>
                   {state.items?.map((item, index) => (
                     <Row key={item.uniqueKey} className='bulk-innsending__rad'>
                       <Column md='1' className='bulk-kolonne-1'>
