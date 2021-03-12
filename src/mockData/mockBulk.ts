@@ -1,4 +1,5 @@
 import BulkItem from '../components/bulk/BulkItem';
+import { v4 as uuid } from 'uuid';
 
 const mockBulk: Array<BulkItem> = [
   // {
@@ -15,7 +16,10 @@ const mockBulk: Array<BulkItem> = [
   //   dagerError: 'Ugyldig antall dager'
   // },
   {
-    uniqueKey: 'def'
+    uniqueKey: uuid(),
+    fnr: '',
+    dager: '',
+    beloep: ''
   }
 ];
 
