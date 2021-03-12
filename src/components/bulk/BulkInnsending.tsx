@@ -207,16 +207,18 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                         />
                       </Column>
                       <Column md='1' className='bulk-kolonne-7'>
-                        <Slettknapp
-                          onClick={(event) => {
-                            dispatch({
-                              type: Actions.DeleteItem,
-                              payload: {
-                                itemId: item.uniqueKey
-                              }
-                            });
-                          }}
-                        />
+                        {index > 0 && (
+                          <Slettknapp
+                            onClick={(event) => {
+                              dispatch({
+                                type: Actions.DeleteItem,
+                                payload: {
+                                  itemId: item.uniqueKey
+                                }
+                              });
+                            }}
+                          />
+                        )}
                       </Column>
                     </Row>
                   ))}
