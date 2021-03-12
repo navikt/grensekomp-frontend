@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "/grensekomp",
   "scripts": {
-    "start:js": "react-scripts start --development",
+    "start:js": "BROWSER=firefox react-scripts start --development",
     "build:js": "react-scripts build",
     "start:css": "less-watch-compiler --config less.json",
     "build:css": "less-watch-compiler --run-once --config less.json",
