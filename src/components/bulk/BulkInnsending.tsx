@@ -137,6 +137,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           placeholder='dd.mm.åå'
                           minDate={minDate}
                           maxDate={maxDate}
+                          className='input--fullbredde'
                           onChange={(dato) => {
                             dispatch({
                               type: Actions.Fra,
@@ -157,6 +158,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           placeholder='dd.mm.åå'
                           minDate={minDate}
                           maxDate={maxDate}
+                          className='input--fullbredde'
                           onChange={(dato) => {
                             dispatch({
                               type: Actions.Til,
