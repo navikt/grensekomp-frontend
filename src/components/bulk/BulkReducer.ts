@@ -5,6 +5,7 @@ import { v4 as uuid } from 'uuid';
 import validateBulk from './validateBulk';
 import mapResponse from '../../api/mapResponse';
 import mapBulkFeilmeldinger from './mapBulkFeilmeldinger';
+import mapComponentErrors from './mapComponentErrors';
 
 const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
   const nextState = Object.assign({}, state);
@@ -92,8 +93,12 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
       return mapResponse(payload.response, nextState, mapBulkFeilmeldinger) as BulkState;
 
     case Actions.AddItem:
-      const key = uuid();
-      nextState.items = nextState.items ? [...nextState.items, { uniqueKey: key }] : [{ uniqueKey: key }];
+      nextState.items.push({
+        uniqueKey: uuid(),
+        fnr: '',
+        dager: '',
+        beloep: ''
+      });
       return nextState;
 
     case Actions.DeleteItem:

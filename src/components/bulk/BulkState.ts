@@ -1,13 +1,19 @@
 import { FeiloppsummeringFeil } from 'nav-frontend-skjema';
 import { ValidationState } from '../../validation/ValidationState';
-import { Dato } from '../../utils/Dato';
-import mockBulk from '../../mockData/mockBulk';
 import BulkItem from './BulkItem';
+import { v4 as uuid } from 'uuid';
 
 export const defaultBulkState = (state?: BulkState): BulkState => {
   return Object.assign(
     {
-      items: mockBulk,
+      items: [
+        {
+          uniqueKey: uuid(),
+          fnr: '',
+          dager: '',
+          beloep: ''
+        }
+      ],
       bekreft: false,
       feilmeldinger: Array<FeiloppsummeringFeil>()
     },
