@@ -84,19 +84,19 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
             <div>
               <Panel>
                 <Ingress>
-                  <p>
-                    Du kan få refundert lønn til ansatte som ikke kommer seg på jobb i Norge på grunn av strenge
-                    innreiserestriksjoner. Ordningen gjelder fra 29. januar da innreiseforbudet ble innført, og varer så
-                    lenge innreiseforbudet for arbeidstakere gjelder.
-                  </p>
-                  <p>
-                    Kompensasjonen er 70 prosent av sykepengegrunnlaget, begrenset opp til 6 ganger&nbsp;
-                    <Lenke href='https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden'>
-                      folketrygdens grunnbeløp
-                    </Lenke>
-                    . Det gis bare kompensasjon for dager som den ansatte faktisk skulle ha jobbet. Alle felter må
-                    fylles ut om ikke annet er oppgitt
-                  </p>
+                  Du kan få refundert lønn til ansatte som ikke kommer seg på jobb i Norge på grunn av strenge
+                  innreiserestriksjoner. Ordningen gjelder fra 29. januar da innreiseforbudet ble innført, og varer så
+                  lenge innreiseforbudet for arbeidstakere gjelder.
+                </Ingress>
+              </Panel>
+              <Panel>
+                <Ingress>
+                  Kompensasjonen er 70 prosent av sykepengegrunnlaget, begrenset opp til 6 ganger&nbsp;
+                  <Lenke href='https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden'>
+                    folketrygdens grunnbeløp
+                  </Lenke>
+                  . Det gis bare kompensasjon for dager som den ansatte faktisk skulle ha jobbet. Alle felter må fylles
+                  ut om ikke annet er oppgitt
                 </Ingress>
               </Panel>
 

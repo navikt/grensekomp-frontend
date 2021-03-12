@@ -3,7 +3,7 @@ import ValidationResponse from './ValidationResponse';
 
 export const mapViolations = (status: number, json: any): ValidationResponse => ({
   status,
-  violations: json['violations'] || []
+  violations: json[0].validationErrors || []
 });
 
 const postRequest = async (path: string, payload: any, timeout: number = 10000): Promise<ValidationResponse> => {
@@ -26,9 +26,16 @@ const postRequest = async (path: string, payload: any, timeout: number = 10000):
       method: 'POST',
       body: JSON.stringify(payload)
     })
-      .then(async (response) =>
-        mapViolations(response.status, response.status === HttpStatus.UnprocessableEntity ? await response.json() : {})
-      )
+      .then(async (response) => {
+        const json = await response.json();
+        if (json.length > 0) {
+          return mapViolations(response.status, json);
+        }
+        return {
+          status: HttpStatus.Successfully,
+          violations: []
+        } as ValidationResponse;
+      })
       .catch(() => {
         return {
           status: HttpStatus.Error,

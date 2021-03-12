@@ -7,6 +7,7 @@ import map422 from '../validation/map422';
 import map500 from '../validation/map500';
 import { ValidationState } from '../validation/ValidationState';
 import { FeiloppsummeringFeil } from 'nav-frontend-skjema';
+import map200 from '../validation/map200';
 
 const mapResponse = (
   response: ValidationResponse,
@@ -15,6 +16,9 @@ const mapResponse = (
 ): ValidationState => {
   const nextState = Object.assign({}, state);
   switch (response.status) {
+    case HttpStatus.Successfully:
+      nextState.feilmeldinger = mapFeilmeldinger(response, nextState);
+      return map200(nextState, response);
     case HttpStatus.Created:
       return map201(nextState);
     case HttpStatus.BadRequest:
