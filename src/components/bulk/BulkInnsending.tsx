@@ -7,14 +7,10 @@ import Skillelinje from '../felles/Skillelinje';
 import { Input, Label, SkjemaGruppe } from 'nav-frontend-skjema';
 import Fnr from '../felles/Fnr';
 import { DatoVelger } from '@navikt/helse-arbeidsgiver-felles-frontend';
-import BekreftOpplysningerPanel from '../felles/BekreftOpplysningerPanel';
-import Feilmeldingspanel from '../felles/Feilmeldingspanel';
-import { Hovedknapp } from 'nav-frontend-knapper';
 import LoggetUtAdvarsel from '../login/LoggetUtAdvarsel';
 import BulkReducer from './BulkReducer';
 import BulkState, { defaultBulkState } from './BulkState';
 import { Actions } from './BulkActions';
-import Slettknapp from '../felles/knapper/Slettknapp';
 import environment from '../../environment';
 import postBulk from '../../api/bulk/postBulk';
 import mapBulkRequest from '../../api/bulk/mapBulkRequest';
@@ -29,7 +25,13 @@ import RadNr from '../felles/RadNr';
 import HjelpeLabel from '../felles/HjelpeLabel';
 import LeggTilKnapp from '../felles/knapper/LeggTilKnapp';
 import dayjs from 'dayjs';
-import Hjelpetekst from 'nav-frontend-hjelpetekst';
+import Slettknapp from '../felles/knapper/Slettknapp';
+import BekreftOpplysningerPanel from '../felles/BekreftOpplysningerPanel';
+import Feilmeldingspanel from '../felles/Feilmeldingspanel';
+import { Hovedknapp } from 'nav-frontend-knapper';
+import PeriodeHjelpetekst from './PeriodeHjelpetekst';
+import BeloepHjelpeLabel from './BeloepHjelpeLabel';
+import DagerHjelpeLabel from './DagerHjelpeLabel';
 
 interface BulkInnsendingProps {
   state?: BulkState;
@@ -136,12 +138,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                       <Column md='4' className='bulk-kolonne-3'>
                         <Label htmlFor={'fom_' + item.uniqueKey} className='skjemaelement__dobbel__label'>
                           Hvilken periode var den ansatte borte?
-                          <Hjelpetekst style={{ marginLeft: '0.5rem' }}>
-                            <ul>
-                              <li>Fra og med første til og med siste fraværsdag i perioden.</li>
-                              <li>Er fraværet bare på én dag, klikker du samme dag to ganger.</li>
-                            </ul>
-                          </Hjelpetekst>
+                          <PeriodeHjelpetekst />
                         </Label>
                         <Row>
                           <Column md='6' className='bulk-kolonne-3-fom'>
@@ -191,7 +188,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                       <Column md='2' className='bulk-kolonne-5'>
                         <Input
                           id={'dager_' + item.uniqueKey}
-                          label={<HjelpeLabel label='Antall dager'>Kommer snart...</HjelpeLabel>}
+                          label={<DagerHjelpeLabel />}
                           placeholder='Antall'
                           feil={item.dagerError}
                           value={item.dager}
@@ -209,7 +206,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                       <Column md='2' className='bulk-kolonne-6'>
                         <Input
                           id={'beloep_' + item.uniqueKey}
-                          label={<HjelpeLabel label='Beløp'>Kommer snart...</HjelpeLabel>}
+                          label={<BeloepHjelpeLabel />}
                           placeholder='Kr'
                           feil={item.beloepError}
                           value={item.beloep}
