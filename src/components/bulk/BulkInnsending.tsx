@@ -190,7 +190,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                       </Column>
                       <Column md='2' className='bulk-kolonne-6'>
                         <Input
-                          id={'beloeop_' + item.uniqueKey}
+                          id={'beloep_' + item.uniqueKey}
                           label={<HjelpeLabel label='Beløp'>Kommer snart...</HjelpeLabel>}
                           placeholder='Kr'
                           feil={item.beloepError}
