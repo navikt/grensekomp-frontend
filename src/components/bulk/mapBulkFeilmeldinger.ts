@@ -17,22 +17,38 @@ const mapBulkFeilmeldinger = (response: ValidationResponse, state: BulkState): F
       case 'antallDagerMedRefusjon':
         feilmeldinger.push(lagFeil('bekreft', v.message));
         break;
-    }
-    if (v.propertyPath.startsWith('perioder')) {
-      const index = getIndexByProperyPath(v.propertyPath);
-      const sub = getSubName(v.propertyPath, index);
-      if (state.items !== undefined) {
-        const item = state.items[index];
 
-        if (sub === 'fom') {
-          item.fomError = v.message;
-          feilmeldinger.push(lagFeil('fom_' + item.uniqueKey, v.message));
+      case 'perioder':
+        feilmeldinger.push(lagFeil('perioder', v.message || v.validationType));
+        break;
+
+      default:
+        if (v.propertyPath.startsWith('perioder')) {
+          const index = getIndexByProperyPath(v.propertyPath);
+          const subProperty = getSubName(v.propertyPath, index);
+          const rowIndex = v.frontendIndex;
+          if (state.items !== undefined) {
+            const item = state.items[rowIndex || 0];
+
+            if (subProperty === 'fom') {
+              item.fomError = v.message;
+              feilmeldinger.push(lagFeil('fom_' + item.uniqueKey, v.message));
+            }
+            if (subProperty === 'tom') {
+              item.tomError = v.message;
+              feilmeldinger.push(lagFeil('tom_' + item.uniqueKey, v.message));
+            }
+
+            if (subProperty === 'beloep') {
+              item.tomError = v.message;
+              feilmeldinger.push(lagFeil('beloep_' + item.uniqueKey, v.message));
+            }
+          }
+          break;
         }
-        if (sub === 'tom') {
-          item.tomError = v.message;
-          feilmeldinger.push(lagFeil('tom_' + item.uniqueKey, v.message));
-        }
-      }
+        // Fallback - unknown error
+        feilmeldinger.push(lagFeil('ukjent', 'Ukjent feil: ' + v.message || v.validationType));
+        break;
     }
   });
   return feilmeldinger;

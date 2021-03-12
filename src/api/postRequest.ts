@@ -1,10 +1,28 @@
 import HttpStatus from './HttpStatus';
-import ValidationResponse from './ValidationResponse';
+import ValidationResponse, { BulkValidationResponse, ValidationProblemDetail } from './ValidationResponse';
 
 export const mapViolations = (status: number, json: any): ValidationResponse => ({
   status,
-  violations: json['violations'] || []
+  violations: json[0].validationErrors || []
 });
+
+export const mapBulkViolation = (
+  status: number,
+  bulkValidationResponse: BulkValidationResponse
+): ValidationResponse => {
+  let violations: ValidationProblemDetail[] = [];
+  bulkValidationResponse.forEach((bulkValidation, index) => {
+    bulkValidation.validationErrors.forEach((validationError) => {
+      validationError.frontendIndex = index;
+      console.log('validationError', validationError);
+      violations.push(validationError);
+    });
+  });
+  return {
+    status,
+    violations
+  };
+};
 
 const postRequest = async (path: string, payload: any, timeout: number = 10000): Promise<ValidationResponse> => {
   return Promise.race([
@@ -26,9 +44,17 @@ const postRequest = async (path: string, payload: any, timeout: number = 10000):
       method: 'POST',
       body: JSON.stringify(payload)
     })
-      .then(async (response) =>
-        mapViolations(response.status, response.status === HttpStatus.UnprocessableEntity ? await response.json() : {})
-      )
+      .then(async (response) => {
+        const json: BulkValidationResponse = await response.json();
+        const matchesFail = json.find((j) => j.status !== 'OK');
+        if (matchesFail) {
+          return mapBulkViolation(response.status, json);
+        }
+        return {
+          status: HttpStatus.Successfully,
+          violations: []
+        } as ValidationResponse;
+      })
       .catch(() => {
         return {
           status: HttpStatus.Error,

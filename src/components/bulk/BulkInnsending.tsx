@@ -84,19 +84,19 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
             <div>
               <Panel>
                 <Ingress>
-                  <p>
-                    Du kan få refundert lønn til ansatte som ikke kommer seg på jobb i Norge på grunn av strenge
-                    innreiserestriksjoner. Ordningen gjelder fra 29. januar da innreiseforbudet ble innført, og varer så
-                    lenge innreiseforbudet for arbeidstakere gjelder.
-                  </p>
-                  <p>
-                    Kompensasjonen er 70 prosent av sykepengegrunnlaget, begrenset opp til 6 ganger&nbsp;
-                    <Lenke href='https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden'>
-                      folketrygdens grunnbeløp
-                    </Lenke>
-                    . Det gis bare kompensasjon for dager som den ansatte faktisk skulle ha jobbet. Alle felter må
-                    fylles ut om ikke annet er oppgitt
-                  </p>
+                  Du kan få refundert lønn til ansatte som ikke kommer seg på jobb i Norge på grunn av strenge
+                  innreiserestriksjoner. Ordningen gjelder fra 29. januar da innreiseforbudet ble innført, og varer så
+                  lenge innreiseforbudet for arbeidstakere gjelder.
+                </Ingress>
+              </Panel>
+              <Panel>
+                <Ingress>
+                  Kompensasjonen er 70 prosent av sykepengegrunnlaget, begrenset opp til 6 ganger&nbsp;
+                  <Lenke href='https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden'>
+                    folketrygdens grunnbeløp
+                  </Lenke>
+                  . Det gis bare kompensasjon for dager som den ansatte faktisk skulle ha jobbet. Alle felter må fylles
+                  ut om ikke annet er oppgitt
                 </Ingress>
               </Panel>
 
@@ -137,6 +137,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           placeholder='dd.mm.åå'
                           minDate={minDate}
                           maxDate={maxDate}
+                          className='input--fullbredde'
                           onChange={(dato) => {
                             dispatch({
                               type: Actions.Fra,
@@ -157,6 +158,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           placeholder='dd.mm.åå'
                           minDate={minDate}
                           maxDate={maxDate}
+                          className='input--fullbredde'
                           onChange={(dato) => {
                             dispatch({
                               type: Actions.Til,
@@ -188,7 +190,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                       </Column>
                       <Column md='2' className='bulk-kolonne-6'>
                         <Input
-                          id={'beloeop_' + item.uniqueKey}
+                          id={'beloep_' + item.uniqueKey}
                           label={<HjelpeLabel label='Beløp'>Kommer snart...</HjelpeLabel>}
                           placeholder='Kr'
                           feil={item.beloepError}
@@ -205,16 +207,18 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                         />
                       </Column>
                       <Column md='1' className='bulk-kolonne-7'>
-                        <Slettknapp
-                          onClick={(event) => {
-                            dispatch({
-                              type: Actions.DeleteItem,
-                              payload: {
-                                itemId: item.uniqueKey
-                              }
-                            });
-                          }}
-                        />
+                        {index > 0 && (
+                          <Slettknapp
+                            onClick={(event) => {
+                              dispatch({
+                                type: Actions.DeleteItem,
+                                payload: {
+                                  itemId: item.uniqueKey
+                                }
+                              });
+                            }}
+                          />
+                        )}
                       </Column>
                     </Row>
                   ))}
