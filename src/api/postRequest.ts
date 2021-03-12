@@ -1,28 +1,11 @@
 import HttpStatus from './HttpStatus';
-import ValidationResponse, { BulkValidationResponse, ValidationProblemDetail } from './ValidationResponse';
+import ValidationResponse, { BulkValidationResponse } from './ValidationResponse';
+import mapBulkViolation from './mapBulkViolation';
 
 export const mapViolations = (status: number, json: any): ValidationResponse => ({
   status,
   violations: json[0].validationErrors || []
 });
-
-export const mapBulkViolation = (
-  status: number,
-  bulkValidationResponse: BulkValidationResponse
-): ValidationResponse => {
-  let violations: ValidationProblemDetail[] = [];
-  bulkValidationResponse.forEach((bulkValidation, index) => {
-    bulkValidation.validationErrors.forEach((validationError) => {
-      validationError.frontendIndex = index;
-      console.log('validationError', validationError);
-      violations.push(validationError);
-    });
-  });
-  return {
-    status,
-    violations
-  };
-};
 
 const postRequest = async (path: string, payload: any, timeout: number = 10000): Promise<ValidationResponse> => {
   return Promise.race([
