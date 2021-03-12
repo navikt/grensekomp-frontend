@@ -5,7 +5,6 @@ import { v4 as uuid } from 'uuid';
 import validateBulk from './validateBulk';
 import mapResponse from '../../api/mapResponse';
 import mapBulkFeilmeldinger from './mapBulkFeilmeldinger';
-import mapComponentErrors from './mapComponentErrors';
 
 const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
   const nextState = Object.assign({}, state);
