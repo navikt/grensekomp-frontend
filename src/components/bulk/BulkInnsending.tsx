@@ -4,7 +4,7 @@ import ServerFeilAdvarsel from '../felles/ServerFeilAdvarsel';
 import Panel from 'nav-frontend-paneler';
 import { Ingress } from 'nav-frontend-typografi';
 import Skillelinje from '../felles/Skillelinje';
-import { Input, SkjemaGruppe } from 'nav-frontend-skjema';
+import { Input, Label, SkjemaGruppe } from 'nav-frontend-skjema';
 import Fnr from '../felles/Fnr';
 import { DatoVelger } from '@navikt/helse-arbeidsgiver-felles-frontend';
 import BekreftOpplysningerPanel from '../felles/BekreftOpplysningerPanel';
@@ -29,6 +29,7 @@ import RadNr from '../felles/RadNr';
 import HjelpeLabel from '../felles/HjelpeLabel';
 import LeggTilKnapp from '../felles/knapper/LeggTilKnapp';
 import dayjs from 'dayjs';
+import Hjelpetekst from 'nav-frontend-hjelpetekst';
 
 interface BulkInnsendingProps {
   state?: BulkState;
@@ -39,6 +40,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
   const { arbeidsgiverId } = useArbeidsgiver();
   const minDate = dayjs('2021-01-29').toDate();
   const maxDate = new Date();
+  const showDeleteButton = state.items && state.items.length > 1;
 
   const handleCloseServerFeil = () => {
     dispatch({ type: Actions.HideServerError });
@@ -128,47 +130,60 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           }}
                         />
                       </Column>
-                      <Column md='2' className='bulk-kolonne-3'>
-                        <DatoVelger
-                          id={'fom_' + item.uniqueKey}
-                          dato={toDate(item.fom)}
-                          feilmelding={item.fomError}
-                          label='Fra'
-                          placeholder='dd.mm.åå'
-                          minDate={minDate}
-                          maxDate={maxDate}
-                          className='input--fullbredde'
-                          onChange={(dato) => {
-                            dispatch({
-                              type: Actions.Fra,
-                              payload: {
-                                itemId: item.uniqueKey,
-                                fra: dato
-                              }
-                            });
-                          }}
-                        />
-                      </Column>
-                      <Column md='2' className='bulk-kolonne-4'>
-                        <DatoVelger
-                          id={'tom_' + item.uniqueKey}
-                          dato={toDate(item.tom)}
-                          feilmelding={item.tomError}
-                          label='Til'
-                          placeholder='dd.mm.åå'
-                          minDate={minDate}
-                          maxDate={maxDate}
-                          className='input--fullbredde'
-                          onChange={(dato) => {
-                            dispatch({
-                              type: Actions.Til,
-                              payload: {
-                                itemId: item.uniqueKey,
-                                til: dato
-                              }
-                            });
-                          }}
-                        />
+                      <Column md='4' className='bulk-kolonne-3'>
+                        <Label htmlFor={'fom_' + item.uniqueKey} className='skjemaelement__dobbel__label'>
+                          Hvilken periode var den ansatte borte?
+                          <Hjelpetekst style={{ marginLeft: '0.5rem' }}>
+                            <ul>
+                              <li>Fra og med første til og med siste fraværsdag i perioden.</li>
+                              <li>Er fraværet bare på én dag, klikker du samme dag to ganger.</li>
+                            </ul>
+                          </Hjelpetekst>
+                        </Label>
+                        <Row>
+                          <Column md='6' className='bulk-kolonne-3-fom'>
+                            <DatoVelger
+                              id={'fom_' + item.uniqueKey}
+                              dato={toDate(item.fom)}
+                              feilmelding={item.fomError}
+                              label=''
+                              placeholder='dd.mm.åå'
+                              minDate={minDate}
+                              maxDate={maxDate}
+                              className='input--fullbredde'
+                              onChange={(dato) => {
+                                dispatch({
+                                  type: Actions.Fra,
+                                  payload: {
+                                    itemId: item.uniqueKey,
+                                    fra: dato
+                                  }
+                                });
+                              }}
+                            />
+                          </Column>
+                          <Column md='6' className='bulk-kolonne-4'>
+                            <DatoVelger
+                              id={'tom_' + item.uniqueKey}
+                              dato={toDate(item.tom)}
+                              feilmelding={item.tomError}
+                              label=''
+                              placeholder='dd.mm.åå'
+                              minDate={minDate}
+                              maxDate={maxDate}
+                              className='input--fullbredde'
+                              onChange={(dato) => {
+                                dispatch({
+                                  type: Actions.Til,
+                                  payload: {
+                                    itemId: item.uniqueKey,
+                                    til: dato
+                                  }
+                                });
+                              }}
+                            />
+                          </Column>
+                        </Row>
                       </Column>
                       <Column md='2' className='bulk-kolonne-5'>
                         <Input
@@ -207,7 +222,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                         />
                       </Column>
                       <Column md='1' className='bulk-kolonne-7'>
-                        {index > 0 && (
+                        {showDeleteButton && (
                           <Slettknapp
                             onClick={(event) => {
                               dispatch({
