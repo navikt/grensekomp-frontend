@@ -61,6 +61,13 @@ describe('mapBulkRequest', () => {
           tom: unimportantMockDate,
           dager: '1',
           beloep: '123'
+        },
+        {
+          uniqueKey: '5',
+          accepted: false,
+          fnr: '1234',
+          fom: unimportantMockDate,
+          tom: unimportantMockDate
         }
       ]
     };
@@ -84,6 +91,18 @@ describe('mapBulkRequest', () => {
           {
             antallDagerMedRefusjon: 1,
             beloep: 123,
+            fom: '2020-01-01',
+            tom: '2020-01-01'
+          }
+        ],
+        virksomhetsnummer: '1234'
+      },
+      {
+        identitetsnummer: '1234',
+        perioder: [
+          {
+            antallDagerMedRefusjon: NaN,
+            beloep: NaN,
             fom: '2020-01-01',
             tom: '2020-01-01'
           }
