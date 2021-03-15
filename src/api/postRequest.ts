@@ -1,6 +1,6 @@
 import HttpStatus from './HttpStatus';
 import ValidationResponse, { BulkValidationResponse } from './ValidationResponse';
-import mapBulkViolation from './mapBulkViolation';
+import mapBulkValidation from './mapBulkValidation';
 
 export const mapViolations = (status: number, json: any): ValidationResponse => ({
   status,
@@ -28,15 +28,8 @@ const postRequest = async (path: string, payload: any, timeout: number = 10000):
       body: JSON.stringify(payload)
     })
       .then(async (response) => {
-        const json: BulkValidationResponse = await response.json();
-        const matchesFail = json.find((j) => j.status !== 'OK');
-        if (matchesFail) {
-          return mapBulkViolation(response.status, json);
-        }
-        return {
-          status: HttpStatus.Successfully,
-          violations: []
-        } as ValidationResponse;
+        const bulkValidationResponse: BulkValidationResponse = await response.json();
+        return mapBulkValidation(response.status, bulkValidationResponse);
       })
       .catch(() => {
         return {

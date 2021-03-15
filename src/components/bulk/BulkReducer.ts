@@ -3,11 +3,11 @@ import { Actions, BulkActions } from './BulkActions';
 import { parseDateTilDato } from '../../utils/Dato';
 import { v4 as uuid } from 'uuid';
 import validateBulk from './validateBulk';
-import mapComponentErrors from './mapComponentErrors';
-import mapAccepted from './mapAccepted';
+import mapServerValidations from './mapServerValidations';
+import mapAcceptedRows from './mapAccepted';
 import { pushFeilmelding } from '../../validation/pushFeilmelding';
 import { FeiloppsummeringFeil } from 'nav-frontend-skjema';
-import mapFeilOppsummering from './mapFeilOppsummering';
+import mapFeilOppsummeringsFeil from './mapFeilOppsummering';
 
 const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
   const nextState = Object.assign({}, state);
@@ -92,13 +92,17 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
       nextState.validated = false;
       nextState.progress = false;
       nextState.submitting = false;
+      nextState.feilmeldinger = new Array<FeiloppsummeringFeil>();
 
-      mapAccepted(payload.response, nextState);
+      mapAcceptedRows(payload.response, nextState);
 
-      mapComponentErrors(payload.response, nextState);
+      mapServerValidations(payload.response, nextState);
 
-      state.feilmeldinger = new Array<FeiloppsummeringFeil>();
-      mapFeilOppsummering(nextState);
+      mapFeilOppsummeringsFeil(nextState);
+
+      nextState.kvittering = nextState.feilmeldinger.length === 0;
+      nextState.validated = false;
+
       return nextState;
 
     case Actions.AddItem:

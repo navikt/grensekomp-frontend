@@ -1,6 +1,6 @@
 import ValidationResponse, { BulkValidationResponse, ValidationProblemDetail } from './ValidationResponse';
 
-const mapBulkViolation = (status: number, bulkValidationResponse: BulkValidationResponse): ValidationResponse => {
+const mapBulkValidation = (status: number, bulkValidationResponse: BulkValidationResponse): ValidationResponse => {
   let violations: ValidationProblemDetail[] = [];
   bulkValidationResponse.forEach((bulkValidation, index) => {
     bulkValidation.validationErrors.forEach((validationError) => {
@@ -14,4 +14,4 @@ const mapBulkViolation = (status: number, bulkValidationResponse: BulkValidation
   };
 };
 
-export default mapBulkViolation;
+export default mapBulkValidation;

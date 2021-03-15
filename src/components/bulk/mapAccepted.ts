@@ -1,16 +1,14 @@
 import BulkState from './BulkState';
-import BulkItem from './BulkItem';
+import findNonAccepted from './findNotAccepted';
 
-const ACCEPTED = 'OK';
+const VALIDATION_STATUS = {
+  ACCEPTED: 'OK'
+};
 
-const findNonAccepted = (items: BulkItem[]): BulkItem[] => items.filter((i) => i.accepted === false);
-
-const mapAccepted = (response, state: BulkState) => {
-  console.log('mapAccepted', response);
+const mapAccepted = (response: any, state: BulkState) => {
   response.violations.forEach((validation, rowIndex) => {
-    console.log('validation', validation);
     const notAcceptedItems = findNonAccepted(state.items);
-    if (validation.status === ACCEPTED) {
+    if (validation.status === VALIDATION_STATUS.ACCEPTED) {
       notAcceptedItems[rowIndex].accepted = true;
     }
   });

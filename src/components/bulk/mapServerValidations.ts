@@ -3,7 +3,7 @@ import BulkState from './BulkState';
 import { getIndexByProperyPath } from '../../utils/getIndexByPropertyPath';
 import { getSubName } from '../../utils/getSubName';
 
-const mapComponentErrors = (response: ValidationResponse, state: BulkState) => {
+const mapServerValidations = (response: ValidationResponse, state: BulkState) => {
   response.violations.forEach((v) => {
     if (state.items === undefined) {
       throw Error('Mangler violation items');
@@ -20,7 +20,6 @@ const mapComponentErrors = (response: ValidationResponse, state: BulkState) => {
 
       case 'perioder':
         item.dagerError = v.message || v.validationType;
-        console.log('PERIODER', v);
         break;
 
       default:
@@ -49,4 +48,4 @@ const mapComponentErrors = (response: ValidationResponse, state: BulkState) => {
   });
 };
 
-export default mapComponentErrors;
+export default mapServerValidations;
