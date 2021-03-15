@@ -1,5 +1,12 @@
 const errorMessages = {
-  RefusjonsdagerKanIkkeOverstigePeriodelengdenConstraint: 'Refusjonsdager kan ikke overstige periodelengden'
+  IdentitetsnummerConstraint: 'Ugyldig identitetsnummer',
+  OrganisasjonsnummerConstraint: 'Ugyldig organisasjonsnummer',
+  RefusjonsDagerConstraint: 'Refusjonsdager kan ikke overstige periodelengden',
+  RefusjonsdagerKanIkkeOverstigePeriodelengdenConstraint: 'Refusjonsdager kan ikke overstige periodelengden',
+  IngenOverlapptomePerioderContraint: 'Periodene kan ikke overlappe',
+  MaksPeriodeLengdeConstraint: 'Lengden på perioden er overskredet',
+  TomPeriodeKanIkkeHaBeloepConstraint: 'Tom periode kan ikke ha beløp',
+  RefusjonsdagerInnenforGyldigPeriodeConstraint: 'Refusjonsdager kan ikke overstige periodelengden'
 };
 
 const mapBackendErrormessaages = (errorMessage: string): string => {
