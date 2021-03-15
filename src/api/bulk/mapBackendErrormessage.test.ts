@@ -14,4 +14,8 @@ describe('mapBackendErrormessaages', () => {
   it('should return an empty string if we give undefined as param', () => {
     expect(mapBackendErrormessaages(undefined)).toEqual('');
   });
+
+  it('should return an empty string if we give an empty string as param', () => {
+    expect(mapBackendErrormessaages('')).toEqual('');
+  });
 });
