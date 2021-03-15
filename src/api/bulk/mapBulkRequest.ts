@@ -24,7 +24,7 @@ const mapBulkRequest = (state: BulkState): BulkRequest => {
   if (state?.orgnr === undefined) {
     throw new Error('Må ha orgnr');
   }
-  return state.items?.map((i) => mapAnsatt(i, state?.orgnr || ''));
+  return state.items?.filter((item) => item.accepted !== true).map((i) => mapAnsatt(i, state?.orgnr || ''));
 };
 
 export default mapBulkRequest;
