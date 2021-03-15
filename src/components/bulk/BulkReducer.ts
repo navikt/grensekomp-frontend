@@ -3,8 +3,11 @@ import { Actions, BulkActions } from './BulkActions';
 import { parseDateTilDato } from '../../utils/Dato';
 import { v4 as uuid } from 'uuid';
 import validateBulk from './validateBulk';
-import mapResponse from '../../api/mapResponse';
-import mapBulkFeilmeldinger from './mapBulkFeilmeldinger';
+import mapComponentErrors from './mapComponentErrors';
+import mapAccepted from './mapAccepted';
+import { pushFeilmelding } from '../../validation/pushFeilmelding';
+import { FeiloppsummeringFeil } from 'nav-frontend-skjema';
+import mapFeilOppsummering from './mapFeilOppsummering';
 
 const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
   const nextState = Object.assign({}, state);
@@ -89,7 +92,14 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
       nextState.validated = false;
       nextState.progress = false;
       nextState.submitting = false;
-      return mapResponse(payload.response, nextState, mapBulkFeilmeldinger) as BulkState;
+
+      mapAccepted(payload.response, nextState);
+
+      mapComponentErrors(payload.response, nextState);
+
+      state.feilmeldinger = new Array<FeiloppsummeringFeil>();
+      mapFeilOppsummering(nextState);
+      return nextState;
 
     case Actions.AddItem:
       nextState.items.push({

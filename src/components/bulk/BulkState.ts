@@ -22,7 +22,7 @@ export const defaultBulkState = (state?: BulkState): BulkState => {
 };
 
 export default interface BulkState extends ValidationState {
-  items?: BulkItem[];
+  items: BulkItem[];
   orgnr?: string;
   orngrError?: string;
   bekreft?: boolean;
