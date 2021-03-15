@@ -12,6 +12,7 @@ export interface BulkItem {
   dagerError?: string;
   beloep?: string;
   beloepError?: string;
+  accepted?: boolean;
 }
 
 export default BulkItem;
