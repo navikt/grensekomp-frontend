@@ -7,7 +7,11 @@ describe('mapBackendErrormessaages', () => {
     );
   });
 
-  it('should return the correct string', () => {
+  it('should return something more readable if we dont have a predefined errormessager', () => {
     expect(mapBackendErrormessaages('DetteErEnUkjentFeilConstraint')).toEqual('Dette er en ukjent feil');
+  });
+
+  it('should return an empty string if we give undefined as param', () => {
+    expect(mapBackendErrormessaages(undefined)).toEqual('');
   });
 });
