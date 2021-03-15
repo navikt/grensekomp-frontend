@@ -31,10 +31,10 @@ const validateBulk = (state: BulkState): BulkState => {
         item.fnrError = 'Ugyldig fnr';
       }
     }
-    item.fomError = !item.fom ? 'Må fylles ut' : undefined;
-    item.tomError = !item.tom ? 'Må fylles ut' : undefined;
-    item.dagerError = !item.dager ? 'Må fylles ut' : undefined;
-    item.beloepError = !item.beloep ? 'Må fylles ut' : undefined;
+    item.fomError = !item.fom ? 'Mangler fra dato' : undefined;
+    item.tomError = !item.tom ? 'Mangler til dato' : undefined;
+    item.dagerError = !item.dager ? 'Mangler dager' : undefined;
+    item.beloepError = !item.beloep ? 'Mangler beløp' : undefined;
 
     item.beloepError = isNumericString(item.beloep) || item.beloepError ? item.beloepError : 'Beløp må være tall';
 
@@ -46,8 +46,8 @@ const validateBulk = (state: BulkState): BulkState => {
     item.tomError = validateTil(item.fom, item.tom, state.validated);
   });
 
+  nextState.bekreftError = !state.bekreft ? 'Bekreft at opplysningene er korrekt' : '';
   if (!nextState.bekreft) {
-    nextState.bekreftError = 'Bekreft at opplysningene er korrekt';
     pushFeilmelding('bekreftFeilmeldingId', 'Bekreft at opplysningene er korrekt', feilmeldinger);
   }
 
