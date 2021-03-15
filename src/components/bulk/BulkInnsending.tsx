@@ -121,7 +121,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                         <Fnr
                           id={'fnr_' + item.uniqueKey}
                           fnr={item.fnr}
-                          label='Fødselsnummer/D-nummer'
+                          label='Fødsels-/D-nummer'
                           placeholder='11 siffer'
                           feilmelding={item.fnrError}
                           onChange={(event) => {
