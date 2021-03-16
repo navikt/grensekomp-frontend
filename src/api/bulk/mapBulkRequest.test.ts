@@ -1,11 +1,12 @@
 import BulkState from '../../components/bulk/BulkState';
 import { Dato } from '../../utils/Dato';
 import mapBulkRequest from './mapBulkRequest';
+import BulkRequest from './BulkRequest';
 
 describe('mapBulkRequest', () => {
   it('should throw when no data', () => {
     expect(() => {
-      mapBulkRequest([]);
+      mapBulkRequest({} as BulkState);
     }).toThrow('Må ha minst en ansatt');
   });
 
@@ -72,41 +73,35 @@ describe('mapBulkRequest', () => {
       ]
     };
 
-    const expected = [
+    const expected: BulkRequest = [
       {
         identitetsnummer: '',
-        perioder: [
-          {
-            antallDagerMedRefusjon: 1,
-            beloep: 123,
-            fom: '2020-01-01',
-            tom: '2020-01-01'
-          }
-        ],
+        periode: {
+          antallDagerMedRefusjon: 1,
+          beloep: 123,
+          fom: '2020-01-01',
+          tom: '2020-01-01'
+        },
         virksomhetsnummer: '1234'
       },
       {
         identitetsnummer: '',
-        perioder: [
-          {
-            antallDagerMedRefusjon: 1,
-            beloep: 123,
-            fom: '2020-01-01',
-            tom: '2020-01-01'
-          }
-        ],
+        periode: {
+          antallDagerMedRefusjon: 1,
+          beloep: 123,
+          fom: '2020-01-01',
+          tom: '2020-01-01'
+        },
         virksomhetsnummer: '1234'
       },
       {
         identitetsnummer: '1234',
-        perioder: [
-          {
-            antallDagerMedRefusjon: NaN,
-            beloep: NaN,
-            fom: '2020-01-01',
-            tom: '2020-01-01'
-          }
-        ],
+        periode: {
+          antallDagerMedRefusjon: NaN,
+          beloep: NaN,
+          fom: '2020-01-01',
+          tom: '2020-01-01'
+        },
         virksomhetsnummer: '1234'
       }
     ];
