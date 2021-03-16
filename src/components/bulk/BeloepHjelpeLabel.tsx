@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import 'nav-frontend-tabell-style';
-import { Undertittel } from 'nav-frontend-typografi';
+import { Normaltekst, Undertittel } from 'nav-frontend-typografi';
 import ModalWrapper from 'nav-frontend-modal';
 import Veilederpanel from 'nav-frontend-veilederpanel';
 import './BeloepHjelpeLabel.scss';
 import Lenke from 'nav-frontend-lenker';
+import LeggTilKnapp from '../felles/knapper/LeggTilKnapp';
 
 const VeilederIkon = (
   <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 54 93'>
@@ -118,7 +119,7 @@ const BeloepHjelpeLabel = () => {
 
   return (
     <div style={{ display: 'flex' }}>
-      <span className='hjelpetekst-beskrivelse'>Beløp</span>
+      <span className='hjelpetekst-beskrivelse'>Dagsats</span>
       <div className='hjelpetekst-refusjon'>
         <ModalWrapper
           isOpen={eksempelOpen}
@@ -128,18 +129,9 @@ const BeloepHjelpeLabel = () => {
           className='eksempel-modal'
         >
           <Veilederpanel svg={VeilederIkon}>
-            <Undertittel>Slik finner dere beløpet dere kan kreve:</Undertittel>
-            <br />
-            (Merk: Beløpet er før skatt, og det skal være uten feriepenger og arbeidsgiveravgift. Det beregnes
-            feriepenger av det NAV refunderer. Dere får utbetalt refusjonen av feriepengene neste år)
-            <br />
-            <ol>
-              <li>
-                Avklar antall dager det kan kreves refusjon for. Ta kun med dager det skulle vært utbetalt lønn for, fra
-                og med dag 4 i arbeidsgiverperioden. Helger og helligdager kan tas med hvis de er en del av den faste
-                arbeidstiden. Krev så refusjon fra og med dag 4, men maksimalt 13 dager til sammen. Dager før 16. mars
-                får du ikke refusjon for.
-              </li>
+            <Undertittel>Slik regner du ut den ansattes daglige lønn (dagsats) ved normale forhold:</Undertittel>
+
+            <ul className='leftallign-list'>
               <li>
                 Beregn månedsinntekten slik det ellers gjøres for &nbsp;
                 <Lenke
@@ -151,37 +143,16 @@ const BeloepHjelpeLabel = () => {
                 .
               </li>
               <li>Gang med 12 måneder for å finne årslønn.</li>
-              <li>Reduser beløpet til 6G hvis beløpet er over dette.</li>
+              <li>Reduser beløpet til 6G (608 106) hvis beløpet er over dette.</li>
               <li>Finn dagsatsen ved å dele årslønnen på antall dager dere utbetaler lønn for i året.</li>
               <li>Gang dagsatsen med antall dager dere krever refusjon for.</li>
-            </ol>
-            <Undertittel>Eksempel:</Undertittel>
-            <ol>
-              <li>
-                Frida har første fraværsdag 20. mars. Hun jobber mandag-fredag og får ikke utbetalt lønn for helgedager.
-                Arbeidsgiverperioden går til og med 4. april. Trekk fra helgedager og de tre første dagene i
-                arbeidsgiverperioden = 10 dager som det kan kreves refusjon for.
-              </li>
-              <li>
-                Finn gjennomsnittet av Fridas bruttolønn i desember, januar og februar. I dette eksempelet har Frida en
-                snittlønn på 55 000 kroner de aktuelle månedene.
-              </li>
-              <li>Gang med 12 = årslønn, for Frida blir dette 55 000 * 12 = 660 000 kroner</li>
-              <li>
-                Reduser beløpet til 6G. Siden Frida tjener mer enn 6G så må årslønnen reduseres til 6*G = 608 106
-                kroner.
-              </li>
-              <li>
-                Del på 260 (antallet arbeidsdager Frida jobber i året) = dagsatsen. Fridas dagsats blir da 608 106 kr /
-                260 = 2338,87
-              </li>
-              <li>
-                Gang dagsatsen med 10. Maksimalt refusjonsbeløp for Frida for de ti dagene blir da 23 388,70 kroner
-              </li>
-            </ol>
-            <button role='link' className='periodeknapp lenke' onClick={(evt) => handleCloseButton(evt)}>
+            </ul>
+            <Normaltekst>
+              Merk: Oppgi hvor mye lønn den ansatte får under normale forhold. NAV vil omregne beløpet til 70 %.
+            </Normaltekst>
+            <LeggTilKnapp className='lukke-knapp' onClick={(evt) => handleCloseButton(evt)}>
               Lukk dette vinduet
-            </button>
+            </LeggTilKnapp>
           </Veilederpanel>
         </ModalWrapper>
         <div className='hjelpetekst'>

@@ -5,10 +5,11 @@ import './LeggTilKnapp.sass';
 interface LeggTilProps {
   children: any;
   onClick: any;
+  className?: string;
 }
 
 const LeggTilKnapp = (props: LeggTilProps) => (
-  <Flatknapp className='leggtil-knapp' onClick={() => props.onClick()}>
+  <Flatknapp className={'leggtil-knapp ' + props.className} onClick={(evt) => props.onClick(evt)}>
     {props.children}
   </Flatknapp>
 );

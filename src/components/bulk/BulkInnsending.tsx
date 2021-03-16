@@ -93,28 +93,27 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
               <Panel>
                 <Ingress>
                   Du kan få refundert lønn til ansatte som ikke kommer seg på jobb i Norge på grunn av strenge
-                  innreiserestriksjoner.
+                  innreiserestriksjoner. Alle felter må fylles ut.
                 </Ingress>
               </Panel>
               <Panel>
                 <Ingress style={{ marginLeft: '3rem' }}>
                   <li>Ordningen gjelder fra 29. januar da innreiseforbudet ble innført</li>
+                  <li>Det gis bare kompensasjon for dager som den ansatte faktisk skulle ha jobbet.</li>
                   <li>
-                    Kompensasjonen er 70% av sykepengegrunnlaget, begrenset opp til 6 ganger &nbsp;
+                    Kompensasjonen er 70 % av sykepengegrunnlaget, begrenset opp til 70 % av 6G,&nbsp;
                     <Lenke href='https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden'>
                       folketrygdens grunnbeløp
                     </Lenke>
                   </li>
-                  <li>Ferie brukt for å kompensere for manglende inntekt kan refunderes (kryss av)</li>
-                  <li>Det gis bare kompensasjon for dager som den ansatte faktisk skulle ha jobbet.</li>
-                  <li>Alle felter må fylles ut.</li>
+                  <li>Avviklet ferie kan omgjøres til arbeidsdager som det gis refusjon for.</li>
                 </Ingress>
               </Panel>
 
               <Skillelinje />
 
               <Panel>
-                <SkjemaGruppe aria-live='polite' legend='Oppgi ansatte, arbeidsgiverperiode og beløp'>
+                <SkjemaGruppe aria-live='polite' legend='Oppgi ansatte, fravær og beløp'>
                   {state.items?.map((item, index) => (
                     <Row key={item.uniqueKey} className='bulk-innsending__rad'>
                       <Column md='1' className='bulk-kolonne-1'>
