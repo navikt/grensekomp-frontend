@@ -1,6 +1,4 @@
 import BulkState from './BulkState';
-import { getIndexByProperyPath } from '../../utils/getIndexByPropertyPath';
-import { getSubName } from '../../utils/getSubName';
 import BulkValidationResponse from '../../api/bulk/BulkValidationResponse';
 import findNotAccepted from './findNotAccepted';
 import BulkValidationStatus from '../../api/bulk/BulkValidationStatus';
@@ -26,27 +24,20 @@ const mapBulkValidationResponse = (response: BulkValidationResponse, state: Bulk
             item.dagerError = v.message || v.validationType;
             break;
 
-          default:
-            if (v.propertyPath.startsWith('perioder')) {
-              const index = getIndexByProperyPath(v.propertyPath);
-              const subProperty = getSubName(v.propertyPath, index);
+          case 'periode.antallDagerMedRefusjon':
+            item.dagerError = v.message || v.validationType;
+            break;
 
-              if (subProperty === 'fom') {
-                item.fomError = v.message || v.validationType;
-              }
+          case 'periode.beloep':
+            item.beloepError = v.message || v.validationType;
+            break;
 
-              if (subProperty === 'tom') {
-                item.tomError = v.message || v.validationType;
-              }
+          case 'periode.fom':
+            item.fomError = v.message || v.validationType;
+            break;
 
-              if (subProperty === 'antallDagerMedRefusjon') {
-                item.dagerError = v.message || v.validationType;
-              }
-
-              if (subProperty === 'beloep') {
-                item.beloepError = v.message || v.validationType;
-              }
-            }
+          case 'periode.tom':
+            item.tomError = v.message || v.validationType;
             break;
         }
       });

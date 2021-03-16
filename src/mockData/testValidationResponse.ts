@@ -7,14 +7,31 @@ const testValidationResponse: BulkValidationResponse = {
       status: 'VALIDATION_ERRORS',
       validationErrors: [
         {
+          validationType: 'Greater',
+          message: 'Must be greater than 0',
+          propertyPath: 'periode.beloep',
+          invalidValue: 0.0
+        },
+        {
+          validationType: 'RefusjonsdagerKanIkkeOverstigePeriodelengdenConstraint',
+          message: '',
+          propertyPath: 'periode',
+          invalidValue: {
+            fom: '2021-03-01',
+            tom: '2021-03-04',
+            antallDagerMedRefusjon: 0,
+            beloep: 0.0
+          }
+        },
+        {
           validationType: 'TomPeriodeKanIkkeHaBeloepConstraint',
           message: '',
           propertyPath: 'periode',
           invalidValue: {
             fom: '2021-03-01',
-            tom: '2021-03-05',
-            antallDagerMedRefusjon: 5125125,
-            beloep: 5.0
+            tom: '2021-03-04',
+            antallDagerMedRefusjon: 0,
+            beloep: 0.0
           }
         }
       ],
