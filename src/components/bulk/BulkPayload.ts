@@ -1,3 +1,5 @@
+import BulkValidationResponse from '../../api/bulk/BulkValidationResponse';
+
 export interface BulkPayload {
   fnr?: string;
   orgnr?: string;
@@ -11,7 +13,7 @@ export interface BulkPayload {
   progress?: boolean;
   kvittering?: boolean;
   dokumentasjon?: string;
-  response?: any; // ValidationResponse;
+  response?: BulkValidationResponse; // ValidationResponse;
   grunnbeloep?: number;
   kontrollDager?: number;
 }

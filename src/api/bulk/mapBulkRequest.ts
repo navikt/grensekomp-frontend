@@ -3,18 +3,17 @@ import BulkState from '../../components/bulk/BulkState';
 import BulkItem from '../../components/bulk/BulkItem';
 import { datoToString } from '../../utils/Dato';
 import Ansatt from './Ansatt';
+import findNotAccepted from '../../components/bulk/findNotAccepted';
 
-const mapAnsatt = (item: BulkItem, orgnr: string): Ansatt => ({
+const mapBulkItem = (item: BulkItem, orgnr: string): Ansatt => ({
   identitetsnummer: item.fnr || '',
   virksomhetsnummer: orgnr,
-  perioder: [
-    {
-      fom: datoToString(item.fom),
-      tom: datoToString(item.tom),
-      antallDagerMedRefusjon: parseInt(item?.dager || ''),
-      beloep: parseInt(item.beloep || '')
-    }
-  ]
+  periode: {
+    fom: datoToString(item.fom),
+    tom: datoToString(item.tom),
+    antallDagerMedRefusjon: parseInt(item?.dager || ''),
+    beloep: parseInt(item.beloep || '')
+  }
 });
 
 const mapBulkRequest = (state: BulkState): BulkRequest => {
@@ -24,7 +23,7 @@ const mapBulkRequest = (state: BulkState): BulkRequest => {
   if (state?.orgnr === undefined) {
     throw new Error('Må ha orgnr');
   }
-  return state.items?.filter((item) => item.accepted !== true).map((i) => mapAnsatt(i, state?.orgnr || ''));
+  return findNotAccepted(state.items).map((i) => mapBulkItem(i, state?.orgnr || ''));
 };
 
 export default mapBulkRequest;

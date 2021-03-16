@@ -5,6 +5,7 @@ interface FnrProps {
   label: string;
   fnr?: string;
   id?: string;
+  disabled?: boolean;
   feilmelding?: string;
   placeholder: string;
   onChange: (fnr: string) => void;
@@ -17,6 +18,7 @@ const Fnr = (props: FnrProps) => {
       value={props.fnr}
       placeholder={props.placeholder}
       id={props.id}
+      disabled={props.disabled}
       label={props.label}
       onValidate={(valid) => (props.onValidate ? props.onValidate(valid) : null)}
       onChange={(evt) => props.onChange(evt.target.value)}

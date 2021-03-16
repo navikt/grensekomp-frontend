@@ -13,11 +13,12 @@ const DeleteIcon = () => (
 
 interface slettknappProps {
   onClick: any;
+  disabled?: boolean;
 }
 
-const Slettknapp = ({ onClick }: slettknappProps) => {
+const Slettknapp = ({ onClick, disabled }: slettknappProps) => {
   return (
-    <Flatknapp onClick={onClick} className={'slett-knapp'}>
+    <Flatknapp onClick={onClick} className={'slett-knapp'} disabled={disabled}>
       <DeleteIcon />
       &nbsp;Slett
     </Flatknapp>

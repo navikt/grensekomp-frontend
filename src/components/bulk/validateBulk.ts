@@ -11,6 +11,8 @@ import hasFomError from '../../validation/hasFomError';
 import hasTomError from '../../validation/hasTomError';
 import hasDagerError from '../../validation/hasDagerError';
 import hasBeloepError from '../../validation/hasBeloepError';
+import validateBeloep from '../../validation/validateBeloep';
+import validateDager from '../../validation/validateDager';
 
 const validateBulk = (state: BulkState): BulkState => {
   if (!state.validated) {
@@ -36,9 +38,9 @@ const validateBulk = (state: BulkState): BulkState => {
     item.dagerError = !item.dager ? 'Mangler dager' : undefined;
     item.beloepError = !item.beloep ? 'Mangler beløp' : undefined;
 
-    item.beloepError = isNumericString(item.beloep) || item.beloepError ? item.beloepError : 'Beløp må være tall';
+    item.beloepError = validateBeloep(item.beloep, 1000000, state.validated || false);
 
-    item.dagerError = isNumericString(item.dager) || item.dagerError ? item.dagerError : 'Dager må være tall';
+    item.dagerError = validateDager(item.dager, 1000, state.validated || false);
 
     item.fnrError = validateFnr(item.fnr, state.validated);
 
