@@ -6,7 +6,7 @@ import BulkValidationStatus from '../../api/bulk/BulkValidationStatus';
 const mapBulkValidationResponse = (response: BulkValidationResponse, state: BulkState) => {
   const items = findNotAccepted(state.items);
   response.validationResponses.forEach((bulkValidation, rowIndex) => {
-    const item = state.items[rowIndex];
+    const item = items[rowIndex];
 
     if (bulkValidation.status === BulkValidationStatus.OK) {
       item.accepted = true;
