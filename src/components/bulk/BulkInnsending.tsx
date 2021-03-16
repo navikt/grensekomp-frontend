@@ -47,9 +47,11 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
   const handleCloseServerFeil = () => {
     dispatch({ type: Actions.HideServerError });
   };
+
   const handleCloseNotAuthorized = () => {
     dispatch({ type: Actions.NotAuthorized });
   };
+
   const handleSubmitClicked = () => {
     dispatch({
       type: Actions.Validate,
@@ -57,12 +59,14 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
     });
     return false;
   };
+
   useEffect(() => {
     dispatch({
       type: Actions.Orgnr,
       payload: { orgnr: arbeidsgiverId }
     });
   }, [arbeidsgiverId]);
+
   useEffect(() => {
     if (state.validated === true && state.progress === true && state.submitting === true) {
       postBulk(environment.baseUrl, mapBulkRequest(state)).then((response) => {
@@ -73,6 +77,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
       });
     }
   }, [state.validated, state.progress, state.feilmeldinger, state.submitting, state.bekreft, state]);
+
   return (
     <Side
       bedriftsmeny={true}
@@ -124,6 +129,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           label='Fødsels-/D-nummer'
                           placeholder='11 siffer'
                           feilmelding={item.fnrError}
+                          disabled={item.accepted}
                           onChange={(event) => {
                             dispatch({
                               type: Actions.Fnr,
@@ -150,6 +156,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               placeholder='dd.mm.åå'
                               minDate={minDate}
                               maxDate={maxDate}
+                              disabled={item.accepted}
                               className='input--fullbredde'
                               onChange={(dato) => {
                                 dispatch({
@@ -171,6 +178,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               placeholder='dd.mm.åå'
                               minDate={minDate}
                               maxDate={maxDate}
+                              disabled={item.accepted}
                               className='input--fullbredde'
                               onChange={(dato) => {
                                 dispatch({
@@ -192,6 +200,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           placeholder='Antall'
                           feil={item.dagerError}
                           value={item.dager}
+                          disabled={item.accepted}
                           onChange={(event) => {
                             dispatch({
                               type: Actions.Dager,
@@ -210,6 +219,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           placeholder='Kr'
                           feil={item.beloepError}
                           value={item.beloep}
+                          disabled={item.accepted}
                           onChange={(event) => {
                             dispatch({
                               type: Actions.Beloep,
@@ -224,6 +234,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                       <Column md='1' className='bulk-kolonne-7'>
                         {showDeleteButton && (
                           <Slettknapp
+                            disabled={item.accepted}
                             onClick={(event) => {
                               dispatch({
                                 type: Actions.DeleteItem,
