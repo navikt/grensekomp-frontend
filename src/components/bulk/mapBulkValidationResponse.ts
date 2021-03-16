@@ -20,7 +20,7 @@ const mapBulkValidationResponse = (response: BulkValidationResponse, state: Bulk
             state.orngrError = v.message || v.validationType;
             break;
 
-          case 'perioder':
+          case 'periode':
             item.dagerError = v.message || v.validationType;
             break;
 

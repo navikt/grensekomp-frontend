@@ -89,8 +89,6 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
       nextState.progress = false;
       nextState.submitting = false;
 
-      // mapAcceptedRows(payload.response, nextState);
-
       mapBulkValidationResponse(payload.response, nextState);
 
       nextState.feilmeldinger = mapFeilOppsummeringsFeil(nextState);
@@ -98,8 +96,6 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
       nextState.error = nextState.feilmeldinger.length > 0;
       nextState.kvittering = !nextState.error;
       nextState.validated = undefined;
-
-      console.log('State', nextState);
 
       return nextState;
 
