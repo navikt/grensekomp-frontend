@@ -3,6 +3,7 @@ import BulkState from '../../components/bulk/BulkState';
 import BulkItem from '../../components/bulk/BulkItem';
 import { datoToString } from '../../utils/Dato';
 import Ansatt from './Ansatt';
+import findNotAccepted from '../../components/bulk/findNotAccepted';
 
 const mapBulkItem = (item: BulkItem, orgnr: string): Ansatt => ({
   identitetsnummer: item.fnr || '',
@@ -22,7 +23,7 @@ const mapBulkRequest = (state: BulkState): BulkRequest => {
   if (state?.orgnr === undefined) {
     throw new Error('Må ha orgnr');
   }
-  return state.items?.filter((item) => item.accepted !== true).map((i) => mapBulkItem(i, state?.orgnr || ''));
+  return findNotAccepted(state.items).map((i) => mapBulkItem(i, state?.orgnr || ''));
 };
 
 export default mapBulkRequest;

@@ -6,15 +6,14 @@ import BulkValidationStatus from '../../api/bulk/BulkValidationStatus';
 const mapBulkValidationResponse = (response: BulkValidationResponse, state: BulkState) => {
   const items = findNotAccepted(state.items);
   response.validationResponses.forEach((bulkValidation, rowIndex) => {
+    const item = state.items[rowIndex];
+
     if (bulkValidation.status === BulkValidationStatus.OK) {
-      // Godkjent
-      items[rowIndex].accepted = true;
+      item.accepted = true;
     }
     if (bulkValidation.status === BulkValidationStatus.Error) {
-      // Valideringsfeil
-      items[rowIndex].accepted = false;
+      item.accepted = false;
       bulkValidation.validationErrors?.forEach((v) => {
-        const item = state.items[rowIndex];
         switch (v.propertyPath) {
           case 'virksomhetsnummer':
             state.orngrError = v.message || v.validationType;
