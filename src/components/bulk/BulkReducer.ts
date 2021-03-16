@@ -5,7 +5,6 @@ import { v4 as uuid } from 'uuid';
 import validateBulk from './validateBulk';
 import mapServerValidations from './mapServerValidations';
 import mapAcceptedRows from './mapAccepted';
-import { pushFeilmelding } from '../../validation/pushFeilmelding';
 import { FeiloppsummeringFeil } from 'nav-frontend-skjema';
 import mapFeilOppsummeringsFeil from './mapFeilOppsummering';
 

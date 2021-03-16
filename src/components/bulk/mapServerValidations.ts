@@ -15,7 +15,7 @@ const mapServerValidations = (response: ValidationResponse, state: BulkState) =>
     const item = state.items[rowIndex];
     switch (v.propertyPath) {
       case 'virksomhetsnummer':
-        state.orngrError = v.message || v.validationType;
+        state.orgnrError = v.message || v.validationType;
         break;
 
       case 'perioder':

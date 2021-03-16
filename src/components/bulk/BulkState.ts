@@ -8,7 +8,7 @@ export const defaultBulkState = (state?: BulkState): BulkState => {
     {
       items: [
         {
-          uniqueKey: uuid(),
+          uniqueKey: '1',
           fnr: '',
           dager: '',
           beloep: ''
@@ -24,7 +24,7 @@ export const defaultBulkState = (state?: BulkState): BulkState => {
 export default interface BulkState extends ValidationState {
   items: BulkItem[];
   orgnr?: string;
-  orngrError?: string;
+  orgnrError?: string;
   bekreft?: boolean;
   bekreftError?: string;
 }
