@@ -24,9 +24,8 @@ const Kvittering = () => (
       <Column>
         <Panel>
           <Normaltekst>
-            En kvittering er sendt til meldingsboksen deres i <Lenke href='https://www.altinn.no'>Altinn</Lenke>. Den
-            ansatte det gjelder er også varslet om søknaden. Trenger du å kontakte oss, er det tilstrekkelig å oppgi
-            fødselsnummeret til den ansatte.
+            En kvittering er sendt til meldingsboksen deres i <Lenke href='https://www.altinn.no'>Altinn</Lenke>.
+            Trenger du å kontakte oss, er det tilstrekkelig å oppgi fødselsnummeret til den ansatte.
           </Normaltekst>
         </Panel>
       </Column>
