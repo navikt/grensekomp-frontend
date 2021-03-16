@@ -3,7 +3,7 @@ import BulkValidationResponse from '../../api/bulk/BulkValidationResponse';
 import findNotAccepted from './findNotAccepted';
 import BulkValidationStatus from '../../api/bulk/BulkValidationStatus';
 
-const mapBulkValidationResponse = (response: BulkValidationResponse, state: BulkState) => {
+const mapBulkValidationResponse = (response: BulkValidationResponse, state: BulkState): BulkState => {
   const items = findNotAccepted(state.items);
   response.validationResponses.forEach((bulkValidation, rowIndex) => {
     const item = items[rowIndex];
@@ -46,6 +46,7 @@ const mapBulkValidationResponse = (response: BulkValidationResponse, state: Bulk
       });
     }
   });
+  return state;
 };
 
 export default mapBulkValidationResponse;

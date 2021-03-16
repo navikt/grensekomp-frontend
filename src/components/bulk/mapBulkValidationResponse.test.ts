@@ -4,8 +4,10 @@ import BulkState from './BulkState';
 
 describe('mapBulkValidationResponse', () => {
   it('should', () => {
-    const state = {} as BulkState;
+    const state = {
+      items: [{}, {}, {}]
+    } as BulkState;
     const nextState = mapBulkValidationResponse(testValidationResponse, state);
-    expect(nextState).toBe(2);
+    expect(nextState.items[0].beloepError).not.toBeUndefined();
   });
 });
