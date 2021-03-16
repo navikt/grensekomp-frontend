@@ -118,7 +118,7 @@ const BeloepHjelpeLabel = () => {
 
   return (
     <div style={{ display: 'flex' }}>
-      Beløp
+      <span className='hjelpetekst-beskrivelse'>Beløp</span>
       <div className='hjelpetekst-refusjon'>
         <ModalWrapper
           isOpen={eksempelOpen}
