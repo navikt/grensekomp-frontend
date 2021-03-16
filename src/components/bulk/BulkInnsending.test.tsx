@@ -43,8 +43,8 @@ describe('BulkInnsending', () => {
     expect(screen.getByText(/Mangler fødselsnummer/)).toBeInTheDocument();
     expect(screen.getByText(/Mangler fra dato/)).toBeInTheDocument();
     expect(screen.getByText(/Mangler til dato/)).toBeInTheDocument();
-    expect(screen.getByText(/Mangler beløp/)).toBeInTheDocument();
-    expect(screen.getByText(/Mangler dager/)).toBeInTheDocument();
+    expect(screen.getByText(/Oppgi beløp med kun tall/)).toBeInTheDocument();
+    expect(screen.getByText(/Bruk kun tall/)).toBeInTheDocument();
     expect(screen.getAllByText(/Bekreft at opplysningene er korrekt/).length).toBe(2);
 
     expect(screen.getByText(/Fødselsnummer må fylles ut/)).toBeInTheDocument();
@@ -73,8 +73,8 @@ describe('BulkInnsending', () => {
     expect(screen.getByText(/Mangler fødselsnummer/)).toBeInTheDocument();
     expect(screen.getByText(/Mangler fra dato/)).toBeInTheDocument();
     expect(screen.getByText(/Mangler til dato/)).toBeInTheDocument();
-    expect(screen.getByText(/Mangler beløp/)).toBeInTheDocument();
-    expect(screen.getByText(/Mangler dager/)).toBeInTheDocument();
+    expect(screen.getByText(/Oppgi beløp med kun tall/)).toBeInTheDocument();
+    expect(screen.getByText(/Bruk kun tall/)).toBeInTheDocument();
     expect(screen.getAllByText(/Bekreft at opplysningene er korrekt/).length).toBe(2);
 
     expect(screen.getByText(/Fødselsnummer må fylles ut/)).toBeInTheDocument();
