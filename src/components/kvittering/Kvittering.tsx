@@ -6,12 +6,7 @@ import Side from '../felles/Side';
 import { Row, Column } from 'nav-frontend-grid';
 
 const Kvittering = () => (
-  <Side
-    bedriftsmeny={false}
-    className='bulk-kvittering'
-    sidetittel='Refusjon for lønn ved innreiseforbud'
-    subtitle='Bulkinnsending'
-  >
+  <div className='bulk-kvittering'>
     <Row>
       <Column>
         <Panel>
@@ -43,7 +38,7 @@ const Kvittering = () => (
         </Panel>
       </Column>
     </Row>
-  </Side>
+  </div>
 );
 
 export default Kvittering;

@@ -19,6 +19,10 @@ const mapBulkValidationResponse = (response: BulkValidationResponse, state: Bulk
             state.orgnrError = v.message || v.validationType;
             break;
 
+          case 'identitetsnummer':
+            item.fnrError = v.message || 'Ukjent feil';
+            break;
+
           case 'periode':
             item.dagerError = v.message || v.validationType;
             break;
