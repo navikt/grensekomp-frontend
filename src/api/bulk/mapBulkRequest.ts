@@ -7,14 +7,12 @@ import Ansatt from './Ansatt';
 const mapAnsatt = (item: BulkItem, orgnr: string): Ansatt => ({
   identitetsnummer: item.fnr || '',
   virksomhetsnummer: orgnr,
-  perioder: [
-    {
-      fom: datoToString(item.fom),
-      tom: datoToString(item.tom),
-      antallDagerMedRefusjon: parseInt(item?.dager || ''),
-      beloep: parseInt(item.beloep || '')
-    }
-  ]
+  periode: {
+    fom: datoToString(item.fom),
+    tom: datoToString(item.tom),
+    antallDagerMedRefusjon: parseInt(item?.dager || ''),
+    beloep: parseInt(item.beloep || '')
+  }
 });
 
 const mapBulkRequest = (state: BulkState): BulkRequest => {

@@ -22,7 +22,6 @@ import '../felles/knapper/LeggTilKnapp.sass';
 import Lenke from 'nav-frontend-lenker';
 import './BulkInnsending.sass';
 import RadNr from '../felles/RadNr';
-import HjelpeLabel from '../felles/HjelpeLabel';
 import LeggTilKnapp from '../felles/knapper/LeggTilKnapp';
 import dayjs from 'dayjs';
 import Slettknapp from '../felles/knapper/Slettknapp';

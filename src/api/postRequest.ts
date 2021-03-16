@@ -1,23 +1,26 @@
 import HttpStatus from './HttpStatus';
-import ValidationResponse, { BulkValidationResponse } from './ValidationResponse';
-import mapBulkValidation from './mapBulkValidation';
+import ValidationResponse from './ValidationResponse';
+import BulkValidationResponse from './bulk/BulkValidationResponse';
 
 export const mapViolations = (status: number, json: any): ValidationResponse => ({
   status,
   violations: json[0].validationErrors || []
 });
 
-const postRequest = async (path: string, payload: any, timeout: number = 10000): Promise<ValidationResponse> => {
+const postRequest = async (path: string, payload: any, timeout: number = 10000): Promise<BulkValidationResponse> => {
   return Promise.race([
-    new Promise<ValidationResponse>((_, reject) => {
+    new Promise<BulkValidationResponse>((_, reject) => {
       const id = setTimeout(() => {
         clearTimeout(id);
         reject({ status: HttpStatus.Timeout, violations: [] });
       }, timeout);
-    }).catch(() => ({
-      status: HttpStatus.Timeout,
-      violations: []
-    })),
+    }).catch(
+      () =>
+        ({
+          status: HttpStatus.Timeout,
+          validationResponses: []
+        } as BulkValidationResponse)
+    ),
     fetch(path, {
       headers: {
         Accept: 'application/json',
@@ -28,14 +31,17 @@ const postRequest = async (path: string, payload: any, timeout: number = 10000):
       body: JSON.stringify(payload)
     })
       .then(async (response) => {
-        const bulkValidationResponse: BulkValidationResponse = await response.json();
-        return mapBulkValidation(response.status, bulkValidationResponse);
+        const json = await response.json();
+        return {
+          status: response.status,
+          validationResponses: json
+        } as BulkValidationResponse;
       })
       .catch(() => {
         return {
           status: HttpStatus.Error,
-          violations: []
-        };
+          validationResponses: []
+        } as BulkValidationResponse;
       })
   ]);
 };

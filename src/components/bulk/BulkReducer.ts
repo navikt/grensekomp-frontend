@@ -3,10 +3,7 @@ import { Actions, BulkActions } from './BulkActions';
 import { parseDateTilDato } from '../../utils/Dato';
 import { v4 as uuid } from 'uuid';
 import validateBulk from './validateBulk';
-import mapServerValidations from './mapServerValidations';
-import mapAcceptedRows from './mapAccepted';
-import { pushFeilmelding } from '../../validation/pushFeilmelding';
-import { FeiloppsummeringFeil } from 'nav-frontend-skjema';
+import mapBulkValidationResponse from './mapBulkValidationResponse';
 import mapFeilOppsummeringsFeil from './mapFeilOppsummering';
 
 const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
@@ -89,19 +86,20 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
       if (payload?.response == undefined) {
         throw new Error('Du må spesifisere response');
       }
-      nextState.validated = false;
       nextState.progress = false;
       nextState.submitting = false;
-      nextState.feilmeldinger = new Array<FeiloppsummeringFeil>();
 
-      mapAcceptedRows(payload.response, nextState);
+      // mapAcceptedRows(payload.response, nextState);
 
-      mapServerValidations(payload.response, nextState);
+      mapBulkValidationResponse(payload.response, nextState);
 
-      mapFeilOppsummeringsFeil(nextState);
+      nextState.feilmeldinger = mapFeilOppsummeringsFeil(nextState);
 
-      nextState.kvittering = nextState.feilmeldinger.length === 0;
-      nextState.validated = false;
+      nextState.error = nextState.feilmeldinger.length > 0;
+      nextState.kvittering = !nextState.error;
+      nextState.validated = undefined;
+
+      console.log('State', nextState);
 
       return nextState;
 
