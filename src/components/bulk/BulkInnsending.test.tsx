@@ -64,7 +64,7 @@ describe('BulkInnsending', () => {
     const submitButton = screen.getByText(/Send krav om refusjon/);
     const fnrInput = screen.getByLabelText(/Fødsel/);
     const selectDager = screen.queryAllByLabelText(/Antall dager/)[1];
-    const BelopInput = screen.queryAllByLabelText(/Dagsats/)[0];
+    const BelopInput = screen.queryAllByLabelText(/Dagsats/)[1];
     const bekreftCheckbox = screen.getByText(
       /Jeg bekrefter at opplysningene jeg har gitt, er riktige og fullstendige./
     );
@@ -93,7 +93,8 @@ describe('BulkInnsending', () => {
     expect(screen.queryByText(/Dager må fylles ut/)).not.toBeInTheDocument();
 
     userEvent.type(BelopInput, '123');
-    expect(screen.getAllByText(/Mangler beløp/).length).toBe(2);
+    expect(screen.queryByText(/Mangler beløp/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/Beløp må fylles ut/)).not.toBeInTheDocument();
 
     userEvent.click(bekreftCheckbox);
     expect(screen.queryByText(/Bekreft at opplysningene er korrekt/)).not.toBeInTheDocument();

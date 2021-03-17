@@ -31,7 +31,10 @@ const postRequest = async (path: string, payload: any, timeout: number = 10000):
       body: JSON.stringify(payload)
     })
       .then(async (response) => {
-        const json = await response.json();
+        const json = await response
+          .clone()
+          .json()
+          .catch(() => response.text());
         return {
           status: response.status,
           validationResponses: json

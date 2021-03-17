@@ -19,6 +19,11 @@ describe('mapGravidRequest', () => {
     await expect(GetPromise(API_PATH)).rejects.toEqual(500);
   });
 
+  it('should handle 401', async () => {
+    mockFetch(401, {});
+    await expect(GetPromise(API_PATH)).rejects.toEqual(401);
+  });
+
   it('should handle 505', async () => {
     mockFetch(505, {});
     await expect(GetPromise(API_PATH)).rejects.toEqual(505);

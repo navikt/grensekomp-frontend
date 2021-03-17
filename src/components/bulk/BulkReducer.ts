@@ -5,6 +5,7 @@ import { v4 as uuid } from 'uuid';
 import validateBulk from './validateBulk';
 import mapBulkValidationResponse from './mapBulkValidationResponse';
 import mapFeilOppsummeringsFeil from './mapFeilOppsummering';
+import HttpStatus from '../../api/HttpStatus';
 
 const checkItemId = (itemId?: string) => {
   if (itemId === undefined) {
@@ -80,6 +81,14 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
       if (payload?.response == undefined) {
         throw new Error('Du må spesifisere response');
       }
+
+      if (payload.response.status === HttpStatus.Unauthorized) {
+        nextState.notAuthorized = true;
+        nextState.progress = false;
+        nextState.submitting = false;
+        return nextState;
+      }
+
       nextState.progress = false;
       nextState.submitting = false;
 
