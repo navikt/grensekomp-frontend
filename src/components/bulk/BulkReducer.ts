@@ -24,13 +24,13 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
 
     case Actions.Fnr:
       checkItemId(payload?.itemId);
-      nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.fnr = payload.fnr;
+      nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.fnr = payload?.fnr;
       return validateBulk(nextState);
 
     case Actions.Fra:
       checkItemId(payload?.itemId);
 
-      nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.fom = payload.fra
+      nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.fom = payload?.fra
         ? parseDateTilDato(payload.fra)
         : undefined;
       return validateBulk(nextState);
@@ -38,19 +38,19 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
     case Actions.Til:
       checkItemId(payload?.itemId);
 
-      nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.tom = payload.til
+      nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.tom = payload?.til
         ? parseDateTilDato(payload.til)
         : undefined;
       return validateBulk(nextState);
 
     case Actions.Dager:
       checkItemId(payload?.itemId);
-      nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.dager = payload.dager;
+      nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.dager = payload?.dager;
       return validateBulk(nextState);
 
     case Actions.Beloep:
       checkItemId(payload?.itemId);
-      nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.beloep = payload.beloep;
+      nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.beloep = payload?.beloep;
       return validateBulk(nextState);
 
     case Actions.Bekreft:
