@@ -70,7 +70,8 @@ describe('mapBulkRequest', () => {
           fom: unimportantMockDate,
           tom: unimportantMockDate
         }
-      ]
+      ],
+      bekreft: true
     };
 
     const expected: BulkRequest = [
@@ -82,7 +83,8 @@ describe('mapBulkRequest', () => {
           fom: '2020-01-01',
           tom: '2020-01-01'
         },
-        virksomhetsnummer: '1234'
+        virksomhetsnummer: '1234',
+        bekreftet: true
       },
       {
         identitetsnummer: '',
@@ -92,7 +94,8 @@ describe('mapBulkRequest', () => {
           fom: '2020-01-01',
           tom: '2020-01-01'
         },
-        virksomhetsnummer: '1234'
+        virksomhetsnummer: '1234',
+        bekreftet: true
       },
       {
         identitetsnummer: '1234',
@@ -102,7 +105,8 @@ describe('mapBulkRequest', () => {
           fom: '2020-01-01',
           tom: '2020-01-01'
         },
-        virksomhetsnummer: '1234'
+        virksomhetsnummer: '1234',
+        bekreftet: true
       }
     ];
 

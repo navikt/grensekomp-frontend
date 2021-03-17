@@ -2,7 +2,6 @@ import React from 'react';
 import Panel from 'nav-frontend-paneler';
 import { Normaltekst, Sidetittel } from 'nav-frontend-typografi';
 import Lenke from 'nav-frontend-lenker';
-import Side from '../felles/Side';
 import { Row, Column } from 'nav-frontend-grid';
 
 const Kvittering = () => (

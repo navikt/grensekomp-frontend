@@ -7,6 +7,7 @@ interface Ansatt {
     antallDagerMedRefusjon: number;
     beloep: number;
   };
+  bekreftet: boolean;
 }
 
 export default Ansatt;
