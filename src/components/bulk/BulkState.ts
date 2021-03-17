@@ -1,7 +1,6 @@
 import { FeiloppsummeringFeil } from 'nav-frontend-skjema';
 import { ValidationState } from '../../validation/ValidationState';
 import BulkItem from './BulkItem';
-import { v4 as uuid } from 'uuid';
 
 export const defaultBulkState = (state?: BulkState): BulkState => {
   return Object.assign(

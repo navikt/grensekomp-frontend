@@ -1,6 +1,6 @@
 import React from 'react';
 import { Column, Row } from 'nav-frontend-grid';
-import { Normaltekst, Undertittel } from 'nav-frontend-typografi';
+import { Normaltekst } from 'nav-frontend-typografi';
 import lenker from '../../config/lenker';
 import { Link } from 'react-router-dom';
 import Side from '../felles/Side';

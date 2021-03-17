@@ -1,4 +1,3 @@
-import Hjelpetekst from 'nav-frontend-hjelpetekst';
 import React from 'react';
 import HjelpeLabel from '../felles/HjelpeLabel';
 

@@ -9,7 +9,7 @@ const toDate = (dato: Dato | undefined): Date | undefined => {
     return;
   }
   return dayjs(
-    dato.year + '-' + (dato.month < 10 ? '0' : '') + dato.month + '-' + (dato!!.day < 10 ? '0' : '') + dato.day
+    dato.year + '-' + (dato.month < 10 ? '0' : '') + dato.month + '-' + (dato.day < 10 ? '0' : '') + dato.day
   ).toDate();
 };
 
