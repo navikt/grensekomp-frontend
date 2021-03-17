@@ -26,7 +26,7 @@ const testValidationResponse: BulkValidationResponse = {
         {
           validationType: 'TomPeriodeKanIkkeHaBeloepConstraint',
           message: '',
-          propertyPath: 'periode',
+          propertyPath: 'periode.tom',
           invalidValue: {
             fom: '2021-03-01',
             tom: '2021-03-04',

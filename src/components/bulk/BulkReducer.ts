@@ -94,7 +94,7 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
       nextState.feilmeldinger = mapFeilOppsummeringsFeil(nextState);
       nextState.error = nextState.feilmeldinger.length > 0;
       nextState.kvittering = !nextState.error;
-      nextState.validated = undefined;
+      nextState.validated = true;
 
       return nextState;
 

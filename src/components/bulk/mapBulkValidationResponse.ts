@@ -16,7 +16,7 @@ const mapBulkValidationResponse = (response: BulkValidationResponse, state: Bulk
       bulkValidation.validationErrors?.forEach((v) => {
         switch (v.propertyPath) {
           case 'virksomhetsnummer':
-            state.orgnrError = v.message || v.validationType;
+            item.fnrError = v.message || 'Ukjent feil';
             break;
 
           case 'identitetsnummer':
