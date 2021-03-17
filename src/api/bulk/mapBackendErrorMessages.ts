@@ -9,7 +9,7 @@ const errorMessages = {
   RefusjonsdagerInnenforGyldigPeriodeConstraint: 'Refusjonsdager kan ikke overstige periodelengden'
 };
 
-const mapBackendErrormessaages = (errorMessage: string): string => {
+const mapBackendErrorMessages = (errorMessage: string): string => {
   const descriptiveErrorMessage = errorMessages[errorMessage];
 
   if (!errorMessage) {
@@ -35,4 +35,4 @@ const mapBackendErrormessaages = (errorMessage: string): string => {
   return res;
 };
 
-export default mapBackendErrormessaages;
+export default mapBackendErrorMessages;
