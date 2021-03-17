@@ -11,12 +11,12 @@ const DeleteIcon = () => (
   </svg>
 );
 
-interface slettknappProps {
+interface SlettknappProps {
   onClick: any;
   disabled?: boolean;
 }
 
-const Slettknapp = ({ onClick, disabled }: slettknappProps) => {
+const Slettknapp = ({ onClick, disabled }: SlettknappProps) => {
   return (
     <Flatknapp onClick={onClick} className={'slett-knapp'} disabled={disabled}>
       <DeleteIcon />
