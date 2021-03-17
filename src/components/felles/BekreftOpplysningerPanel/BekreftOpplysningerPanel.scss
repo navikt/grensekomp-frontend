@@ -1,0 +1,12 @@
+.bekreft-opplysninger-panel {
+    .bekreftCheckboksPanel {
+        display: flex;
+        flex-direction: column-reverse;
+        
+        .bekreftCheckboksPanel__innhold {
+            max-width: 120ch;
+            margin-bottom: 0;
+        }
+    }
+    
+}

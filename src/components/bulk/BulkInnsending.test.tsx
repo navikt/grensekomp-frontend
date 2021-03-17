@@ -66,7 +66,9 @@ describe('BulkInnsending', () => {
     const fnrInput = screen.getByLabelText(/Fødsel/);
     const selectDager = screen.queryAllByLabelText(/Antall dager/)[1];
     const BelopInput = screen.queryAllByLabelText(/Beløp/)[1];
-    const bekreftCheckbox = screen.getByText(/Jeg bekrefter følgende:/);
+    const bekreftCheckbox = screen.getByText(
+      /Jeg bekrefter at opplysningene jeg har gitt, er riktige og fullstendige./
+    );
 
     submitButton.click();
 
