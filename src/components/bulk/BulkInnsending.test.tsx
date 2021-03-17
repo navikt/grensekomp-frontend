@@ -42,15 +42,15 @@ describe('BulkInnsending', () => {
     expect(screen.getAllByText(/Mangler fødselsnummer/).length).toBe(2);
     expect(screen.getAllByText(/Mangler fra dato/).length).toBe(2);
     expect(screen.getAllByText(/Mangler til dato/).length).toBe(2);
-    expect(screen.getAllByText(/Oppgi beløp med kun tall/).length).toBe(2);
-    expect(screen.getAllByText(/Bruk kun tall/).length).toBe(2);
+    expect(screen.getAllByText(/Mangler beløp/).length).toBe(2);
+    expect(screen.getAllByText(/Mangler antall/).length).toBe(2);
     expect(screen.getAllByText(/Bekreft at opplysningene er korrekt/).length).toBe(2);
 
     expect(screen.getByText(/Rad 1: Mangler fødselsnummer/)).toBeInTheDocument();
     expect(screen.getByText(/Rad 1: Mangler fra dato/)).toBeInTheDocument();
     expect(screen.getByText(/Rad 1: Mangler til dato/)).toBeInTheDocument();
-    expect(screen.getByText(/Rad 1: Oppgi beløp med kun tall/)).toBeInTheDocument();
-    expect(screen.getByText(/Rad 1: Bruk kun tall/)).toBeInTheDocument();
+    expect(screen.getByText(/Rad 1: Mangler beløp/)).toBeInTheDocument();
+    expect(screen.getByText(/Rad 1: Mangler antall/)).toBeInTheDocument();
   });
 
   it('should show warnings when input is missing, and the warning should dissapear when fixed', () => {
@@ -74,15 +74,15 @@ describe('BulkInnsending', () => {
     expect(screen.getAllByText(/Mangler fødselsnummer/).length).toBe(2);
     expect(screen.getAllByText(/Mangler fra dato/).length).toBe(2);
     expect(screen.getAllByText(/Mangler til dato/).length).toBe(2);
-    expect(screen.getAllByText(/Oppgi beløp med kun tall/).length).toBe(2);
-    expect(screen.getAllByText(/Bruk kun tall/).length).toBe(2);
+    expect(screen.getAllByText(/Mangler beløp/).length).toBe(2);
+    expect(screen.getAllByText(/Mangler antall/).length).toBe(2);
     expect(screen.getAllByText(/Bekreft at opplysningene er korrekt/).length).toBe(2);
 
     expect(screen.getByText(/Rad 1: Mangler fødselsnummer/)).toBeInTheDocument();
     expect(screen.getByText(/Rad 1: Mangler fra dato/)).toBeInTheDocument();
     expect(screen.getByText(/Rad 1: Mangler til dato/)).toBeInTheDocument();
-    expect(screen.getByText(/Rad 1: Oppgi beløp med kun tall/)).toBeInTheDocument();
-    expect(screen.getByText(/Rad 1: Bruk kun tall/)).toBeInTheDocument();
+    expect(screen.getByText(/Rad 1: Mangler beløp/)).toBeInTheDocument();
+    expect(screen.getByText(/Rad 1: Mangler antall/)).toBeInTheDocument();
 
     userEvent.type(fnrInput, testFnr.GyldigeFraDolly.TestPerson1);
     expect(screen.queryByText(/Mangler fødselsnummer/)).not.toBeInTheDocument();
