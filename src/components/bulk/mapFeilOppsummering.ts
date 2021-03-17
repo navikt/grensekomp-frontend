@@ -4,6 +4,9 @@ import { FeiloppsummeringFeil } from 'nav-frontend-skjema';
 
 const mapFeilOppsummering = (state: BulkState): FeiloppsummeringFeil[] => {
   const feilmeldinger = new Array<FeiloppsummeringFeil>();
+  if (state.orgnrError) {
+    pushFeilmelding('orgnr', state.orgnrError, feilmeldinger);
+  }
   state.items.forEach((item) => {
     if (item.fnrError) {
       pushFeilmelding(
