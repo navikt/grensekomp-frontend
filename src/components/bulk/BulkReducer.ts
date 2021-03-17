@@ -6,6 +6,12 @@ import validateBulk from './validateBulk';
 import mapBulkValidationResponse from './mapBulkValidationResponse';
 import mapFeilOppsummeringsFeil from './mapFeilOppsummering';
 
+const checkItemId = (itemId?: string) => {
+  if (itemId === undefined) {
+    throw new Error('itemId kan ikke være undefined');
+  }
+};
+
 const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
   const nextState = Object.assign({}, state);
   const { payload } = action;
@@ -17,45 +23,33 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
       return validateBulk(nextState);
 
     case Actions.Fnr:
-      if (payload?.itemId === undefined) {
-        throw new Error('itemId kan ikke være undefined');
-      }
+      checkItemId(payload?.itemId);
       nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.fnr = payload.fnr;
       return validateBulk(nextState);
 
     case Actions.Fra:
-      if (payload?.itemId === undefined) {
-        throw new Error('itemId kan ikke være undefined');
-      }
-      if (payload?.fra === undefined) {
-        nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.fom = undefined;
-      } else {
-        nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.fom = parseDateTilDato(payload.fra);
-      }
+      checkItemId(payload?.itemId);
+
+      nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.fom = payload.fra
+        ? parseDateTilDato(payload.fra)
+        : undefined;
       return validateBulk(nextState);
 
     case Actions.Til:
-      if (payload?.itemId === undefined) {
-        throw new Error('itemId kan ikke være undefined');
-      }
-      if (payload?.til === undefined) {
-        nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.tom = undefined;
-      } else {
-        nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.tom = parseDateTilDato(payload.til);
-      }
+      checkItemId(payload?.itemId);
+
+      nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.tom = payload.til
+        ? parseDateTilDato(payload.til)
+        : undefined;
       return validateBulk(nextState);
 
     case Actions.Dager:
-      if (payload?.itemId === undefined) {
-        throw new Error('itemId kan ikke være undefined');
-      }
+      checkItemId(payload?.itemId);
       nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.dager = payload.dager;
       return validateBulk(nextState);
 
     case Actions.Beloep:
-      if (payload?.itemId === undefined) {
-        throw new Error('itemId kan ikke være undefined');
-      }
+      checkItemId(payload?.itemId);
       nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.beloep = payload.beloep;
       return validateBulk(nextState);
 
@@ -108,10 +102,8 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
       return nextState;
 
     case Actions.DeleteItem:
-      if (payload?.itemId === undefined) {
-        throw Error('Missing itemid');
-      }
-      nextState.items = state.items?.filter((i) => i.uniqueKey !== payload.itemId);
+      checkItemId(payload?.itemId);
+      nextState.items = state.items?.filter((i) => i.uniqueKey !== payload!!.itemId);
       return validateBulk(nextState);
 
     case Actions.Reset:
