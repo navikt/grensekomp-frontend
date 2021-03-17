@@ -12,29 +12,18 @@ const validateBulk = (state: BulkState): BulkState => {
   if (!state.validated) {
     return state;
   }
-
   const nextState = Object.assign({}, state);
   const feilmeldinger = new Array<FeiloppsummeringFeil>();
-  nextState.items?.forEach((item) => {
+
+  nextState.items?.forEach((item, index) => {
+    const RAD_FEIL = 'Rad ' + (index + 1) + ': ';
+
     item.fnrError = validateFnr(item.fnr, state.validated);
     item.fomError = validateFra(item.fom, state.validated);
     item.tomError = validateTil(item.fom, item.tom, state.validated);
-    item.dagerError = validateDager(item.dager, 1000, state.validated || false);
-    item.beloepError = validateBeloep(item.beloep, 1000000, state.validated || false);
-  });
+    item.dagerError = validateDager(item.dager, 1000, state.validated);
+    item.beloepError = validateBeloep(item.beloep, 1000000, state.validated);
 
-  nextState.bekreftError = !state.bekreft ? 'Bekreft at opplysningene er korrekt' : '';
-  if (!nextState.bekreft) {
-    pushFeilmelding('bekreftFeilmeldingId', 'Bekreft at opplysningene er korrekt', feilmeldinger);
-  }
-
-  nextState.orgnrError = validateOrgnr(state.orgnr, state.validated);
-  if (nextState.orgnrError) {
-    pushFeilmelding('orgnr', nextState.orgnrError, feilmeldinger);
-  }
-
-  nextState.items.forEach((item, index) => {
-    const RAD_FEIL = 'Rad ' + (index + 1) + ': ';
     if (item.fnrError) {
       pushFeilmelding('fnr_' + item.uniqueKey, RAD_FEIL + item.fnrError, feilmeldinger);
     }
@@ -51,6 +40,16 @@ const validateBulk = (state: BulkState): BulkState => {
       pushFeilmelding('beloep_' + item.uniqueKey, RAD_FEIL + item.beloepError, feilmeldinger);
     }
   });
+
+  nextState.orgnrError = validateOrgnr(state.orgnr, state.validated);
+  if (nextState.orgnrError) {
+    pushFeilmelding('orgnr', nextState.orgnrError, feilmeldinger);
+  }
+
+  nextState.bekreftError = !state.bekreft ? 'Bekreft at opplysningene er korrekt' : '';
+  if (!nextState.bekreft) {
+    pushFeilmelding('bekreftFeilmeldingId', 'Bekreft at opplysningene er korrekt', feilmeldinger);
+  }
 
   nextState.feilmeldinger = feilmeldinger;
   return nextState;

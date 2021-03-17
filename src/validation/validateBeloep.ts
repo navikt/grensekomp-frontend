@@ -1,6 +1,6 @@
 import isNumericString from '../utils/isNumericString';
 
-const validateBeloep = (beloep: string | undefined, max: number, required: boolean): string | undefined => {
+const validateBeloep = (beloep: string | undefined, max: number, required: boolean = false): string | undefined => {
   if (beloep === undefined || beloep.length === 0) {
     return required ? 'Mangler beløp' : undefined;
   }

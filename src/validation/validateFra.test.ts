@@ -1,6 +1,5 @@
 import validateFra from './validateFra';
 import { parseDato } from '../utils/Dato';
-import { validateTil } from './validateTil';
 
 describe('validateFra', () => {
   it('should not show error when valid value and not required', () => {
