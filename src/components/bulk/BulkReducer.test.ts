@@ -1,6 +1,7 @@
 import BulkReducer from './BulkReducer';
 import { defaultBulkState } from './BulkState';
 import { Actions } from './BulkActions';
+import BulkValidationResponse from '../../api/bulk/BulkValidationResponse';
 
 describe('BulkReducer', () => {
   it('should throw error', () => {
@@ -195,16 +196,22 @@ describe('BulkReducer', () => {
     expect(state.validated).toBe(true);
   });
 
-  // Todo: Fixme!
-  // it('should handle response', () => {
-  //   let state = BulkReducer(defaultBulkState(), {
-  //     type: Actions.HandleResponse,
-  //     payload: { response: {} as ValidationResponse }
-  //   });
-  //   expect(state.submitting).toBe(false);
-  //   expect(state.progress).toBe(false);
-  //   expect(state.validated).toBe(false);
-  // });
+  it('should handle successful response', () => {
+    let state = BulkReducer(defaultBulkState(), {
+      type: Actions.HandleResponse,
+      payload: {
+        response: {
+          status: 200,
+          validationResponses: []
+        } as BulkValidationResponse
+      }
+    });
+    expect(state.submitting).toBe(false);
+    expect(state.progress).toBe(false);
+    expect(state.validated).toBe(true);
+    expect(state.kvittering).toBe(true);
+    expect(state.feilmeldinger.length).toBe(0);
+  });
 
   it('should reset to defaults', () => {
     const defaultState = defaultBulkState();
