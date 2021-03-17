@@ -112,7 +112,7 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
         throw Error('Missing itemid');
       }
       nextState.items = state.items?.filter((i) => i.uniqueKey !== payload.itemId);
-      return nextState;
+      return validateBulk(nextState);
 
     case Actions.Reset:
       return Object.assign({}, defaultBulkState());
