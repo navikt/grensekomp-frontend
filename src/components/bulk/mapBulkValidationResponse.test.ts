@@ -3,7 +3,7 @@ import mapBulkValidationResponse from './mapBulkValidationResponse';
 import BulkState from './BulkState';
 
 describe('mapBulkValidationResponse', () => {
-  it('should', () => {
+  it('should map correctly', () => {
     const state = {
       items: [
         {
