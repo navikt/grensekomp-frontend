@@ -2,7 +2,6 @@ import React from 'react';
 import { render, cleanup, screen } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import userEvent from '@testing-library/user-event';
-
 import { MemoryRouter } from 'react-router-dom';
 import { ArbeidsgiverProvider } from '../../context/arbeidsgiver/ArbeidsgiverContext';
 import { Organisasjon } from '@navikt/bedriftsmeny/lib/organisasjon';
@@ -40,18 +39,18 @@ describe('BulkInnsending', () => {
 
     submitButton.click();
 
-    expect(screen.getByText(/Mangler fødselsnummer/)).toBeInTheDocument();
-    expect(screen.getByText(/Mangler fra dato/)).toBeInTheDocument();
-    expect(screen.getByText(/Mangler til dato/)).toBeInTheDocument();
-    expect(screen.getByText(/Oppgi beløp med kun tall/)).toBeInTheDocument();
-    expect(screen.getByText(/Bruk kun tall/)).toBeInTheDocument();
+    expect(screen.getAllByText(/Mangler fødselsnummer/).length).toBe(2);
+    expect(screen.getAllByText(/Mangler fra dato/).length).toBe(2);
+    expect(screen.getAllByText(/Mangler til dato/).length).toBe(2);
+    expect(screen.getAllByText(/Oppgi beløp med kun tall/).length).toBe(2);
+    expect(screen.getAllByText(/Bruk kun tall/).length).toBe(2);
     expect(screen.getAllByText(/Bekreft at opplysningene er korrekt/).length).toBe(2);
 
-    expect(screen.getByText(/Fødselsnummer må fylles ut/)).toBeInTheDocument();
-    expect(screen.getByText(/Fra dato må fylles ut/)).toBeInTheDocument();
-    expect(screen.getByText(/Til dato må fylles ut/)).toBeInTheDocument();
-    expect(screen.getByText(/Beløp må fylles ut/)).toBeInTheDocument();
-    expect(screen.getByText(/Antall dager må fylles ut/)).toBeInTheDocument();
+    expect(screen.getByText(/Rad 1: Mangler fødselsnummer/)).toBeInTheDocument();
+    expect(screen.getByText(/Rad 1: Mangler fra dato/)).toBeInTheDocument();
+    expect(screen.getByText(/Rad 1: Mangler til dato/)).toBeInTheDocument();
+    expect(screen.getByText(/Rad 1: Oppgi beløp med kun tall/)).toBeInTheDocument();
+    expect(screen.getByText(/Rad 1: Bruk kun tall/)).toBeInTheDocument();
   });
 
   it('should show warnings when input is missing, and the warning should dissapear when fixed', () => {
@@ -72,18 +71,18 @@ describe('BulkInnsending', () => {
 
     submitButton.click();
 
-    expect(screen.getByText(/Mangler fødselsnummer/)).toBeInTheDocument();
-    expect(screen.getByText(/Mangler fra dato/)).toBeInTheDocument();
-    expect(screen.getByText(/Mangler til dato/)).toBeInTheDocument();
-    expect(screen.getByText(/Oppgi beløp med kun tall/)).toBeInTheDocument();
-    expect(screen.getByText(/Bruk kun tall/)).toBeInTheDocument();
+    expect(screen.getAllByText(/Mangler fødselsnummer/).length).toBe(2);
+    expect(screen.getAllByText(/Mangler fra dato/).length).toBe(2);
+    expect(screen.getAllByText(/Mangler til dato/).length).toBe(2);
+    expect(screen.getAllByText(/Oppgi beløp med kun tall/).length).toBe(2);
+    expect(screen.getAllByText(/Bruk kun tall/).length).toBe(2);
     expect(screen.getAllByText(/Bekreft at opplysningene er korrekt/).length).toBe(2);
 
-    expect(screen.getByText(/Fødselsnummer må fylles ut/)).toBeInTheDocument();
-    expect(screen.getByText(/Fra dato må fylles ut/)).toBeInTheDocument();
-    expect(screen.getByText(/Til dato må fylles ut/)).toBeInTheDocument();
-    expect(screen.getByText(/Beløp må fylles ut/)).toBeInTheDocument();
-    expect(screen.getByText(/Antall dager må fylles ut/)).toBeInTheDocument();
+    expect(screen.getByText(/Rad 1: Mangler fødselsnummer/)).toBeInTheDocument();
+    expect(screen.getByText(/Rad 1: Mangler fra dato/)).toBeInTheDocument();
+    expect(screen.getByText(/Rad 1: Mangler til dato/)).toBeInTheDocument();
+    expect(screen.getByText(/Rad 1: Oppgi beløp med kun tall/)).toBeInTheDocument();
+    expect(screen.getByText(/Rad 1: Bruk kun tall/)).toBeInTheDocument();
 
     userEvent.type(fnrInput, testFnr.GyldigeFraDolly.TestPerson1);
     expect(screen.queryByText(/Mangler fødselsnummer/)).not.toBeInTheDocument();

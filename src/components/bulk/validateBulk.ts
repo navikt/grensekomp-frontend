@@ -1,51 +1,26 @@
 import BulkState from './BulkState';
 import { FeiloppsummeringFeil } from 'nav-frontend-skjema';
 import { pushFeilmelding } from '../../validation/pushFeilmelding';
-import isValidFnr from '../../utils/isValidFnr';
 import { validateFnr } from '../../utils/validateFnr';
 import validateTil from '../../validation/validateTil';
 import validateFra from '../../validation/validateFra';
-import isNumericString from '../../utils/isNumericString';
-import hasFnrError from '../../validation/hasFnrError';
-import hasFomError from '../../validation/hasFomError';
-import hasTomError from '../../validation/hasTomError';
-import hasDagerError from '../../validation/hasDagerError';
-import hasBeloepError from '../../validation/hasBeloepError';
 import validateBeloep from '../../validation/validateBeloep';
 import validateDager from '../../validation/validateDager';
+import { validateOrgnr } from '../../utils/validateOrgnr';
 
 const validateBulk = (state: BulkState): BulkState => {
   if (!state.validated) {
     return state;
   }
+
   const nextState = Object.assign({}, state);
   const feilmeldinger = new Array<FeiloppsummeringFeil>();
-
-  // virksomhetsnummer sjekk
-
   nextState.items?.forEach((item) => {
-    if (!item.fnr) {
-      item.fnrError = 'Må fylles ut';
-    } else {
-      if (isValidFnr(item.fnr)) {
-        item.fnrError = undefined;
-      } else {
-        item.fnrError = 'Ugyldig fnr';
-      }
-    }
-    item.fomError = !item.fom ? 'Mangler fra dato' : undefined;
-    item.tomError = !item.tom ? 'Mangler til dato' : undefined;
-    item.dagerError = !item.dager ? 'Mangler dager' : undefined;
-    item.beloepError = !item.beloep ? 'Mangler beløp' : undefined;
-
-    item.beloepError = validateBeloep(item.beloep, 1000000, state.validated || false);
-
-    item.dagerError = validateDager(item.dager, 1000, state.validated || false);
-
     item.fnrError = validateFnr(item.fnr, state.validated);
-
     item.fomError = validateFra(item.fom, state.validated);
     item.tomError = validateTil(item.fom, item.tom, state.validated);
+    item.dagerError = validateDager(item.dager, 1000, state.validated || false);
+    item.beloepError = validateBeloep(item.beloep, 1000000, state.validated || false);
   });
 
   nextState.bekreftError = !state.bekreft ? 'Bekreft at opplysningene er korrekt' : '';
@@ -53,25 +28,29 @@ const validateBulk = (state: BulkState): BulkState => {
     pushFeilmelding('bekreftFeilmeldingId', 'Bekreft at opplysningene er korrekt', feilmeldinger);
   }
 
-  if (hasFnrError(nextState.items)) {
-    pushFeilmelding('fnr', 'Fødselsnummer må fylles ut', feilmeldinger);
+  nextState.orgnrError = validateOrgnr(state.orgnr, state.validated);
+  if (nextState.orgnrError) {
+    pushFeilmelding('orgnr', nextState.orgnrError, feilmeldinger);
   }
 
-  if (hasFomError(nextState.items)) {
-    pushFeilmelding('fra', 'Fra dato må fylles ut', feilmeldinger);
-  }
-
-  if (hasTomError(nextState.items)) {
-    pushFeilmelding('til', 'Til dato må fylles ut', feilmeldinger);
-  }
-
-  if (hasDagerError(nextState.items)) {
-    pushFeilmelding('dager', 'Antall dager må fylles ut', feilmeldinger);
-  }
-
-  if (hasBeloepError(nextState.items)) {
-    pushFeilmelding('beloep', 'Beløp må fylles ut', feilmeldinger);
-  }
+  nextState.items.forEach((item, index) => {
+    const RAD_FEIL = 'Rad ' + (index + 1) + ': ';
+    if (item.fnrError) {
+      pushFeilmelding('fnr_' + item.uniqueKey, RAD_FEIL + item.fnrError, feilmeldinger);
+    }
+    if (item.fomError) {
+      pushFeilmelding('fom_' + item.uniqueKey, RAD_FEIL + item.fomError, feilmeldinger);
+    }
+    if (item.tomError) {
+      pushFeilmelding('tom_' + item.uniqueKey, RAD_FEIL + item.tomError, feilmeldinger);
+    }
+    if (item.dagerError) {
+      pushFeilmelding('dager_' + item.uniqueKey, RAD_FEIL + item.dagerError, feilmeldinger);
+    }
+    if (item.beloepError) {
+      pushFeilmelding('beloep_' + item.uniqueKey, RAD_FEIL + item.beloepError, feilmeldinger);
+    }
+  });
 
   nextState.feilmeldinger = feilmeldinger;
   return nextState;
