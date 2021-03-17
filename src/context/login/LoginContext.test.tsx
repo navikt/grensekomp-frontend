@@ -78,19 +78,19 @@ describe('LoginContext', () => {
     expect(container).toContainHTML('login-provider-checking');
   });
 
-  // it('should show failed', () => {
-  //   act(() => {
-  //     render(
-  //       <Router history={mockHistory('/')}>
-  //         <LoginProvider loginServiceUrl='' baseUrl='' status={LoginStatus.Failed}>
-  //           ChildrenHere
-  //         </LoginProvider>
-  //       </Router>,
-  //       container
-  //     );
-  //   });
-  //   expect(container).toContainHTML('tilgangsfeil-side');
-  // });
+  it('should show failed', () => {
+    act(() => {
+      render(
+        <Router history={mockHistory('/')}>
+          <LoginProvider loginServiceUrl='' baseUrl='' status={LoginStatus.Failed}>
+            ChildrenHere
+          </LoginProvider>
+        </Router>,
+        container
+      );
+    });
+    expect(container).toContainHTML('tilgangsfeil-side');
+  });
 
   it('should show login-redirect when the token has expired', () => {
     const input = '2020-01-23T08:27:57.125+0000';
