@@ -18,7 +18,6 @@ import mapBulkRequest from '../../api/bulk/mapBulkRequest';
 import Kvittering from '../kvittering';
 import { useArbeidsgiver } from '../../context/arbeidsgiver/ArbeidsgiverContext';
 import Side from '../felles/Side';
-import toDate from '../../utils/toDate';
 import '../felles/knapper/LeggTilKnapp.sass';
 import Lenke from 'nav-frontend-lenker';
 import './BulkInnsending.sass';
@@ -32,6 +31,7 @@ import { Hovedknapp } from 'nav-frontend-knapper';
 import PeriodeHjelpetekst from './PeriodeHjelpetekst';
 import BeloepHjelpeLabel from './BeloepHjelpeLabel';
 import DagerHjelpeLabel from './DagerHjelpeLabel';
+import { toDate } from '../../utils/Dato';
 
 interface BulkInnsendingProps {
   state?: BulkState;

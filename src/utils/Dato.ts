@@ -11,6 +11,18 @@ export interface Dato {
   millis?: number;
 }
 
+export const toDate = (dato: Dato | undefined): Date | undefined => {
+  if (!dato) {
+    return;
+  }
+  if (!dato.month || !dato.day || !dato.year) {
+    return;
+  }
+  return dayjs(
+    dato.year + '-' + (dato.month < 10 ? '0' : '') + dato.month + '-' + (dato.day < 10 ? '0' : '') + dato.day
+  ).toDate();
+};
+
 export const datoToString = (dato: Dato | undefined): string => {
   if (!dato || !dato.year) {
     throw new Error('År ikke oppgitt');
