@@ -31,13 +31,15 @@ const postRequest = async (path: string, payload: any, timeout: number = 10000):
       body: JSON.stringify(payload)
     })
       .then(async (response) => {
-        const json = await response
-          .clone()
-          .json()
-          .catch(() => response.text());
+        if (response.status === HttpStatus.Successfully) {
+          return {
+            status: response.status,
+            validationResponses: await response.json()
+          } as BulkValidationResponse;
+        }
         return {
           status: response.status,
-          validationResponses: json
+          validationResponses: []
         } as BulkValidationResponse;
       })
       .catch(() => {
