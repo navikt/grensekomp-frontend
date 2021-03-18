@@ -1,16 +1,16 @@
 import BulkRequest from './BulkRequest';
 import BulkState from '../../components/bulk/BulkState';
 import BulkItem from '../../components/bulk/BulkItem';
-import { datoToString } from '../../utils/Dato';
 import Ansatt from './Ansatt';
 import findNotAccepted from '../../components/bulk/findNotAccepted';
+import { toString } from '../../utils/dato/toString';
 
 const mapBulkItem = (item: BulkItem, orgnr: string, bekreftet: boolean = false): Ansatt => ({
   identitetsnummer: item.fnr || '',
   virksomhetsnummer: orgnr,
   periode: {
-    fom: datoToString(item.fom),
-    tom: datoToString(item.tom),
+    fom: toString(item.fom),
+    tom: toString(item.tom),
     antallDagerMedRefusjon: parseInt(item?.dager || ''),
     beloep: parseInt(item.beloep || '')
   },

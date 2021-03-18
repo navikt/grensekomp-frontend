@@ -1,4 +1,4 @@
-import { Dato } from '../../utils/Dato';
+import { Dato } from '../../utils/dato/Dato';
 
 export interface BulkItem {
   uniqueKey?: string;

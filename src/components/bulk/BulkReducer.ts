@@ -1,11 +1,11 @@
 import BulkState, { defaultBulkState } from './BulkState';
 import { Actions, BulkActions } from './BulkActions';
-import { parseDateTilDato } from '../../utils/Dato';
 import { v4 as uuid } from 'uuid';
 import validateBulk from './validateBulk';
 import mapBulkValidationResponse from './mapBulkValidationResponse';
 import mapFeilOppsummeringsFeil from './mapFeilOppsummering';
 import HttpStatus from '../../api/HttpStatus';
+import { toDato } from '../../utils/dato/toDato';
 
 const checkItemId = (itemId?: string) => {
   if (itemId === undefined) {
@@ -32,7 +32,7 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
       checkItemId(payload?.itemId);
 
       nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.fom = payload?.fra
-        ? parseDateTilDato(payload.fra)
+        ? toDato(payload.fra)
         : undefined;
       return validateBulk(nextState);
 
@@ -40,7 +40,7 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
       checkItemId(payload?.itemId);
 
       nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.tom = payload?.til
-        ? parseDateTilDato(payload.til)
+        ? toDato(payload.til)
         : undefined;
       return validateBulk(nextState);
 

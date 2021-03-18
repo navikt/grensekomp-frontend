@@ -31,7 +31,7 @@ import { Hovedknapp } from 'nav-frontend-knapper';
 import PeriodeHjelpetekst from './PeriodeHjelpetekst';
 import BeloepHjelpeLabel from './BeloepHjelpeLabel';
 import DagerHjelpeLabel from './DagerHjelpeLabel';
-import { toDate } from '../../utils/Dato';
+import { toDate } from '../../utils/dato/toDate';
 
 interface BulkInnsendingProps {
   state?: BulkState;

@@ -1,5 +1,5 @@
 import BulkState from '../components/bulk/BulkState';
-import { parseDato } from '../utils/Dato';
+import { parseDato } from '../utils/dato/parseDato';
 
 const testState: BulkState = {
   feilmeldinger: [],

@@ -1,4 +1,4 @@
-import { Dato } from '../utils/Dato';
+import { Dato } from '../utils/dato/Dato';
 import isBeforeMinDate from '../utils/isBeforeMinDate';
 
 export const validateFra = (fra: Dato | undefined, required: boolean = false): string | undefined => {

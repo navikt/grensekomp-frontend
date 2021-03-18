@@ -1,5 +1,5 @@
 import BulkState from '../../components/bulk/BulkState';
-import { Dato } from '../../utils/Dato';
+import { Dato } from '../../utils/dato/Dato';
 import mapBulkRequest from './mapBulkRequest';
 import BulkRequest from './BulkRequest';
 
