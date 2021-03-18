@@ -5,7 +5,7 @@ import dayjs from 'dayjs';
 const validateDager = (
   dager: string | undefined,
   max: number,
-  required: boolean,
+  required: boolean | undefined,
   fra: Dato | undefined,
   til: Dato | undefined
 ): string | undefined => {
