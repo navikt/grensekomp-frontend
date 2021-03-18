@@ -14,11 +14,6 @@ const Forside = () => {
             Gå til skjema for <Link to={lenker.Bulkinnsending}>bulk</Link>
           </Normaltekst>
         </Column>
-        <Column md='6'>
-          <Normaltekst>
-            Gå til skjema for <Link to={lenker.Enkeltinnsendinng}>enkel</Link>
-          </Normaltekst>
-        </Column>
       </Row>
     </Side>
   );
