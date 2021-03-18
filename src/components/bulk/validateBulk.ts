@@ -21,7 +21,7 @@ const validateBulk = (state: BulkState): BulkState => {
     item.fnrError = validateFnr(item.fnr, state.validated);
     item.fomError = validateFra(item.fom, state.validated);
     item.tomError = validateTil(item.fom, item.tom, state.validated);
-    item.dagerError = validateDager(item.dager, 1000, state.validated);
+    item.dagerError = validateDager(item.dager, 1000, state.validated, item.fom, item.tom);
     item.beloepError = validateBeloep(item.beloep, 1000000, state.validated);
 
     if (item.fnrError) {
