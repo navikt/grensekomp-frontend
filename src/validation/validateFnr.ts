@@ -1,4 +1,4 @@
-import isValidFnr from './isValidFnr';
+import isValidFnr from '../utils/isValidFnr';
 
 export const validateFnr = (orgnr?: string, required: boolean = false): string | undefined => {
   if (orgnr == undefined || orgnr == '') {

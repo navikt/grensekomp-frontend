@@ -1,12 +1,12 @@
 import BulkState from './BulkState';
 import { FeiloppsummeringFeil } from 'nav-frontend-skjema';
 import { pushFeilmelding } from '../../validation/pushFeilmelding';
-import { validateFnr } from '../../utils/validateFnr';
+import { validateFnr } from '../../validation/validateFnr';
 import validateTil from '../../validation/validateTil';
 import validateFra from '../../validation/validateFra';
 import validateBeloep from '../../validation/validateBeloep';
 import validateDager from '../../validation/validateDager';
-import { validateOrgnr } from '../../utils/validateOrgnr';
+import { validateOrgnr } from '../../validation/validateOrgnr';
 
 const validateBulk = (state: BulkState): BulkState => {
   if (!state.validated) {
