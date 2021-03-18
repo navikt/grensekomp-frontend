@@ -3,6 +3,9 @@
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=navikt_grensekomp-frontend&metric=code_smells)](https://sonarcloud.io/dashboard?id=navikt_grensekomp-frontend)
 ![Bygg og deploy main](https://github.com/navikt/grensekomp-frontend/workflows/Bygg%20og%20deploy%20main/badge.svg)
 
+##
+Applikasjon (frontend) for refusjon for lønn ved innreiseforbud
+
 ## Komme i gang
 
 Kan kjøres lokalt sammen med [backendapplikasjonen](https://github.com/navikt/grensekomp).
