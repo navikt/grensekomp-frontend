@@ -69,16 +69,12 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
 
   useEffect(() => {
     if (state.validated === true && state.progress === true && state.submitting === true) {
-      postBulk(environment.baseUrl, mapBulkRequest(state))
-        .then((response) => {
-          dispatch({
-            type: Actions.HandleResponse,
-            payload: { response: response }
-          });
-        })
-        .catch((reason) => {
-          console.log('Dette gikk galt');
+      postBulk(environment.baseUrl, mapBulkRequest(state)).then((response) => {
+        dispatch({
+          type: Actions.HandleResponse,
+          payload: { response: response }
         });
+      });
     }
   }, [state.validated, state.progress, state.feilmeldinger, state.submitting, state.bekreft, state]);
 

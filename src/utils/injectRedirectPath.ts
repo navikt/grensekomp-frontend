@@ -4,7 +4,7 @@ function injectRedirectPath(injectedPath: string, clean: string = ''): string {
   let url = new URL(env.loginServiceUrl);
   let params = new URLSearchParams(url.search);
   let redirect = params.get('redirect');
-
+  debugger;
   if (!!clean) {
     injectedPath = injectedPath.replace(clean, '');
   }
