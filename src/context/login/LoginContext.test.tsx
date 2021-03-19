@@ -17,6 +17,8 @@ describe('LoginContext', () => {
   let container = document.createElement('div');
 
   beforeEach(() => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
     delete window.location;
     // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
     // @ts-ignore
@@ -37,6 +39,8 @@ describe('LoginContext', () => {
   });
 
   it('should redirect to loginProvider', () => {
+    const input = '2020-01-23T08:27:57.125+0000';
+    mockFetch(200, input);
     act(() => {
       render(
         <Router history={mockHistory('/')}>
@@ -47,10 +51,15 @@ describe('LoginContext', () => {
         container
       );
     });
-    expect(container).toContainHTML('login-redirect');
+
+    waitFor(() => {
+      expect(container).toContainHTML('login-redirect');
+    });
   });
 
   it('should show children', () => {
+    const input = '2020-01-23T08:27:57.125+0000';
+    mockFetch(200, input);
     act(() => {
       render(
         <Router history={mockHistory('/')}>
@@ -61,10 +70,15 @@ describe('LoginContext', () => {
         container
       );
     });
-    expect(container).toContainHTML('ChildrenHere');
+
+    waitFor(() => {
+      expect(container).toContainHTML('ChildrenHere');
+    });
   });
 
   it('should show checking', () => {
+    const input = '2020-01-23T08:27:57.125+0000';
+    mockFetch(200, input);
     act(() => {
       render(
         <Router history={mockHistory('/')}>
@@ -75,10 +89,15 @@ describe('LoginContext', () => {
         container
       );
     });
-    expect(container).toContainHTML('login-provider-checking');
+
+    waitFor(() => {
+      expect(container).toContainHTML('login-provider-checking');
+    });
   });
 
   it('should show failed', () => {
+    const input = '2020-01-23T08:27:57.125+0000';
+    mockFetch(200, input);
     act(() => {
       render(
         <Router history={mockHistory('/')}>
@@ -89,7 +108,9 @@ describe('LoginContext', () => {
         container
       );
     });
-    expect(container).toContainHTML('tilgangsfeil-side');
+    waitFor(() => {
+      expect(container).toContainHTML('tilgangsfeil-side');
+    });
   });
 
   it('should show login-redirect when the token has expired', () => {
@@ -113,13 +134,8 @@ describe('LoginContext', () => {
   });
 
   it('should show tilgangsfeil-side when the token has expired', () => {
-    const mockApi = Promise.resolve({
-      status: 401,
-      json: () => Promise.resolve(undefined)
-    } as Response);
-    jest.spyOn(window, 'fetch').mockImplementationOnce(() => mockApi);
-
-    MockDate.set('2020-01-23T08:26:57.125+0000');
+    const input = '1985-01-23T08:28:57.125+0000';
+    mockFetch(200, input);
 
     render(
       <Router history={mockHistory('/page?loggedIn=true')}>
@@ -137,11 +153,7 @@ describe('LoginContext', () => {
 
   it('should show login-redirect when the token has expired and the loggedIn param is in the url', () => {
     const input = '2020-01-23T08:27:57.125+0000';
-    const mockApi = Promise.resolve({
-      status: 200,
-      json: () => Promise.resolve(input)
-    } as Response);
-    jest.spyOn(window, 'fetch').mockImplementationOnce(() => mockApi);
+    mockFetch(200, input);
 
     MockDate.set('2020-01-23T08:28:57.125+0000');
 
@@ -161,22 +173,20 @@ describe('LoginContext', () => {
 
   it('should show the children when everything is OK', () => {
     const input = '2020-01-23T08:27:57.125+0000';
-    const mockApi = Promise.resolve({
-      status: 200,
-      json: () => Promise.resolve(input)
-    } as Response);
-    jest.spyOn(window, 'fetch').mockImplementationOnce(() => mockApi);
+    mockFetch(200, input);
 
     MockDate.set('2020-01-23T08:22:57.125+0000');
 
-    render(
-      <Router history={mockHistory('/page?loggedIn=true')}>
-        <LoginProvider loginServiceUrl='https://mock.it' baseUrl='https://mock.it'>
-          ChildrenHere
-        </LoginProvider>
-      </Router>,
-      container
-    );
+    act(() => {
+      render(
+        <Router history={mockHistory('/page?loggedIn=true')}>
+          <LoginProvider loginServiceUrl='https://mock.it' baseUrl='https://mock.it'>
+            ChildrenHere
+          </LoginProvider>
+        </Router>,
+        container
+      );
+    });
 
     waitFor(() => {
       expect(container).toContainHTML('ChildrenHere');
@@ -184,12 +194,7 @@ describe('LoginContext', () => {
   });
 
   it('should roll over and die when everything fails', () => {
-    const mockApi = Promise.resolve({
-      status: 500,
-      json: () => Promise.resolve(undefined)
-    } as Response);
-    jest.spyOn(window, 'fetch').mockImplementationOnce(() => mockApi);
-
+    mockFetch(500, undefined);
     MockDate.set('2020-01-23T08:29:57.125+0000');
 
     render(

@@ -35,4 +35,8 @@ describe('isNumericString', () => {
   it('should handle decimal with zero', () => {
     expect(isNumericString('0,5')).toBe(true);
   });
+
+  it('should return false when the number is undefined', () => {
+    expect(isNumericString(undefined)).toBe(false);
+  });
 });

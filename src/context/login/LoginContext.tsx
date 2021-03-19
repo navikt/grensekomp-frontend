@@ -27,7 +27,6 @@ export const LoginProvider = ({ baseUrl, children, status = LoginStatus.Checking
         if (isUndefinedOrExpiredTimestamp(loginExpiryResponse)) {
           if (isExpiredTokenTimestamp(loginExpiryResponse)) {
             window.location.href = redirectUrl(env.loginServiceUrl, window.location.href);
-            setExpiry(LoginStatus.MustLogin);
           } else if (isLoggedInFromUrl()) {
             setExpiry(LoginStatus.Failed);
           } else {
@@ -47,8 +46,9 @@ export const LoginProvider = ({ baseUrl, children, status = LoginStatus.Checking
       return <LoginRedirect />;
     case LoginStatus.Failed:
       return <TilgangsfeilSide />;
+    default:
+      return <LoginContext.Provider value={{}}>{children}</LoginContext.Provider>;
   }
-  return <LoginContext.Provider value={{}}>{children}</LoginContext.Provider>;
 };
 
 function isUndefinedOrExpiredTimestamp(loginExpiryResponse: LoginExpiryResponse) {
