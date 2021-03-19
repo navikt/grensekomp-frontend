@@ -114,7 +114,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
               <Skillelinje />
 
               <Panel>
-                <SkjemaGruppe aria-live='polite' legend='Oppgi ansatte, fravær og beløp'>
+                <SkjemaGruppe aria-live='polite' legend='Oppgi ansatte, fraværsperiode og beløp'>
                   {state.items?.map((item, index) => (
                     <Row key={item.uniqueKey} className='bulk-innsending__rad'>
                       <Column md='1' className='bulk-kolonne-1'>
@@ -140,57 +140,47 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           }}
                         />
                       </Column>
-                      <Column md='4' className='bulk-kolonne-3'>
-                        <Label htmlFor={'fom_' + item.uniqueKey} className='skjemaelement__dobbel__label'>
-                          Hvilken periode var den ansatte borte?
-                          <PeriodeHjelpetekst />
-                        </Label>
-                        <Row>
-                          <Column md='6' className='bulk-kolonne-3-fom'>
-                            <DatoVelger
-                              id={'fom_' + item.uniqueKey}
-                              dato={toDate(item.fom)}
-                              feilmelding={item.fomError}
-                              label=''
-                              placeholder='dd.mm.åå'
-                              minDate={minDate}
-                              maxDate={maxDate}
-                              disabled={item.accepted}
-                              className='input--fullbredde'
-                              onChange={(dato) => {
-                                dispatch({
-                                  type: Actions.Fra,
-                                  payload: {
-                                    itemId: item.uniqueKey,
-                                    fra: dato
-                                  }
-                                });
-                              }}
-                            />
-                          </Column>
-                          <Column md='6' className='bulk-kolonne-4'>
-                            <DatoVelger
-                              id={'tom_' + item.uniqueKey}
-                              dato={toDate(item.tom)}
-                              feilmelding={item.tomError}
-                              label=''
-                              placeholder='dd.mm.åå'
-                              minDate={minDate}
-                              maxDate={maxDate}
-                              disabled={item.accepted}
-                              className='input--fullbredde'
-                              onChange={(dato) => {
-                                dispatch({
-                                  type: Actions.Til,
-                                  payload: {
-                                    itemId: item.uniqueKey,
-                                    til: dato
-                                  }
-                                });
-                              }}
-                            />
-                          </Column>
-                        </Row>
+                      <Column md='2' className='bulk-kolonne-3'>
+                        <DatoVelger
+                          id={'fom_' + item.uniqueKey}
+                          dato={toDate(item.fom)}
+                          feilmelding={item.fomError}
+                          label='Fra'
+                          placeholder='dd.mm.åå'
+                          minDate={minDate}
+                          maxDate={maxDate}
+                          className='input--fullbredde'
+                          onChange={(dato) => {
+                            dispatch({
+                              type: Actions.Fra,
+                              payload: {
+                                itemId: item.uniqueKey,
+                                fra: dato
+                              }
+                            });
+                          }}
+                        />
+                      </Column>
+                      <Column md='2' className='bulk-kolonne-4'>
+                        <DatoVelger
+                          id={'tom_' + item.uniqueKey}
+                          dato={toDate(item.tom)}
+                          feilmelding={item.tomError}
+                          label='Til'
+                          placeholder='dd.mm.åå'
+                          minDate={minDate}
+                          maxDate={maxDate}
+                          className='input--fullbredde'
+                          onChange={(dato) => {
+                            dispatch({
+                              type: Actions.Til,
+                              payload: {
+                                itemId: item.uniqueKey,
+                                til: dato
+                              }
+                            });
+                          }}
+                        />
                       </Column>
                       <Column md='2' className='bulk-kolonne-5'>
                         <Input
