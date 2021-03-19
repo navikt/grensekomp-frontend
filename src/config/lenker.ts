@@ -1,8 +1,7 @@
 enum lenker {
   Home = '/',
   TokenFornyet = '/token-fornyet',
-  Bulkinnsending = '/batchinnsending/krav',
-  BulkKvittering = '/batchinnsending/kvittering'
+  Bulkinnsending = '/batchinnsending/krav'
 }
 
 export default lenker;
