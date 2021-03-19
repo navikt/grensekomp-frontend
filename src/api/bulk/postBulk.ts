@@ -1,6 +1,6 @@
 import postRequest from './postRequest';
 import BulkRequest from './BulkRequest';
-import Paths from '../Paths';
+import Paths from '../../config/Paths';
 import BulkValidationResponse from './BulkValidationResponse';
 
 const postBulk = (basePath: string, request: BulkRequest): Promise<BulkValidationResponse> => {

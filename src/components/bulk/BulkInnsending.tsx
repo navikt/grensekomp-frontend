@@ -12,7 +12,7 @@ import LoggetUtAdvarsel from '../login/LoggetUtAdvarsel';
 import BulkReducer from './BulkReducer';
 import BulkState, { defaultBulkState } from './BulkState';
 import { Actions } from './BulkActions';
-import environment from '../../environment';
+import environment from '../../config/environment';
 import postBulk from '../../api/bulk/postBulk';
 import mapBulkRequest from '../../api/bulk/mapBulkRequest';
 import Kvittering from '../kvittering';

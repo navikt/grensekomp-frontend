@@ -7,7 +7,7 @@ import Modal from 'react-modal';
 import '@navikt/bedriftsmeny/lib/bedriftsmeny.css';
 import { version } from '../package.json';
 import * as Sentry from '@sentry/browser';
-import env, { EnvironmentType } from './environment';
+import env, { EnvironmentType } from './config/environment';
 import './index.css';
 
 // @ts-ignore

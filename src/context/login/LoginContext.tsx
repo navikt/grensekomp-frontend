@@ -7,7 +7,7 @@ import { LoginChecking } from './LoginChecking';
 import isLoggedInFromUrl from './isLoggedInFromUrl';
 import dayjs from 'dayjs';
 import { LoginExpiryResponse } from '../../api/loginexpiry/LoginExpiryResponse';
-import env from '../../environment';
+import env from '../../config/environment';
 import { redirectUrl } from './redirectUrl';
 
 const LoginContext = createContext({});
