@@ -1,4 +1,4 @@
-import { ValidationProblemDetail } from '../ValidationResponse';
+import { ValidationProblemDetail } from '../../state/validation/ValidationResponse';
 
 interface BulkValidationResponse {
   status: number;

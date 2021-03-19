@@ -1,6 +1,6 @@
-import HttpStatus from './HttpStatus';
-import ValidationResponse from './ValidationResponse';
-import BulkValidationResponse from './bulk/BulkValidationResponse';
+import HttpStatus from '../HttpStatus';
+import ValidationResponse from '../../state/validation/ValidationResponse';
+import BulkValidationResponse from './BulkValidationResponse';
 
 export const mapViolations = (status: number, json: any): ValidationResponse => ({
   status,

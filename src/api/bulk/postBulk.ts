@@ -1,4 +1,4 @@
-import postRequest from '../postRequest';
+import postRequest from './postRequest';
 import BulkRequest from './BulkRequest';
 import Paths from '../Paths';
 import BulkValidationResponse from './BulkValidationResponse';
