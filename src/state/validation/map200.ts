@@ -1,5 +1,5 @@
 import { ValidationState } from './ValidationState';
-import ValidationResponse from '../api/ValidationResponse';
+import ValidationResponse from '../../api/ValidationResponse';
 
 /**
  * Some ok - some not

@@ -1,5 +1,5 @@
 import { FeiloppsummeringFeil } from 'nav-frontend-skjema';
-import { ValidationState } from '../../validation/ValidationState';
+import { ValidationState } from '../../state/validation/ValidationState';
 import BulkItem from './BulkItem';
 
 export const defaultBulkState = (state?: BulkState): BulkState => {
