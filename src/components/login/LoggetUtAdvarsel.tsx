@@ -2,7 +2,7 @@ import React from 'react';
 import ModalWrapper from 'nav-frontend-modal';
 import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 import { Innholdstittel } from 'nav-frontend-typografi';
-import injectRedirectPath from '../../utils/injectRedirectPath';
+import injectRedirectPath from './injectRedirectPath';
 import InternLenke from '../felles/InternLenke';
 import lenker from '../../config/lenker';
 

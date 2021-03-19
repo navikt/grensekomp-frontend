@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import lenker from './config/lenker';
 import Bulkinnsending from './components/bulk';
-import TokenFornyet from './components/tokenfornyet';
+import TokenFornyet from './components/login/TokenFornyet';
 
 export const ApplicationRoutes = () => (
   <div className='application-routes'>

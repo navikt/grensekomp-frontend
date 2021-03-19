@@ -1,4 +1,4 @@
-import env from '../config/environment';
+import env from '../../config/environment';
 
 function injectRedirectPath(injectedPath: string): string {
   const host = window.location.origin;
