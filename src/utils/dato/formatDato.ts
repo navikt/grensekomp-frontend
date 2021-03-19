@@ -1,5 +1,4 @@
 import { Dato } from './Dato';
-import formatISO from './formatISO';
 import zeroPadding from './zeroPadding';
 
 const formatDato = (dato: Dato) =>
