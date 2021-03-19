@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container, Row } from 'nav-frontend-grid';
-import './SideRamme.sass';
 
 interface SideRammeProps {
   children: any;
