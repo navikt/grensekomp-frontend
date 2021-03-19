@@ -64,7 +64,7 @@ describe('BulkReducer', () => {
     let state = BulkReducer(defaultBulkState(), {
       type: Actions.Fra,
       payload: {
-        fra: new Date('2020.06.05 12:00:00'),
+        fra: new Date('2020.06.05'),
         itemId: '1'
       }
     });
@@ -88,7 +88,7 @@ describe('BulkReducer', () => {
     let state = BulkReducer(defaultBulkState(), {
       type: Actions.Til,
       payload: {
-        til: new Date('2020.06.05 12:00:00'),
+        til: new Date('2020.06.05'),
         itemId: '1'
       }
     });

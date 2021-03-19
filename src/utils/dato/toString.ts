@@ -1,4 +1,5 @@
 import { Dato } from './Dato';
+import formatDato from './formatDato';
 
 export const toString = (dato: Dato | undefined): string => {
   if (!dato || !dato.year) {
@@ -10,5 +11,5 @@ export const toString = (dato: Dato | undefined): string => {
   if (!dato.day) {
     throw new Error('Dag ikke oppgitt');
   }
-  return dato.year + '-' + (dato.month < 10 ? '0' : '') + dato.month + '-' + (dato.day < 10 ? '0' : '') + dato.day;
+  return formatDato(dato);
 };

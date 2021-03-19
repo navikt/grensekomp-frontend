@@ -20,7 +20,7 @@ describe('parseDato', () => {
     expect(parseDato('30.9.2020').month).toBe(9);
   });
 
-  it('should not parse illegal format', () => {
+  it('should not parse illegal formatISO', () => {
     expect(parseDato('05-10-2020').error).not.toBeUndefined();
     expect(parseDato('2020-10-05').error).not.toBeUndefined();
   });

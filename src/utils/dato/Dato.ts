@@ -6,3 +6,5 @@ export interface Dato {
   day?: number;
   millis?: number;
 }
+
+export default Dato;
