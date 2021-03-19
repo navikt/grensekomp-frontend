@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, screen } from '@testing-library/react';
+import { render, cleanup, screen, waitFor } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
@@ -8,10 +8,15 @@ import { Organisasjon } from '@navikt/bedriftsmeny/lib/organisasjon';
 import testFnr from '../../mockData/testFnr';
 import testOrganisasjon from '../../mockData/testOrganisasjoner';
 import BulkInnsending from './BulkInnsending';
+import mockFetch from '../../mockData/mockFetch';
 
 const arbeidsgivere: Organisasjon[] = testOrganisasjon;
 
 describe('BulkInnsending', () => {
+  beforeEach(() => {
+    mockFetch(200, {});
+  });
+
   it('should have no a11y violations', async () => {
     const { container } = render(
       <MemoryRouter>
@@ -46,7 +51,9 @@ describe('BulkInnsending', () => {
     expect(screen.getAllByText(/Mangler antall/).length).toBe(2);
     expect(screen.getAllByText(/Bekreft at opplysningene er korrekt/).length).toBe(2);
 
-    expect(screen.getByText(/Rad 1: Mangler fødselsnummer/)).toBeInTheDocument();
+    waitFor(() => {
+      expect(screen.getByText(/Rad 1: Mangler fødselsnummer/)).toBeInTheDocument();
+    });
     expect(screen.getByText(/Rad 1: Mangler fra dato/)).toBeInTheDocument();
     expect(screen.getByText(/Rad 1: Mangler til dato/)).toBeInTheDocument();
     expect(screen.getByText(/Rad 1: Mangler beløp/)).toBeInTheDocument();

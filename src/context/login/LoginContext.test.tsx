@@ -137,14 +137,16 @@ describe('LoginContext', () => {
     const input = '1985-01-23T08:28:57.125+0000';
     mockFetch(200, input);
 
-    render(
-      <Router history={mockHistory('/page?loggedIn=true')}>
-        <LoginProvider loginServiceUrl='https://mock.it' baseUrl='https://mock.it'>
-          ChildrenHere
-        </LoginProvider>
-      </Router>,
-      container
-    );
+    act(() => {
+      render(
+        <Router history={mockHistory('/page?loggedIn=true')}>
+          <LoginProvider loginServiceUrl='https://mock.it' baseUrl='https://mock.it'>
+            ChildrenHere
+          </LoginProvider>
+        </Router>,
+        container
+      );
+    });
 
     waitFor(() => {
       expect(container).toContainHTML('tilgangsfeil-side');
@@ -157,14 +159,16 @@ describe('LoginContext', () => {
 
     MockDate.set('2020-01-23T08:28:57.125+0000');
 
-    render(
-      <Router history={mockHistory('/page?loggedIn=true')}>
-        <LoginProvider loginServiceUrl='https://mock.it' baseUrl='https://mock.it'>
-          ChildrenHere
-        </LoginProvider>
-      </Router>,
-      container
-    );
+    act(() => {
+      render(
+        <Router history={mockHistory('/page?loggedIn=true')}>
+          <LoginProvider loginServiceUrl='https://mock.it' baseUrl='https://mock.it'>
+            ChildrenHere
+          </LoginProvider>
+        </Router>,
+        container
+      );
+    });
 
     waitFor(() => {
       expect(container).toContainHTML('login-redirect');
@@ -197,14 +201,16 @@ describe('LoginContext', () => {
     mockFetch(500, undefined);
     MockDate.set('2020-01-23T08:29:57.125+0000');
 
-    render(
-      <Router history={mockHistory('/page')}>
-        <LoginProvider loginServiceUrl='https://mock.it' baseUrl='https://mock.it'>
-          ChildrenHere
-        </LoginProvider>
-      </Router>,
-      container
-    );
+    act(() => {
+      render(
+        <Router history={mockHistory('/page')}>
+          <LoginProvider loginServiceUrl='https://mock.it' baseUrl='https://mock.it'>
+            ChildrenHere
+          </LoginProvider>
+        </Router>,
+        container
+      );
+    });
 
     waitFor(() => {
       expect(container).toContainHTML('login-redirect');
