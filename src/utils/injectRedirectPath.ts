@@ -1,22 +1,9 @@
 import env from '../environment';
 
-function injectRedirectPath(injectedPath: string, clean: string = ''): string {
-  let url = new URL(env.loginServiceUrl);
-  let params = new URLSearchParams(url.search);
-  let redirect = params.get('redirect');
-  debugger;
-  if (!!clean) {
-    injectedPath = injectedPath.replace(clean, '');
-  }
+function injectRedirectPath(injectedPath: string): string {
+  const host = window.location.origin;
 
-  const redirectParts = redirect?.split('?');
-
-  const redir =
-    redirectParts && redirectParts?.length > 1 ? redirectParts[0] + injectedPath + '?' + redirectParts[1] : redirect;
-
-  params.set('redirect', redir || redirect + '');
-
-  return url.href + '?' + params.toString();
+  return env.loginServiceUrl.replace('XXX', host + injectedPath);
 }
 
 export default injectRedirectPath;

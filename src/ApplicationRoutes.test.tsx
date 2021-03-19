@@ -41,7 +41,7 @@ describe('ApplicationRoutes', () => {
     act(() => {
       render(makeRoute('/token-fornyet'), container);
     });
-    expect(container.textContent).toContain('TokenFornyet');
+    expect(container.textContent).toContain('Innloggingen er fornyet');
   });
 
   it('should show bulkinnsending', () => {
