@@ -31,4 +31,10 @@ describe('parseDato', () => {
     expect(parseDato('01.00.2020').error).not.toBeUndefined();
     expect(parseDato('35.01.2020').error).not.toBeUndefined();
   });
+
+  it('should parse dato to correct value', () => {
+    expect(parseDato('01.01.2021').value).toBe('01.01.2021');
+    expect(parseDato('31.01.2021').value).toBe('31.01.2021');
+    expect(parseDato('32.01.2020').value).toBe('32.01.2020');
+  });
 });
