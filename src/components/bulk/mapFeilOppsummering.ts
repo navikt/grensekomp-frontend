@@ -1,5 +1,5 @@
 import BulkState from './BulkState';
-import { pushFeilmelding } from '../../validation/pushFeilmelding';
+import { pushFeilmelding } from '../felles/Feilmeldingspanel/pushFeilmelding';
 import { FeiloppsummeringFeil } from 'nav-frontend-skjema';
 
 const mapFeilOppsummering = (state: BulkState): FeiloppsummeringFeil[] => {
