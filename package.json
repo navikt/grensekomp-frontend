@@ -7,7 +7,7 @@
     "start:js": "BROWSER=firefox react-scripts start --development",
     "build:js": "react-scripts build",
     "dev": "npm-run-all -p start:*",
-    "build": "npm run build:css && npm run build:js",
+    "build": "npm run build:js",
     "test": "react-scripts test --color --watchAll=false --coverage --env=jest-environment-jsdom-sixteen",
     "lint": "eslint src/**/*.ts*",
     "lint:fix": "eslint src/**/*.ts* --fix",
