@@ -2,7 +2,7 @@ import React, { useEffect, useReducer } from 'react';
 import { Column, Row } from 'nav-frontend-grid';
 import ServerFeilAdvarsel from '../felles/ServerFeilAdvarsel';
 import Panel from 'nav-frontend-paneler';
-import { Ingress } from 'nav-frontend-typografi';
+import { Ingress, Element, Normaltekst } from 'nav-frontend-typografi';
 import Skillelinje from '../felles/Skillelinje';
 import { Input, Select, SkjemaGruppe } from 'nav-frontend-skjema';
 import Fnr from '../felles/Fnr';
@@ -116,132 +116,147 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
               <Panel>
                 <SkjemaGruppe aria-live='polite' legend='Oppgi ansatte, fraværsperiode og beløp'>
                   {state.items?.map((item, index) => (
-                    <Row key={item.uniqueKey} className='bulk-innsending__rad'>
+                    <Row key={item.uniqueKey} className={`bulk-innsending__rad ${index % 2 ? 'odd' : 'even'}`}>
                       <Column md='1' className='bulk-kolonne-1'>
-                        <b className='skjemaelement__label'>Nr.</b>
+                        <Element>Nr.</Element>
                         <RadNr nr={index + 1} />
                       </Column>
-                      <Column md='2' className='bulk-kolonne-2'>
-                        <Fnr
-                          id={'fnr_' + item.uniqueKey}
-                          fnr={item.fnr}
-                          label='Fødsels-/D-nummer'
-                          placeholder='11 siffer'
-                          feilmelding={item.fnrError}
-                          disabled={item.accepted}
-                          onChange={(event) => {
-                            dispatch({
-                              type: Actions.Fnr,
-                              payload: {
-                                itemId: item.uniqueKey,
-                                fnr: event
-                              }
-                            });
-                          }}
-                        />
-                      </Column>
-                      <Column md='2' className='bulk-kolonne-3'>
-                        <Select label='Bostedsland'>
-                          <option value=''>Velg land</option>
-                          {lande.map((land) => (
-                            <option key={land.iso3}>{land.navn}</option>
-                          ))}
-                        </Select>
-                      </Column>
-                      <Column md='2' className='bulk-kolonne-3'>
-                        <DatoVelger
-                          id={'fom_' + item.uniqueKey}
-                          dato={toDate(item.fom)}
-                          feilmelding={item.fomError}
-                          label='Fra'
-                          placeholder='dd.mm.åå'
-                          minDate={minDate}
-                          maxDate={maxDate}
-                          className='input--fullbredde'
-                          onChange={(dato) => {
-                            dispatch({
-                              type: Actions.Fra,
-                              payload: {
-                                itemId: item.uniqueKey,
-                                fra: dato
-                              }
-                            });
-                          }}
-                        />
-                      </Column>
-                      <Column md='2' className='bulk-kolonne-4'>
-                        <DatoVelger
-                          id={'tom_' + item.uniqueKey}
-                          dato={toDate(item.tom)}
-                          feilmelding={item.tomError}
-                          label='Til'
-                          placeholder='dd.mm.åå'
-                          minDate={minDate}
-                          maxDate={maxDate}
-                          className='input--fullbredde'
-                          onChange={(dato) => {
-                            dispatch({
-                              type: Actions.Til,
-                              payload: {
-                                itemId: item.uniqueKey,
-                                til: dato
-                              }
-                            });
-                          }}
-                        />
-                      </Column>
-                      <Column md='2' className='bulk-kolonne-5'>
-                        <Input
-                          id={'dager_' + item.uniqueKey}
-                          label={<DagerHjelpeLabel />}
-                          placeholder='Antall'
-                          feil={item.dagerError}
-                          value={item.dager}
-                          disabled={item.accepted}
-                          onChange={(event) => {
-                            dispatch({
-                              type: Actions.Dager,
-                              payload: {
-                                itemId: item.uniqueKey,
-                                dager: event.currentTarget.value
-                              }
-                            });
-                          }}
-                        />
-                      </Column>
-                      <Column md='2' className='bulk-kolonne-6'>
-                        <Input
-                          id={'beloep_' + item.uniqueKey}
-                          label={<BeloepHjelpeLabel />}
-                          placeholder='Kr'
-                          feil={item.beloepError}
-                          value={item.beloep}
-                          disabled={item.accepted}
-                          onChange={(event) => {
-                            dispatch({
-                              type: Actions.Beloep,
-                              payload: {
-                                itemId: item.uniqueKey,
-                                beloep: event.currentTarget.value
-                              }
-                            });
-                          }}
-                        />
-                      </Column>
-                      <Column md='1' className='bulk-kolonne-7'>
-                        {showDeleteButton && (
-                          <Slettknapp
-                            disabled={item.accepted}
-                            onClick={(event) => {
-                              dispatch({
-                                type: Actions.DeleteItem,
-                                payload: {
-                                  itemId: item.uniqueKey
-                                }
-                              });
-                            }}
-                          />
-                        )}
+                      <Column md='11'>
+                        <Row>
+                          <Column md='2' className='bulk-kolonne-2'>
+                            <Fnr
+                              id={'fnr_' + item.uniqueKey}
+                              fnr={item.fnr}
+                              label='Fødsels-/D-nummer'
+                              placeholder='11 siffer'
+                              feilmelding={item.fnrError}
+                              disabled={item.accepted}
+                              onChange={(event) => {
+                                dispatch({
+                                  type: Actions.Fnr,
+                                  payload: {
+                                    itemId: item.uniqueKey,
+                                    fnr: event
+                                  }
+                                });
+                              }}
+                            />
+                          </Column>
+                          <Column md='9'>Landvelger</Column>
+                          <Column md='1' className='bulk-kolonne-8'>
+                            {showDeleteButton && (
+                              <Slettknapp
+                                disabled={item.accepted}
+                                onClick={(event) => {
+                                  dispatch({
+                                    type: Actions.DeleteItem,
+                                    payload: {
+                                      itemId: item.uniqueKey
+                                    }
+                                  });
+                                }}
+                              />
+                            )}
+                          </Column>
+                        </Row>
+                        <Row>
+                          <Column md='2' className='bulk-kolonne-3'>
+                            <Select label='Bostedsland'>
+                              <option value=''>Velg land</option>
+                              {lande.map((land) => (
+                                <option key={land.iso3}>{land.navn}</option>
+                              ))}
+                            </Select>
+                          </Column>
+                          <Column md='2' className='bulk-kolonne-3'>
+                            <DatoVelger
+                              id={'fom_' + item.uniqueKey}
+                              dato={toDate(item.fom)}
+                              feilmelding={item.fomError}
+                              label='Fra'
+                              placeholder='dd.mm.åå'
+                              minDate={minDate}
+                              maxDate={maxDate}
+                              className='input--fullbredde'
+                              onChange={(dato) => {
+                                dispatch({
+                                  type: Actions.Fra,
+                                  payload: {
+                                    itemId: item.uniqueKey,
+                                    fra: dato
+                                  }
+                                });
+                              }}
+                            />
+                          </Column>
+                          <Column md='2' className='bulk-kolonne-4'>
+                            <DatoVelger
+                              id={'tom_' + item.uniqueKey}
+                              dato={toDate(item.tom)}
+                              feilmelding={item.tomError}
+                              label='Til'
+                              placeholder='dd.mm.åå'
+                              minDate={minDate}
+                              maxDate={maxDate}
+                              className='input--fullbredde'
+                              onChange={(dato) => {
+                                dispatch({
+                                  type: Actions.Til,
+                                  payload: {
+                                    itemId: item.uniqueKey,
+                                    til: dato
+                                  }
+                                });
+                              }}
+                            />
+                          </Column>
+                          <Column md='2' className='bulk-kolonne-5'>
+                            <Input
+                              id={'dager_' + item.uniqueKey}
+                              label={<DagerHjelpeLabel />}
+                              placeholder='Antall'
+                              feil={item.dagerError}
+                              value={item.dager}
+                              disabled={item.accepted}
+                              onChange={(event) => {
+                                dispatch({
+                                  type: Actions.Dager,
+                                  payload: {
+                                    itemId: item.uniqueKey,
+                                    dager: event.currentTarget.value
+                                  }
+                                });
+                              }}
+                            />
+                          </Column>
+                          <Column md='2' className='bulk-kolonne-6'>
+                            <Input
+                              id={'beloep_' + item.uniqueKey}
+                              label={<BeloepHjelpeLabel />}
+                              placeholder='Kr'
+                              feil={item.beloepError}
+                              value={item.beloep}
+                              disabled={item.accepted}
+                              onChange={(event) => {
+                                dispatch({
+                                  type: Actions.Beloep,
+                                  payload: {
+                                    itemId: item.uniqueKey,
+                                    beloep: event.currentTarget.value
+                                  }
+                                });
+                              }}
+                            />
+                          </Column>
+                          <Column md='3' className='bulk-kolonne-7'>
+                            <Element>Foreløpig beregnet refusjon</Element>
+                            <div>
+                              <Normaltekst>
+                                {item.beloep && item.dager ? `kr. ${Number(item.dager) * Number(item.beloep)}` : ''}
+                              </Normaltekst>
+                            </div>
+                          </Column>
+                        </Row>
                       </Column>
                     </Row>
                   ))}
