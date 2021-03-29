@@ -26,4 +26,6 @@ export default interface BulkState extends ValidationState {
   orgnrError?: string;
   bekreft?: boolean;
   bekreftError?: string;
+  land?: string;
+  landError?: string;
 }
