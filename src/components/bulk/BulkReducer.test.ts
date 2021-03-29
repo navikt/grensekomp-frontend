@@ -128,8 +128,28 @@ describe('BulkReducer', () => {
         itemId: '1'
       }
     });
-
     expect(state.items.find((item) => item.uniqueKey === '1')!.beloep).toEqual('3');
+  });
+
+  it('should set land', () => {
+    let state = BulkReducer(defaultBulkState(), {
+      type: Actions.Land,
+      payload: {
+        land: 'usa',
+        itemId: '1'
+      }
+    });
+    expect(state.items.find((item) => item.uniqueKey === '1')!.land).toEqual('usa');
+  });
+
+  it('should set land to empty', () => {
+    let state = BulkReducer(defaultBulkState(), {
+      type: Actions.Land,
+      payload: {
+        itemId: '1'
+      }
+    });
+    expect(state.items.find((item) => item.uniqueKey === '1')!.land).toBeUndefined();
   });
 
   it('should set the kvittering', () => {

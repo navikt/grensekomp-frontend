@@ -8,7 +8,7 @@ export enum Actions {
   Til,
   Dager,
   Beloep,
-  Dokumentasjon,
+  Land,
   Bekreft,
   Validate,
   Progress,

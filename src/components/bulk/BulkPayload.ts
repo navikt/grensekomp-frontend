@@ -7,12 +7,11 @@ export interface BulkPayload {
   til?: Date;
   dager?: string;
   beloep?: string;
+  land?: string;
   itemId?: string;
-  videre?: boolean;
   bekreft?: boolean;
   progress?: boolean;
   kvittering?: boolean;
-  dokumentasjon?: string;
   response?: BulkValidationResponse; // ValidationResponse;
   grunnbeloep?: number;
   kontrollDager?: number;
