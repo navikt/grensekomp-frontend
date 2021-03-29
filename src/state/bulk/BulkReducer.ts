@@ -2,8 +2,8 @@ import BulkState, { defaultBulkState } from './BulkState';
 import { Actions, BulkActions } from './BulkActions';
 import { v4 as uuid } from 'uuid';
 import validateBulk from './validateBulk';
-import mapBulkValidationResponse from './mapBulkValidationResponse';
-import mapFeilOppsummeringsFeil from './mapFeilOppsummering';
+import mapBulkValidationResponse from '../../components/bulk/mapBulkValidationResponse';
+import mapFeilOppsummeringsFeil from '../../components/bulk/mapFeilOppsummering';
 import HttpStatus from '../../api/HttpStatus';
 import { toDato } from '../../utils/dato/toDato';
 
