@@ -7,6 +7,7 @@ import validateFra from '../../validation/validateFra';
 import validateBeloep from '../../validation/validateBeloep';
 import validateDager from '../../validation/validateDager';
 import { validateOrgnr } from '../../validation/validateOrgnr';
+import validateLand from '../../validation/validateLand';
 
 const validateBulk = (state: BulkState): BulkState => {
   if (!state.validated) {
@@ -23,6 +24,7 @@ const validateBulk = (state: BulkState): BulkState => {
     item.tomError = validateTil(item.fom, item.tom, state.validated);
     item.dagerError = validateDager(item.dager, 1000, state.validated, item.fom, item.tom);
     item.beloepError = validateBeloep(item.beloep, 1000000, state.validated);
+    item.landError = validateLand(item.land, state.validated);
 
     if (item.fnrError) {
       pushFeilmelding('fnr_' + item.uniqueKey, RAD_FEIL + item.fnrError, feilmeldinger);
@@ -38,6 +40,10 @@ const validateBulk = (state: BulkState): BulkState => {
     }
     if (item.beloepError) {
       pushFeilmelding('beloep_' + item.uniqueKey, RAD_FEIL + item.beloepError, feilmeldinger);
+    }
+
+    if (item.landError) {
+      pushFeilmelding('land_' + item.uniqueKey, RAD_FEIL + item.landError, feilmeldinger);
     }
   });
 
