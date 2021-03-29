@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flatknapp } from 'nav-frontend-knapper';
+import { Fareknapp } from 'nav-frontend-knapper';
 import './Slettknapp.sass';
 
 const DeleteIcon = () => (
@@ -18,10 +18,10 @@ interface SlettknappProps {
 
 const Slettknapp = ({ onClick, disabled }: SlettknappProps) => {
   return (
-    <Flatknapp onClick={onClick} className={'slett-knapp'} disabled={disabled}>
+    <Fareknapp onClick={onClick} className={'slett-knapp'} disabled={disabled}>
       <DeleteIcon />
       &nbsp;Slett
-    </Flatknapp>
+    </Fareknapp>
   );
 };
 
