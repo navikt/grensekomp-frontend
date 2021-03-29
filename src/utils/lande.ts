@@ -9,7 +9,6 @@ const lande: Land[] = [
   { navn: 'Irland', iso3: 'IRL' },
   { navn: 'Island', iso3: 'ISL' },
   { navn: 'Italia', iso3: 'ITA' },
-  { navn: 'Kroatia', iso3: 'ITA' },
   { navn: 'Kroatia', iso3: 'HRV' },
   { navn: 'Kypros', iso3: 'CYP' },
   { navn: 'Latvia', iso3: 'LVA' },
