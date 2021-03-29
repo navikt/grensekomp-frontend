@@ -38,7 +38,8 @@ describe('mapBulkRequest', () => {
           fom: unimportantMockDate,
           tom: unimportantMockDate,
           dager: '1',
-          beloep: '123'
+          beloep: '123',
+          land: 'SWE'
         },
         {
           uniqueKey: '2',
@@ -46,14 +47,16 @@ describe('mapBulkRequest', () => {
           fom: unimportantMockDate,
           tom: unimportantMockDate,
           dager: '1',
-          beloep: '123'
+          beloep: '123',
+          land: 'SWE'
         },
         {
           uniqueKey: '3',
           fom: unimportantMockDate,
           tom: unimportantMockDate,
           dager: '1',
-          beloep: '123'
+          beloep: '123',
+          land: 'SWE'
         },
         {
           uniqueKey: '4',
@@ -61,14 +64,16 @@ describe('mapBulkRequest', () => {
           fom: unimportantMockDate,
           tom: unimportantMockDate,
           dager: '1',
-          beloep: '123'
+          beloep: '123',
+          land: 'SWE'
         },
         {
           uniqueKey: '5',
           accepted: false,
           fnr: '1234',
           fom: unimportantMockDate,
-          tom: unimportantMockDate
+          tom: unimportantMockDate,
+          land: 'SWE'
         }
       ],
       bekreft: true
@@ -83,6 +88,7 @@ describe('mapBulkRequest', () => {
           fom: '2020-01-01',
           tom: '2020-01-01'
         },
+        land: 'SWE',
         virksomhetsnummer: '1234',
         bekreftet: true
       },
@@ -94,6 +100,7 @@ describe('mapBulkRequest', () => {
           fom: '2020-01-01',
           tom: '2020-01-01'
         },
+        land: 'SWE',
         virksomhetsnummer: '1234',
         bekreftet: true
       },
@@ -105,6 +112,7 @@ describe('mapBulkRequest', () => {
           fom: '2020-01-01',
           tom: '2020-01-01'
         },
+        land: 'SWE',
         virksomhetsnummer: '1234',
         bekreftet: true
       }

@@ -7,6 +7,7 @@ interface Ansatt {
     antallDagerMedRefusjon: number;
     beloep: number;
   };
+  land: string;
   bekreftet: boolean;
 }
 
