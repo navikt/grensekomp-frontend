@@ -20,6 +20,8 @@ const lande: Land[] = [
   { navn: 'Polen', iso3: 'POL' },
   { navn: 'Portugal', iso3: 'PRT' },
   { navn: 'Romania', iso3: 'ROU' },
+  { navn: 'Slovakia', iso3: 'SVK' },
+  { navn: 'Slovenia', iso3: 'SVN' },
   { navn: 'Spania', iso3: 'ESP' },
   { navn: 'Storbritannia og Nord-Irland', iso3: 'GBR' },
   { navn: 'Sveits', iso3: 'CHE' },
