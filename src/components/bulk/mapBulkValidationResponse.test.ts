@@ -1,6 +1,6 @@
 import testValidationResponse from '../../mockData/testValidationResponse';
 import mapBulkValidationResponse from './mapBulkValidationResponse';
-import BulkState from './BulkState';
+import BulkState from '../../state/bulk/BulkState';
 
 describe('mapBulkValidationResponse', () => {
   it('should map correctly', () => {

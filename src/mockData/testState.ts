@@ -1,4 +1,4 @@
-import BulkState from '../components/bulk/BulkState';
+import BulkState from '../state/bulk/BulkState';
 import { parseDato } from '../utils/dato/parseDato';
 
 const testState: BulkState = {

@@ -1,6 +1,6 @@
 import BulkRequest from './BulkRequest';
-import BulkState from '../../components/bulk/BulkState';
-import BulkItem from '../../components/bulk/BulkItem';
+import BulkState from '../../state/bulk/BulkState';
+import BulkItem from '../../state/bulk/BulkItem';
 import Ansatt from './Ansatt';
 import findNotAccepted from '../../components/bulk/findNotAccepted';
 import { toString } from '../../utils/dato/toString';

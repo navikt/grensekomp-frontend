@@ -1,6 +1,6 @@
 import BulkState from './BulkState';
 import { FeiloppsummeringFeil } from 'nav-frontend-skjema';
-import { pushFeilmelding } from '../felles/Feilmeldingspanel/pushFeilmelding';
+import { pushFeilmelding } from '../../components/felles/Feilmeldingspanel/pushFeilmelding';
 import { validateFnr } from '../../validation/validateFnr';
 import validateTil from '../../validation/validateTil';
 import validateFra from '../../validation/validateFra';

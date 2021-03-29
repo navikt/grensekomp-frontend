@@ -1,4 +1,4 @@
-import BulkState from './BulkState';
+import BulkState from '../../state/bulk/BulkState';
 import { pushFeilmelding } from '../felles/Feilmeldingspanel/pushFeilmelding';
 import { FeiloppsummeringFeil } from 'nav-frontend-skjema';
 
