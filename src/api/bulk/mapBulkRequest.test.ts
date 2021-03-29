@@ -88,7 +88,7 @@ describe('mapBulkRequest', () => {
           fom: '2020-01-01',
           tom: '2020-01-01'
         },
-        land: 'SWE',
+        bostedsland: 'SWE',
         virksomhetsnummer: '1234',
         bekreftet: true
       },
@@ -100,7 +100,7 @@ describe('mapBulkRequest', () => {
           fom: '2020-01-01',
           tom: '2020-01-01'
         },
-        land: 'SWE',
+        bostedsland: 'SWE',
         virksomhetsnummer: '1234',
         bekreftet: true
       },
@@ -112,7 +112,7 @@ describe('mapBulkRequest', () => {
           fom: '2020-01-01',
           tom: '2020-01-01'
         },
-        land: 'SWE',
+        bostedsland: 'SWE',
         virksomhetsnummer: '1234',
         bekreftet: true
       }
