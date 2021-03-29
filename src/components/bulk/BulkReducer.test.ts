@@ -135,11 +135,11 @@ describe('BulkReducer', () => {
     let state = BulkReducer(defaultBulkState(), {
       type: Actions.Land,
       payload: {
-        land: 'us',
+        land: 'usa',
         itemId: '1'
       }
     });
-    expect(state.items.find((item) => item.uniqueKey === '1')!.land).toEqual('us');
+    expect(state.items.find((item) => item.uniqueKey === '1')!.land).toEqual('usa');
   });
 
   it('should set land to empty', () => {
