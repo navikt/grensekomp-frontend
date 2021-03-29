@@ -1,4 +1,4 @@
-import BulkItem from './BulkItem';
+import BulkItem from '../../state/bulk/BulkItem';
 
 const findNotAccepted = (items: BulkItem[]): BulkItem[] => items.filter((i) => i.accepted !== true);
 

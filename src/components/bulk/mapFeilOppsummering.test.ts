@@ -1,4 +1,4 @@
-import BulkState from './BulkState';
+import BulkState from '../../state/bulk/BulkState';
 import mapFeilOppsummering from './mapFeilOppsummering';
 
 describe('mapFeilOppsummering', () => {

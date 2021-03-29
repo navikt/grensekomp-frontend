@@ -1,4 +1,4 @@
-import BulkState from './BulkState';
+import BulkState from '../../state/bulk/BulkState';
 import BulkValidationResponse from '../../api/bulk/BulkValidationResponse';
 import findNotAccepted from './findNotAccepted';
 import BulkValidationStatus from '../../api/bulk/BulkValidationStatus';
