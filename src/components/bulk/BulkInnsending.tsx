@@ -4,7 +4,7 @@ import ServerFeilAdvarsel from '../felles/ServerFeilAdvarsel';
 import Panel from 'nav-frontend-paneler';
 import { Ingress } from 'nav-frontend-typografi';
 import Skillelinje from '../felles/Skillelinje';
-import { Input, SkjemaGruppe } from 'nav-frontend-skjema';
+import { Input, Select, SkjemaGruppe } from 'nav-frontend-skjema';
 import Fnr from '../felles/Fnr';
 import { DatoVelger } from '@navikt/helse-arbeidsgiver-felles-frontend';
 import '@navikt/helse-arbeidsgiver-felles-frontend/src/components/DatoVelger.css';
@@ -31,6 +31,7 @@ import { Hovedknapp } from 'nav-frontend-knapper';
 import BeloepHjelpeLabel from './BeloepHjelpeLabel';
 import DagerHjelpeLabel from './DagerHjelpeLabel';
 import { toDate } from '../../utils/dato/toDate';
+import lande from '../../utils/lande';
 
 interface BulkInnsendingProps {
   state?: BulkState;
@@ -138,6 +139,14 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                             });
                           }}
                         />
+                      </Column>
+                      <Column md='2' className='bulk-kolonne-3'>
+                        <Select label='Bostedsland'>
+                          <option value=''>Velg land</option>
+                          {lande.map((land) => (
+                            <option key={land.iso3}>{land.navn}</option>
+                          ))}
+                        </Select>
                       </Column>
                       <Column md='2' className='bulk-kolonne-3'>
                         <DatoVelger
