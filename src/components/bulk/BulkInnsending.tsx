@@ -144,7 +144,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           </Column>
                           <Column md='4'>
                             <Select label='Bostedsland'>
-                              <option value=''>Velg land</option>
+                              <option value=''>Velg land:</option>
                               {lande.map((land) => (
                                 <option key={land.iso3}>{land.navn}</option>
                               ))}
