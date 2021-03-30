@@ -1,4 +1,4 @@
-const lande: Land[] = [
+const land: Land[] = [
   { navn: 'Belgia', iso3: 'BEL' },
   { navn: 'Bulgaria', iso3: 'BGR' },
   { navn: 'Danmark', iso3: 'DNK' },
@@ -37,4 +37,4 @@ interface Land {
   iso3: string;
 }
 
-export default lande;
+export default land;

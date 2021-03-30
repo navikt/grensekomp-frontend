@@ -31,7 +31,7 @@ import { Hovedknapp } from 'nav-frontend-knapper';
 import BeloepHjelpeLabel from './BeloepHjelpeLabel';
 import DagerHjelpeLabel from './DagerHjelpeLabel';
 import { toDate } from '../../utils/dato/toDate';
-import lande from '../../utils/lande';
+import land from '../../utils/land';
 
 interface BulkInnsendingProps {
   state?: BulkState;
@@ -145,7 +145,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           <Column md='4'>
                             <Select label='Bostedsland'>
                               <option value=''>Velg land:</option>
-                              {lande.map((land) => (
+                              {land.map((land) => (
                                 <option key={land.iso3}>{land.navn}</option>
                               ))}
                             </Select>
