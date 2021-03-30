@@ -142,7 +142,14 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               }}
                             />
                           </Column>
-                          <Column md='9'>Landvelger</Column>
+                          <Column md='4'>
+                            <Select label='Bostedsland'>
+                              <option value=''>Velg land</option>
+                              {lande.map((land) => (
+                                <option key={land.iso3}>{land.navn}</option>
+                              ))}
+                            </Select>
+                          </Column>
                           <Column md='1' className='bulk-kolonne-8'>
                             {showDeleteButton && (
                               <Slettknapp
@@ -160,14 +167,6 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           </Column>
                         </Row>
                         <Row>
-                          <Column md='2' className='bulk-kolonne-3'>
-                            <Select label='Bostedsland'>
-                              <option value=''>Velg land</option>
-                              {lande.map((land) => (
-                                <option key={land.iso3}>{land.navn}</option>
-                              ))}
-                            </Select>
-                          </Column>
                           <Column md='2' className='bulk-kolonne-3'>
                             <DatoVelger
                               id={'fom_' + item.uniqueKey}
