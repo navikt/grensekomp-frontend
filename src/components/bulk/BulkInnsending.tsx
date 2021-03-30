@@ -31,6 +31,7 @@ import { Hovedknapp } from 'nav-frontend-knapper';
 import BeloepHjelpeLabel from './BeloepHjelpeLabel';
 import DagerHjelpeLabel from './DagerHjelpeLabel';
 import { toDate } from '../../utils/dato/toDate';
+import formatNumberAsCurrency from '../../utils/formatNumberAsCurrency';
 
 interface BulkInnsendingProps {
   state?: BulkState;
@@ -117,9 +118,10 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                   {state.items?.map((item, index) => (
                     <Row key={item.uniqueKey} className={`bulk-innsending__rad ${index % 2 ? 'odd' : 'even'}`}>
                       <Column md='1' className='bulk-kolonne-1'>
-                        <Element>Nr.</Element>
+                        <Element>{index === 0 ? 'Nr.' : '\u00A0'}</Element>
                         <RadNr nr={index + 1} />
                       </Column>
+
                       <Column md='11'>
                         <Row>
                           <Column md='2' className='bulk-kolonne-2'>
@@ -242,8 +244,12 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           <Column md='3' className='bulk-kolonne-7'>
                             <Element>Foreløpig beregnet refusjon</Element>
                             <div>
-                              <Normaltekst>
-                                {item.beloep && item.dager ? `kr. ${Number(item.dager) * Number(item.beloep)}` : ''}
+                              <Normaltekst className='beregnet-refusjon'>
+                                {item.beloep && item.dager
+                                  ? `${formatNumberAsCurrency(
+                                      Number(item.dager) * Number(item.beloep.replace(',', '.'))
+                                    )}`
+                                  : ''}
                               </Normaltekst>
                             </div>
                           </Column>
