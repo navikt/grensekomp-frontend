@@ -4,7 +4,7 @@ import ServerFeilAdvarsel from '../felles/ServerFeilAdvarsel';
 import Panel from 'nav-frontend-paneler';
 import { Ingress, Element, Normaltekst } from 'nav-frontend-typografi';
 import Skillelinje from '../felles/Skillelinje';
-import { Input, SkjemaGruppe } from 'nav-frontend-skjema';
+import { Input, Select, SkjemaGruppe } from 'nav-frontend-skjema';
 import Fnr from '../felles/Fnr';
 import { DatoVelger } from '@navikt/helse-arbeidsgiver-felles-frontend';
 import '@navikt/helse-arbeidsgiver-felles-frontend/src/components/DatoVelger.css';
@@ -31,6 +31,7 @@ import { Hovedknapp } from 'nav-frontend-knapper';
 import BeloepHjelpeLabel from './BeloepHjelpeLabel';
 import DagerHjelpeLabel from './DagerHjelpeLabel';
 import { toDate } from '../../utils/dato/toDate';
+import land from '../../utils/land';
 import formatNumberAsCurrency from '../../utils/formatNumberAsCurrency';
 
 interface BulkInnsendingProps {
@@ -143,7 +144,14 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               }}
                             />
                           </Column>
-                          <Column md='9'>Landvelger</Column>
+                          <Column md='4'>
+                            <Select label='Bostedsland'>
+                              <option value=''>Velg land:</option>
+                              {land.map((enhet) => (
+                                <option key={enhet.iso3}>{enhet.navn}</option>
+                              ))}
+                            </Select>
+                          </Column>
                           <Column md='1' className='bulk-kolonne-8'>
                             {showDeleteButton && (
                               <Slettknapp
