@@ -146,6 +146,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           </Column>
                           <Column md='4'>
                             <Select
+                              id={'land_' + item.uniqueKey}
                               feil={item.landError}
                               label='Bostedsland'
                               onChange={(event) => {
