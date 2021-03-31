@@ -31,7 +31,7 @@ import { Hovedknapp } from 'nav-frontend-knapper';
 import BeloepHjelpeLabel from './BeloepHjelpeLabel';
 import DagerHjelpeLabel from './DagerHjelpeLabel';
 import { toDate } from '../../utils/dato/toDate';
-import land from '../../utils/land';
+import landListe from '../../utils/landListe';
 import formatNumberAsCurrency from '../../utils/formatNumberAsCurrency';
 
 interface BulkInnsendingProps {
@@ -145,11 +145,26 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                             />
                           </Column>
                           <Column md='4'>
-                            <Select label='Bostedsland'>
-                              <option value=''>Velg land:</option>
-                              {land.map((enhet) => (
-                                <option key={enhet.iso3}>{enhet.navn}</option>
+                            <Select
+                              feil={item.landError}
+                              label='Bostedsland'
+                              onChange={(event) => {
+                                dispatch({
+                                  type: Actions.Land,
+                                  payload: {
+                                    itemId: item.uniqueKey,
+                                    land: event.target.value
+                                  }
+                                });
+                              }}
+                            >
+                              <option>Velg land:</option>
+                              {landListe.map((enhet) => (
+                                <option value={enhet.iso3} key={enhet.iso3}>
+                                  {enhet.navn}
+                                </option>
                               ))}
+                              <option>Øvrige land</option>
                             </Select>
                           </Column>
                           <Column md='1' className='bulk-kolonne-8'>
