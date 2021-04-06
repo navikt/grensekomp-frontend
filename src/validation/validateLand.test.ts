@@ -7,7 +7,7 @@ describe('validateLand', () => {
   });
 
   it('should verify valid when required', () => {
-    expect(validateLand('usa', true)).toBeUndefined();
+    expect(validateLand('DNK', true)).toBeUndefined();
   });
 
   it('should verify valid when not required', () => {
