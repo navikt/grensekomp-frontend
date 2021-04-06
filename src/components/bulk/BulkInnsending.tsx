@@ -33,6 +33,7 @@ import DagerHjelpeLabel from './DagerHjelpeLabel';
 import { toDate } from '../../utils/dato/toDate';
 import landListe from '../../utils/landListe';
 import formatNumberAsCurrency from '../../utils/formatNumberAsCurrency';
+import Bostedland from './Bostedland';
 
 interface BulkInnsendingProps {
   state?: BulkState;
@@ -145,28 +146,21 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                             />
                           </Column>
                           <Column md='4'>
-                            <Select
+                            <Bostedland
                               id={'land_' + item.uniqueKey}
-                              feil={item.landError}
-                              label='Bostedsland'
+                              label='Fødsels-/D-nummer'
+                              feilmelding={item.landError}
+                              disabled={item.accepted}
                               onChange={(event) => {
                                 dispatch({
                                   type: Actions.Land,
                                   payload: {
                                     itemId: item.uniqueKey,
-                                    land: event.target.value
+                                    land: event
                                   }
                                 });
                               }}
-                            >
-                              <option>Velg land:</option>
-                              {landListe.map((enhet) => (
-                                <option value={enhet.iso3} key={enhet.iso3}>
-                                  {enhet.navn}
-                                </option>
-                              ))}
-                              <option>Øvrige land</option>
-                            </Select>
+                            />
                           </Column>
                           <Column md='1' className='bulk-kolonne-8'>
                             {showDeleteButton && (
