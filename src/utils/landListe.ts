@@ -1,3 +1,5 @@
+import Land from './Land';
+
 const landListe: Land[] = [
   { navn: 'Belgia', iso3: 'BEL' },
   { navn: 'Bulgaria', iso3: 'BGR' },
@@ -31,10 +33,5 @@ const landListe: Land[] = [
   { navn: 'Ungarn', iso3: 'HUN' },
   { navn: 'Østerrike', iso3: 'AUT' }
 ];
-
-export interface Land {
-  navn: string;
-  iso3: string;
-}
 
 export default landListe;
