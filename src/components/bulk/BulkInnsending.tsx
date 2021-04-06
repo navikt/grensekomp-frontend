@@ -31,9 +31,9 @@ import { Hovedknapp } from 'nav-frontend-knapper';
 import BeloepHjelpeLabel from './BeloepHjelpeLabel';
 import DagerHjelpeLabel from './DagerHjelpeLabel';
 import { toDate } from '../../utils/dato/toDate';
-import landListe from '../../utils/landListe';
+import landListe from './Bostedland/landListe';
 import formatNumberAsCurrency from '../../utils/formatNumberAsCurrency';
-import Bostedland from './Bostedland';
+import Bostedland from './Bostedland/Bostedland';
 
 interface BulkInnsendingProps {
   state?: BulkState;
@@ -148,7 +148,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           <Column md='4'>
                             <Bostedland
                               id={'land_' + item.uniqueKey}
-                              label='Fødsels-/D-nummer'
+                              label='Bostedland'
                               feilmelding={item.landError}
                               disabled={item.accepted}
                               onChange={(event) => {
