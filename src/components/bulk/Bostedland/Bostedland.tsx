@@ -1,6 +1,6 @@
 import React from 'react';
 import { Select } from 'nav-frontend-skjema';
-import landListe from '../../utils/landListe';
+import landListe from './landListe';
 
 interface BostedlandProps {
   label: string;

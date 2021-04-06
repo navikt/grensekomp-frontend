@@ -1,4 +1,4 @@
-import landListe from '../utils/landListe';
+import landListe from '../components/bulk/Bostedland/landListe';
 
 const validateLand = (land: string | undefined, required: boolean = false): string | undefined => {
   if (land === undefined || land.length === 0 || land === 'Velg land:') {
