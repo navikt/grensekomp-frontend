@@ -2,7 +2,7 @@ import BulkState from '../../state/bulk/BulkState';
 import mapFeilOppsummering from './mapFeilOppsummering';
 
 describe('mapFeilOppsummering', () => {
-  it('should', () => {
+  it('should map correctly', () => {
     const state = {
       orgnrError: 'feil_orgnr',
       items: [
@@ -12,7 +12,8 @@ describe('mapFeilOppsummering', () => {
           fomError: 'Feil1_fom',
           tomError: 'Feil1_tom',
           dagerError: 'Feil1_dager',
-          beloepError: 'Feil1_beloep'
+          beloepError: 'Feil1_beloep',
+          genericError: 'Ukjent feil'
         },
         {
           uniqueKey: 'feil2',
@@ -25,7 +26,7 @@ describe('mapFeilOppsummering', () => {
       ]
     } as BulkState;
     const feilmeldinger = mapFeilOppsummering(state);
-    expect(feilmeldinger.length).toBe(11);
+    expect(feilmeldinger.length).toBe(12);
     expect(feilmeldinger[0].feilmelding).toBe('feil_orgnr');
     expect(feilmeldinger[1].skjemaelementId).toBe('fnr_feil1');
     expect(feilmeldinger[1].feilmelding).toBe('Rad 1: Feil1_fnr');
@@ -41,5 +42,8 @@ describe('mapFeilOppsummering', () => {
 
     expect(feilmeldinger[5].skjemaelementId).toBe('beloep_feil1');
     expect(feilmeldinger[5].feilmelding).toBe('Rad 1: Feil1_beloep');
+
+    expect(feilmeldinger[6].skjemaelementId).toBe('ukjent');
+    expect(feilmeldinger[6].feilmelding).toBe('Rad 1: Ukjent feil');
   });
 });
