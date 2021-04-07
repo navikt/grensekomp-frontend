@@ -8,7 +8,6 @@ interface BostedlandProps {
   disabled?: boolean;
   feilmelding?: string;
   onChange: (land: string) => void;
-  onValidate?: (valid: boolean) => void;
 }
 
 const Bostedland = (props: BostedlandProps) => {
