@@ -1,4 +1,6 @@
-const land: Land[] = [
+import Land from './Land';
+
+const landListe: Land[] = [
   { navn: 'Belgia', iso3: 'BEL' },
   { navn: 'Bulgaria', iso3: 'BGR' },
   { navn: 'Danmark', iso3: 'DNK' },
@@ -32,9 +34,4 @@ const land: Land[] = [
   { navn: 'Østerrike', iso3: 'AUT' }
 ];
 
-interface Land {
-  navn: string;
-  iso3: string;
-}
-
-export default land;
+export default landListe;
