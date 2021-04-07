@@ -25,6 +25,7 @@ const validateBulk = (state: BulkState): BulkState => {
     item.dagerError = validateDager(item.dager, 1000, state.validated, item.fom, item.tom);
     item.beloepError = validateBeloep(item.beloep, 1000000, state.validated);
     item.landError = validateLand(item.land, state.validated);
+    item.genericError = undefined;
 
     if (item.fnrError) {
       pushFeilmelding('fnr_' + item.uniqueKey, RAD_FEIL + item.fnrError, feilmeldinger);

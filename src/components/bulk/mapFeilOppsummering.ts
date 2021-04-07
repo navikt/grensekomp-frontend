@@ -43,6 +43,9 @@ const mapFeilOppsummering = (state: BulkState): FeiloppsummeringFeil[] => {
         feilmeldinger
       );
     }
+    if (item.genericError) {
+      pushFeilmelding('ukjent', 'Rad ' + (state.items.indexOf(item) + 1) + ': ' + item.genericError, feilmeldinger);
+    }
   });
   return feilmeldinger;
 };
