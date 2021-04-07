@@ -7,7 +7,7 @@ interface BostedlandProps {
   id?: string;
   disabled?: boolean;
   feilmelding?: string;
-  onChange: (fnr: string) => void;
+  onChange: (land: string) => void;
   onValidate?: (valid: boolean) => void;
 }
 
