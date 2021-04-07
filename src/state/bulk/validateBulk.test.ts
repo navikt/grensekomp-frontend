@@ -23,6 +23,7 @@ describe('validateBulk', () => {
     expect(state.items[0].dagerError).not.toBeUndefined();
     expect(state.items[0].beloepError).not.toBeUndefined();
     expect(state.items[0].landError).not.toBeUndefined();
+    expect(state.items[0].genericError).toBeUndefined();
     expect(state.feilmeldinger.length).toBe(8);
   });
 });
