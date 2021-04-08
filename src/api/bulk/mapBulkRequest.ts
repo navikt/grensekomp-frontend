@@ -12,7 +12,7 @@ const mapBulkItem = (item: BulkItem, orgnr: string, bekreftet: boolean = false):
     fom: toString(item.fom),
     tom: toString(item.tom),
     antallDagerMedRefusjon: parseInt(item?.dager || ''),
-    beloep: parseInt(item.beloep || '')
+    dagsats: parseInt(item.beloep || '')
   },
   bostedsland: item.land || '',
   bekreftet: bekreftet

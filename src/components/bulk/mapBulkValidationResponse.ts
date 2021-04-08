@@ -49,6 +49,10 @@ const mapBulkValidationResponse = (response: BulkValidationResponse, state: Bulk
             item.tomError = v.message || UKJENT_FEIL;
             break;
 
+          case 'periode.dagsats':
+            item.tomError = v.message || UKJENT_FEIL;
+            break;
+
           default:
             item.genericError = v.message || UKJENT_FEIL;
             break;
