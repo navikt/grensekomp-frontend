@@ -1,45 +1,45 @@
-import { toString } from './toString';
+import { datoToString } from './datoToString';
 import { parseDato } from './parseDato';
 
 describe('toString', () => {
   it('should map toString', () => {
-    expect(toString(parseDato('05.10.2020'))).toBe('2020-10-05');
-    expect(toString(parseDato('6.2.2020'))).toBe('2020-02-06');
+    expect(datoToString(parseDato('05.10.2020'))).toBe('2020-10-05');
+    expect(datoToString(parseDato('6.2.2020'))).toBe('2020-02-06');
   });
 
   it('should not map toString', () => {
     expect(() => {
-      toString(parseDato(''));
+      datoToString(parseDato(''));
     }).toThrowError();
     expect(() => {
-      toString(parseDato('55.01.2020'));
+      datoToString(parseDato('55.01.2020'));
     }).toThrowError();
     expect(() => {
-      toString(parseDato('55.aa.2020'));
+      datoToString(parseDato('55.aa.2020'));
     }).toThrowError();
   });
 
   it('should not map when missing values', () => {
     expect(() => {
-      toString({
+      datoToString({
         month: 1,
         day: 5
       });
     }).toThrowError();
     expect(() => {
-      toString({
+      datoToString({
         year: 2020,
         day: 5
       });
     }).toThrowError();
     expect(() => {
-      toString({
+      datoToString({
         year: 2020,
         month: 1
       });
     }).toThrowError();
     expect(() => {
-      toString({});
+      datoToString({});
     }).toThrowError();
   });
 });

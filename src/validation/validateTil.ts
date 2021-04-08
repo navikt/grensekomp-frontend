@@ -1,5 +1,6 @@
 import { Dato } from '../utils/dato/Dato';
 import isBeforeMinDate from '../utils/isBeforeMinDate';
+import { minDate } from '../config/dager';
 
 export const validateTil = (
   fra: Dato | undefined,
@@ -11,7 +12,7 @@ export const validateTil = (
   }
 
   if (required && til?.value && isBeforeMinDate(til)) {
-    return 'Dato kan bare være fra og med 29.01.2021';
+    return `Dato kan bare være fra og med ${minDate.toLocaleDateString('nb')}`;
   }
 
   if (!fra || !til) {

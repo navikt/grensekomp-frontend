@@ -1,7 +1,7 @@
 import { Dato } from './Dato';
 import formatDato from './formatDato';
 
-export const toString = (dato: Dato | undefined): string => {
+export const datoToString = (dato: Dato | undefined): string => {
   if (!dato || !dato.year) {
     throw new Error('År ikke oppgitt');
   }
