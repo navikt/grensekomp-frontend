@@ -28,7 +28,7 @@ const validateDager = (
   if (
     fra &&
     til &&
-    parseInt(dager) > dayjs(toString(til), 'DD.MM.YYYY').diff(dayjs(toString(fra), 'DD.MM.YYYY'), 'day')
+    parseInt(dager) > dayjs(toString(til), 'DD.MM.YYYY').diff(dayjs(toString(fra), 'DD.MM.YYYY'), 'day') + 1
   ) {
     return 'Antall refusjonsdager kan ikke være flere enn dagene i perioden';
   }
