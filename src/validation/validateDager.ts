@@ -1,7 +1,7 @@
 import isNumericString from '../utils/isNumericString';
 import { Dato } from '../utils/dato/Dato';
 import dayjs from 'dayjs';
-import { toString } from '../utils/dato/toString';
+import { datoToString } from '../utils/dato/datoToString';
 
 const validateDager = (
   dager: string | undefined,
@@ -28,7 +28,7 @@ const validateDager = (
   if (
     fra &&
     til &&
-    parseInt(dager) > dayjs(toString(til), 'DD.MM.YYYY').diff(dayjs(toString(fra), 'DD.MM.YYYY'), 'day') + 1
+    parseInt(dager) > dayjs(datoToString(til), 'DD.MM.YYYY').diff(dayjs(datoToString(fra), 'DD.MM.YYYY'), 'day') + 1
   ) {
     return 'Antall refusjonsdager kan ikke være flere enn dagene i perioden';
   }
