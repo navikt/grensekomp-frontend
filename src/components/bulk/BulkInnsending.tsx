@@ -23,7 +23,6 @@ import Lenke from 'nav-frontend-lenker';
 import './BulkInnsending.sass';
 import RadNr from '../felles/RadNr';
 import LeggTilKnapp from '../felles/knapper/LeggTilKnapp';
-import dayjs from 'dayjs';
 import Slettknapp from '../felles/knapper/Slettknapp';
 import BekreftOpplysningerPanel from '../felles/BekreftOpplysningerPanel';
 import Feilmeldingspanel from '../felles/Feilmeldingspanel';
@@ -33,6 +32,7 @@ import DagerHjelpeLabel from './DagerHjelpeLabel';
 import { toDate } from '../../utils/dato/toDate';
 import formatNumberAsCurrency from '../../utils/formatNumberAsCurrency';
 import Bostedland from './Bostedland/Bostedland';
+import { maxDate, minDate } from '../../config/dager';
 
 interface BulkInnsendingProps {
   state?: BulkState;
