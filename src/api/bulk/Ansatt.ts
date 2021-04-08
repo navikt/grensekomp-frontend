@@ -5,7 +5,7 @@ interface Ansatt {
     fom: string;
     tom: string;
     antallDagerMedRefusjon: number;
-    beloep: number;
+    dagsats: number;
   };
   bostedsland: string;
   bekreftet: boolean;
