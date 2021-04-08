@@ -84,7 +84,7 @@ describe('mapBulkRequest', () => {
         identitetsnummer: '',
         periode: {
           antallDagerMedRefusjon: 1,
-          beloep: 123,
+          dagsats: 123,
           fom: '2020-01-01',
           tom: '2020-01-01'
         },
@@ -96,7 +96,7 @@ describe('mapBulkRequest', () => {
         identitetsnummer: '',
         periode: {
           antallDagerMedRefusjon: 1,
-          beloep: 123,
+          dagsats: 123,
           fom: '2020-01-01',
           tom: '2020-01-01'
         },
@@ -108,7 +108,7 @@ describe('mapBulkRequest', () => {
         identitetsnummer: '1234',
         periode: {
           antallDagerMedRefusjon: NaN,
-          beloep: NaN,
+          dagsats: NaN,
           fom: '2020-01-01',
           tom: '2020-01-01'
         },
