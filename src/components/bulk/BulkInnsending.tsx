@@ -33,7 +33,6 @@ import DagerHjelpeLabel from './DagerHjelpeLabel';
 import { toDate } from '../../utils/dato/toDate';
 import formatNumberAsCurrency from '../../utils/formatNumberAsCurrency';
 import Bostedland from './Bostedland/Bostedland';
-import { maxDate, minDate } from '../../config/dager';
 
 interface BulkInnsendingProps {
   state?: BulkState;
