@@ -7,7 +7,6 @@ import Skillelinje from '../felles/Skillelinje';
 import { Input, SkjemaGruppe } from 'nav-frontend-skjema';
 import Fnr from '../felles/Fnr';
 import { DatoVelger } from '@navikt/helse-arbeidsgiver-felles-frontend';
-import '@navikt/helse-arbeidsgiver-felles-frontend/src/components/DatoVelger.css';
 import LoggetUtAdvarsel from '../login/LoggetUtAdvarsel';
 import BulkReducer from '../../state/bulk/BulkReducer';
 import BulkState, { defaultBulkState } from '../../state/bulk/BulkState';
