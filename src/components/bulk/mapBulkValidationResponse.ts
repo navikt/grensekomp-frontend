@@ -9,6 +9,10 @@ const mapBulkValidationResponse = (response: BulkValidationResponse, state: Bulk
   const items = findNotAccepted(state.items);
   response.validationResponses.forEach((bulkValidation, rowIndex) => {
     const item = items[rowIndex];
+    if (bulkValidation.status === BulkValidationStatus.Generic) {
+      item.accepted = false;
+      item.genericError = 'Det oppstod en ukjent feil';
+    }
 
     if (bulkValidation.status === BulkValidationStatus.OK) {
       item.accepted = true;
@@ -43,6 +47,14 @@ const mapBulkValidationResponse = (response: BulkValidationResponse, state: Bulk
 
           case 'periode.tom':
             item.tomError = v.message || UKJENT_FEIL;
+            break;
+
+          case 'periode.dagsats':
+            item.tomError = v.message || UKJENT_FEIL;
+            break;
+
+          default:
+            item.genericError = v.message || UKJENT_FEIL;
             break;
         }
       });

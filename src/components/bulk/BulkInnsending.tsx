@@ -23,7 +23,6 @@ import Lenke from 'nav-frontend-lenker';
 import './BulkInnsending.sass';
 import RadNr from '../felles/RadNr';
 import LeggTilKnapp from '../felles/knapper/LeggTilKnapp';
-import dayjs from 'dayjs';
 import Slettknapp from '../felles/knapper/Slettknapp';
 import BekreftOpplysningerPanel from '../felles/BekreftOpplysningerPanel';
 import Feilmeldingspanel from '../felles/Feilmeldingspanel';
@@ -33,6 +32,7 @@ import DagerHjelpeLabel from './DagerHjelpeLabel';
 import { toDate } from '../../utils/dato/toDate';
 import formatNumberAsCurrency from '../../utils/formatNumberAsCurrency';
 import Bostedland from './Bostedland/Bostedland';
+import { maxDate, minDate } from '../../config/dager';
 
 interface BulkInnsendingProps {
   state?: BulkState;
@@ -41,8 +41,6 @@ interface BulkInnsendingProps {
 const BulkInnsending = (props: BulkInnsendingProps) => {
   const [state, dispatch] = useReducer(BulkReducer, props.state, defaultBulkState);
   const { arbeidsgiverId } = useArbeidsgiver();
-  const minDate = dayjs('2021-01-29').toDate();
-  const maxDate = new Date();
   const showDeleteButton = state.items && state.items.length > 1;
 
   const handleCloseServerFeil = () => {

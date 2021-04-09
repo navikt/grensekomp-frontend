@@ -14,6 +14,7 @@ export interface BulkItem {
   beloepError?: string;
   land?: string;
   landError?: string;
+  genericError?: string;
   accepted?: boolean;
 }
 
