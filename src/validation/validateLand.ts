@@ -9,6 +9,10 @@ const validateLand = (land: string | undefined, required: boolean = false): stri
     return required ? 'Kan ikke være øvrige land' : undefined;
   }
 
+  if (land === 'XUK') {
+    return undefined;
+  }
+
   if (landListe.filter((l) => l.iso3 === land).length === 0) {
     return required ? 'Land ikke gyldig' : undefined;
   }

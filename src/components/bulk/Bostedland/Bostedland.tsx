@@ -25,7 +25,7 @@ const Bostedland = (props: BostedlandProps) => {
           {enhet.navn}
         </option>
       ))}
-      <option>Øvrige land</option>
+      <option value='XUK'>Øvrige land</option>
     </Select>
   );
 };
