@@ -10,10 +10,6 @@ describe('validateLand', () => {
     expect(validateLand('DNK', true)).toBeUndefined();
   });
 
-  it('should verify "Øvrige Land" with Iso code when required', () => {
-    expect(validateLand('XUK', true)).toBeUndefined();
-  });
-
   it('should verify valid when not required', () => {
     expect(validateLand('bel', false)).toBeUndefined();
   });

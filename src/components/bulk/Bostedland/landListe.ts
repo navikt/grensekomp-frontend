@@ -31,7 +31,8 @@ const landListe: Land[] = [
   { navn: 'Tsjekkia', iso3: 'CZE' },
   { navn: 'Tyskland', iso3: 'DEU' },
   { navn: 'Ungarn', iso3: 'HUN' },
-  { navn: 'Østerrike', iso3: 'AUT' }
+  { navn: 'Østerrike', iso3: 'AUT' },
+  { navn: 'Øvrige land', iso3: 'XUK' }
 ];
 
 export default landListe;
