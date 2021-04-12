@@ -14,7 +14,7 @@ const mapBulkItem = (item: BulkItem, orgnr: string, bekreftet: boolean = false):
     antallDagerMedRefusjon: parseInt(item?.dager || ''),
     dagsats: parseInt(item.beloep || '')
   },
-  bostedsland: item.land || 'SWE',
+  bostedsland: item.land || '',
   bekreftet: bekreftet
 });
 
