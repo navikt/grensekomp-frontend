@@ -1,11 +1,9 @@
 import React from 'react';
-import HjelpeLabel from '../felles/HjelpeLabel';
+import HjelpeLabel from '../felles/HjelpeLabel/HjelpeLabel';
 
 const FraHjelpeLabel = () => (
   <HjelpeLabel label='Fra'>
-    <div style={{ padding: '0.5rem', width: '30rem' }}>
-      Velg første dag arbeidstakeren din var forhindret fra å møte på jobb på grunn av innreiseforbudet
-    </div>
+    Velg første dag arbeidstakeren din var forhindret fra å møte på jobb på grunn av innreiseforbudet
   </HjelpeLabel>
 );
 export default FraHjelpeLabel;

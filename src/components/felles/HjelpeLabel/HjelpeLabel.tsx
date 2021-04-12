@@ -1,5 +1,6 @@
 import Hjelpetekst from 'nav-frontend-hjelpetekst';
 import React from 'react';
+import './HjelpeLabel.scss';
 
 interface HjelpeLabelProps {
   label: string;
@@ -7,9 +8,11 @@ interface HjelpeLabelProps {
 }
 
 const HjelpeLabel = (props: HjelpeLabelProps) => (
-  <div style={{ display: 'flex' }}>
+  <div className='hjelpelabel'>
     {props.label}
-    <Hjelpetekst style={{ marginLeft: '0.5rem' }}>{props.children}</Hjelpetekst>
+    <Hjelpetekst className='hjelpelabel_tekst'>
+      <div className='hjelpelabel_children'>{props.children}</div>
+    </Hjelpetekst>
   </div>
 );
 
