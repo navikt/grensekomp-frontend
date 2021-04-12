@@ -1,5 +1,5 @@
 import React from 'react';
-import HjelpeLabel from '../felles/HjelpeLabel';
+import HjelpeLabel from '../felles/HjelpeLabel/HjelpeLabel';
 
 const DagerHjelpeLabel = () => (
   <HjelpeLabel label='Antall dager'>
