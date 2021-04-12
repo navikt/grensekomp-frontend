@@ -6,7 +6,7 @@ export enum BulkKeys {
 
 export const translatedBulkKeys: IncludedBulkKeys = {
   [BulkKeys.HEADER]: {
-    nb: `Header text `
+    nb: 'Header text'
   }
 };
 
