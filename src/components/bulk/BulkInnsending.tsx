@@ -7,7 +7,6 @@ import Skillelinje from '../felles/Skillelinje';
 import { Input, SkjemaGruppe } from 'nav-frontend-skjema';
 import Fnr from '../felles/Fnr';
 import { DatoVelger } from '@navikt/helse-arbeidsgiver-felles-frontend';
-import '@navikt/helse-arbeidsgiver-felles-frontend/src/components/DatoVelger.css';
 import LoggetUtAdvarsel from '../login/LoggetUtAdvarsel';
 import BulkReducer from '../../state/bulk/BulkReducer';
 import BulkState, { defaultBulkState } from '../../state/bulk/BulkState';
@@ -33,6 +32,8 @@ import { toDate } from '../../utils/dato/toDate';
 import formatNumberAsCurrency from '../../utils/formatNumberAsCurrency';
 import Bostedland from './Bostedland/Bostedland';
 import { maxDate, minDate } from '../../config/dager';
+import FraHjelpeLabel from './FraHjelpeLabel';
+import TilHjelpeLabel from './TilHjelpeLabel';
 
 interface BulkInnsendingProps {
   state?: BulkState;
@@ -181,7 +182,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               id={'fom_' + item.uniqueKey}
                               dato={toDate(item.fom)}
                               feilmelding={item.fomError}
-                              label='Fra'
+                              label={<FraHjelpeLabel />}
                               placeholder='dd.mm.åå'
                               minDate={minDate}
                               maxDate={maxDate}
@@ -202,7 +203,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               id={'tom_' + item.uniqueKey}
                               dato={toDate(item.tom)}
                               feilmelding={item.tomError}
-                              label='Til'
+                              label={<TilHjelpeLabel />}
                               placeholder='dd.mm.åå'
                               minDate={minDate}
                               maxDate={maxDate}
