@@ -13,7 +13,7 @@ const mapBulkItem = (item: BulkItem, orgnr: string, bekreftet: boolean = false):
     tom: datoToString(item.tom),
     beregnetMånedsinntekt: parseInt(item.beloep || '')
   },
-  bostedsland: item.land || '',
+  bostedsland: item.land || 'SWE',
   bekreftet: bekreftet
 });
 

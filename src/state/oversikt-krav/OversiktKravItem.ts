@@ -13,6 +13,7 @@ interface OversiktKravPeriode {
   antallDagerMedRefusjon: number;
   beregnetMånedsinntekt: number;
 }
+
 export interface OversiktKravItem {
   id: string;
   identitetsnummer: string;
