@@ -4,24 +4,19 @@ import validateOversiktKrav from './validateOversiktKrav';
 import mapFeilOppsummeringsFeil from '../../components/oversikt-krav/mapFeilOppsummering';
 import HttpStatus from '../../api/HttpStatus';
 
-const checkItemId = (itemId?: string) => {
-  if (itemId === undefined) {
-    throw new Error('itemId kan ikke være undefined');
+const checkId = (id?: string) => {
+  if (id === undefined) {
+    throw new Error('id kan ikke være undefined');
   }
 };
 
 const BulkReducer = (state: BulkState, action: OversiktKravActions): BulkState => {
   const nextState = Object.assign({}, state);
   const { payload } = action;
-  // nextState.items = nextState.items ? nextState.items : [{ uniqueKey: uuid() }];
 
   switch (action.type) {
     case Actions.Progress:
       nextState.progress = payload?.progress;
-      return validateOversiktKrav(nextState);
-
-    case Actions.Kvittering:
-      nextState.kvittering = payload?.kvittering;
       return validateOversiktKrav(nextState);
 
     case Actions.NotAuthorized:
@@ -60,17 +55,21 @@ const BulkReducer = (state: BulkState, action: OversiktKravActions): BulkState =
       nextState.error = nextState.feilmeldinger.length > 0;
       nextState.kvittering = !nextState.error;
       nextState.validated = true;
+      nextState.serverError = false;
 
       return nextState;
 
     case Actions.HandleResponseError:
-      // eslint-disable-next-line
-      console.log('Ting gikk sjit:', payload?.response);
+      nextState.serverError = true;
+      return nextState;
+
+    case Actions.HideServerError:
+      nextState.serverError = false;
       return nextState;
 
     case Actions.DeleteItem:
-      checkItemId(payload?.itemId);
-      nextState.items = state.items?.filter((i) => i.id !== payload!!.itemId);
+      checkId(payload?.id);
+      nextState.items = state.items?.filter((i) => i.id !== payload!!.id);
       return validateOversiktKrav(nextState);
 
     case Actions.Reset:

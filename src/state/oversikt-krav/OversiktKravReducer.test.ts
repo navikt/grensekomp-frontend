@@ -12,14 +12,6 @@ describe('OversiktKravReducer', () => {
     }).toThrow();
   });
 
-  it('should set the kvittering', () => {
-    let state = OversiktKravReducer(defaultOversiktKravState(), {
-      type: Actions.Kvittering,
-      payload: { kvittering: true }
-    });
-    expect(state.kvittering).toBe(true);
-  });
-
   it('should set the progress', () => {
     let state = OversiktKravReducer(defaultOversiktKravState(), {
       type: Actions.Progress,

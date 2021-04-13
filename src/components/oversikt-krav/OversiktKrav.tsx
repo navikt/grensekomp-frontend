@@ -11,6 +11,7 @@ import { useArbeidsgiver } from '../../context/arbeidsgiver/ArbeidsgiverContext'
 import unikeInnsendinger from '../../state/oversikt-krav/unikeInnsendinger';
 import KravListe from './KravListe';
 import KravSammendrag from './KravSammendrag';
+import { RefusjonskravStatus } from '../../state/oversikt-krav/OversiktKravItem';
 
 interface OversiktKravProps {
   state?: OversiktKravState;
@@ -24,30 +25,29 @@ const OversiktKrav = (props: OversiktKravProps) => {
     dispatch({ type: Actions.HideServerError });
   };
 
-  const handleSlettInnsending = () => {
-    dispatch({ type: Actions.DeleteItem });
-  };
-
   useEffect(() => {
-    refusjonskravList(arbeidsgiverId)
-      .then((response) => {
-        dispatch({ type: Actions.HandleResponse, payload: { response: response } });
-      })
-      .catch((error) => {
-        dispatch({ type: Actions.HandleResponseError, payload: { response: error } });
-      });
+    if (arbeidsgiverId) {
+      refusjonskravList(arbeidsgiverId)
+        .then((response) => {
+          dispatch({ type: Actions.HandleResponse, payload: { response: response } });
+        })
+        .catch(() => {
+          dispatch({ type: Actions.HandleResponseError });
+        });
+    }
   }, [arbeidsgiverId]);
 
   const innsendinger = unikeInnsendinger(state.items ?? []);
-
-  // eslint-disable-next-line
-  console.log('innsendinger', innsendinger);
 
   const onKravClickHandler = (item) => {
     dispatch({ type: Actions.KravSelected, payload: { krav: item } });
   };
 
-  const kravListe = state.items ? state.items.filter((kravItem) => kravItem.opprettet === state.activtKrav) : [];
+  const kravListe = state.items
+    ? state.items.filter(
+        (kravItem) => kravItem.opprettet === state.activtKrav && kravItem.status !== RefusjonskravStatus.SLETTET
+      )
+    : [];
 
   return (
     <Side

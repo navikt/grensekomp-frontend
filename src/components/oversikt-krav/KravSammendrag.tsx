@@ -12,6 +12,7 @@ import mapIsoTilLand from '../../state/oversikt-krav/mapIsoTilLand';
 import OversiktKravItem from '../../state/oversikt-krav/OversiktKravItem';
 import formaterIsoTimestampAsNoTime from '../../utils/formatIsoTimestampAsNoTimestamp';
 import Lenke from 'nav-frontend-lenker';
+import slettRefusjonskrav from '../../api/slettRefusjonskrav/slettRefusjonskrav';
 
 interface KravSammendragProps {
   items?: OversiktKravItem[];
@@ -20,8 +21,14 @@ interface KravSammendragProps {
 }
 
 const KravSammendrag = (props: KravSammendragProps) => {
-  const handleSlettInnsending = () => {
-    props.dispatch({ type: Actions.DeleteItem });
+  const handleSlettInnsending = (itemId: string) => {
+    slettRefusjonskrav(itemId)
+      .then(() => {
+        props.dispatch({ type: Actions.DeleteItem, payload: { id: itemId } });
+      })
+      .catch(() => {
+        props.dispatch({ type: Actions.HandleResponseError });
+      });
   };
 
   const handleTilbake = () => {
@@ -75,7 +82,7 @@ const KravSammendrag = (props: KravSammendragProps) => {
                         : ''}
                     </td>
                     <td>
-                      <SlettKravKnapp onClick={handleSlettInnsending} />
+                      <SlettKravKnapp onClick={() => handleSlettInnsending(item.id)} />
                     </td>
                   </tr>
                 ))}

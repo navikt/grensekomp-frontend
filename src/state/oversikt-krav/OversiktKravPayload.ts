@@ -1,14 +1,7 @@
 import { FetchResponse } from '../../api/fetch/FetchResponse';
 
 export interface OversiktKravPayload {
-  fnr?: string;
-  orgnr?: string;
-  fra?: string;
-  til?: string;
-  dager?: string;
-  beloep?: string;
-  land?: string;
-  itemId?: string;
+  id?: string;
   bekreft?: boolean;
   progress?: boolean;
   kvittering?: boolean;
