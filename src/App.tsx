@@ -25,13 +25,13 @@ export const Application = ({
   basePath = env.baseUrl,
   loginServiceUrl = env.loginServiceUrl
 }: ApplicationProps) => (
-  <LoginProvider baseUrl={basePath} status={loginStatus} loginServiceUrl={loginServiceUrl}>
-    <ArbeidsgiverProvider baseUrl={basePath} status={arbeidsgiverStatus} arbeidsgivere={arbeidsgivere}>
-      <I18nextProvider i18n={i18n}>
+  <I18nextProvider i18n={i18n}>
+    <LoginProvider baseUrl={basePath} status={loginStatus} loginServiceUrl={loginServiceUrl}>
+      <ArbeidsgiverProvider baseUrl={basePath} status={arbeidsgiverStatus} arbeidsgivere={arbeidsgivere}>
         <ApplicationRoutes />
-      </I18nextProvider>
-    </ArbeidsgiverProvider>
-  </LoginProvider>
+      </ArbeidsgiverProvider>
+    </LoginProvider>
+  </I18nextProvider>
 );
 
 const App = () => (

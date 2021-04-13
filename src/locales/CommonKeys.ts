@@ -1,6 +1,6 @@
 import { Languages } from './utils';
 
-export enum CommonKeys {
+enum CommonKeys {
   SUB_TITLE_BULK = 'SUB_TITLE_BULK'
 }
 
@@ -15,3 +15,5 @@ export type IncludedCommonKeys = {
     [L in Languages]: string;
   };
 };
+
+export default CommonKeys;
