@@ -1,6 +1,5 @@
 import BulkState, { defaultOversiktKravState } from './OversiktKravState';
 import { Actions, OversiktKravActions } from './OversiktKravActions';
-import validateOversiktKrav from './validateOversiktKrav';
 import mapFeilOppsummeringsFeil from '../../components/oversikt-krav/mapFeilOppsummering';
 import HttpStatus from '../../api/HttpStatus';
 
@@ -10,14 +9,14 @@ const checkId = (id?: string) => {
   }
 };
 
-const BulkReducer = (state: BulkState, action: OversiktKravActions): BulkState => {
+const OversiktKravReducer = (state: BulkState, action: OversiktKravActions): BulkState => {
   const nextState = Object.assign({}, state);
   const { payload } = action;
 
   switch (action.type) {
     case Actions.Progress:
       nextState.progress = payload?.progress;
-      return validateOversiktKrav(nextState);
+      return nextState;
 
     case Actions.NotAuthorized:
       nextState.notAuthorized = false;
@@ -46,8 +45,6 @@ const BulkReducer = (state: BulkState, action: OversiktKravActions): BulkState =
       nextState.progress = false;
       nextState.submitting = false;
 
-      // mapBulkValidationResponse(payload.response, nextState);
-
       const payloadItems = payload.response.json;
       nextState.items = payloadItems;
 
@@ -70,7 +67,7 @@ const BulkReducer = (state: BulkState, action: OversiktKravActions): BulkState =
     case Actions.DeleteItem:
       checkId(payload?.id);
       nextState.items = state.items?.filter((i) => i.id !== payload!!.id);
-      return validateOversiktKrav(nextState);
+      return nextState;
 
     case Actions.Reset:
       return Object.assign({}, defaultOversiktKravState());
@@ -80,4 +77,4 @@ const BulkReducer = (state: BulkState, action: OversiktKravActions): BulkState =
   }
 };
 
-export default BulkReducer;
+export default OversiktKravReducer;
