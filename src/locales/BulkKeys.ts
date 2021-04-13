@@ -1,6 +1,6 @@
 import { Languages } from './utils';
 
-export enum BulkKeys {
+enum BulkKeys {
   HEADER = 'HEADER'
 }
 
@@ -15,3 +15,5 @@ export type IncludedBulkKeys = {
     [L in Languages]: string;
   };
 };
+
+export default BulkKeys;
