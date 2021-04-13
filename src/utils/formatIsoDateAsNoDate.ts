@@ -7,7 +7,7 @@ const isIsoDate = (isoDate: string) => {
 };
 
 const formatIsoDateAsNoDate = (isoDate: string | undefined): string => {
-  if (!isoDate || !isIsoDate(isoDate)) {
+  if (!isoDate || !isIsoDate(isoDate) || !dayjs(isoDate, 'YYYY-MM-DD', true).isValid()) {
     return '';
   }
 
