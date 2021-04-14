@@ -15,7 +15,7 @@ const BeregnetRefusjon = ({ inntekt, fom, tom }: BeregnetRefusjonProps) => {
     <div>
       <Element className='bulk-element-nr'>Foreløpig beregnet refusjon</Element>
       <div>
-        <Normaltekst className='beregnet-refusjon'>{refusjon}</Normaltekst>
+        <Normaltekst className='beregnet-refusjon'>{refusjon} kr</Normaltekst>
       </div>
     </div>
   );
