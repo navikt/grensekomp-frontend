@@ -1,13 +1,6 @@
 import BulkState, { defaultOversiktKravState } from './OversiktKravState';
 import { Actions, OversiktKravActions } from './OversiktKravActions';
-import mapFeilOppsummeringsFeil from '../../components/oversikt-krav/mapFeilOppsummering';
 import HttpStatus from '../../api/HttpStatus';
-
-const checkId = (id?: string) => {
-  if (id === undefined) {
-    throw new Error('id kan ikke være undefined');
-  }
-};
 
 const OversiktKravReducer = (state: BulkState, action: OversiktKravActions): BulkState => {
   const nextState = Object.assign({}, state);
@@ -48,7 +41,6 @@ const OversiktKravReducer = (state: BulkState, action: OversiktKravActions): Bul
       const payloadItems = payload.response.json;
       nextState.items = payloadItems;
 
-      nextState.feilmeldinger = mapFeilOppsummeringsFeil(nextState);
       nextState.error = nextState.feilmeldinger.length > 0;
       nextState.kvittering = !nextState.error;
       nextState.validated = true;
@@ -64,9 +56,24 @@ const OversiktKravReducer = (state: BulkState, action: OversiktKravActions): Bul
       nextState.serverError = false;
       return nextState;
 
-    case Actions.DeleteItem:
-      checkId(payload?.id);
-      nextState.items = state.items?.filter((i) => i.id !== payload!!.id);
+    case Actions.UpdateItem:
+      if (payload?.response == undefined) {
+        throw new Error('Du må spesifisere response');
+      }
+
+      if (payload.response.status === HttpStatus.Unauthorized) {
+        nextState.notAuthorized = true;
+        nextState.progress = false;
+        nextState.submitting = false;
+        return nextState;
+      }
+
+      const elementIndex = nextState.items?.findIndex((element) => element.id === payload.response?.json.id);
+
+      if (elementIndex && nextState.items) {
+        nextState.items[elementIndex].status = payload.response?.json.status;
+      }
+
       return nextState;
 
     case Actions.Reset:

@@ -17,7 +17,7 @@ export enum Actions {
   NotAuthorized,
   KontrollDager,
   AddItem,
-  DeleteItem,
+  UpdateItem,
   HideServerError,
   Sortorder,
   HandleResponseError,

@@ -23,8 +23,8 @@ interface KravSammendragProps {
 const KravSammendrag = (props: KravSammendragProps) => {
   const handleSlettInnsending = (itemId: string) => {
     slettRefusjonskrav(itemId)
-      .then(() => {
-        props.dispatch({ type: Actions.DeleteItem, payload: { id: itemId } });
+      .then((response) => {
+        props.dispatch({ type: Actions.UpdateItem, payload: { response: response } });
       })
       .catch(() => {
         props.dispatch({ type: Actions.HandleResponseError });
