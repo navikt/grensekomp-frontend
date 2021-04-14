@@ -145,7 +145,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           <Column md='4'>
                             <Bostedland
                               id={'land_' + item.uniqueKey}
-                              label='Bostedland'
+                              label='Bostedsland'
                               feilmelding={item.landError}
                               disabled={item.accepted}
                               value={item.land}
