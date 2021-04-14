@@ -29,15 +29,7 @@ const mapBulkValidationResponse = (response: BulkValidationResponse, state: Bulk
             item.fnrError = v.message || UKJENT_FEIL;
             break;
 
-          case 'periode':
-            item.dagerError = v.message || UKJENT_FEIL;
-            break;
-
-          case 'periode.antallDagerMedRefusjon':
-            item.dagerError = v.message || UKJENT_FEIL;
-            break;
-
-          case 'periode.beloep':
+          case 'periode.beregnetMånedsinntekt':
             item.beloepError = v.message || UKJENT_FEIL;
             break;
 

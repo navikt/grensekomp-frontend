@@ -5,7 +5,6 @@ import { validateFnr } from '../../validation/validateFnr';
 import validateTil from '../../validation/validateTil';
 import validateFra from '../../validation/validateFra';
 import validateBeloep from '../../validation/validateBeloep';
-import validateDager from '../../validation/validateDager';
 import { validateOrgnr } from '../../validation/validateOrgnr';
 import validateLand from '../../validation/validateLand';
 
@@ -22,7 +21,6 @@ const validateBulk = (state: BulkState): BulkState => {
     item.fnrError = validateFnr(item.fnr, state.validated);
     item.fomError = validateFra(item.fom, state.validated);
     item.tomError = validateTil(item.fom, item.tom, state.validated);
-    item.dagerError = validateDager(item.dager, 1000, state.validated, item.fom, item.tom);
     item.beloepError = validateBeloep(item.beloep, 1000000, state.validated);
     item.landError = validateLand(item.land, state.validated);
     item.genericError = undefined;
@@ -30,21 +28,17 @@ const validateBulk = (state: BulkState): BulkState => {
     if (item.fnrError) {
       pushFeilmelding('fnr_' + item.uniqueKey, RAD_FEIL + item.fnrError, feilmeldinger);
     }
+    if (item.landError) {
+      pushFeilmelding('land_' + item.uniqueKey, RAD_FEIL + item.landError, feilmeldinger);
+    }
     if (item.fomError) {
       pushFeilmelding('fom_' + item.uniqueKey, RAD_FEIL + item.fomError, feilmeldinger);
     }
     if (item.tomError) {
       pushFeilmelding('tom_' + item.uniqueKey, RAD_FEIL + item.tomError, feilmeldinger);
     }
-    if (item.dagerError) {
-      pushFeilmelding('dager_' + item.uniqueKey, RAD_FEIL + item.dagerError, feilmeldinger);
-    }
     if (item.beloepError) {
       pushFeilmelding('beloep_' + item.uniqueKey, RAD_FEIL + item.beloepError, feilmeldinger);
-    }
-
-    if (item.landError) {
-      pushFeilmelding('land_' + item.uniqueKey, RAD_FEIL + item.landError, feilmeldinger);
     }
   });
 

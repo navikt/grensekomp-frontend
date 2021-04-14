@@ -4,8 +4,7 @@ interface Ansatt {
   periode: {
     fom: string;
     tom: string;
-    antallDagerMedRefusjon: number;
-    dagsats: number;
+    beregnetMånedsinntekt: number;
   };
   bostedsland: string;
   bekreftet: boolean;

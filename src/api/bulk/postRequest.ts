@@ -1,11 +1,5 @@
 import HttpStatus from '../HttpStatus';
-import ValidationResponse from '../../state/validation/ValidationResponse';
 import BulkValidationResponse from './BulkValidationResponse';
-
-export const mapViolations = (status: number, json: any): ValidationResponse => ({
-  status,
-  violations: json[0].validationErrors || []
-});
 
 const postRequest = async (path: string, payload: any, timeout: number = 10000): Promise<BulkValidationResponse> => {
   return Promise.race([
@@ -23,8 +17,8 @@ const postRequest = async (path: string, payload: any, timeout: number = 10000):
     ),
     fetch(path, {
       headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
+        Accept: 'application/json; charset=utf-8',
+        'Content-Type': 'application/json; charset=utf-8'
       },
       credentials: 'include',
       method: 'POST',

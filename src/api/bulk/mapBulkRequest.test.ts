@@ -37,7 +37,6 @@ describe('mapBulkRequest', () => {
           accepted: true,
           fom: unimportantMockDate,
           tom: unimportantMockDate,
-          dager: '1',
           beloep: '123',
           land: 'SWE'
         },
@@ -46,7 +45,6 @@ describe('mapBulkRequest', () => {
           accepted: false,
           fom: unimportantMockDate,
           tom: unimportantMockDate,
-          dager: '1',
           beloep: '123',
           land: 'SWE'
         },
@@ -54,7 +52,6 @@ describe('mapBulkRequest', () => {
           uniqueKey: '3',
           fom: unimportantMockDate,
           tom: unimportantMockDate,
-          dager: '1',
           beloep: '123',
           land: 'SWE'
         },
@@ -63,7 +60,6 @@ describe('mapBulkRequest', () => {
           accepted: true,
           fom: unimportantMockDate,
           tom: unimportantMockDate,
-          dager: '1',
           beloep: '123',
           land: 'SWE'
         },
@@ -83,8 +79,7 @@ describe('mapBulkRequest', () => {
       {
         identitetsnummer: '',
         periode: {
-          antallDagerMedRefusjon: 1,
-          dagsats: 123,
+          beregnetMånedsinntekt: 123,
           fom: '2020-01-01',
           tom: '2020-01-01'
         },
@@ -95,8 +90,7 @@ describe('mapBulkRequest', () => {
       {
         identitetsnummer: '',
         periode: {
-          antallDagerMedRefusjon: 1,
-          dagsats: 123,
+          beregnetMånedsinntekt: 123,
           fom: '2020-01-01',
           tom: '2020-01-01'
         },
@@ -107,8 +101,7 @@ describe('mapBulkRequest', () => {
       {
         identitetsnummer: '1234',
         periode: {
-          antallDagerMedRefusjon: NaN,
-          dagsats: NaN,
+          beregnetMånedsinntekt: NaN,
           fom: '2020-01-01',
           tom: '2020-01-01'
         },

@@ -29,13 +29,6 @@ const mapFeilOppsummering = (state: BulkState): FeiloppsummeringFeil[] => {
         feilmeldinger
       );
     }
-    if (item.dagerError) {
-      pushFeilmelding(
-        'dager_' + item.uniqueKey,
-        'Rad ' + (state.items.indexOf(item) + 1) + ': ' + item.dagerError,
-        feilmeldinger
-      );
-    }
     if (item.beloepError) {
       pushFeilmelding(
         'beloep_' + item.uniqueKey,

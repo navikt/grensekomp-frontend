@@ -17,7 +17,6 @@ describe('mapBulkValidationResponse', () => {
     const nextState = mapBulkValidationResponse(testValidationResponse, state);
 
     expect(nextState.items[0].beloepError).not.toBeUndefined();
-    expect(nextState.items[0].dagerError).not.toBeUndefined();
     expect(nextState.items[0].tomError).not.toBeUndefined();
   });
 
@@ -32,7 +31,6 @@ describe('mapBulkValidationResponse', () => {
     const nextState = mapBulkValidationResponse(testGenericResponse, state);
 
     expect(nextState.items[0].beloepError).toBeUndefined();
-    expect(nextState.items[0].dagerError).toBeUndefined();
     expect(nextState.items[0].tomError).toBeUndefined();
     expect(nextState.items[0].genericError).not.toBeUndefined();
   });
@@ -48,7 +46,6 @@ describe('mapBulkValidationResponse', () => {
     const nextState = mapBulkValidationResponse(testUnknownResponse, state);
 
     expect(nextState.items[0].beloepError).toBeUndefined();
-    expect(nextState.items[0].dagerError).toBeUndefined();
     expect(nextState.items[0].tomError).toBeUndefined();
     expect(nextState.items[0].genericError).not.toBeUndefined();
   });
