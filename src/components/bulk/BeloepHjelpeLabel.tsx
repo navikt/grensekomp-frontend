@@ -118,7 +118,7 @@ const BeloepHjelpeLabel = () => {
   };
 
   return (
-    <div style={{ display: 'flex' }}>
+    <div className='beloephjelpelabel'>
       <span className='hjelpetekst-beskrivelse'>Dagsats</span>
       <div className='hjelpetekst-refusjon'>
         <ModalWrapper

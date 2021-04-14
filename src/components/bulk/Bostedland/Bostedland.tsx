@@ -9,6 +9,7 @@ interface BostedlandProps {
   disabled?: boolean;
   feilmelding?: string;
   onChange: (land: string) => void;
+  className?: string;
 }
 
 const Bostedland = (props: BostedlandProps) => {
@@ -20,6 +21,7 @@ const Bostedland = (props: BostedlandProps) => {
       disabled={props.disabled}
       value={props.value}
       onChange={(evt) => props.onChange(evt.target.value)}
+      className={props.className}
     >
       <option>Velg land:</option>
       {landListe.map((enhet) => (

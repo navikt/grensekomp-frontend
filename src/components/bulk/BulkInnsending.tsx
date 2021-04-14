@@ -116,11 +116,11 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                   {state.items?.map((item, index) => (
                     <Row key={item.uniqueKey} className={`bulk-innsending__rad ${index % 2 ? 'odd' : 'even'}`}>
                       <Column md='1' className='bulk-kolonne-1'>
-                        <Element>{index === 0 ? 'Nr.' : '\u00A0'}</Element>
+                        <Element className='bulk-element-nr'>{index === 0 ? 'Nr.' : '\u00A0'}</Element>
                         <RadNr nr={index + 1} />
                       </Column>
 
-                      <Column md='11'>
+                      <Column md='11' className='bulk-main-input-wrapper'>
                         <Row>
                           <Column md='2' className='bulk-kolonne-2'>
                             <Fnr
@@ -130,6 +130,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               placeholder='11 siffer'
                               feilmelding={item.fnrError}
                               disabled={item.accepted}
+                              className='bulk-element'
                               onChange={(event) => {
                                 dispatch({
                                   type: Actions.Fnr,
@@ -148,6 +149,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               feilmelding={item.landError}
                               disabled={item.accepted}
                               value={item.land}
+                              className='bulk-element'
                               onChange={(event) => {
                                 dispatch({
                                   type: Actions.Land,
@@ -159,7 +161,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               }}
                             />
                           </Column>
-                          <Column md='1' className='bulk-kolonne-8'>
+                          <Column md='6' className='bulk-kolonne-8'>
                             {showDeleteButton && (
                               <Slettknapp
                                 disabled={item.accepted}
@@ -185,7 +187,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               placeholder='dd.mm.åå'
                               minDate={minDate}
                               maxDate={maxDate}
-                              className='input--fullbredde'
+                              className='input--fullbredde bulk-element'
                               onChange={(dato) => {
                                 dispatch({
                                   type: Actions.Fra,
@@ -218,14 +220,15 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               }}
                             />
                           </Column>
-                          <Column md='2' className='bulk-kolonne-5'>
+                          <Column md='3' className='bulk-kolonne-5'>
                             <Input
                               id={'beloep_' + item.uniqueKey}
-                              label={'Månedsinntekt'}
+                              label={'Beregnet månedsinntekt'}
                               placeholder='Beløp'
                               feil={item.beloepError}
                               value={item.beloep}
                               disabled={item.accepted}
+                              className='bulk-element'
                               onChange={(event) => {
                                 dispatch({
                                   type: Actions.Beloep,

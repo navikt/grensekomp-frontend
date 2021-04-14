@@ -8,6 +8,7 @@ interface FnrProps {
   disabled?: boolean;
   feilmelding?: string;
   placeholder: string;
+  className?: string;
   onChange: (fnr: string) => void;
   onValidate?: (valid: boolean) => void;
 }
@@ -15,6 +16,7 @@ interface FnrProps {
 const Fnr = (props: FnrProps) => {
   return (
     <FnrInput
+      className={props.className}
       value={props.fnr}
       placeholder={props.placeholder}
       id={props.id}
