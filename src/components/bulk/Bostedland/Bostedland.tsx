@@ -4,6 +4,7 @@ import landListe from './landListe';
 
 interface BostedlandProps {
   label: string;
+  value?: string;
   id?: string;
   disabled?: boolean;
   feilmelding?: string;
@@ -17,6 +18,7 @@ const Bostedland = (props: BostedlandProps) => {
       feil={props.feilmelding}
       label={props.label}
       disabled={props.disabled}
+      value={props.value}
       onChange={(evt) => props.onChange(evt.target.value)}
     >
       <option>Velg land:</option>
