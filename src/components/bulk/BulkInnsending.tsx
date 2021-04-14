@@ -2,7 +2,7 @@ import React, { useEffect, useReducer } from 'react';
 import { Column, Row } from 'nav-frontend-grid';
 import ServerFeilAdvarsel from '../felles/ServerFeilAdvarsel';
 import Panel from 'nav-frontend-paneler';
-import { Element, Ingress, Normaltekst } from 'nav-frontend-typografi';
+import { Element, Ingress } from 'nav-frontend-typografi';
 import Skillelinje from '../felles/Skillelinje';
 import { Input, SkjemaGruppe } from 'nav-frontend-skjema';
 import Fnr from '../felles/Fnr';
@@ -26,14 +26,12 @@ import Slettknapp from '../felles/knapper/Slettknapp';
 import BekreftOpplysningerPanel from '../felles/BekreftOpplysningerPanel';
 import Feilmeldingspanel from '../felles/Feilmeldingspanel';
 import { Hovedknapp } from 'nav-frontend-knapper';
-import BeloepHjelpeLabel from './BeloepHjelpeLabel';
-import DagerHjelpeLabel from './DagerHjelpeLabel';
 import { toDate } from '../../utils/dato/toDate';
-import formatNumberAsCurrency from '../../utils/formatNumberAsCurrency';
 import Bostedland from './Bostedland/Bostedland';
 import { maxDate, minDate } from '../../config/dager';
 import FraHjelpeLabel from './FraHjelpeLabel';
 import TilHjelpeLabel from './TilHjelpeLabel';
+import BeregnetRefusjon from './BeregnetRefusjon';
 
 interface BulkInnsendingProps {
   state?: BulkState;
@@ -221,28 +219,9 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           </Column>
                           <Column md='2' className='bulk-kolonne-5'>
                             <Input
-                              id={'dager_' + item.uniqueKey}
-                              label={<DagerHjelpeLabel />}
-                              placeholder='Antall'
-                              feil={item.dagerError}
-                              value={item.dager}
-                              disabled={item.accepted}
-                              onChange={(event) => {
-                                dispatch({
-                                  type: Actions.Dager,
-                                  payload: {
-                                    itemId: item.uniqueKey,
-                                    dager: event.currentTarget.value
-                                  }
-                                });
-                              }}
-                            />
-                          </Column>
-                          <Column md='2' className='bulk-kolonne-6'>
-                            <Input
                               id={'beloep_' + item.uniqueKey}
-                              label={<BeloepHjelpeLabel />}
-                              placeholder='Kr'
+                              label={'Månedsinntekt'}
+                              placeholder='Beløp'
                               feil={item.beloepError}
                               value={item.beloep}
                               disabled={item.accepted}
@@ -257,17 +236,9 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               }}
                             />
                           </Column>
+                          <Column md='2' className='bulk-kolonne-6'></Column>
                           <Column md='3' className='bulk-kolonne-7'>
-                            <Element>Foreløpig beregnet refusjon</Element>
-                            <div>
-                              <Normaltekst className='beregnet-refusjon'>
-                                {item.beloep && item.dager
-                                  ? `${formatNumberAsCurrency(
-                                      Number(item.dager) * Number(item.beloep.replace(',', '.'))
-                                    )}`
-                                  : ''}
-                              </Normaltekst>
-                            </div>
+                            <BeregnetRefusjon inntekt={item.beloep} />
                           </Column>
                         </Row>
                       </Column>

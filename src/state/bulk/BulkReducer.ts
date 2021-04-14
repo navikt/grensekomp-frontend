@@ -44,11 +44,6 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
         : undefined;
       return validateBulk(nextState);
 
-    case Actions.Dager:
-      checkItemId(payload?.itemId);
-      nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.dager = payload?.dager;
-      return validateBulk(nextState);
-
     case Actions.Beloep:
       checkItemId(payload?.itemId);
       nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.beloep = payload?.beloep;
@@ -110,7 +105,6 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
       nextState.items.push({
         uniqueKey: uuid(),
         fnr: '',
-        dager: '',
         beloep: ''
       });
       return nextState;

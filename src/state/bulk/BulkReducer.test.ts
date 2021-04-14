@@ -108,18 +108,6 @@ describe('BulkReducer', () => {
     expect(state.items.find((item) => item.uniqueKey === '1')!.tom).toBeUndefined();
   });
 
-  it('should set the dager', () => {
-    let state = BulkReducer(defaultBulkState(), {
-      type: Actions.Dager,
-      payload: {
-        dager: '3',
-        itemId: '1'
-      }
-    });
-
-    expect(state.items.find((item) => item.uniqueKey === '1')!.dager).toEqual('3');
-  });
-
   it('should set the beløp', () => {
     let state = BulkReducer(defaultBulkState(), {
       type: Actions.Beloep,

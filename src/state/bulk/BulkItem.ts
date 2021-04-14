@@ -8,8 +8,6 @@ export interface BulkItem {
   fomError?: string;
   tom?: Dato;
   tomError?: string;
-  dager?: string;
-  dagerError?: string;
   beloep?: string;
   beloepError?: string;
   land?: string;
