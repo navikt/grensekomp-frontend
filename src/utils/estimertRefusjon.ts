@@ -5,7 +5,7 @@ const estimertRefusjon = (månedsinntekt: number, ukedager: number): number => {
 
   const dagsats: number = årslønn / 260;
 
-  return dagsats * ukedager * 0.7;
+  return Math.round(dagsats * ukedager * 0.7);
 };
 
 export default estimertRefusjon;
