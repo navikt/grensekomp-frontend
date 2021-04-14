@@ -10,7 +10,6 @@ const testState: BulkState = {
       fnr: 'abc',
       fom: parseDato('02.03.2021'),
       tom: parseDato('05.03.2021'),
-      dager: '4',
       beloep: '2500'
     },
     {
@@ -18,7 +17,6 @@ const testState: BulkState = {
       fnr: 'abc',
       fom: parseDato('08.03.2021'),
       tom: parseDato('12.03.2021'),
-      dager: '5',
       beloep: '3200'
     }
   ]

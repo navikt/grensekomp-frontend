@@ -60,12 +60,7 @@ const testValidationResponse: BulkValidationResponse = {
         {
           validationType: 'Feil',
           message: 'Feil',
-          propertyPath: 'periode.beloep'
-        },
-        {
-          validationType: 'Feil',
-          message: 'Feil',
-          propertyPath: 'periode.antallDagerMedRefusjon'
+          propertyPath: 'periode.beregnetMånedsinntekt'
         },
         {
           validationType: 'Feil',
