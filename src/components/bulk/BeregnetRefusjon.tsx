@@ -2,6 +2,7 @@ import React from 'react';
 import { Element, Normaltekst } from 'nav-frontend-typografi';
 import Dato from '../../utils/dato/Dato';
 import kalkulerRefusjon from './KalkulerRefusjon';
+import formatNumberAsCurrency from '../../utils/formatNumberAsCurrency';
 
 interface BeregnetRefusjonProps {
   inntekt?: string;
@@ -15,7 +16,7 @@ const BeregnetRefusjon = ({ inntekt, fom, tom }: BeregnetRefusjonProps) => {
     <div>
       <Element className='bulk-element-nr'>Foreløpig beregnet refusjon</Element>
       <div>
-        <Normaltekst className='beregnet-refusjon'>{refusjon} kr</Normaltekst>
+        <Normaltekst className='beregnet-refusjon'>{formatNumberAsCurrency(refusjon)}</Normaltekst>
       </div>
     </div>
   );
