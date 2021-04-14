@@ -68,7 +68,7 @@ describe('BulkInnsending', () => {
     );
     const submitButton = screen.getByText(/Send krav om refusjon/);
     const fnrInput = screen.getByLabelText(/Fødsel/);
-    const BelopInput = screen.getByLabelText(/Månedsinntekt/);
+    const BelopInput = screen.getByLabelText(/Beregnet månedsinntekt/);
     const bekreftCheckbox = screen.getByText(
       /Jeg bekrefter at opplysningene jeg har gitt, er riktige og fullstendige./
     );
