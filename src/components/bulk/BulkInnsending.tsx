@@ -114,7 +114,12 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
               <Panel>
                 <SkjemaGruppe aria-live='polite' legend='Oppgi ansatte, fraværsperiode og beløp'>
                   {state.items?.map((item, index) => (
-                    <Row key={item.uniqueKey} className={`bulk-innsending__rad ${index % 2 ? 'odd' : 'even'}`}>
+                    <Row
+                      key={item.uniqueKey}
+                      className={`bulk-innsending__rad ${index % 2 ? 'odd' : 'even'} ${
+                        index > 0 ? 'not-first-row' : 'first-row'
+                      }`}
+                    >
                       <Column md='1' className='bulk-kolonne-1'>
                         <Element className='bulk-element-nr'>{index === 0 ? 'Nr.' : '\u00A0'}</Element>
                         <RadNr nr={index + 1} />
