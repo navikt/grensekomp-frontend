@@ -185,6 +185,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               feilmelding={item.fomError}
                               label={<FraHjelpeLabel />}
                               placeholder='dd.mm.åå'
+                              disabled={item.accepted}
                               minDate={minDate}
                               maxDate={maxDate}
                               className='input--fullbredde bulk-element'
@@ -206,6 +207,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               feilmelding={item.tomError}
                               label={<TilHjelpeLabel />}
                               placeholder='dd.mm.åå'
+                              disabled={item.accepted}
                               minDate={minDate}
                               maxDate={maxDate}
                               className='input--fullbredde'
