@@ -39,6 +39,7 @@ const mapBulkValidationResponse = (response: BulkValidationResponse, state: Bulk
             break;
 
           case 'periode.tom':
+          case 'tom':
             item.tomError = v.message || UKJENT_FEIL;
             break;
 
