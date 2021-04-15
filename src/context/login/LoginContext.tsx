@@ -28,8 +28,6 @@ export const LoginProvider = ({ baseUrl, children, status = LoginStatus.Checking
           setExpiry(LoginStatus.Failed);
           return;
         }
-        console.log(loginExpiryResponse.tidspunkt);
-        console.log(new Date());
         if (loginExpiryResponse.tidspunkt.getTime() < new Date().getTime()) {
           setExpiry(LoginStatus.MustLogin);
         } else {
