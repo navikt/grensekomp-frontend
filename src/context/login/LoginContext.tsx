@@ -24,14 +24,14 @@ export const LoginProvider = ({ baseUrl, children, status = LoginStatus.Checking
   useEffect(() => {
     if (expiry === LoginStatus.Checking) {
       GetLoginExpiry(baseUrl).then((loginExpiryResponse) => {
-        if (isUndefinedOrExpiredTimestamp(loginExpiryResponse)) {
-          if (isExpiredTokenTimestamp(loginExpiryResponse)) {
-            window.location.href = redirectUrl(env.loginServiceUrl, window.location.href);
-          } else if (isLoggedInFromUrl()) {
-            setExpiry(LoginStatus.Failed);
-          } else {
-            setExpiry(LoginStatus.MustLogin);
-          }
+        if (!loginExpiryResponse.tidspunkt) {
+          setExpiry(LoginStatus.Failed);
+          return;
+        }
+        console.log(loginExpiryResponse.tidspunkt);
+        console.log(new Date());
+        if (loginExpiryResponse.tidspunkt.getTime() < new Date().getTime()) {
+          setExpiry(LoginStatus.MustLogin);
         } else {
           setExpiry(LoginStatus.Verified);
         }
