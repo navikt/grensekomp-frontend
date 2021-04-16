@@ -11,12 +11,12 @@ const DeleteIcon = () => (
   </svg>
 );
 
-interface SlettknappProps {
+interface SlettKravKnappProps {
   onClick: any;
   disabled?: boolean;
 }
 
-const Slettknapp = ({ onClick, disabled }: SlettknappProps) => {
+const SlettKravKnapp = ({ onClick, disabled }: SlettKravKnappProps) => {
   return (
     <Knapp onClick={onClick} className={'slett-krav-knapp lenke'} disabled={disabled}>
       <DeleteIcon />
@@ -25,4 +25,4 @@ const Slettknapp = ({ onClick, disabled }: SlettknappProps) => {
   );
 };
 
-export default Slettknapp;
+export default SlettKravKnapp;

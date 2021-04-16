@@ -6,16 +6,10 @@ export const defaultOversiktKravState = (state?: OversiktKravState): OversiktKra
   return Object.assign(
     {
       bekreft: false,
-<<<<<<< HEAD
       serverError: false,
       feilmeldinger: Array<FeiloppsummeringFeil>()
     },
     state || { serverError: false }
-=======
-      feilmeldinger: Array<FeiloppsummeringFeil>()
-    },
-    state || {}
->>>>>>> 2ca841a (Kravoversikt)
   );
 };
 
