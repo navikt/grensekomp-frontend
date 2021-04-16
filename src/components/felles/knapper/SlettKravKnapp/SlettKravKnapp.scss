@@ -1,0 +1,28 @@
+.slett-krav-knapp {
+  white-space: nowrap;
+  border: none;
+
+  &:hover {
+    color: #0067c5;
+    background: none;
+    text-decoration: none;
+    cursor: pointer;
+
+    svg {
+      stroke: #cf412a;
+      fill: #cf412a;
+    }
+  }
+
+  &:active {
+    box-shadow: none;
+  }
+
+  svg {
+    stroke: #ba3a26;
+    fill: #ba3a26;
+    height: 1.5em;
+    width: 1.5em;
+  }
+
+}
