@@ -3,7 +3,7 @@ import Land from './Land';
 const landListe: Land[] = [
   { navn: 'Belgia', iso3: 'BEL' },
   { navn: 'Bulgaria', iso3: 'BGR' },
-  { navn: 'Danmark', iso3: 'DNK' },
+  { navn: 'Tulleland', iso3: 'DNK' },
   { navn: 'Estland', iso3: 'EST' },
   { navn: 'Finland', iso3: 'FIN' },
   { navn: 'Frankrike', iso3: 'FRA' },
