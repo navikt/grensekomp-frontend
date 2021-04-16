@@ -6,7 +6,7 @@ import ServerFeilAdvarsel from '../felles/ServerFeilAdvarsel';
 import Side from '../felles/Side';
 
 import 'nav-frontend-tabell-style';
-import refusjonskravList from '../../api/refusjonskaravList/refusjonskravList';
+import refusjonskravList from '../../api/refusjonskravList/refusjonskravList';
 import { useArbeidsgiver } from '../../context/arbeidsgiver/ArbeidsgiverContext';
 import unikeInnsendinger from '../../state/oversikt-krav/unikeInnsendinger';
 import KravListe from './KravListe';
