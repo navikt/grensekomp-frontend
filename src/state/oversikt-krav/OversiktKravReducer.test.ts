@@ -20,20 +20,20 @@ describe('OversiktKravReducer', () => {
     expect(state.progress).toBe(true);
   });
 
-  it('should set the activtKrav to undefined', () => {
+  it('should set the aktivtKrav to undefined', () => {
     let state = OversiktKravReducer(defaultOversiktKravState(), {
       type: Actions.KravSelected,
       payload: { krav: 'krav' }
     });
 
-    expect(state.activtKrav).toBe('krav');
+    expect(state.aktivtKrav).toBe('krav');
   });
 
-  it('should set the activtKrav to true', () => {
+  it('should set the aktivtKrav to true', () => {
     let state = OversiktKravReducer(defaultOversiktKravState(), {
       type: Actions.KravUnselected
     });
-    expect(state.activtKrav).toBeUndefined();
+    expect(state.aktivtKrav).toBeUndefined();
   });
 
   it('should set the progress to false', () => {

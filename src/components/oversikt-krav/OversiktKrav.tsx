@@ -45,7 +45,7 @@ const OversiktKrav = (props: OversiktKravProps) => {
 
   const kravListe = state.items
     ? state.items.filter(
-        (kravItem) => kravItem.opprettet === state.activtKrav && kravItem.status !== RefusjonskravStatus.SLETTET
+        (kravItem) => kravItem.opprettet === state.aktivtKrav && kravItem.status !== RefusjonskravStatus.SLETTET
       )
     : [];
 
@@ -57,8 +57,8 @@ const OversiktKrav = (props: OversiktKravProps) => {
       subtitle='Refusjoner'
     >
       <ServerFeilAdvarsel isOpen={state.serverError} onClose={handleCloseServerFeil} />
-      {!state.activtKrav && <KravListe innsendinger={innsendinger} onKravClick={onKravClickHandler} />}
-      {state.activtKrav && <KravSammendrag items={kravListe} innsending={state.activtKrav} dispatch={dispatch} />}
+      {!state.aktivtKrav && <KravListe innsendinger={innsendinger} onKravClick={onKravClickHandler} />}
+      {state.aktivtKrav && <KravSammendrag items={kravListe} innsending={state.aktivtKrav} dispatch={dispatch} />}
     </Side>
   );
 };

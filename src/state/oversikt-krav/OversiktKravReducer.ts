@@ -16,11 +16,11 @@ const OversiktKravReducer = (state: BulkState, action: OversiktKravActions): Bul
       return nextState;
 
     case Actions.KravSelected:
-      nextState.activtKrav = payload?.krav;
+      nextState.aktivtKrav = payload?.krav;
       return nextState;
 
     case Actions.KravUnselected:
-      nextState.activtKrav = undefined;
+      nextState.aktivtKrav = undefined;
       return nextState;
 
     case Actions.HandleResponse:

@@ -21,5 +21,5 @@ export default interface OversiktKravState extends ValidationState {
   bekreftError?: string;
   land?: string;
   landError?: string;
-  activtKrav?: string;
+  aktivtKrav?: string;
 }
