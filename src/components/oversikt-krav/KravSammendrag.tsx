@@ -46,13 +46,11 @@ const KravSammendrag = (props: KravSammendragProps) => {
 
   const handleCloseModal = () => {
     setModalIsOpen(false);
-    // props.dispatch({ type: Actions.ModalClose });
   };
 
   const handleRequestSlettInnsending = (itemId: string) => {
     setModifyId(itemId);
     setModalIsOpen(true);
-    // props.dispatch({ type: Actions.ModalOpen, payload:  });
   };
   const getIdentityNumber = (itemId: string) => {
     let items: OversiktKravItem[];
