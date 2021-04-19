@@ -34,6 +34,7 @@ import TilHjelpeLabel from './TilHjelpeLabel';
 import BeregnetRefusjon from './BeregnetRefusjon';
 import MaanedsinntektHjelpeLabel from './MaanedsinntektHjelpeLabel';
 
+
 interface BulkInnsendingProps {
   state?: BulkState;
 }
