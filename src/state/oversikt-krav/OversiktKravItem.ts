@@ -1,5 +1,5 @@
 export enum RefusjonskravStatus {
-  MOTTATT = 'MOTATT',
+  MOTTATT = 'MOTTATT',
   SENDT_TIL_BEHANDLING = 'SENDT_TIL_BEHANDLING',
   FEILET = 'FEILET',
   JOBB = 'JOBB',
