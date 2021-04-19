@@ -33,6 +33,8 @@ import FraHjelpeLabel from './FraHjelpeLabel';
 import TilHjelpeLabel from './TilHjelpeLabel';
 import BeregnetRefusjon from './BeregnetRefusjon';
 import MånedsinntektHjelpeLabel from './MånedsinntektHjelpeLabel';
+import KravLink from '../KravLink';
+import { useLocation, useParams } from 'react-router-dom';
 
 interface BulkInnsendingProps {
   state?: BulkState;
@@ -41,7 +43,10 @@ interface BulkInnsendingProps {
 const BulkInnsending = (props: BulkInnsendingProps) => {
   const [state, dispatch] = useReducer(BulkReducer, props.state, defaultBulkState);
   const { arbeidsgiverId } = useArbeidsgiver();
+  const location = useLocation();
+
   const showDeleteButton = state.items && state.items.length > 1;
+  console.log('fornavn', location);
 
   const handleCloseServerFeil = () => {
     dispatch({ type: Actions.HideServerError });
@@ -109,6 +114,10 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                   <li>Avviklet ferie kan omgjøres til arbeidsdager som det gis refusjon for.</li>
                 </Ingress>
               </Panel>
+
+              <div>
+                <KravLink fnr='asb' beloep='123' land='SWE' />
+              </div>
 
               <Skillelinje />
 
