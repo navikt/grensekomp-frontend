@@ -109,14 +109,20 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                   <li>Det gis bare kompensasjon for dager som den ansatte faktisk skulle ha jobbet.</li>
                   <li>
                     Kompensasjonen er 70 % av sykepengegrunnlaget, begrenset opp til 70 % av 6G,&nbsp;
-                    <Lenke href='https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden'>
+                    <Lenke
+                      target='_blank'
+                      href='https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden'
+                    >
                       folketrygdens grunnbeløp
                     </Lenke>
                   </li>
                   <li>Avviklet ferie kan omgjøres til arbeidsdager som det gis refusjon for.</li>
                   <li>
-                    Søknaden blir behandlet automatisk.
-                    <Lenke href='https://www.nav.no/no/person/arbeid/sykmeldt-arbeidsavklaringspenger-og-yrkesskade/nyheter/kompensasjon-til-utestengte-eos-borgere/automatisert-saksbehandling-i-forbindelse-med-innreiseforbudet'>
+                    Søknaden blir behandlet automatisk.&nbsp;
+                    <Lenke
+                      target='_blank'
+                      href='https://www.nav.no/no/person/arbeid/sykmeldt-arbeidsavklaringspenger-og-yrkesskade/nyheter/kompensasjon-til-utestengte-eos-borgere/automatisert-saksbehandling-i-forbindelse-med-innreiseforbudet'
+                    >
                       Les om den automatiserte saksbehandlingen.
                     </Lenke>
                   </li>
