@@ -1,5 +1,5 @@
 import { Column, Row } from 'nav-frontend-grid';
-import { Innholdstittel, Normaltekst, Sidetittel, Undertittel } from 'nav-frontend-typografi';
+import { Innholdstittel, Normaltekst, Undertittel } from 'nav-frontend-typografi';
 import React, { useState } from 'react';
 import { Actions } from '../../state/oversikt-krav/OversiktKravActions';
 
@@ -20,6 +20,8 @@ import Veilederpanel from 'nav-frontend-veilederpanel';
 import './KravSammendrag.scss';
 import SlettetKravKvittering from '../slettetKravKvittering';
 import estimertRefusjon from '../../utils/estimertRefusjon';
+import diffDato from '../../utils/dato/diffDato';
+import { parseISODato } from '../../utils/dato/parseISODato';
 
 interface KravSammendragProps {
   items: OversiktKravItem[];
@@ -86,8 +88,8 @@ const KravSammendrag = (props: KravSammendragProps) => {
       tom={slettetKrav.periode.tom}
       beloep={slettetKrav.periode.beregnetMånedsinntekt}
       refusjon={
-        slettetKrav.periode.beregnetMånedsinntekt && slettetKrav.periode.antallDagerMedRefusjon
-          ? estimertRefusjon(slettetKrav.periode.beregnetMånedsinntekt, slettetKrav.periode.antallDagerMedRefusjon)
+        slettetKrav.periode.beregnetMånedsinntekt && slettetKrav.periode.fom && slettetKrav.periode.tom
+          ? beregnetRefusjon(slettetKrav)
           : undefined
       }
     />
@@ -151,9 +153,8 @@ const KravSammendrag = (props: KravSammendragProps) => {
                         : ''}
                     </td>
                     <td>
-                      {item.periode.beregnetMånedsinntekt && item.periode.antallDagerMedRefusjon
-                        ? estimertRefusjon(item.periode.beregnetMånedsinntekt, item.periode.antallDagerMedRefusjon)
-
+                      {item.periode.beregnetMånedsinntekt && item.periode.fom && item.periode.tom
+                        ? formatNumberAsCurrency(beregnetRefusjon(item))
                         : ''}
                     </td>
                     <td>
@@ -170,3 +171,10 @@ const KravSammendrag = (props: KravSammendragProps) => {
 };
 
 export default KravSammendrag;
+
+const beregnetRefusjon = (slettetKrav: OversiktKravItem): number => {
+  return estimertRefusjon(
+    slettetKrav.periode.beregnetMånedsinntekt,
+    diffDato(parseISODato(slettetKrav.periode.fom), parseISODato(slettetKrav.periode.tom))
+  );
+};
