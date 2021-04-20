@@ -35,7 +35,7 @@ const SlettetKravKvittering = (props: SlettetKravKvitteringProps) => (
             Periode: {props.fom} - {props.tom}
           </Normaltekst>
           <Normaltekst>Beregnet månedsinntekt: {props.beloep}</Normaltekst>
-          <Normaltekst>Anslått refusjon: {props.refusjon}</Normaltekst>
+          <Normaltekst>Foreløpig beregnet refusjon: {props.refusjon}</Normaltekst>
         </Panel>
       </Column>
     </Row>
