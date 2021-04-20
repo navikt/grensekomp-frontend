@@ -7,6 +7,8 @@ import Lenke from 'nav-frontend-lenker';
 import formaterIsoTimestampAsNoTime from '../../utils/formatIsoTimestampAsNoTimestamp';
 import InternLenke from '../felles/InternLenke/InternLenke';
 import lenker from '../../config/lenker';
+import Skillelinje from '../felles/Skillelinje';
+import './KravListe.scss';
 
 interface KravListeProps {
   innsendinger: string[];
@@ -16,27 +18,25 @@ interface KravListeProps {
 const KravListe = (props: KravListeProps) => {
   return (
     <>
-      <Row>
+      <Row className='kravliste'>
         <Column>
-          <Innholdstittel>Oversikt over tidligere innsendte krav</Innholdstittel>
-          <br />
-          <br />
+          <Innholdstittel className='kravliste-tittel'>Oversikt over tidligere innsendte krav</Innholdstittel>
           <Normaltekst>
             Har du tidligere søkt om refusjon for{' '}
             <InternLenke to={lenker.Bulkinnsending}>tapt arbeidsinntekt på grunn av innreiseforbudet</InternLenke>, kan
             du finne tilbake til dem nedenfor.
           </Normaltekst>
-          <br />
-          <hr></hr>
-          {props.innsendinger &&
-            props.innsendinger.map((item) => (
-              <div key={item}>
-                <br />
-                <Lenke href='#' onClick={() => props.onKravClick(item)}>
-                  {formaterIsoTimestampAsNoTime(item)} - Refusjonskrav ved innreiseforbud
-                </Lenke>
-              </div>
-            ))}
+          <Skillelinje />
+          <ul className='kravliste-liste'>
+            {props.innsendinger &&
+              props.innsendinger.map((item) => (
+                <li className='kravliste-krav' key={item}>
+                  <Lenke href='#' onClick={() => props.onKravClick(item)}>
+                    {formaterIsoTimestampAsNoTime(item)} - Refusjonskrav ved innreiseforbud
+                  </Lenke>
+                </li>
+              ))}
+          </ul>
         </Column>
       </Row>
     </>
