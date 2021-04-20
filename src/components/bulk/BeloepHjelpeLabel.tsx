@@ -65,13 +65,19 @@ const BeloepHjelpeLabel = () => {
                 </li>
                 <li>
                   Ut over særtilfellet nevnt ovenfor gjelder samme{' '}
-                  <Lenke href='https://www.nav.no/no/bedrift/tjenester-og-skjemaer/nav-og-altinn-tjenester/inntektsmelding/beregningsregler-for-sykepenger'>
+                  <Lenke
+                    target='_blank'
+                    href='https://www.nav.no/no/bedrift/tjenester-og-skjemaer/nav-og-altinn-tjenester/inntektsmelding/beregningsregler-for-sykepenger'
+                  >
                     beregningsregler som for sykepenger.
                   </Lenke>
                 </li>
                 <li>
                   Hvilke{' '}
-                  <Lenke href='https://www.nav.no/no/bedrift/oppfolging/sykmeldt-arbeidstaker/sykepenger/inntekter-som-innga%CC%8Ar-i-beregning-av-ma%CC%8Anedsinntekten'>
+                  <Lenke
+                    target='_blank'
+                    href='https://www.nav.no/no/bedrift/oppfolging/sykmeldt-arbeidstaker/sykepenger/inntekter-som-innga%CC%8Ar-i-beregning-av-ma%CC%8Anedsinntekten'
+                  >
                     inntekter som kan tas med i beregningen
                   </Lenke>{' '}
                   er det også viktig å være klar over.
