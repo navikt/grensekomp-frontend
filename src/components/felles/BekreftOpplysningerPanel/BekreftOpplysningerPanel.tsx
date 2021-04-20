@@ -1,8 +1,8 @@
 import Panel from 'nav-frontend-paneler';
 import { BekreftCheckboksPanel, SkjemaGruppe } from 'nav-frontend-skjema';
-import { Normaltekst } from 'nav-frontend-typografi';
 import React from 'react';
 import './BekreftOpplysningerPanel.scss';
+import Lenke from 'nav-frontend-lenker';
 
 interface BekreftOpplysningerPanelProps {
   checked: boolean;
@@ -15,22 +15,25 @@ const BekreftOpplysningerPanel = (props: BekreftOpplysningerPanelProps) => {
     <Panel className='bekreft-opplysninger-panel'>
       <SkjemaGruppe feilmeldingId='bekreftFeilmeldingId'>
         <BekreftCheckboksPanel
-          label='Jeg bekrefter at opplysningene jeg har gitt, er riktige og fullstendige.'
+          label='Jeg bekrefter at jeg har satt meg inn i reglene, og at opplysningene jeg har gitt, er riktige og
+          fullstendige. Jeg vet at NAV kan trekke tilbake retten til å få dekket lønnsutgiftene ved feil eller
+          mangelfulle opplysninger, og at NAV kan gjøre kontroller i ettertid for å hindre misbruk av ordningen.'
           checked={props.checked}
           feil={props.feil}
+          className='erklaring-wrapper'
           onChange={props.onChange}
         >
-          Hver enkelt ansatt jeg søker refusjon for:
-          <ul>
-            <li>kan ikke møte på jobb på grunn av innreiseforbudet</li>
-            <li>er EØS-borger eller britisk statsborger</li>
-            <li>var i jobb hos meg i minst 4 uker før 29. januar</li>
-          </ul>
-          <Normaltekst>
-            Jeg vet at NAV kan trekke tilbake retten til å få dekket lønnsutgiftene hvis opplysningene ikke er riktige
-            eller fullstendige.
-          </Normaltekst>
-          <Normaltekst>NAV kan gjøre kontroller i ettertid for å hindre misbruk av ordningen.</Normaltekst>
+          <>
+            <p>
+              Jeg har utbetalt lønn til de ansatte jeg søker om refusjon for ovenfor.
+              <br />
+              Hver enkelt ansatt taper inntekt fordi de ikke kan møte på jobb på grunn av innreiseforbudet.
+              <br />
+              <Lenke href='https://www.nav.no/no/bedrift/refusjon-ved-innreiseforbud-under-pandemien'>
+                Reglene som gjelder for kompensasjon ved innreiseforbudet.
+              </Lenke>
+            </p>
+          </>
         </BekreftCheckboksPanel>
       </SkjemaGruppe>
     </Panel>
