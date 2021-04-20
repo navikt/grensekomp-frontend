@@ -121,8 +121,10 @@ const KravSammendrag = (props: KravSammendragProps) => {
       </Row>
       <Row>
         <Column>
-          <Undertittel>Krav mottatt: {formaterIsoTimestampAsNoTime(props.innsending)}</Undertittel>
-          <Sidetittel>Refusjonskrav ved innreiseforbud</Sidetittel>
+          <Undertittel className='krav-mottatt'>
+            Krav mottatt: {formaterIsoTimestampAsNoTime(props.innsending)}
+          </Undertittel>
+          <Innholdstittel className='krav-tittel'>Refusjonskrav ved innreiseforbud</Innholdstittel>
           <table className='tabell tabell--stripet'>
             <thead>
               <tr>

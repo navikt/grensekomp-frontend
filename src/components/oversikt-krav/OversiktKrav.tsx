@@ -52,7 +52,7 @@ const OversiktKrav = (props: OversiktKravProps) => {
   return (
     <Side
       bedriftsmeny={true}
-      className='oversikt-krav'
+      className={`oversikt-krav${state.aktivtKrav ? ' aktive-krav' : ''}`}
       sidetittel='Refusjon for lønn ved innreiseforbud'
       subtitle='Refusjoner'
     >
