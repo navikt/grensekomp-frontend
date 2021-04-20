@@ -1,10 +1,14 @@
 import { Column, Row } from 'nav-frontend-grid';
-import { Normaltekst, Sidetittel } from 'nav-frontend-typografi';
+import { Innholdstittel, Normaltekst } from 'nav-frontend-typografi';
 import React from 'react';
 
 import 'nav-frontend-tabell-style';
 import Lenke from 'nav-frontend-lenker';
 import formaterIsoTimestampAsNoTime from '../../utils/formatIsoTimestampAsNoTimestamp';
+import InternLenke from '../felles/InternLenke/InternLenke';
+import lenker from '../../config/lenker';
+import Skillelinje from '../felles/Skillelinje';
+import './KravListe.scss';
 
 interface KravListeProps {
   innsendinger: string[];
@@ -14,20 +18,21 @@ interface KravListeProps {
 const KravListe = (props: KravListeProps) => {
   return (
     <>
-      <Row>
+      <Row className='kravliste'>
         <Column>
-          <Sidetittel>Oversikt over tidligere innsendte krav</Sidetittel>
+          <Innholdstittel className='kravliste-tittel'>Oversikt over tidligere innsendte krav</Innholdstittel>
           <Normaltekst>
-            Har du tidligere søkt om refusjon av sykepenger for fravær som skyldes korona eller tapt arbeidsinntekt på
-            grunn av innreiseforbudet, kan du finne tilbake til dem nedenfor.
+            Har du tidligere søkt om refusjon for{' '}
+            <InternLenke to={lenker.Bulkinnsending}>tapt arbeidsinntekt på grunn av innreiseforbudet</InternLenke>, kan
+            du finne tilbake til dem nedenfor.
           </Normaltekst>
-          <hr></hr>
-          <ul>
+          <Skillelinje />
+          <ul className='kravliste-liste'>
             {props.innsendinger &&
               props.innsendinger.map((item) => (
-                <li key={item}>
+                <li className='kravliste-krav' key={item}>
                   <Lenke href='#' onClick={() => props.onKravClick(item)}>
-                    {formaterIsoTimestampAsNoTime(item)}
+                    {formaterIsoTimestampAsNoTime(item)} - Refusjonskrav ved innreiseforbud
                   </Lenke>
                 </li>
               ))}
