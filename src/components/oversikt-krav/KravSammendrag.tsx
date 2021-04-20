@@ -155,7 +155,7 @@ const KravSammendrag = (props: KravSammendragProps) => {
                         : ''}
                     </td>
                     <td>
-                      <SlettKravKnapp onClick={() => handleSlettKrav(item.id)} />
+                      <SlettKravKnapp onClick={() => handleRequestSlettInnsending(item.id)} />
                     </td>
                   </tr>
                 ))}
