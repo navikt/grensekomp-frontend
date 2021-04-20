@@ -134,7 +134,7 @@ const KravSammendrag = (props: KravSammendragProps) => {
                 <th role='columnheader'>Bostedsland</th>
                 <th role='columnheader'>Periode</th>
                 <th role='columnheader'>Beregnet månedsinntekt</th>
-                <th role='columnheader'>Anslått refusjon</th>
+                <th role='columnheader'>Foreløpig beregnet refusjon</th>
                 <th></th>
               </tr>
             </thead>
