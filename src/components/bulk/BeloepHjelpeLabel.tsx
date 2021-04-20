@@ -46,36 +46,37 @@ const BeloepHjelpeLabel = () => {
 
   return (
     <div className='beloephjelpelabel'>
-      <span className='hjelpetekst-beskrivelse'>Dagsats</span>
+      <span className='hjelpetekst-beskrivelse'>Beregnet månedsinntekt</span>
       <div className='hjelpetekst-refusjon'>
         <ModalWrapper
           isOpen={eksempelOpen}
           onRequestClose={() => setEksempelOpen(false)}
           closeButton={false}
-          contentLabel='Eksempel på refusjon'
+          contentLabel='Beregning av månedsinntekt'
           className='eksempel-modal'
         >
           <Veilederpanel svg={<SmilendeKar />}>
-            <Undertittel>Slik regner du ut den ansattes daglige lønn (dagsats) ved normale forhold:</Undertittel>
-
-            <ul className='leftallign-list'>
-              <li>
-                Beregn månedsinntekten slik det ellers gjøres for &nbsp;
-                <Lenke
-                  href='https://www.nav.no/no/bedrift/oppfolging/sykmeldt-arbeidstaker/sykepenger/inntekter-som-innga%CC%8Ar-i-beregning-av-ma%CC%8Anedsinntekten_kap'
-                  target='_blank'
-                >
-                  sykepenger i arbeidsgiverperioden
-                </Lenke>
-                .
-              </li>
-              <li>Gang med 12 måneder for å finne årslønn.</li>
-              <li>Reduser beløpet til 6G (608 106) hvis beløpet er over dette.</li>
-              <li>Finn dagsatsen ved å dele årslønnen på antall dager dere utbetaler lønn for i året.</li>
-              <li>Gang dagsatsen med antall dager dere krever refusjon for.</li>
-            </ul>
+            <Undertittel>Beregning av månedsinntekt</Undertittel>
             <Normaltekst>
-              Merk: Oppgi hvor mye lønn den ansatte får under normale forhold. NAV vil omregne beløpet til 70 %.
+              <ul className='leftallign-list'>
+                <li>
+                  Tidspunktet for beregning er 29. januar 2021. Dette betyr at det er inntekter i månedene oktober,
+                  november, desember 2020 som skal legges til grunn når du gjør beregningen.
+                </li>
+                <li>
+                  Ut over særtilfellet nevnt ovenfor gjelder samme{' '}
+                  <Lenke href='https://www.nav.no/no/bedrift/tjenester-og-skjemaer/nav-og-altinn-tjenester/inntektsmelding/beregningsregler-for-sykepenger'>
+                    beregningsregler som for sykepenger.
+                  </Lenke>
+                </li>
+                <li>
+                  Hvilke{' '}
+                  <Lenke href='https://www.nav.no/no/bedrift/oppfolging/sykmeldt-arbeidstaker/sykepenger/inntekter-som-innga%CC%8Ar-i-beregning-av-ma%CC%8Anedsinntekten'>
+                    inntekter som kan tas med i beregningen
+                  </Lenke>{' '}
+                  er det også viktig å være klar over.
+                </li>
+              </ul>
             </Normaltekst>
             <LeggTilKnapp className='lukke-knapp' onClick={(evt) => handleCloseButton(evt)}>
               Lukk dette vinduet

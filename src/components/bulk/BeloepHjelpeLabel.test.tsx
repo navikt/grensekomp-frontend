@@ -16,7 +16,7 @@ describe('BeloepHjelpeLabel', () => {
 
     fireEvent.click(knappen);
 
-    expect(component.queryAllByText(/Slik regner du ut den ansattes daglige lønn/).length).toEqual(1);
+    expect(component.queryAllByText(/Tidspunktet for beregning er 29. januar 2021./).length).toEqual(1);
 
     const lukkKnappen = component.getByText(/Lukk dette vinduet/);
 
