@@ -6,7 +6,7 @@ const validateBeloep = (beloep: string | undefined, max: number, required: boole
   }
 
   if (!isNumericString(beloep)) {
-    return required ? 'Oppgi beløp med kun tall' : undefined;
+    return required ? 'Oppgi beløp med kun tall med maks to tall etter komma' : undefined;
   }
 
   if (parseInt(beloep) > max) {

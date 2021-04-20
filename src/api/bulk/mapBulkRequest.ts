@@ -11,7 +11,7 @@ const mapBulkItem = (item: BulkItem, orgnr: string, bekreftet: boolean = false):
   periode: {
     fom: datoToString(item.fom),
     tom: datoToString(item.tom),
-    beregnetMånedsinntekt: parseInt(item.beloep || '')
+    beregnetMånedsinntekt: parseFloat(item.beloep || '')
   },
   bostedsland: item.land || '',
   bekreftet: bekreftet
