@@ -34,7 +34,6 @@ import TilHjelpeLabel from './TilHjelpeLabel';
 import BeregnetRefusjon from './BeregnetRefusjon';
 import MaanedsinntektHjelpeLabel from './MaanedsinntektHjelpeLabel';
 
-
 interface BulkInnsendingProps {
   state?: BulkState;
 }
@@ -93,13 +92,20 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
             <div>
               <Panel>
                 <Ingress>
-                  Du kan få refundert lønn til ansatte som ikke kommer seg på jobb i Norge på grunn av strenge
-                  innreiserestriksjoner. Alle felter må fylles ut.
+                  Arbeidsgivere er pålagt å utbetale kompensasjon til personer som taper inntekt fordi de ikke kan møte
+                  på arbeid som følge av innreiseforbudet i forbindelse med pandemien. Arbeidsgiveren forskutterer
+                  kompensasjonen og krever refusjon fra Arbeids- og velferdsetaten. For å få refusjon må alle felter
+                  fylles ut. Du kan sende inntil <b>50 krav</b> om gangen.
                 </Ingress>
               </Panel>
               <Panel>
                 <Ingress style={{ marginLeft: '3rem' }}>
                   <li>Ordningen gjelder fra 29. januar da innreiseforbudet ble innført</li>
+                  <li>
+                    Ordningen gjelder for arbeidstakere som var ansatt og hadde påbegynt arbeidet fra dette tidspunktet.
+                    Den ansatte må ha vært i jobb i minst fire uker.
+                  </li>
+                  <li>Har den ansatte hatt inntekt fra en annen jobb i stedet, skal det ikke gis kompensasjon.</li>
                   <li>Det gis bare kompensasjon for dager som den ansatte faktisk skulle ha jobbet.</li>
                   <li>
                     Kompensasjonen er 70 % av sykepengegrunnlaget, begrenset opp til 70 % av 6G,&nbsp;
@@ -108,6 +114,12 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                     </Lenke>
                   </li>
                   <li>Avviklet ferie kan omgjøres til arbeidsdager som det gis refusjon for.</li>
+                  <li>
+                    Søknaden blir behandlet automatisk.
+                    <Lenke href='https://www.nav.no/no/person/arbeid/sykmeldt-arbeidsavklaringspenger-og-yrkesskade/nyheter/kompensasjon-til-utestengte-eos-borgere/automatisert-saksbehandling-i-forbindelse-med-innreiseforbudet'>
+                      Les om den automatiserte saksbehandlingen.
+                    </Lenke>
+                  </li>
                 </Ingress>
               </Panel>
 
