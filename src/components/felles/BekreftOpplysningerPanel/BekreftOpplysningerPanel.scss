@@ -1,26 +1,9 @@
 .bekreft-opplysninger-panel {
     .bekreftCheckboksPanel {
-        display: flex;
-        flex-direction: column-reverse;
-        
+
         .bekreftCheckboksPanel__innhold {
-            max-width: 120ch;
-            margin-bottom: 0;
+            padding-bottom: 0.25rem;
         }
     }
 
-    .erklaring-wrapper {
-        display: flex;
-        flex-direction: column-reverse;
-    }
-    .erklaring-wrapper .bekreftCheckboksPanel__innhold {
-        margin-bottom: 0;
-        padding-left: 30px;
-    }
-    .erklaring-wrapper .skjemaelement label {
-        font-weight: 600;
-        line-height: 28px;
-    }
 }
-
-

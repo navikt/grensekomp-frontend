@@ -20,20 +20,17 @@ const BekreftOpplysningerPanel = (props: BekreftOpplysningerPanelProps) => {
           mangelfulle opplysninger, og at NAV kan gjøre kontroller i ettertid for å hindre misbruk av ordningen.'
           checked={props.checked}
           feil={props.feil}
-          className='erklaring-wrapper'
           onChange={props.onChange}
         >
-          <>
-            <p>
-              Jeg har utbetalt lønn til de ansatte jeg søker om refusjon for ovenfor.
-              <br />
-              Hver enkelt ansatt taper inntekt fordi de ikke kan møte på jobb på grunn av innreiseforbudet.
-              <br />
-              <Lenke href='https://www.nav.no/no/bedrift/refusjon-ved-innreiseforbud-under-pandemien'>
-                Reglene som gjelder for kompensasjon ved innreiseforbudet.
-              </Lenke>
-            </p>
-          </>
+          <p>
+            Jeg har utbetalt lønn til de ansatte jeg søker om refusjon for ovenfor.
+            <br />
+            Hver enkelt ansatt taper inntekt fordi de ikke kan møte på jobb på grunn av innreiseforbudet.
+            <br />
+            <Lenke href='https://www.nav.no/no/bedrift/refusjon-ved-innreiseforbud-under-pandemien'>
+              Reglene som gjelder for kompensasjon ved innreiseforbudet.
+            </Lenke>
+          </p>
         </BekreftCheckboksPanel>
       </SkjemaGruppe>
     </Panel>
