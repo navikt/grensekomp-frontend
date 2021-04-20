@@ -1,41 +1,40 @@
-import { parseISODato } from './parseISODato';
+import { parseDato } from './parseDato';
 
-describe('parseISODato', () => {
+describe('parseDato', () => {
   it('should parse dato', () => {
-    expect(parseISODato('2020-10-05').error).toBeUndefined();
-    expect(parseISODato('2020-10-05').day).toBe(5);
-    expect(parseISODato('2020-10-05').month).toBe(10);
-    expect(parseISODato('2020-10-05').year).toBe(2020);
+    expect(parseDato('05.10.2020').error).toBeUndefined();
+    expect(parseDato('05.10.2020').day).toBe(5);
+    expect(parseDato('05.10.2020').month).toBe(10);
+    expect(parseDato('05.10.2020').year).toBe(2020);
   });
 
   it('should parse dato correct values', () => {
-    expect(parseISODato('2021-01-01').day).toBe(1);
-    expect(parseISODato('2021-01-31').day).toBe(31);
-    expect(parseISODato('2020-01-32').error).not.toBeUndefined();
+    expect(parseDato('01.01.2021').day).toBe(1);
+    expect(parseDato('31.01.2021').day).toBe(31);
+    expect(parseDato('32.01.2020').error).not.toBeUndefined();
   });
 
   it('should parse dato with single values', () => {
-    expect(parseISODato('2020-10-05').error).toBeUndefined();
-    expect(parseISODato('2020-10-05').day).toBe(5);
-    expect(parseISODato('2020-09-30').month).toBe(9);
+    expect(parseDato('5.10.2020').error).toBeUndefined();
+    expect(parseDato('5.10.2020').day).toBe(5);
+    expect(parseDato('30.9.2020').month).toBe(9);
   });
 
   it('should not parse illegal formatISO', () => {
-    expect(parseISODato('05-10-2020').error).not.toBeUndefined();
-    expect(parseISODato('05.10.2020').error).not.toBeUndefined();
-    expect(parseISODato('2020.10.05').error).not.toBeUndefined();
+    expect(parseDato('05-10-2020').error).not.toBeUndefined();
+    expect(parseDato('2020-10-05').error).not.toBeUndefined();
   });
 
   it('should not allow invalid values', () => {
-    expect(parseISODato('2020-13-01').error).not.toBeUndefined();
-    expect(parseISODato('2020-12-00').error).not.toBeUndefined();
-    expect(parseISODato('2020-00-01').error).not.toBeUndefined();
-    expect(parseISODato('2020-01-35').error).not.toBeUndefined();
+    expect(parseDato('01.13.2020').error).not.toBeUndefined();
+    expect(parseDato('00.12.2020').error).not.toBeUndefined();
+    expect(parseDato('01.00.2020').error).not.toBeUndefined();
+    expect(parseDato('35.01.2020').error).not.toBeUndefined();
   });
 
   it('should parse dato to correct value', () => {
-    expect(parseISODato('2021-01-01').value).toBe('2021-01-01');
-    expect(parseISODato('2021-01-31').value).toBe('2021-01-31');
-    expect(parseISODato('2020-01-32').value).toBe('2020-01-32');
+    expect(parseDato('01.01.2021').value).toBe('01.01.2021');
+    expect(parseDato('31.01.2021').value).toBe('31.01.2021');
+    expect(parseDato('32.01.2020').value).toBe('32.01.2020');
   });
 });
