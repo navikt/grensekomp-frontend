@@ -18,9 +18,11 @@ import { Fareknapp, Knapp } from 'nav-frontend-knapper';
 import SmilendeKar from './SmilendeKar';
 import Veilederpanel from 'nav-frontend-veilederpanel';
 import './KravSammendrag.scss';
+import SlettetKravKvittering from '../slettetKravKvittering';
+import estimertRefusjon from '../../utils/estimertRefusjon';
 
 interface KravSammendragProps {
-  items?: OversiktKravItem[];
+  items: OversiktKravItem[];
   innsending?: string;
   dispatch?: any;
 }
@@ -29,11 +31,13 @@ const KravSammendrag = (props: KravSammendragProps) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modifyId, setModifyId] = useState('');
 
+  const [slettetKrav, setSlettetKrav] = useState<OversiktKravItem | undefined>(undefined);
   const handleSlettInnsending = (itemId: string) => {
     setModalIsOpen(false);
     slettRefusjonskrav(itemId)
       .then((response) => {
-        props.dispatch({ type: Actions.UpdateItem, payload: { response: response } });
+        setSlettetKrav(props.items.find((item) => item.id === itemId));
+        props.dispatch({ type: Actions.SlettItem, payload: { response: response } });
       })
       .catch(() => {
         props.dispatch({ type: Actions.HandleResponseError });
@@ -74,7 +78,20 @@ const KravSammendrag = (props: KravSammendragProps) => {
     return currentItem ? mapIsoTilLand(currentItem.bostedland) : '';
   };
 
-  return (
+  return slettetKrav ? (
+    <SlettetKravKvittering
+      identitetsnummer={slettetKrav.identitetsnummer}
+      land={slettetKrav.bostedland}
+      fom={slettetKrav.periode.fom}
+      tom={slettetKrav.periode.tom}
+      beloep={slettetKrav.periode.beregnetMånedsinntekt}
+      refusjon={
+        slettetKrav.periode.beregnetMånedsinntekt && slettetKrav.periode.antallDagerMedRefusjon
+          ? estimertRefusjon(slettetKrav.periode.beregnetMånedsinntekt, slettetKrav.periode.antallDagerMedRefusjon)
+          : undefined
+      }
+    />
+  ) : (
     <>
       <ModalWrapper
         isOpen={modalIsOpen}
@@ -134,9 +151,7 @@ const KravSammendrag = (props: KravSammendragProps) => {
                     </td>
                     <td>
                       {item.periode.beregnetMånedsinntekt && item.periode.antallDagerMedRefusjon
-                        ? formatNumberAsCurrency(
-                            item.periode.beregnetMånedsinntekt * Number(item.periode.antallDagerMedRefusjon)
-                          )
+                        ? estimertRefusjon(item.periode.beregnetMånedsinntekt, item.periode.antallDagerMedRefusjon)
                         : ''}
                     </td>
                     <td>
