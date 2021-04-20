@@ -32,7 +32,7 @@ import { maxDate, minDate } from '../../config/dager';
 import FraHjelpeLabel from './FraHjelpeLabel';
 import TilHjelpeLabel from './TilHjelpeLabel';
 import BeregnetRefusjon from './BeregnetRefusjon';
-import MaanedsinntektHjelpeLabel from './MaanedsinntektHjelpeLabel';
+import BeloepHjelpeLabel from './BeloepHjelpeLabel';
 
 interface BulkInnsendingProps {
   state?: BulkState;
@@ -244,7 +244,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           <Column md='3' className='bulk-kolonne-5'>
                             <Input
                               id={'beloep_' + item.uniqueKey}
-                              label={<MaanedsinntektHjelpeLabel />}
+                              label={<BeloepHjelpeLabel />}
                               placeholder='Beløp'
                               feil={item.beloepError}
                               value={item.beloep}
