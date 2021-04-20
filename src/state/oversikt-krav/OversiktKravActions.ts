@@ -22,7 +22,9 @@ export enum Actions {
   Sortorder,
   HandleResponseError,
   KravSelected,
-  KravUnselected
+  KravUnselected,
+  ModalOpen,
+  ModalClose
 }
 
 export interface OversiktKravActions {

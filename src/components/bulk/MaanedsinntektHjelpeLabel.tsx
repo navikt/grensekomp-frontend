@@ -3,7 +3,7 @@ import HjelpeLabel from '../felles/HjelpeLabel/HjelpeLabel';
 import Lenke from 'nav-frontend-lenker';
 import { Innholdstittel } from 'nav-frontend-typografi';
 
-const MånedsinntektHjelpeLabel = () => (
+const MaanedsinntektHjelpeLabel = () => (
   <HjelpeLabel label='Beregnet månedsinntekt'>
     <Innholdstittel>Beregning av månedsinntekt</Innholdstittel>
     <ul>
@@ -27,4 +27,4 @@ const MånedsinntektHjelpeLabel = () => (
     </ul>
   </HjelpeLabel>
 );
-export default MånedsinntektHjelpeLabel;
+export default MaanedsinntektHjelpeLabel;

@@ -1,6 +1,6 @@
 import { Column, Row } from 'nav-frontend-grid';
-import { Sidetittel } from 'nav-frontend-typografi';
-import React from 'react';
+import { Innholdstittel, Normaltekst, Sidetittel } from 'nav-frontend-typografi';
+import React, { useState } from 'react';
 import { Actions } from '../../state/oversikt-krav/OversiktKravActions';
 
 import 'nav-frontend-tabell-style';
@@ -13,6 +13,11 @@ import OversiktKravItem from '../../state/oversikt-krav/OversiktKravItem';
 import formaterIsoTimestampAsNoTime from '../../utils/formatIsoTimestampAsNoTimestamp';
 import Lenke from 'nav-frontend-lenker';
 import slettRefusjonskrav from '../../api/slettRefusjonskrav/slettRefusjonskrav';
+import ModalWrapper from 'nav-frontend-modal';
+import { Fareknapp, Knapp } from 'nav-frontend-knapper';
+import SmilendeKar from './SmilendeKar';
+import Veilederpanel from 'nav-frontend-veilederpanel';
+import './KravSammendrag.scss';
 
 interface KravSammendragProps {
   items?: OversiktKravItem[];
@@ -21,7 +26,11 @@ interface KravSammendragProps {
 }
 
 const KravSammendrag = (props: KravSammendragProps) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modifyId, setModifyId] = useState('');
+
   const handleSlettInnsending = (itemId: string) => {
+    setModalIsOpen(false);
     slettRefusjonskrav(itemId)
       .then((response) => {
         props.dispatch({ type: Actions.UpdateItem, payload: { response: response } });
@@ -35,8 +44,57 @@ const KravSammendrag = (props: KravSammendragProps) => {
     props.dispatch({ type: Actions.KravUnselected });
   };
 
+  const handleCloseModal = () => {
+    setModalIsOpen(false);
+  };
+
+  const handleRequestSlettInnsending = (itemId: string) => {
+    setModifyId(itemId);
+    setModalIsOpen(true);
+  };
+  const getIdentityNumber = (itemId: string) => {
+    let items: OversiktKravItem[];
+    if (!props.items) {
+      return '';
+    }
+    items = props.items;
+
+    const currentItem: OversiktKravItem | undefined = items.find((item) => item.id === itemId);
+    return currentItem ? currentItem.identitetsnummer : '';
+  };
+
+  const getCountry = (itemId: string) => {
+    let items: OversiktKravItem[];
+    if (!props.items) {
+      return '';
+    }
+    items = props.items;
+
+    const currentItem: OversiktKravItem | undefined = items.find((item) => item.id === itemId);
+    return currentItem ? mapIsoTilLand(currentItem.bostedland) : '';
+  };
+
   return (
     <>
+      <ModalWrapper
+        isOpen={modalIsOpen}
+        onRequestClose={() => handleCloseModal()}
+        closeButton={false}
+        contentLabel='Er du sikker på at du vil slette kravet?'
+        className='slette-modal'
+        shouldCloseOnOverlayClick={false}
+      >
+        <Veilederpanel svg={<SmilendeKar />}>
+          <Innholdstittel>Er du sikker på at du vil slette kravet?</Innholdstittel>
+
+          <Normaltekst>Fødselsnummer/D-nummer: {getIdentityNumber(modifyId)}</Normaltekst>
+          <Normaltekst>Bostedsland: {getCountry(modifyId)}</Normaltekst>
+          <div className='button-wrapper'>
+            <Fareknapp onClick={() => handleSlettInnsending(modifyId)}>Ja - slett kravet</Fareknapp>
+            <Knapp onClick={handleCloseModal}>Avbryt</Knapp>
+          </div>
+        </Veilederpanel>
+      </ModalWrapper>
       <Row>
         <Column>
           <Lenke href='#' onClick={handleTilbake}>
@@ -82,7 +140,7 @@ const KravSammendrag = (props: KravSammendragProps) => {
                         : ''}
                     </td>
                     <td>
-                      <SlettKravKnapp onClick={() => handleSlettInnsending(item.id)} />
+                      <SlettKravKnapp onClick={() => handleRequestSlettInnsending(item.id)} />
                     </td>
                   </tr>
                 ))}

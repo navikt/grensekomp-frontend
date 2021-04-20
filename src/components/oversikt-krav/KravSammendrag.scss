@@ -1,0 +1,27 @@
+.slette-modal {
+    border: none;
+
+    p,
+    h1 {
+        margin-bottom: 0.5rem;
+    }
+
+    .nav-veilederpanel {
+        border: none;
+    }
+
+    .button-wrapper {
+        float: right;
+        margin-top: 1rem;
+
+        .knapp--standard {
+            margin-left: 1rem;
+        }
+    }
+
+    .nav-veilederpanel.nav-veileder {
+        top: 1.75rem;
+    }
+}
+
+
