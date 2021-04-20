@@ -24,4 +24,23 @@
     }
 }
 
+.oversikt-krav.aktive-krav {
+    .side__innhold {
+        background-color: #f1f1f1;
+    }
+
+    .tabell {
+        background-color: #ffffff;
+    }
+
+    .krav-tittel {
+        margin-bottom: 1.5rem;
+    }
+
+    .krav-mottatt {
+        margin-top: 1.5rem;
+    }
+} 
+
+
 
