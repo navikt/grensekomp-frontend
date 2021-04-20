@@ -107,7 +107,7 @@ const KravSammendrag = (props: KravSammendragProps) => {
           <Normaltekst>Fødselsnummer/D-nummer: {getIdentityNumber(modifyId)}</Normaltekst>
           <Normaltekst>Bostedsland: {getCountry(modifyId)}</Normaltekst>
           <div className='button-wrapper'>
-            <Fareknapp onClick={() => handleSlettInnsending(modifyId)}>Ja - slett kravet</Fareknapp>
+            <Fareknapp onClick={() => handleSlettKrav(modifyId)}>Ja - slett kravet</Fareknapp>
             <Knapp onClick={handleCloseModal}>Avbryt</Knapp>
           </div>
         </Veilederpanel>
