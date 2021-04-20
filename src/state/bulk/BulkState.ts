@@ -2,6 +2,8 @@ import { FeiloppsummeringFeil } from 'nav-frontend-skjema';
 import { ValidationState } from '../validation/ValidationState';
 import BulkItem from './BulkItem';
 
+export const MAX_ITEMS = 50;
+
 export const defaultBulkState = (state?: BulkState): BulkState => {
   return Object.assign(
     {

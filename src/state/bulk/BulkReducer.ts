@@ -1,4 +1,4 @@
-import BulkState, { defaultBulkState } from './BulkState';
+import BulkState, { defaultBulkState, MAX_ITEMS } from './BulkState';
 import { Actions, BulkActions } from './BulkActions';
 import { v4 as uuid } from 'uuid';
 import validateBulk from './validateBulk';
@@ -102,6 +102,9 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
       return nextState;
 
     case Actions.AddItem:
+      if (nextState.items.length >= MAX_ITEMS) {
+        return nextState;
+      }
       nextState.items.push({
         uniqueKey: uuid(),
         fnr: '',

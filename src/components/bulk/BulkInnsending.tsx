@@ -9,7 +9,7 @@ import Fnr from '../felles/Fnr';
 import { DatoVelger } from '@navikt/helse-arbeidsgiver-felles-frontend';
 import LoggetUtAdvarsel from '../login/LoggetUtAdvarsel';
 import BulkReducer from '../../state/bulk/BulkReducer';
-import BulkState, { defaultBulkState } from '../../state/bulk/BulkState';
+import BulkState, { defaultBulkState, MAX_ITEMS } from '../../state/bulk/BulkState';
 import { Actions } from '../../state/bulk/BulkActions';
 import environment from '../../config/environment';
 import postBulk from '../../api/bulk/postBulk';
@@ -272,16 +272,18 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                   <Row>
                     <Column md='1' className='bulk-kolonne-1'></Column>
                     <Column md='6'>
-                      <LeggTilKnapp
-                        onClick={(event) => {
-                          dispatch({
-                            type: Actions.AddItem,
-                            payload: {}
-                          });
-                        }}
-                      >
-                        + Legg til enda en ansatt
-                      </LeggTilKnapp>
+                      {state.items && state.items.length < MAX_ITEMS && (
+                        <LeggTilKnapp
+                          onClick={(event) => {
+                            dispatch({
+                              type: Actions.AddItem,
+                              payload: {}
+                            });
+                          }}
+                        >
+                          + Legg til enda en ansatt
+                        </LeggTilKnapp>
+                      )}
                     </Column>
                   </Row>
                 </SkjemaGruppe>
