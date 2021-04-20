@@ -1,5 +1,5 @@
 import { Column, Row } from 'nav-frontend-grid';
-import { Innholdstittel, Normaltekst, Sidetittel } from 'nav-frontend-typografi';
+import { Innholdstittel, Normaltekst, Sidetittel, Undertittel } from 'nav-frontend-typografi';
 import React, { useState } from 'react';
 import { Actions } from '../../state/oversikt-krav/OversiktKravActions';
 
@@ -121,16 +121,16 @@ const KravSammendrag = (props: KravSammendragProps) => {
       </Row>
       <Row>
         <Column>
-          <Sidetittel>{formaterIsoTimestampAsNoTime(props.innsending)} - Koronarelaterte egenmeldinger</Sidetittel>
+          <Undertittel>Krav mottatt: {formaterIsoTimestampAsNoTime(props.innsending)}</Undertittel>
+          <Sidetittel>Refusjonskrav ved innreiseforbud</Sidetittel>
           <table className='tabell tabell--stripet'>
             <thead>
               <tr>
                 <th role='columnheader'>Fødsels-/D-nummer</th>
                 <th role='columnheader'>Bostedsland</th>
                 <th role='columnheader'>Periode</th>
-                <th role='columnheader'>Antall dager</th>
-                <th role='columnheader'>Dagsats</th>
-                <th role='columnheader'>Foreløpig beregnet refusjon</th>
+                <th role='columnheader'>Beregnet månedsinntekt</th>
+                <th role='columnheader'>Anslått refusjon</th>
                 <th></th>
               </tr>
             </thead>
@@ -143,7 +143,6 @@ const KravSammendrag = (props: KravSammendragProps) => {
                     <td>
                       {formatIsoDateAsNoDate(item.periode.fom)} - {formatIsoDateAsNoDate(item.periode.tom)}
                     </td>
-                    <td>{item.periode.antallDagerMedRefusjon ?? ''}</td>
                     <td>
                       {item.periode.beregnetMånedsinntekt
                         ? formatNumberAsCurrency(item.periode.beregnetMånedsinntekt)
@@ -152,6 +151,7 @@ const KravSammendrag = (props: KravSammendragProps) => {
                     <td>
                       {item.periode.beregnetMånedsinntekt && item.periode.antallDagerMedRefusjon
                         ? estimertRefusjon(item.periode.beregnetMånedsinntekt, item.periode.antallDagerMedRefusjon)
+
                         : ''}
                     </td>
                     <td>
