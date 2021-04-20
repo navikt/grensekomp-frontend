@@ -3,17 +3,17 @@ import Panel from 'nav-frontend-paneler';
 import { Normaltekst, Sidetittel } from 'nav-frontend-typografi';
 import Lenke from 'nav-frontend-lenker';
 import { Column, Row } from 'nav-frontend-grid';
-import Dato from '../../utils/dato/Dato';
 import lenker from '../../config/lenker';
 import InternLenke from '../felles/InternLenke/InternLenke';
+import mapIsoTilLand from '../../state/oversikt-krav/mapIsoTilLand';
 
 interface SlettetKravKvitteringProps {
-  fnr?: string;
+  identitetsnummer?: string;
   land?: string;
-  fom?: Dato;
-  tom?: Dato;
-  beloep?: string;
-  refusjon?: string;
+  fom?: string;
+  tom?: string;
+  beloep?: number;
+  refusjon?: number;
 }
 
 const SlettetKravKvittering = (props: SlettetKravKvitteringProps) => (
@@ -29,8 +29,8 @@ const SlettetKravKvittering = (props: SlettetKravKvitteringProps) => (
     <Row>
       <Column>
         <Panel>
-          <Normaltekst>Personnummer/D-nummer: {props.fnr}</Normaltekst>
-          <Normaltekst>Bostedsland: {props.land}</Normaltekst>
+          <Normaltekst>Personnummer/D-nummer: {props.identitetsnummer}</Normaltekst>
+          <Normaltekst>Bostedsland: {mapIsoTilLand(props.land)}</Normaltekst>
           <Normaltekst>
             Periode: {props.fom} - {props.tom}
           </Normaltekst>

@@ -56,7 +56,7 @@ const OversiktKravReducer = (state: BulkState, action: OversiktKravActions): Bul
       nextState.serverError = false;
       return nextState;
 
-    case Actions.UpdateItem:
+    case Actions.SlettItem:
       if (payload?.response == undefined) {
         throw new Error('Du må spesifisere response');
       }
