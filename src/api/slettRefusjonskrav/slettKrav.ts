@@ -2,7 +2,7 @@ import environment from '../../config/environment';
 import Paths from '../../config/Paths';
 import DeleteHandler from '../delete/DeleteHandler';
 
-const slettRefusjonskrav = (krav: string | undefined) => {
+const slettKrav = (krav: string | undefined) => {
   if (!krav) {
     return Promise.reject(false);
   }
@@ -11,4 +11,4 @@ const slettRefusjonskrav = (krav: string | undefined) => {
   return DeleteHandler(path);
 };
 
-export default slettRefusjonskrav;
+export default slettKrav;

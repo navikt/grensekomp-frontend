@@ -12,7 +12,7 @@ import mapIsoTilLand from '../../state/oversikt-krav/mapIsoTilLand';
 import OversiktKravItem from '../../state/oversikt-krav/OversiktKravItem';
 import formaterIsoTimestampAsNoTime from '../../utils/formatIsoTimestampAsNoTimestamp';
 import Lenke from 'nav-frontend-lenker';
-import slettRefusjonskrav from '../../api/slettRefusjonskrav/slettRefusjonskrav';
+import slettKrav from '../../api/slettRefusjonskrav/slettKrav';
 import ModalWrapper from 'nav-frontend-modal';
 import { Fareknapp, Knapp } from 'nav-frontend-knapper';
 import SmilendeKar from './SmilendeKar';
@@ -32,9 +32,9 @@ const KravSammendrag = (props: KravSammendragProps) => {
   const [modifyId, setModifyId] = useState('');
 
   const [slettetKrav, setSlettetKrav] = useState<OversiktKravItem | undefined>(undefined);
-  const handleSlettInnsending = (itemId: string) => {
+  const handleSlettKrav = (itemId: string) => {
     setModalIsOpen(false);
-    slettRefusjonskrav(itemId)
+    slettKrav(itemId)
       .then((response) => {
         setSlettetKrav(props.items.find((item) => item.id === itemId));
         props.dispatch({ type: Actions.SlettItem, payload: { response: response } });
@@ -155,7 +155,7 @@ const KravSammendrag = (props: KravSammendragProps) => {
                         : ''}
                     </td>
                     <td>
-                      <SlettKravKnapp onClick={() => handleRequestSlettInnsending(item.id)} />
+                      <SlettKravKnapp onClick={() => handleSlettKrav(item.id)} />
                     </td>
                   </tr>
                 ))}
