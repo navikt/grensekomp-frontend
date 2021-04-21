@@ -120,6 +120,10 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                       folketrygdens grunnbeløp
                     </Lenke>
                   </li>
+                  <li>
+                    Skal du søke for flere perioder for samme person? Velg &#34;Legg til enda en ansatt&#34; og bruk
+                    samme fnr/dnr, med ny periode.
+                  </li>
                   <li>Avviklet ferie kan omgjøres til arbeidsdager som det gis refusjon for.</li>
                   <li>
                     Søknaden blir behandlet automatisk.&nbsp;
