@@ -53,7 +53,7 @@ const OversiktKrav = (props: OversiktKravProps) => {
     <Side
       bedriftsmeny={true}
       className={`oversikt-krav${state.aktivtKrav ? ' aktive-krav' : ''}`}
-      sidetittel='Refusjon for lønn ved innreiseforbud'
+      sidetittel='Refusjon for kompensasjon ved innreiseforbud'
       subtitle='Refusjoner'
     >
       <ServerFeilAdvarsel isOpen={state.serverError} onClose={handleCloseServerFeil} />
