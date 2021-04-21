@@ -19,7 +19,7 @@ class Environment {
   get baseUrl() {
     switch (this.environmentMode) {
       case EnvironmentType.PROD:
-        return 'https://arbeidsgiver.nav.no/grensekomp';
+        return 'https://arbeidsgiver.nav.no/grensekomp-api';
       case EnvironmentType.PREPROD_DEV:
         return 'https://grensekomp.dev.nav.no';
       default:
