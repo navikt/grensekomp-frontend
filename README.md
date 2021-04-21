@@ -4,7 +4,7 @@
 ![Bygg og deploy main](https://github.com/navikt/grensekomp-frontend/workflows/Bygg%20og%20deploy%20main/badge.svg)
 
 ##
-Applikasjon (frontend) for refusjon for lønn ved innreiseforbud
+Applikasjon (frontend) for Refusjon for kompensasjon ved innreiseforbud
 
 ## Komme i gang
 

@@ -81,7 +81,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
     <Side
       bedriftsmeny={true}
       className='bulk-innsending'
-      sidetittel='Refusjon for lønn ved innreiseforbud'
+      sidetittel='Refusjon for kompensasjon ved innreiseforbud'
       subtitle='Bulkinnsending'
     >
       <Row>

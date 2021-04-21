@@ -34,7 +34,7 @@ describe('ApplicationRoutes', () => {
     act(() => {
       render(makeRoute('/'), container);
     });
-    expect(container.textContent).toContain('Refusjon for lønn ved innreiseforbud');
+    expect(container.textContent).toContain('Refusjon for kompensasjon ved innreiseforbud');
   });
 
   it('should show token fornyet', () => {
@@ -48,13 +48,13 @@ describe('ApplicationRoutes', () => {
     act(() => {
       render(makeRoute('/batchinnsending/krav'), container);
     });
-    expect(container.textContent).toContain('Refusjon for lønn ved innreiseforbud');
+    expect(container.textContent).toContain('Refusjon for kompensasjon ved innreiseforbud');
   });
 
   it('should show bulkinnsending when no arbeidsgivere', () => {
     act(() => {
       render(makeRoute('/batchinnsending/krav', []), container);
     });
-    expect(container.textContent).toContain('Refusjon for lønn ved innreiseforbud');
+    expect(container.textContent).toContain('Refusjon for kompensasjon ved innreiseforbud');
   });
 });
