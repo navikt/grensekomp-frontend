@@ -271,7 +271,6 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               }}
                             />
                           </Column>
-                          <Column md='2' className='bulk-kolonne-6'></Column>
                           <Column md='3' className='bulk-kolonne-7'>
                             <BeregnetRefusjon fom={item.fom} tom={item.tom} inntekt={item.beloep} />
                           </Column>
