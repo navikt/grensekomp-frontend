@@ -60,16 +60,17 @@ const BeloepHjelpeLabel = () => {
             <Normaltekst>
               <ul className='leftallign-list'>
                 <li>
-                  Tidspunktet for beregning er 29. januar 2021. Dette betyr at det er inntekter i månedene oktober,
-                  november, desember 2020 som skal legges til grunn når du gjør beregningen.
+                  Legg alltid inntekten i månedene oktober, november, desember 2020 når du skal fastsette
+                  beregningsperioden. Dette er et unntak fra hovedregelen.
                 </li>
+
                 <li>
-                  Ut over særtilfellet nevnt ovenfor gjelder samme{' '}
+                  Ut over dette gjelder{' '}
                   <Lenke
                     target='_blank'
                     href='https://www.nav.no/no/bedrift/tjenester-og-skjemaer/nav-og-altinn-tjenester/inntektsmelding/beregningsregler-for-sykepenger'
                   >
-                    beregningsregler som for sykepenger.
+                    samme beregningsregler som for sykepenger.
                   </Lenke>
                 </li>
                 <li>

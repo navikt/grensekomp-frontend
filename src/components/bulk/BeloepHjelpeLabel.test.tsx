@@ -16,7 +16,9 @@ describe('BeloepHjelpeLabel', () => {
 
     fireEvent.click(knappen);
 
-    expect(component.queryAllByText(/Tidspunktet for beregning er 29. januar 2021./).length).toEqual(1);
+    expect(
+      component.queryAllByText(/Legg alltid inntekten i månedene oktober, november, desember 2020 når du skal/).length
+    ).toEqual(1);
 
     const lukkKnappen = component.getByText(/Lukk dette vinduet/);
 

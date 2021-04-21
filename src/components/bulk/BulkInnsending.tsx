@@ -103,9 +103,13 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                   <li>Ordningen gjelder fra 29. januar da innreiseforbudet ble innført</li>
                   <li>
                     Ordningen gjelder for arbeidstakere som var ansatt og hadde påbegynt arbeidet fra dette tidspunktet.
-                    Den ansatte må ha vært i jobb i minst fire uker.
+                    Den ansatte må ha vært i jobb i minst fire uker før det tidspunktet man krever refusjon fra.
                   </li>
-                  <li>Har den ansatte hatt inntekt fra en annen jobb i stedet, skal det ikke gis kompensasjon.</li>
+                  <li>
+                    Hvis arbeidsgiveren er kjent med at den ansatte har hatt inntekt fra en annen jobb , skal det ikke
+                    gis kompensasjon for dager som den ansatte har hatt annen inntekt. Det samme gjelder ytelser fra
+                    bostedslandet hvis arbeidsgiveren er kjent med det.
+                  </li>
                   <li>Det gis bare kompensasjon for dager som den ansatte faktisk skulle ha jobbet.</li>
                   <li>
                     Kompensasjonen er 70 % av sykepengegrunnlaget, begrenset opp til 70 % av 6G,&nbsp;
