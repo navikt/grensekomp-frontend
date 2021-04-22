@@ -5,10 +5,6 @@ const validateLand = (land: string | undefined, required: boolean = false): stri
     return required ? 'Mangler land' : undefined;
   }
 
-  if (land === 'Øvrige land') {
-    return required ? 'Kan ikke være øvrige land' : undefined;
-  }
-
   if (landListe.filter((l) => l.iso3 === land).length === 0) {
     return required ? 'Land ikke gyldig' : undefined;
   }

@@ -4,6 +4,7 @@ describe('validateLand', () => {
   it('should not allow empty when required', () => {
     expect(validateLand(undefined, true)).not.toBeUndefined();
     expect(validateLand('', true)).not.toBeUndefined();
+    expect(validateLand('Velg land:', true)).not.toBeUndefined();
   });
 
   it('should verify valid when required', () => {
@@ -12,6 +13,10 @@ describe('validateLand', () => {
 
   it('should verify valid when not required', () => {
     expect(validateLand('bel', false)).toBeUndefined();
+  });
+
+  it('should verify valid when required param is not given', () => {
+    expect(validateLand('bel')).toBeUndefined();
   });
 
   it('should allow illegal value when not required', () => {

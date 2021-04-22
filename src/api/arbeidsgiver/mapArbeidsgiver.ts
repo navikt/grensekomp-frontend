@@ -13,3 +13,5 @@ export const mapArbeidsgiver = (backendData: BackendOrganisasjon[]): Organisasjo
         ParentOrganizationNumber: backendOrganisasjon.parentOrganizationNumber
       } as Organisasjon)
   );
+
+export default mapArbeidsgiver;
