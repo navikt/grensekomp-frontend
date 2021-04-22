@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, screen, waitFor } from '@testing-library/react';
+import { render, cleanup, screen } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import KravSammendrag from './KravSammendrag';
 import mockKravSammendragItems from '../../mockData/mockKravSammendragItems';
