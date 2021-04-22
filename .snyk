@@ -1,9 +1,22 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.14.1
+version: v1.19.0
 # ignores vulnerabilities until expiry date; change duration by modifying expiry date
 ignore:
   SNYK-JS-HTMLPARSESTRINGIFY2-1079307:
     - react-i18next > html-parse-stringify2:
         reason: None given
         expires: '2021-05-12T12:46:05.025Z'
+  SNYK-JS-POSTCSS-1090595:
+    - '@navikt/bedriftsmeny > postcss-loader > postcss':
+        reason: None given
+        expires: '2021-05-22T11:19:23.227Z'
+    - '@navikt/bedriftsmeny > postcss-prefix-selector > postcss':
+        reason: None given
+        expires: '2021-05-22T11:19:23.227Z'
+    - '@navikt/helse-arbeidsgiver-felles-frontend > @navikt/bedriftsmeny > postcss-loader > postcss':
+        reason: None given
+        expires: '2021-05-22T11:19:23.227Z'
+    - '@navikt/helse-arbeidsgiver-felles-frontend > @navikt/bedriftsmeny > postcss-prefix-selector > postcss':
+        reason: None given
+        expires: '2021-05-22T11:19:23.227Z'
 patch: {}
