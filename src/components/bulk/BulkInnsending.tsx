@@ -89,28 +89,31 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
         <Column>
           {state.kvittering === true && <Kvittering />}
           {state.progress != true && state.kvittering != true && (
-            <div>
+            <>
               <Panel>
                 <Ingress>
-                  Arbeidsgivere er pålagt å utbetale kompensasjon til personer som taper inntekt fordi de ikke kan møte
-                  på arbeid som følge av innreiseforbudet i forbindelse med pandemien. Arbeidsgiveren forskutterer
-                  kompensasjonen og krever refusjon fra Arbeids- og velferdsetaten. For å få refusjon må alle felter
-                  fylles ut. Du kan sende inntil <b>50 krav</b> om gangen.
+                  Arbeidsgivere er pålagt å utbetale kompensasjon til ansatte som taper inntekt fordi de ikke kan møte
+                  på arbeid som følge av innreiseforbudet under pandemien. Arbeidsgiveren forskutterer kompensasjonen og
+                  krever refusjon fra NAV.
+                </Ingress>
+                <Ingress className='air-top'>
+                  Alle felter må fylles ut. Du kan sende inntil <strong>50 krav om gangen</strong>. Søker du om{' '}
+                  <strong>flere perioder</strong> for samme person, velg «Legg til enda en ansatt», bruk samme fnr/dnr,
+                  og skriv inn ny periode.
                 </Ingress>
               </Panel>
-              <Panel>
-                <Ingress style={{ marginLeft: '3rem' }}>
-                  <li>Ordningen gjelder fra 29. januar da innreiseforbudet ble innført</li>
+              <Panel className='bulletpoint-wrapper'>
+                <ul className='ingress-listepunkter'>
                   <li>
-                    Ordningen gjelder for arbeidstakere som var ansatt og hadde påbegynt arbeidet fra dette tidspunktet.
-                    Den ansatte må ha vært i jobb i minst fire uker før det tidspunktet man krever refusjon fra.
+                    Ordningen gjelder for arbeidstakere som var ansatt og hadde påbegynt arbeidet 29. januar da
+                    innreiseforbudet ble innført.
                   </li>
+                  <li>Den ansatte må ha vært i jobb i minst fire uker før det tidspunktet man krever refusjon fra.</li>
                   <li>
-                    Hvis arbeidsgiveren er kjent med at den ansatte har hatt inntekt fra en annen jobb , skal det ikke
+                    Hvis arbeidsgiveren er kjent med at den ansatte har hatt inntekt fra en annen jobb, skal det ikke
                     gis kompensasjon for dager som den ansatte har hatt annen inntekt. Det samme gjelder ytelser fra
                     bostedslandet hvis arbeidsgiveren er kjent med det.
                   </li>
-                  <li>Det gis bare kompensasjon for dager som den ansatte faktisk skulle ha jobbet.</li>
                   <li>
                     Kompensasjonen er 70 % av sykepengegrunnlaget, begrenset opp til 70 % av 6G,&nbsp;
                     <Lenke
@@ -121,20 +124,14 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                     </Lenke>
                   </li>
                   <li>
-                    Skal du søke for flere perioder for samme person? Velg &#34;Legg til enda en ansatt&#34; og bruk
-                    samme fnr/dnr, med ny periode.
-                  </li>
-                  <li>Avviklet ferie kan omgjøres til arbeidsdager som det gis refusjon for.</li>
-                  <li>
-                    Søknaden blir behandlet automatisk.&nbsp;
                     <Lenke
                       target='_blank'
                       href='https://www.nav.no/no/person/arbeid/sykmeldt-arbeidsavklaringspenger-og-yrkesskade/nyheter/kompensasjon-til-utestengte-eos-borgere/automatisert-saksbehandling-i-forbindelse-med-innreiseforbudet'
                     >
-                      Les om den automatiserte saksbehandlingen.
+                      Søknaden blir behandlet automatisk.
                     </Lenke>
                   </li>
-                </Ingress>
+                </ul>
               </Panel>
 
               <Skillelinje />
@@ -320,7 +317,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
               <Panel>
                 <Hovedknapp onClick={handleSubmitClicked}>Send krav om refusjon</Hovedknapp>
               </Panel>
-            </div>
+            </>
           )}
         </Column>
         {state.notAuthorized && <LoggetUtAdvarsel onClose={handleCloseNotAuthorized} />}
