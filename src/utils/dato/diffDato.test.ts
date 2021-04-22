@@ -1,4 +1,4 @@
-import diffDato, { diffDate } from './diffDato';
+import { diffDate } from './diffDato';
 
 describe('diffDato', () => {
   it('should find correct days', () => {
