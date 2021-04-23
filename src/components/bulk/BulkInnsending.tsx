@@ -29,10 +29,12 @@ import { Hovedknapp } from 'nav-frontend-knapper';
 import { toDate } from '../../utils/dato/toDate';
 import Bostedland from './Bostedland/Bostedland';
 import { maxDate, minDate } from '../../config/dager';
-import FraHjelpeLabel from './FraHjelpeLabel';
-import TilHjelpeLabel from './TilHjelpeLabel';
 import BeregnetRefusjon from './BeregnetRefusjon';
 import BeloepHjelpeLabel from './BeloepHjelpeLabel';
+import { useTranslation } from 'react-i18next';
+import BulkKeys from '../../locales/BulkKeys';
+import CommonKeys from '../../locales/CommonKeys';
+import HjelpeLabel from '../felles/HjelpeLabel/HjelpeLabel';
 
 interface BulkInnsendingProps {
   state?: BulkState;
@@ -40,6 +42,7 @@ interface BulkInnsendingProps {
 
 const BulkInnsending = (props: BulkInnsendingProps) => {
   const [state, dispatch] = useReducer(BulkReducer, props.state, defaultBulkState);
+  const { t } = useTranslation();
   const { arbeidsgiverId } = useArbeidsgiver();
   const showDeleteButton = state.items && state.items.length > 1;
 
@@ -81,8 +84,8 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
     <Side
       bedriftsmeny={true}
       className='bulk-innsending'
-      sidetittel='Refusjon for kompensasjon ved innreiseforbud'
-      subtitle='Bulkinnsending'
+      sidetittel={t(BulkKeys.SIDETITTEL)}
+      subtitle={t(BulkKeys.SUBTITLE)}
     >
       <Row>
         <ServerFeilAdvarsel isOpen={state.serverError} onClose={handleCloseServerFeil} />
@@ -91,38 +94,29 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
           {state.progress != true && state.kvittering != true && (
             <>
               <Panel>
-                <Ingress>
-                  Arbeidsgivere er pålagt å utbetale kompensasjon til ansatte som taper inntekt fordi de ikke kan møte
-                  på arbeid som følge av innreiseforbudet under pandemien. Arbeidsgiveren forskutterer kompensasjonen og
-                  krever refusjon fra NAV.
-                </Ingress>
+                <Ingress>{t(BulkKeys.HEADER_1)}</Ingress>
                 <Ingress className='air-top'>
-                  Alle felter må fylles ut. Du kan sende inntil <strong>50 krav om gangen</strong>. Søker du om{' '}
-                  <strong>flere perioder</strong> for samme person, velg «Legg til enda en ansatt», bruk samme fnr/dnr,
-                  og skriv inn ny periode.
+                  {t(BulkKeys.HEADER_2)}
+                  <strong>{t(BulkKeys.HEADER_3)}</strong>
+                  {t(BulkKeys.HEADER_4)}
+                  <strong>{t(BulkKeys.HEADER_5)}</strong>
+                  {t(BulkKeys.HEADER_6)}
                 </Ingress>
               </Panel>
               <Panel className='bulletpoint-wrapper'>
                 <ul className='ingress-listepunkter'>
+                  <li>{t(BulkKeys.INFO_1)}</li>
+                  <li>{t(BulkKeys.INFO_2)}</li>
+                  <li>{t(BulkKeys.INFO_3)}</li>
+                  <li>{t(BulkKeys.INFO_4)}</li>
+                  <li>{t(BulkKeys.INFO_5)}</li>
                   <li>
-                    Ordningen gjelder for arbeidstakere som var ansatt og hadde påbegynt arbeidet 29. januar da
-                    innreiseforbudet ble innført.
-                  </li>
-                  <li>Den ansatte må ha vært i jobb i minst fire uker før det tidspunktet man krever refusjon fra.</li>
-                  <li>Det gis bare kompensasjon for dager som den ansatte faktisk skulle ha jobbet.</li>
-                  <li>
-                    Hvis arbeidsgiveren er kjent med at den ansatte har hatt inntekt fra en annen jobb, skal det ikke
-                    gis kompensasjon for dager som den ansatte har hatt annen inntekt. Det samme gjelder ytelser fra
-                    bostedslandet hvis arbeidsgiveren er kjent med det.
-                  </li>
-                  <li>Avviklet ferie kan omgjøres til arbeidsdager som det gis refusjon for.</li>
-                  <li>
-                    Kompensasjonen er 70 % av sykepengegrunnlaget, begrenset opp til 70 % av 6G,&nbsp;
+                    {t(BulkKeys.INFO_6)}
                     <Lenke
                       target='_blank'
                       href='https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden'
                     >
-                      folketrygdens grunnbeløp
+                      {t(BulkKeys.GRUNNBELOEP)}
                     </Lenke>
                   </li>
                   <li>
@@ -130,7 +124,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                       target='_blank'
                       href='https://www.nav.no/no/person/arbeid/sykmeldt-arbeidsavklaringspenger-og-yrkesskade/nyheter/kompensasjon-til-utestengte-eos-borgere/automatisert-saksbehandling-i-forbindelse-med-innreiseforbudet'
                     >
-                      Søknaden blir behandlet automatisk.
+                      {t(BulkKeys.INFO_7)}
                     </Lenke>
                   </li>
                 </ul>
@@ -139,7 +133,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
               <Skillelinje />
 
               <Panel>
-                <SkjemaGruppe aria-live='polite' legend='Oppgi ansatte, fraværsperiode og beløp'>
+                <SkjemaGruppe aria-live='polite' legend={t(BulkKeys.SKJEMA_LEGEND)}>
                   {state.items?.map((item, index) => (
                     <Row
                       key={item.uniqueKey}
@@ -148,7 +142,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                       }`}
                     >
                       <Column md='1' className='bulk-kolonne-1'>
-                        <Element className='bulk-element-nr'>{index === 0 ? 'Nr.' : '\u00A0'}</Element>
+                        <Element className='bulk-element-nr'>{index === 0 ? t(CommonKeys.NUMBER) : '\u00A0'}</Element>
                         <RadNr nr={index + 1} />
                       </Column>
 
@@ -158,8 +152,8 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                             <Fnr
                               id={'fnr_' + item.uniqueKey}
                               fnr={item.fnr}
-                              label='Fødsels-/D-nummer'
-                              placeholder='11 siffer'
+                              label={t(CommonKeys.FNR_LABEL)}
+                              placeholder={t(CommonKeys.FNR_PLACEHOLDER)}
                               feilmelding={item.fnrError}
                               disabled={item.accepted}
                               className='bulk-element'
@@ -177,7 +171,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           <Column md='4'>
                             <Bostedland
                               id={'land_' + item.uniqueKey}
-                              label='Bostedsland'
+                              label={t(CommonKeys.LAND_LABEL)}
                               feilmelding={item.landError}
                               disabled={item.accepted}
                               value={item.land}
@@ -197,6 +191,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                             {showDeleteButton && (
                               <Slettknapp
                                 disabled={item.accepted}
+                                label={t(CommonKeys.SLETT_LABEL)}
                                 onClick={(event) => {
                                   dispatch({
                                     type: Actions.DeleteItem,
@@ -215,8 +210,12 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               id={'fom_' + item.uniqueKey}
                               dato={toDate(item.fom)}
                               feilmelding={item.fomError}
-                              label={<FraHjelpeLabel />}
-                              placeholder='dd.mm.åå'
+                              label={
+                                <HjelpeLabel label={t(CommonKeys.FRA_HJELPE_LABEL)}>
+                                  {t(CommonKeys.FRA_HJELPE_CONTENT)}
+                                </HjelpeLabel>
+                              }
+                              placeholder={t(CommonKeys.DATO_PLACEHOLDER)}
                               disabled={item.accepted}
                               minDate={minDate}
                               maxDate={maxDate}
@@ -237,8 +236,12 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               id={'tom_' + item.uniqueKey}
                               dato={toDate(item.tom)}
                               feilmelding={item.tomError}
-                              label={<TilHjelpeLabel />}
-                              placeholder='dd.mm.åå'
+                              label={
+                                <HjelpeLabel label={t(CommonKeys.TIL_HJELPE_LABEL)}>
+                                  {t(CommonKeys.TIL_HJELPE_CONTENT)}
+                                </HjelpeLabel>
+                              }
+                              placeholder={t(CommonKeys.DATO_PLACEHOLDER)}
                               disabled={item.accepted}
                               minDate={minDate}
                               maxDate={maxDate}
@@ -258,7 +261,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                             <Input
                               id={'beloep_' + item.uniqueKey}
                               label={<BeloepHjelpeLabel />}
-                              placeholder='Beløp'
+                              placeholder={t(CommonKeys.BELOEP_PLACEHOLDER)}
                               feil={item.beloepError}
                               value={item.beloep}
                               disabled={item.accepted}
@@ -293,7 +296,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                             });
                           }}
                         >
-                          + Legg til enda en ansatt
+                          + {t(CommonKeys.ADD)}
                         </LeggTilKnapp>
                       )}
                     </Column>
@@ -317,7 +320,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
               <Feilmeldingspanel feilmeldinger={state.feilmeldinger} />
 
               <Panel>
-                <Hovedknapp onClick={handleSubmitClicked}>Send krav om refusjon</Hovedknapp>
+                <Hovedknapp onClick={handleSubmitClicked}>{t(CommonKeys.SEND)}</Hovedknapp>
               </Panel>
             </>
           )}
