@@ -109,11 +109,13 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                     innreiseforbudet ble innført.
                   </li>
                   <li>Den ansatte må ha vært i jobb i minst fire uker før det tidspunktet man krever refusjon fra.</li>
+                  <li>Det gis bare kompensasjon for dager som den ansatte faktisk skulle ha jobbet.</li>
                   <li>
                     Hvis arbeidsgiveren er kjent med at den ansatte har hatt inntekt fra en annen jobb, skal det ikke
                     gis kompensasjon for dager som den ansatte har hatt annen inntekt. Det samme gjelder ytelser fra
                     bostedslandet hvis arbeidsgiveren er kjent med det.
                   </li>
+                  <li>Avviklet ferie kan omgjøres til arbeidsdager som det gis refusjon for.</li>
                   <li>
                     Kompensasjonen er 70 % av sykepengegrunnlaget, begrenset opp til 70 % av 6G,&nbsp;
                     <Lenke
