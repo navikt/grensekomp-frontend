@@ -13,3 +13,5 @@ export const datoToString = (dato: Dato | undefined): string => {
   }
   return formatDato(dato);
 };
+
+export default datoToString;
