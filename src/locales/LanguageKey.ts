@@ -1,4 +1,4 @@
-export enum LanguageKey {
+export enum CommonKey {
   NUMBER = 'NUMBER',
   FNR_LABEL = 'FNR_LABEL',
   FNR_PLACEHOLDER = 'FNR_PLACEHOLDER',
@@ -24,8 +24,10 @@ export enum LanguageKey {
   BEKREFT_LABEL = 'BEKREFT_LABEL',
   BEKREFT_CONTENT_1 = 'BEKREFT_CONTENT_1',
   BEKREFT_CONTENT_2 = 'BEKREFT_CONTENT_2',
-  SEND = 'SEND',
-  //
+  SEND = 'SEND'
+}
+
+export enum BulkKey {
   HEADER_1 = 'HEADER_1',
   HEADER_2 = 'HEADER_2',
   HEADER_3 = 'HEADER_3',
@@ -43,5 +45,6 @@ export enum LanguageKey {
   AUTOMATISERT_BEHANDLING = 'AUTOMATISERT_BEHANDLING',
   SKJEMA_LEGEND = 'SKJEMA_LEGEND'
 }
+type LanguageKey = CommonKey | BulkKey;
 
 export default LanguageKey;
