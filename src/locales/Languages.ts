@@ -2,6 +2,9 @@ import LanguageKey from './LanguageKey';
 import Locale from './Locale';
 
 const Languages: Record<LanguageKey, Locale> = {
+  SIDETITTEL: {
+    nb: 'Refusjon for kompensasjon ved innreiseforbud'
+  },
   HEADER_1: {
     nb:
       'Arbeidsgivere er pålagt å utbetale kompensasjon til ansatte som taper inntekt fordi de ikke kan møte på arbeid som ' +

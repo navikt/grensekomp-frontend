@@ -80,7 +80,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
   }, [state.validated, state.progress, state.feilmeldinger, state.submitting, state.bekreft, state]);
 
   return (
-    <Side bedriftsmeny={true} className='bulk-innsending' sidetittel={'Sidetittel'} subtitle={'Subtitle'}>
+    <Side bedriftsmeny={true} className='bulk-innsending' sidetittel={t(LanguageKey.SIDETITTEL)} subtitle={'Subtitle'}>
       <Row>
         <ServerFeilAdvarsel isOpen={state.serverError} onClose={handleCloseServerFeil} />
         <Column>

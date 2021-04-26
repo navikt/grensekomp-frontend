@@ -3,10 +3,15 @@ import React from 'react';
 import { render, cleanup, fireEvent } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import BeloepHjelpeLabel from './BeloepHjelpeLabel';
+import LanguageProvider from '../../locales/LanguageProvider';
 
 describe('BeloepHjelpeLabel', () => {
   it('should display the component with a warning', () => {
-    const component = render(<BeloepHjelpeLabel />);
+    const component = render(
+      <LanguageProvider>
+        <BeloepHjelpeLabel />
+      </LanguageProvider>
+    );
     expect(component.queryAllByText(/Slik regner du ut den ansattes daglige lønn/).length).toEqual(0);
 
     const knappen = component.getByText(/Hjelp/);
