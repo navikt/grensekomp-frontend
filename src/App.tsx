@@ -7,8 +7,7 @@ import { ArbeidsgiverProvider } from './context/arbeidsgiver/ArbeidsgiverContext
 import env from './config/environment';
 import { LoginStatus } from './context/login/LoginStatus';
 import ArbeidsgiverStatus from './context/arbeidsgiver/ArbeidsgiverStatus';
-import { I18nextProvider } from 'react-i18next';
-import i18n from './locales/i18n';
+import LanguageProvider from './locales/LanguageProvider';
 
 interface ApplicationProps {
   loginStatus?: LoginStatus;
@@ -25,13 +24,13 @@ export const Application = ({
   basePath = env.baseUrl,
   loginServiceUrl = env.loginServiceUrl
 }: ApplicationProps) => (
-  <I18nextProvider i18n={i18n}>
+  <LanguageProvider>
     <LoginProvider baseUrl={basePath} status={loginStatus} loginServiceUrl={loginServiceUrl}>
       <ArbeidsgiverProvider baseUrl={basePath} status={arbeidsgiverStatus} arbeidsgivere={arbeidsgivere}>
         <ApplicationRoutes />
       </ArbeidsgiverProvider>
     </LoginProvider>
-  </I18nextProvider>
+  </LanguageProvider>
 );
 
 const App = () => (

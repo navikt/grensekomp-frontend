@@ -1,10 +1,7 @@
 import '@testing-library/jest-dom';
 import React from 'react';
 import { render, cleanup, fireEvent } from '@testing-library/react';
-import { axe, toHaveNoViolations } from 'jest-axe';
-
-expect.extend(toHaveNoViolations);
-
+import { axe } from 'jest-axe';
 import BeloepHjelpeLabel from './BeloepHjelpeLabel';
 
 describe('BeloepHjelpeLabel', () => {

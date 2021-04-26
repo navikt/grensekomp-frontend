@@ -9,6 +9,7 @@ import testFnr from '../../mockData/testFnr';
 import testOrganisasjon from '../../mockData/testOrganisasjoner';
 import BulkInnsending from './BulkInnsending';
 import mockFetch from '../../mockData/mockFetch';
+import LanguageProvider from '../../locales/LanguageProvider';
 
 const arbeidsgivere: Organisasjon[] = testOrganisasjon;
 
@@ -35,9 +36,16 @@ describe('BulkInnsending', () => {
   it('should show warnings when input is missing', () => {
     render(
       <MemoryRouter>
-        <ArbeidsgiverProvider arbeidsgivere={arbeidsgivere} status={200} arbeidsgiverId='810007842' baseUrl='/base/url'>
-          <BulkInnsending />
-        </ArbeidsgiverProvider>
+        <LanguageProvider>
+          <ArbeidsgiverProvider
+            arbeidsgivere={arbeidsgivere}
+            status={200}
+            arbeidsgiverId='810007842'
+            baseUrl='/base/url'
+          >
+            <BulkInnsending />
+          </ArbeidsgiverProvider>
+        </LanguageProvider>
       </MemoryRouter>
     );
     const submitButton = screen.getByText(/Send krav om refusjon/);
@@ -61,9 +69,16 @@ describe('BulkInnsending', () => {
   it('should show warnings when input is missing, and the warning should dissapear when fixed', () => {
     render(
       <MemoryRouter>
-        <ArbeidsgiverProvider arbeidsgivere={arbeidsgivere} status={200} arbeidsgiverId='810007842' baseUrl='/base/url'>
-          <BulkInnsending />
-        </ArbeidsgiverProvider>
+        <LanguageProvider>
+          <ArbeidsgiverProvider
+            arbeidsgivere={arbeidsgivere}
+            status={200}
+            arbeidsgiverId='810007842'
+            baseUrl='/base/url'
+          >
+            <BulkInnsending />
+          </ArbeidsgiverProvider>
+        </LanguageProvider>
       </MemoryRouter>
     );
     const submitButton = screen.getByText(/Send krav om refusjon/);
