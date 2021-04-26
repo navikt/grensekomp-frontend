@@ -33,8 +33,8 @@ import BeregnetRefusjon from './BeregnetRefusjon';
 import BeloepHjelpeLabel from './BeloepHjelpeLabel';
 import { useTranslation } from 'react-i18next';
 import BulkKeys from '../../locales/BulkKeys';
-import CommonKeys from '../../locales/CommonKeys';
 import HjelpeLabel from '../felles/HjelpeLabel/HjelpeLabel';
+import LanguageKey from '../../locales/LanguageKey';
 
 interface BulkInnsendingProps {
   state?: BulkState;
@@ -81,12 +81,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
   }, [state.validated, state.progress, state.feilmeldinger, state.submitting, state.bekreft, state]);
 
   return (
-    <Side
-      bedriftsmeny={true}
-      className='bulk-innsending'
-      sidetittel={t(BulkKeys.SIDETITTEL)}
-      subtitle={t(BulkKeys.SUBTITLE)}
-    >
+    <Side bedriftsmeny={true} className='bulk-innsending' sidetittel={'Sidetittel'} subtitle={'Subtitle'}>
       <Row>
         <ServerFeilAdvarsel isOpen={state.serverError} onClose={handleCloseServerFeil} />
         <Column>
@@ -142,7 +137,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                       }`}
                     >
                       <Column md='1' className='bulk-kolonne-1'>
-                        <Element className='bulk-element-nr'>{index === 0 ? t(CommonKeys.NUMBER) : '\u00A0'}</Element>
+                        <Element className='bulk-element-nr'>{index === 0 ? t(LanguageKey.NUMBER) : '\u00A0'}</Element>
                         <RadNr nr={index + 1} />
                       </Column>
 
@@ -152,8 +147,8 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                             <Fnr
                               id={'fnr_' + item.uniqueKey}
                               fnr={item.fnr}
-                              label={t(CommonKeys.FNR_LABEL)}
-                              placeholder={t(CommonKeys.FNR_PLACEHOLDER)}
+                              label={t(LanguageKey.FNR_LABEL)}
+                              placeholder={t(LanguageKey.FNR_PLACEHOLDER)}
                               feilmelding={item.fnrError}
                               disabled={item.accepted}
                               className='bulk-element'
@@ -171,7 +166,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           <Column md='4'>
                             <Bostedland
                               id={'land_' + item.uniqueKey}
-                              label={t(CommonKeys.LAND_LABEL)}
+                              label={t(LanguageKey.LAND_LABEL)}
                               feilmelding={item.landError}
                               disabled={item.accepted}
                               value={item.land}
@@ -191,7 +186,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                             {showDeleteButton && (
                               <Slettknapp
                                 disabled={item.accepted}
-                                label={t(CommonKeys.SLETT_LABEL)}
+                                label={t(LanguageKey.SLETT_LABEL)}
                                 onClick={(event) => {
                                   dispatch({
                                     type: Actions.DeleteItem,
@@ -211,11 +206,11 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               dato={toDate(item.fom)}
                               feilmelding={item.fomError}
                               label={
-                                <HjelpeLabel label={t(CommonKeys.FRA_HJELPE_LABEL)}>
-                                  {t(CommonKeys.FRA_HJELPE_CONTENT)}
+                                <HjelpeLabel label={t(LanguageKey.FRA_HJELPE_LABEL)}>
+                                  {t(LanguageKey.FRA_HJELPE_CONTENT)}
                                 </HjelpeLabel>
                               }
-                              placeholder={t(CommonKeys.DATO_PLACEHOLDER)}
+                              placeholder={t(LanguageKey.DATO_PLACEHOLDER)}
                               disabled={item.accepted}
                               minDate={minDate}
                               maxDate={maxDate}
@@ -237,11 +232,11 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               dato={toDate(item.tom)}
                               feilmelding={item.tomError}
                               label={
-                                <HjelpeLabel label={t(CommonKeys.TIL_HJELPE_LABEL)}>
-                                  {t(CommonKeys.TIL_HJELPE_CONTENT)}
+                                <HjelpeLabel label={t(LanguageKey.TIL_HJELPE_LABEL)}>
+                                  {t(LanguageKey.TIL_HJELPE_CONTENT)}
                                 </HjelpeLabel>
                               }
-                              placeholder={t(CommonKeys.DATO_PLACEHOLDER)}
+                              placeholder={t(LanguageKey.DATO_PLACEHOLDER)}
                               disabled={item.accepted}
                               minDate={minDate}
                               maxDate={maxDate}
@@ -261,7 +256,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                             <Input
                               id={'beloep_' + item.uniqueKey}
                               label={<BeloepHjelpeLabel />}
-                              placeholder={t(CommonKeys.BELOEP_PLACEHOLDER)}
+                              placeholder={t(LanguageKey.BELOEP_PLACEHOLDER)}
                               feil={item.beloepError}
                               value={item.beloep}
                               disabled={item.accepted}
@@ -296,7 +291,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                             });
                           }}
                         >
-                          + {t(CommonKeys.ADD)}
+                          + {t(LanguageKey.ADD)}
                         </LeggTilKnapp>
                       )}
                     </Column>
@@ -320,7 +315,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
               <Feilmeldingspanel feilmeldinger={state.feilmeldinger} />
 
               <Panel>
-                <Hovedknapp onClick={handleSubmitClicked}>{t(CommonKeys.SEND)}</Hovedknapp>
+                <Hovedknapp onClick={handleSubmitClicked}>{t(LanguageKey.SEND)}</Hovedknapp>
               </Panel>
             </>
           )}

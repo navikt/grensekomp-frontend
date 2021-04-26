@@ -1,10 +1,11 @@
 import i18n from 'i18next';
-import { Languages, translationsToJson } from './utils';
+import Languages from './Languages';
+import mapLanguages from './mapLanguages';
 
 i18n.init({
   resources: {
     nb: {
-      translations: translationsToJson(Languages.nb)
+      translations: mapLanguages(Languages.nb)
     }
   },
   fallbackLng: Languages.nb,
