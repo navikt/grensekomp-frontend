@@ -32,7 +32,6 @@ import { maxDate, minDate } from '../../config/dager';
 import BeregnetRefusjon from './BeregnetRefusjon';
 import BeloepHjelpeLabel from './BeloepHjelpeLabel';
 import { useTranslation } from 'react-i18next';
-import BulkKeys from '../../locales/BulkKeys';
 import HjelpeLabel from '../felles/HjelpeLabel/HjelpeLabel';
 import LanguageKey from '../../locales/LanguageKey';
 
@@ -89,29 +88,29 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
           {state.progress != true && state.kvittering != true && (
             <>
               <Panel>
-                <Ingress>{t(BulkKeys.HEADER_1)}</Ingress>
+                <Ingress>{t(LanguageKey.HEADER_1)}</Ingress>
                 <Ingress className='air-top'>
-                  {t(BulkKeys.HEADER_2)}
-                  <strong>{t(BulkKeys.HEADER_3)}</strong>
-                  {t(BulkKeys.HEADER_4)}
-                  <strong>{t(BulkKeys.HEADER_5)}</strong>
-                  {t(BulkKeys.HEADER_6)}
+                  {t(LanguageKey.HEADER_2)}
+                  <strong>{t(LanguageKey.HEADER_3)}</strong>
+                  {t(LanguageKey.HEADER_4)}
+                  <strong>{t(LanguageKey.HEADER_5)}</strong>
+                  {t(LanguageKey.HEADER_6)}
                 </Ingress>
               </Panel>
               <Panel className='bulletpoint-wrapper'>
                 <ul className='ingress-listepunkter'>
-                  <li>{t(BulkKeys.INFO_1)}</li>
-                  <li>{t(BulkKeys.INFO_2)}</li>
-                  <li>{t(BulkKeys.INFO_3)}</li>
-                  <li>{t(BulkKeys.INFO_4)}</li>
-                  <li>{t(BulkKeys.INFO_5)}</li>
+                  <li>{t(LanguageKey.INFO_1)}</li>
+                  <li>{t(LanguageKey.INFO_2)}</li>
+                  <li>{t(LanguageKey.INFO_3)}</li>
+                  <li>{t(LanguageKey.INFO_4)}</li>
+                  <li>{t(LanguageKey.INFO_5)}</li>
                   <li>
-                    {t(BulkKeys.INFO_6)}
+                    {t(LanguageKey.INFO_6)}
                     <Lenke
                       target='_blank'
                       href='https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden'
                     >
-                      {t(BulkKeys.GRUNNBELOEP)}
+                      {t(LanguageKey.GRUNNBELOEP)}
                     </Lenke>
                   </li>
                   <li>
@@ -119,7 +118,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                       target='_blank'
                       href='https://www.nav.no/no/person/arbeid/sykmeldt-arbeidsavklaringspenger-og-yrkesskade/nyheter/kompensasjon-til-utestengte-eos-borgere/automatisert-saksbehandling-i-forbindelse-med-innreiseforbudet'
                     >
-                      {t(BulkKeys.INFO_7)}
+                      {t(LanguageKey.INFO_7)}
                     </Lenke>
                   </li>
                 </ul>
@@ -128,7 +127,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
               <Skillelinje />
 
               <Panel>
-                <SkjemaGruppe aria-live='polite' legend={t(BulkKeys.SKJEMA_LEGEND)}>
+                <SkjemaGruppe aria-live='polite' legend={t(LanguageKey.SKJEMA_LEGEND)}>
                   {state.items?.map((item, index) => (
                     <Row
                       key={item.uniqueKey}

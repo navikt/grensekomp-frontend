@@ -5,10 +5,10 @@ import mapLanguages from './mapLanguages';
 i18n.init({
   resources: {
     nb: {
-      translations: mapLanguages(Languages.nb)
+      translations: mapLanguages('nb')
     }
   },
-  fallbackLng: Languages.nb,
+  fallbackLng: 'nb',
   ns: ['translations'],
   defaultNS: 'translations',
   keySeparator: false,
