@@ -34,4 +34,24 @@ describe('loginExpiryAPI', () => {
     const loginExpiry = await GetLoginExpiry('');
     expect(loginExpiry.tidspunkt).toBeUndefined();
   });
+
+  it('should return a status and empty string when endpoint is not authorized', async () => {
+    const mockApi = Promise.resolve({
+      status: 401,
+      json: () => Promise.resolve()
+    } as Response);
+    jest.spyOn(window, 'fetch').mockImplementationOnce(() => mockApi);
+    const loginExpiry = await GetLoginExpiry('');
+    expect(loginExpiry.tidspunkt).toBeUndefined();
+  });
+
+  it('should return a status and empty string when endpoint has error', async () => {
+    const mockApi = Promise.resolve({
+      status: 500,
+      json: () => Promise.resolve()
+    } as Response);
+    jest.spyOn(window, 'fetch').mockImplementationOnce(() => mockApi);
+    const loginExpiry = await GetLoginExpiry('');
+    expect(loginExpiry.tidspunkt).toBeUndefined();
+  });
 });
