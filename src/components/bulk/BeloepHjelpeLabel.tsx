@@ -8,7 +8,7 @@ import Lenke from 'nav-frontend-lenker';
 import LeggTilKnapp from '../felles/knapper/LeggTilKnapp';
 import SmilendeKar from '../oversikt-krav/SmilendeKar';
 import { useTranslation } from 'react-i18next';
-import LanguageKey from '../../locales/LanguageKey';
+import Key from '../../locales/Key';
 
 const HjelpetekstIkon = (
   <svg
@@ -49,50 +49,50 @@ const BeloepHjelpeLabel = () => {
 
   return (
     <div className='beloephjelpelabel'>
-      <span className='hjelpetekst-beskrivelse'>{t(LanguageKey.BELOEP_HJELPE_TITLE)}</span>
+      <span className='hjelpetekst-beskrivelse'>{t(Key.BELOEP_HJELPE_TITLE)}</span>
       <div className='hjelpetekst-refusjon'>
         <ModalWrapper
           isOpen={eksempelOpen}
           onRequestClose={() => setEksempelOpen(false)}
           closeButton={false}
-          contentLabel={t(LanguageKey.BELOEP_HJELPE_SUBTITLE)}
+          contentLabel={t(Key.BELOEP_HJELPE_SUBTITLE)}
           className='eksempel-modal'
         >
           <Veilederpanel svg={<SmilendeKar />}>
-            <Undertittel>{t(LanguageKey.BELOEP_HJELPE_SUBTITLE)}</Undertittel>
+            <Undertittel>{t(Key.BELOEP_HJELPE_SUBTITLE)}</Undertittel>
             <Normaltekst>
               <ul className='leftallign-list'>
-                <li>{t(LanguageKey.BELOEP_HJELPE_INFO_1)}</li>
+                <li>{t(Key.BELOEP_HJELPE_INFO_1)}</li>
                 <li>
-                  {t(LanguageKey.BELOEP_HJELPE_INFO_2)}
+                  {t(Key.BELOEP_HJELPE_INFO_2)}
                   <Lenke
                     target='_blank'
                     href='https://www.nav.no/no/bedrift/tjenester-og-skjemaer/nav-og-altinn-tjenester/inntektsmelding/beregningsregler-for-sykepenger'
                   >
-                    {t(LanguageKey.BELOEP_HJELPE_INFO_3)}
+                    {t(Key.BELOEP_HJELPE_INFO_3)}
                   </Lenke>
                 </li>
                 <li>
-                  {t(LanguageKey.BELOEP_HJELPE_INFO_4)}
+                  {t(Key.BELOEP_HJELPE_INFO_4)}
                   <Lenke
                     target='_blank'
                     href='https://www.nav.no/no/bedrift/oppfolging/sykmeldt-arbeidstaker/sykepenger/inntekter-som-innga%CC%8Ar-i-beregning-av-ma%CC%8Anedsinntekten'
                   >
-                    {t(LanguageKey.BELOEP_HJELPE_INFO_5)}
+                    {t(Key.BELOEP_HJELPE_INFO_5)}
                   </Lenke>
-                  {t(LanguageKey.BELOEP_HJELPE_INFO_6)}
+                  {t(Key.BELOEP_HJELPE_INFO_6)}
                 </li>
               </ul>
             </Normaltekst>
             <LeggTilKnapp className='lukke-knapp' onClick={(evt) => handleCloseButton(evt)}>
-              {t(LanguageKey.CLOSE)}
+              {t(Key.CLOSE)}
             </LeggTilKnapp>
           </Veilederpanel>
         </ModalWrapper>
         <div className='hjelpetekst'>
           <button role='link' className='hjelpetekst__apneknapp' onClick={(evt) => handleOpenButton(evt)}>
             <Sprsml />
-            <span className='sr-only'>{t(LanguageKey.HELP)}</span>
+            <span className='sr-only'>{t(Key.HELP)}</span>
           </button>
         </div>
       </div>

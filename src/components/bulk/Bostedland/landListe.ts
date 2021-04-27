@@ -1,5 +1,7 @@
 import Land from './Land';
 
+/* TODO Må benytte språk  */
+
 const landListe: Land[] = [
   { navn: 'Belgia', iso3: 'BEL' },
   { navn: 'Bulgaria', iso3: 'BGR' },

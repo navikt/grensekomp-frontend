@@ -1,4 +1,4 @@
-enum LanguageKey {
+enum Key {
   SIDETITTEL = 'SIDETITTEL',
   NUMBER = 'NUMBER',
   FNR_LABEL = 'FNR_LABEL',
@@ -45,4 +45,4 @@ enum LanguageKey {
   SKJEMA_LEGEND = 'SKJEMA_LEGEND'
 }
 
-export default LanguageKey;
+export default Key;

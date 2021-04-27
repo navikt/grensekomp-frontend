@@ -1,7 +1,7 @@
-import LanguageKey from './LanguageKey';
+import Key from './Key';
 import Locale from './Locale';
 
-const Languages: Record<LanguageKey, Locale> = {
+const Languages: Record<Key, Locale> = {
   SIDETITTEL: {
     nb: 'Refusjon for kompensasjon ved innreiseforbud'
   },

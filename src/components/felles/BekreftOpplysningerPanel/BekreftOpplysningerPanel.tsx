@@ -5,7 +5,7 @@ import './BekreftOpplysningerPanel.scss';
 import Lenke from 'nav-frontend-lenker';
 import { useTranslation } from 'react-i18next';
 import Tekstomrade from 'nav-frontend-tekstomrade';
-import LanguageKey from '../../../locales/LanguageKey';
+import Key from '../../../locales/Key';
 
 interface BekreftOpplysningerPanelProps {
   checked: boolean;
@@ -20,15 +20,15 @@ const BekreftOpplysningerPanel = (props: BekreftOpplysningerPanelProps) => {
     <Panel className='bekreft-opplysninger-panel'>
       <SkjemaGruppe feilmeldingId='bekreftFeilmeldingId'>
         <BekreftCheckboksPanel
-          label={t(LanguageKey.BEKREFT_LABEL)}
+          label={t(Key.BEKREFT_LABEL)}
           checked={props.checked}
           feil={props.feil}
           onChange={props.onChange}
         >
           <p>
-            <Tekstomrade>{t(LanguageKey.BEKREFT_CONTENT_1)}</Tekstomrade>
+            <Tekstomrade>{t(Key.BEKREFT_CONTENT_1)}</Tekstomrade>
             <Lenke target='_blank' href='https://www.nav.no/no/bedrift/refusjon-ved-innreiseforbud-under-pandemien'>
-              {t(LanguageKey.BEKREFT_CONTENT_2)}
+              {t(Key.BEKREFT_CONTENT_2)}
             </Lenke>
           </p>
         </BekreftCheckboksPanel>
