@@ -34,6 +34,7 @@ import BeloepHjelpeLabel from './BeloepHjelpeLabel';
 import { useTranslation } from 'react-i18next';
 import HjelpeLabel from '../felles/HjelpeLabel/HjelpeLabel';
 import Key from '../../locales/Key';
+import Tekstomrade, { BoldRule, LinebreakRule } from 'nav-frontend-tekstomrade';
 
 interface BulkInnsendingProps {
   state?: BulkState;
@@ -88,14 +89,9 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
           {state.progress != true && state.kvittering != true && (
             <>
               <Panel>
-                <Ingress>{t(Key.HEADER_1)}</Ingress>
-                <Ingress className='air-top'>
-                  {t(Key.HEADER_2)}
-                  <strong>{t(Key.HEADER_3)}</strong>
-                  {t(Key.HEADER_4)}
-                  <strong>{t(Key.HEADER_5)}</strong>
-                  {t(Key.HEADER_6)}
-                </Ingress>
+                <Tekstomrade className='typo-ingress' rules={[BoldRule, LinebreakRule]}>
+                  {t(Key.BULKINNSENDING_INFO)}
+                </Tekstomrade>
               </Panel>
               <Panel className='bulletpoint-wrapper'>
                 <ul className='ingress-listepunkter'>

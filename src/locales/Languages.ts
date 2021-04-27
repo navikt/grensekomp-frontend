@@ -5,16 +5,13 @@ const Languages: Record<Key, Locale> = {
   SIDETITTEL: {
     nb: 'Refusjon for kompensasjon ved innreiseforbud'
   },
-  HEADER_1: {
+  BULKINNSENDING_INFO: {
     nb:
       'Arbeidsgivere er pålagt å utbetale kompensasjon til ansatte som taper inntekt fordi de ikke kan møte på arbeid som ' +
-      'følge av innreiseforbudet under pandemien. Arbeidsgiveren forskutterer kompensasjonen og krever refusjon fra NAV.'
+      'følge av innreiseforbudet under pandemien. Arbeidsgiveren forskutterer kompensasjonen og krever refusjon fra NAV.' +
+      '\n\nAlle felter må fylles ut. Du kan sende inntil _50 krav om gangen_. Søker du om _flere perioder_  for ' +
+      'samme person, velg «Legg til enda en ansatt», bruk samme fnr/dnr, og skriv inn ny periode.'
   },
-  HEADER_2: { nb: 'Alle felter må fylles ut. Du kan sende inntil' },
-  HEADER_3: { nb: '50 krav om gangen' },
-  HEADER_4: { nb: '. Søker du om ' },
-  HEADER_5: { nb: 'flere perioder' },
-  HEADER_6: { nb: ' for samme person, velg «Legg til enda en ansatt», bruk samme fnr/dnr, og skriv inn ny periode.' },
   INFO_1: {
     nb:
       'Ordningen gjelder for arbeidstakere som var ansatt og hadde påbegynt arbeidet 29. januar da innreiseforbudet ble innført.'
