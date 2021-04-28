@@ -2,7 +2,6 @@ import Panel from 'nav-frontend-paneler';
 import { BekreftCheckboksPanel, SkjemaGruppe } from 'nav-frontend-skjema';
 import React from 'react';
 import './BekreftOpplysningerPanel.scss';
-import Lenke from 'nav-frontend-lenker';
 import { useTranslation } from 'react-i18next';
 import Tekstomrade from 'nav-frontend-tekstomrade';
 import Key from '../../../locales/Key';
@@ -27,7 +26,7 @@ const BekreftOpplysningerPanel = (props: BekreftOpplysningerPanelProps) => {
           onChange={props.onChange}
         >
           <p>
-            <Tekstomrade rules={[LenkeRule]}>{t(Key.BEKREFT_CONTENT_1)}</Tekstomrade>
+            <Tekstomrade rules={[LenkeRule]}>{t(Key.BEKREFT_CONTENT)}</Tekstomrade>
           </p>
         </BekreftCheckboksPanel>
       </SkjemaGruppe>

@@ -125,15 +125,11 @@ const Languages: Record<Key, Locale> = {
       'og at NAV kan gjøre kontroller i ettertid for å hindre misbruk av ordningen.'
   },
 
-  BEKREFT_CONTENT_1: {
+  BEKREFT_CONTENT: {
     nb:
       'Jeg har utbetalt lønn til de ansatte jeg søker om refusjon for ovenfor.' +
       '\nHver enkelt ansatt taper inntekt fordi de ikke kan møte på jobb på grunn av innreiseforbudet. ' +
       '[Reglene som gjelder for kompensasjon ved innreiseforbudet.](https://www.nav.no/no/bedrift/refusjon-ved-innreiseforbud-under-pandemien)'
-  },
-
-  BEKREFT_CONTENT_2: {
-    nb: 'Reglene som gjelder for kompensasjon ved innreiseforbudet.'
   },
 
   SEND: {
