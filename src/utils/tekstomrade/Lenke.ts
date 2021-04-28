@@ -1,4 +1,4 @@
-import { ASTNode, ReactElementDescription, RegexMatch, Rule, RuleScope } from '@navikt/textparser';
+import { ReactElementDescription, RegexMatch, Rule, RuleScope } from '@navikt/textparser';
 
 export const LenkeRule: Rule = {
   name: 'Lenke',
