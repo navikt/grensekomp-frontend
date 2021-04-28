@@ -26,7 +26,7 @@ const BekreftOpplysningerPanel = (props: BekreftOpplysningerPanelProps) => {
           onChange={props.onChange}
         >
           <p>
-            <Tekstomrade rules={[LenkeRule]}>{t(Key.BEKREFT_CONTENT)}</Tekstomrade>
+            <Tekstomrade rules={[LenkeRule]}>{t(Key.BEKREFT_OPPLYSNINGER)}</Tekstomrade>
           </p>
         </BekreftCheckboksPanel>
       </SkjemaGruppe>

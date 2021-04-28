@@ -12,7 +12,7 @@ export const LenkeRule: Rule = {
   },
   react(node: any): ReactElementDescription {
     const description = node.content[0];
-    const href = node.content[1];
+    const href: string = node.content[1];
 
     return {
       type: 'a',

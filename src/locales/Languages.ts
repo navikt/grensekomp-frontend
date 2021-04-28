@@ -125,7 +125,7 @@ const Languages: Record<Key, Locale> = {
       'og at NAV kan gjøre kontroller i ettertid for å hindre misbruk av ordningen.'
   },
 
-  BEKREFT_CONTENT: {
+  BEKREFT_OPPLYSNINGER: {
     nb:
       'Jeg har utbetalt lønn til de ansatte jeg søker om refusjon for ovenfor.' +
       '\nHver enkelt ansatt taper inntekt fordi de ikke kan møte på jobb på grunn av innreiseforbudet. ' +
