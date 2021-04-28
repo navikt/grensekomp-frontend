@@ -16,7 +16,7 @@ export const LenkeRule: Rule = {
 
     return {
       type: 'a',
-      props: { href, target: '_blank', rel: 'noopener' },
+      props: { href, target: '_blank', rel: 'noopener', class: 'lenke' },
       children: description
     };
   }
