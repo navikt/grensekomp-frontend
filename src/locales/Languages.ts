@@ -128,7 +128,8 @@ const Languages: Record<Key, Locale> = {
   BEKREFT_CONTENT_1: {
     nb:
       'Jeg har utbetalt lønn til de ansatte jeg søker om refusjon for ovenfor.' +
-      '\nHver enkelt ansatt taper inntekt fordi de ikke kan møte på jobb på grunn av innreiseforbudet.'
+      '\nHver enkelt ansatt taper inntekt fordi de ikke kan møte på jobb på grunn av innreiseforbudet. ' +
+      '[Reglene som gjelder for kompensasjon ved innreiseforbudet.](https://www.nav.no/no/bedrift/refusjon-ved-innreiseforbud-under-pandemien)'
   },
 
   BEKREFT_CONTENT_2: {
