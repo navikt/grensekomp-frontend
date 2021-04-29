@@ -68,7 +68,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
       i18n,
       payload: { orgnr: arbeidsgiverId }
     });
-  }, [arbeidsgiverId]);
+  }, [arbeidsgiverId, i18n]);
 
   useEffect(() => {
     if (state.validated === true && state.progress === true && state.submitting === true) {
@@ -80,7 +80,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
         });
       });
     }
-  }, [state.validated, state.progress, state.feilmeldinger, state.submitting, state.bekreft, state]);
+  }, [i18n, state.validated, state.progress, state.feilmeldinger, state.submitting, state.bekreft, state]);
 
   return (
     <Side bedriftsmeny={true} className='bulk-innsending' sidetittel={t(Key.SIDETITTEL)} subtitle={'Subtitle'}>
