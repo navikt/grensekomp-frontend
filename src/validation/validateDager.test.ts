@@ -1,6 +1,7 @@
 import Dato from '../utils/dato/Dato';
 import { parseDato } from '../utils/dato/parseDato';
 import validateDager from './validateDager';
+import Key from '../locales/Key';
 
 describe('validateDager', () => {
   it('should verify that there is a dager when required', () => {
@@ -25,7 +26,7 @@ describe('validateDager', () => {
 
   it('should verify that dager is numeric when required and dager is 0', () => {
     expect(validateDager('notanumber', 1000, true, undefined, undefined)).not.toBeUndefined();
-    expect(validateDager('notanumber', 1000, true, undefined, undefined)).toBe('Bruk kun tall');
+    expect(validateDager('notanumber', 1000, true, undefined, undefined)?.key).toBe(Key.DAY_DIGITS_ONLY);
   });
 
   it('should return undefined when not required', () => {
@@ -34,25 +35,23 @@ describe('validateDager', () => {
 
   it('should return an error when the dager string has no content', () => {
     expect(validateDager('', 1000, true, undefined, undefined)).not.toBeUndefined();
-    expect(validateDager('', 1000, true, undefined, undefined)).toBe('Mangler antall');
+    expect(validateDager('', 1000, true, undefined, undefined)?.key).toBe(Key.DAY_MISSING);
   });
 
   it('should return an error when dager is undefined', () => {
     expect(validateDager(undefined, 1000, true, undefined, undefined)).not.toBeUndefined();
-    expect(validateDager(undefined, 1000, true, undefined, undefined)).toBe('Mangler antall');
+    expect(validateDager(undefined, 1000, true, undefined, undefined)?.key).toBe(Key.DAY_MISSING);
   });
 
   it('should return an error when dager is more than max', () => {
     expect(validateDager('2000', 1000, true, undefined, undefined)).not.toBeUndefined();
-    expect(validateDager('2000', 1000, true, undefined, undefined)).toBe('For høy verdi');
+    expect(validateDager('2000', 1000, true, undefined, undefined)?.key).toBe(Key.DAY_TOO_HIGH);
   });
 
   it('should return an error when there are more dager than available days', () => {
     const fra: Dato = parseDato('01.02.2020');
     const til: Dato = parseDato('10.02.2020');
     expect(validateDager('20', 1000, true, fra, til)).not.toBeUndefined();
-    expect(validateDager('20', 1000, true, fra, til)).toBe(
-      'Antall refusjonsdager kan ikke være flere enn dagene i perioden'
-    );
+    expect(validateDager('20', 1000, true, fra, til)?.key).toBe(Key.DAY_INVALID);
   });
 });

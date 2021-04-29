@@ -1,17 +1,18 @@
 import { validateFnr } from './validateFnr';
 
 import testFnr from '../mockData/testFnr';
+import Key from '../locales/Key';
 
 describe('validateFnr', () => {
   it('should give error when undefined value and required', async () => {
-    expect(validateFnr(undefined, true)).toEqual('Mangler fødselsnummer');
+    expect(validateFnr(undefined, true)?.key).toEqual(Key.FNR_MISSING);
   });
   it('should give error when empty value and required', async () => {
-    expect(validateFnr('', true)).toEqual('Mangler fødselsnummer');
+    expect(validateFnr('', true)?.key).toEqual(Key.FNR_MISSING);
   });
 
   it('should give error when invalid value and required', async () => {
-    expect(validateFnr('123', true)).toEqual('Ugyldig fødselsnummer');
+    expect(validateFnr('123', true)?.key).toEqual(Key.FNR_INVALID);
   });
   it('should not give error when invalid value and not required', async () => {
     expect(validateFnr('123', false)).toBeUndefined();

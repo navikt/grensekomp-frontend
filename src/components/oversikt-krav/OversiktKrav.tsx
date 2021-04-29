@@ -12,6 +12,7 @@ import unikeInnsendinger from '../../state/oversikt-krav/unikeInnsendinger';
 import KravListe from './KravListe';
 import KravSammendrag from './KravSammendrag';
 import { RefusjonskravStatus } from '../../state/oversikt-krav/OversiktKravItem';
+import { useTranslation } from 'react-i18next';
 
 interface OversiktKravProps {
   state?: OversiktKravState;
@@ -20,6 +21,7 @@ interface OversiktKravProps {
 const OversiktKrav = (props: OversiktKravProps) => {
   const [state, dispatch] = useReducer(OversiktKravReducer, props.state, defaultOversiktKravState);
   const { arbeidsgiverId } = useArbeidsgiver();
+  const { t, i18n } = useTranslation();
 
   const handleCloseServerFeil = () => {
     dispatch({ type: Actions.HideServerError });

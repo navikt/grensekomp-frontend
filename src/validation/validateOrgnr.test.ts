@@ -1,18 +1,19 @@
 import { validateOrgnr } from './validateOrgnr';
 import testOrgnr from '../mockData/testOrgnr';
+import Key from '../locales/Key';
 
 describe('validateOrgnr', () => {
   it('should not give error when valid fnr', async () => {
     expect(validateOrgnr(testOrgnr.GyldigeOrgnr.TestOrg1, true)).toBeUndefined();
   });
   it('should give error when undefined value and required', async () => {
-    expect(validateOrgnr(undefined, true)).toEqual('Mangler virksomhetsnummer');
+    expect(validateOrgnr(undefined, true)?.key).toEqual(Key.ORGNR_MISSSING);
   });
   it('should give error when empty value and required', async () => {
-    expect(validateOrgnr('', true)).toEqual('Mangler virksomhetsnummer');
+    expect(validateOrgnr('', true)?.key).toEqual(Key.ORGNR_MISSSING);
   });
   it('should give error when invalid value and required', async () => {
-    expect(validateOrgnr('123', true)).toEqual('Ugyldig virksomhetsnummer');
+    expect(validateOrgnr('123', true)?.key).toEqual(Key.ORGNR_INVALID);
   });
   it('should not give error when invalid value and not required', async () => {
     expect(validateOrgnr('123', false)).toBeUndefined();

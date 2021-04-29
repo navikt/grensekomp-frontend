@@ -2,12 +2,16 @@ import BulkReducer from './BulkReducer';
 import { defaultBulkState } from './BulkState';
 import { Actions } from './BulkActions';
 import BulkValidationResponse from '../../api/bulk/BulkValidationResponse';
+import { languageInit } from '../../locales/LanguageProvider';
 
 describe('BulkReducer', () => {
+  const i18n = languageInit('nb');
+
   it('should throw error', () => {
     expect(() => {
       BulkReducer(defaultBulkState(), {
-        type: Actions.HandleResponse
+        type: Actions.HandleResponse,
+        i18n
       });
     }).toThrow();
   });
@@ -15,6 +19,7 @@ describe('BulkReducer', () => {
   it('should set the fnr', () => {
     let state = BulkReducer(defaultBulkState(), {
       type: Actions.Fnr,
+      i18n,
       payload: {
         fnr: '2',
         itemId: '1'
@@ -27,6 +32,7 @@ describe('BulkReducer', () => {
   it('should set the fnr to undefined', () => {
     let state = BulkReducer(defaultBulkState(), {
       type: Actions.Fnr,
+      i18n,
       payload: {
         fnr: undefined,
         itemId: '1'
@@ -39,6 +45,7 @@ describe('BulkReducer', () => {
   it('should set the orgnr', () => {
     let state = BulkReducer(defaultBulkState(), {
       type: Actions.Orgnr,
+      i18n,
       payload: { orgnr: '456' }
     });
     expect(state.orgnr).toEqual('456');
@@ -47,6 +54,7 @@ describe('BulkReducer', () => {
   it('should set the orgnr to undefined', () => {
     let state = BulkReducer(defaultBulkState(), {
       type: Actions.Orgnr,
+      i18n,
       payload: { orgnr: undefined }
     });
     expect(state.orgnr).toBeUndefined();
@@ -55,6 +63,7 @@ describe('BulkReducer', () => {
   it('should set the orgnr to empty string', () => {
     let state = BulkReducer(defaultBulkState(), {
       type: Actions.Orgnr,
+      i18n,
       payload: { orgnr: '' }
     });
     expect(state.orgnr).toEqual('');
@@ -63,6 +72,7 @@ describe('BulkReducer', () => {
   it('should set the fra to date', () => {
     let state = BulkReducer(defaultBulkState(), {
       type: Actions.Fra,
+      i18n,
       payload: {
         fra: new Date('2020.06.05'),
         itemId: '1'
@@ -75,6 +85,7 @@ describe('BulkReducer', () => {
   it('should set the fra to undefined', () => {
     let state = BulkReducer(defaultBulkState(), {
       type: Actions.Fra,
+      i18n,
       payload: {
         fra: undefined,
         itemId: '1'
@@ -87,6 +98,7 @@ describe('BulkReducer', () => {
   it('should set the til', () => {
     let state = BulkReducer(defaultBulkState(), {
       type: Actions.Til,
+      i18n,
       payload: {
         til: new Date('2020.06.05'),
         itemId: '1'
@@ -99,6 +111,7 @@ describe('BulkReducer', () => {
   it('should set the til to undefined', () => {
     let state = BulkReducer(defaultBulkState(), {
       type: Actions.Til,
+      i18n,
       payload: {
         til: undefined,
         itemId: '1'
@@ -111,6 +124,7 @@ describe('BulkReducer', () => {
   it('should set the beløp', () => {
     let state = BulkReducer(defaultBulkState(), {
       type: Actions.Beloep,
+      i18n,
       payload: {
         beloep: '3',
         itemId: '1'
@@ -122,6 +136,7 @@ describe('BulkReducer', () => {
   it('should set land', () => {
     let state = BulkReducer(defaultBulkState(), {
       type: Actions.Land,
+      i18n,
       payload: {
         land: 'usa',
         itemId: '1'
@@ -133,6 +148,7 @@ describe('BulkReducer', () => {
   it('should set land to empty', () => {
     let state = BulkReducer(defaultBulkState(), {
       type: Actions.Land,
+      i18n,
       payload: {
         itemId: '1'
       }
@@ -143,6 +159,7 @@ describe('BulkReducer', () => {
   it('should set the kvittering', () => {
     let state = BulkReducer(defaultBulkState(), {
       type: Actions.Kvittering,
+      i18n,
       payload: { kvittering: true }
     });
     expect(state.kvittering).toBe(true);
@@ -151,6 +168,7 @@ describe('BulkReducer', () => {
   it('should set the progress', () => {
     let state = BulkReducer(defaultBulkState(), {
       type: Actions.Progress,
+      i18n,
       payload: { progress: true }
     });
     expect(state.progress).toBe(true);
@@ -159,6 +177,7 @@ describe('BulkReducer', () => {
   it('should set the bekreft to undefined', () => {
     let state = BulkReducer(defaultBulkState(), {
       type: Actions.Bekreft,
+      i18n,
       payload: { bekreft: undefined }
     });
     expect(state.bekreft).toBeUndefined();
@@ -167,6 +186,7 @@ describe('BulkReducer', () => {
   it('should set the bekreft to true', () => {
     let state = BulkReducer(defaultBulkState(), {
       type: Actions.Bekreft,
+      i18n,
       payload: { bekreft: true }
     });
     expect(state.bekreft).toEqual(true);
@@ -175,6 +195,7 @@ describe('BulkReducer', () => {
   it('should set the bekreft to false', () => {
     let state = BulkReducer(defaultBulkState(), {
       type: Actions.Bekreft,
+      i18n,
       payload: { bekreft: false }
     });
     expect(state.bekreft).toEqual(false);
@@ -183,6 +204,7 @@ describe('BulkReducer', () => {
   it('should set the progress to false', () => {
     let state = BulkReducer(defaultBulkState(), {
       type: Actions.Progress,
+      i18n,
       payload: { progress: false }
     });
     expect(state.progress).toEqual(false);
@@ -191,6 +213,7 @@ describe('BulkReducer', () => {
   it('should set the progress to true', () => {
     let state = BulkReducer(defaultBulkState(), {
       type: Actions.Progress,
+      i18n,
       payload: { progress: true }
     });
     expect(state.progress).toEqual(true);
@@ -199,7 +222,8 @@ describe('BulkReducer', () => {
   it('should validate', () => {
     let state = defaultBulkState();
     state = BulkReducer(state, {
-      type: Actions.Validate
+      type: Actions.Validate,
+      i18n
     });
     expect(state.validated).toBe(true);
   });
@@ -207,6 +231,7 @@ describe('BulkReducer', () => {
   it('should handle successful response', () => {
     let state = BulkReducer(defaultBulkState(), {
       type: Actions.HandleResponse,
+      i18n,
       payload: {
         response: {
           status: 200,
@@ -223,11 +248,13 @@ describe('BulkReducer', () => {
 
   it('should reset to defaults', () => {
     const defaultState = defaultBulkState();
-    let state = BulkReducer(defaultState, { type: Actions.Reset });
+
+    let state = BulkReducer(defaultState, { type: Actions.Reset, i18n });
     expect(state.items).not.toBeUndefined();
     expect(defaultState.items).not.toBeUndefined();
     state = BulkReducer(state, {
-      type: Actions.Reset
+      type: Actions.Reset,
+      i18n
     });
     expect(state).toEqual(defaultState);
     expect(state.items).toEqual([{ beloep: '', dager: '', fnr: '', uniqueKey: '1' }]);

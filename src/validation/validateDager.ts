@@ -2,6 +2,8 @@ import isNumericString from '../utils/isNumericString';
 import { Dato } from '../utils/dato/Dato';
 import dayjs from 'dayjs';
 import { datoToString } from '../utils/dato/datoToString';
+import ValidationResult from './ValidationResult';
+import Key from '../locales/Key';
 
 const validateDager = (
   dager: string | undefined,
@@ -9,20 +11,20 @@ const validateDager = (
   required: boolean | undefined,
   fra: Dato | undefined,
   til: Dato | undefined
-): string | undefined => {
+): ValidationResult | undefined => {
   if (!required) {
     return undefined;
   }
   if (dager === undefined || dager.length === 0) {
-    return 'Mangler antall';
+    return { key: Key.DAY_MISSING };
   }
 
   if (!isNumericString(dager)) {
-    return 'Bruk kun tall';
+    return { key: Key.DAY_DIGITS_ONLY };
   }
 
   if (parseInt(dager) > max) {
-    return 'For høy verdi';
+    return { key: Key.DAY_TOO_HIGH };
   }
 
   if (
@@ -30,7 +32,7 @@ const validateDager = (
     til &&
     parseInt(dager) > dayjs(datoToString(til), 'DD.MM.YYYY').diff(dayjs(datoToString(fra), 'DD.MM.YYYY'), 'day') + 1
   ) {
-    return 'Antall refusjonsdager kan ikke være flere enn dagene i perioden';
+    return { key: Key.DAY_INVALID };
   }
 };
 

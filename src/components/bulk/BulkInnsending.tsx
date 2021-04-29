@@ -40,22 +40,23 @@ interface BulkInnsendingProps {
 }
 
 const BulkInnsending = (props: BulkInnsendingProps) => {
+  const { t, i18n } = useTranslation();
   const [state, dispatch] = useReducer(BulkReducer, props.state, defaultBulkState);
-  const { t } = useTranslation();
   const { arbeidsgiverId } = useArbeidsgiver();
   const showDeleteButton = state.items && state.items.length > 1;
 
   const handleCloseServerFeil = () => {
-    dispatch({ type: Actions.HideServerError });
+    dispatch({ type: Actions.HideServerError, i18n });
   };
 
   const handleCloseNotAuthorized = () => {
-    dispatch({ type: Actions.NotAuthorized });
+    dispatch({ type: Actions.NotAuthorized, i18n });
   };
 
   const handleSubmitClicked = () => {
     dispatch({
       type: Actions.Validate,
+      i18n,
       payload: {}
     });
     return false;
@@ -64,6 +65,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
   useEffect(() => {
     dispatch({
       type: Actions.Orgnr,
+      i18n,
       payload: { orgnr: arbeidsgiverId }
     });
   }, [arbeidsgiverId]);
@@ -73,6 +75,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
       postBulk(environment.baseUrl, mapBulkRequest(state)).then((response) => {
         dispatch({
           type: Actions.HandleResponse,
+          i18n,
           payload: { response: response }
         });
       });
@@ -154,6 +157,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               onChange={(event) => {
                                 dispatch({
                                   type: Actions.Fnr,
+                                  i18n,
                                   payload: {
                                     itemId: item.uniqueKey,
                                     fnr: event
@@ -173,6 +177,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               onChange={(event) => {
                                 dispatch({
                                   type: Actions.Land,
+                                  i18n,
                                   payload: {
                                     itemId: item.uniqueKey,
                                     land: event
@@ -189,6 +194,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                                 onClick={(event) => {
                                   dispatch({
                                     type: Actions.DeleteItem,
+                                    i18n,
                                     payload: {
                                       itemId: item.uniqueKey
                                     }
@@ -215,6 +221,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               onChange={(dato) => {
                                 dispatch({
                                   type: Actions.Fra,
+                                  i18n,
                                   payload: {
                                     itemId: item.uniqueKey,
                                     fra: dato
@@ -239,6 +246,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               onChange={(dato) => {
                                 dispatch({
                                   type: Actions.Til,
+                                  i18n,
                                   payload: {
                                     itemId: item.uniqueKey,
                                     til: dato
@@ -259,6 +267,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               onChange={(event) => {
                                 dispatch({
                                   type: Actions.Beloep,
+                                  i18n,
                                   payload: {
                                     itemId: item.uniqueKey,
                                     beloep: event.currentTarget.value
@@ -282,6 +291,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           onClick={(event) => {
                             dispatch({
                               type: Actions.AddItem,
+                              i18n,
                               payload: {}
                             });
                           }}
@@ -302,6 +312,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                 onChange={() =>
                   dispatch({
                     type: Actions.Bekreft,
+                    i18n,
                     payload: { bekreft: !state.bekreft }
                   })
                 }

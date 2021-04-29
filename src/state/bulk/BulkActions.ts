@@ -1,7 +1,9 @@
 import BulkPayload from './BulkPayload';
+import { TFunction } from 'i18next';
 
 export enum Actions {
   Reset,
+  Language,
   Fnr,
   Orgnr,
   Fra,
@@ -24,4 +26,5 @@ export enum Actions {
 export interface BulkActions {
   type: Actions;
   payload?: BulkPayload;
+  i18n: any;
 }

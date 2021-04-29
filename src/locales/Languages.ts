@@ -140,7 +140,30 @@ const Languages: Record<Key, Locale> = {
 
   SEND: {
     nb: 'Send krav om refusjon'
-  }
+  },
+
+  ORGNR_MISSSING: { nb: 'Mangler virksomhetsnummer' },
+  ORGNR_INVALID: { nb: 'Ugyldig virksomhetsnummer' },
+  AMOUNT_MISSING: { nb: 'Mangler beløp' },
+  AMOUNT_NOT_NUMERIC: { nb: 'Oppgi beløp med kun tall med maks to tall etter komma' },
+  AMOUNT_TOO_HIGH: { nb: 'For høyt beløp' },
+  DAY_MISSING: { nb: 'Mangler antall' },
+  DAY_DIGITS_ONLY: { nb: 'Bruk kun tall' },
+  DAY_TOO_HIGH: { nb: 'For høy verdi' },
+  DAY_INVALID: { nb: 'Antall refusjonsdager kan ikke være flere enn dagene i perioden' },
+  FNR_MISSING: { nb: 'Mangler fødselsnummer' },
+  FNR_INVALID: { nb: 'Ugyldig fødselsnummer' },
+  FOM_MISSING: { nb: 'Mangler fra dato' },
+  FOM_INVALID: { nb: 'Dato kan bare være fra og med $value' },
+  FOM_ERROR: { nb: 'Feil dato' },
+  TIL_MISSING: { nb: 'Mangler til dato' },
+  TIL_INVALID: { nb: 'Dato kan bare være fra og med $value' },
+  TIL_ERROR: { nb: 'Feil dato' },
+  TIL_TOO_EARLY: { nb: 'Til dato kan ikke være før fra dato' },
+  COUNTRY_MISSING: { nb: 'Mangler land' },
+  COUNTRY_INVALID: { nb: 'Land ikke gyldig' },
+
+  BEKREFT: { nb: 'Bekreft at opplysningene er korrekt' }
 };
 
 export default Languages;
