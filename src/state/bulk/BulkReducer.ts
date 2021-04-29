@@ -19,8 +19,6 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
   nextState.items = nextState.items ? nextState.items : [{ uniqueKey: uuid() }];
 
   switch (action.type) {
-    case Actions.Language:
-      return nextState;
     case Actions.Orgnr:
       nextState.orgnr = payload?.orgnr;
       return validateBulk(nextState, i18n);

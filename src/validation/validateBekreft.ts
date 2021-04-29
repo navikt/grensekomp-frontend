@@ -10,7 +10,6 @@ const validateBekreft = (bekreft?: boolean, required: boolean = false): Validati
       key: Key.BEKREFT
     };
   }
-  return;
 };
 
 export default validateBekreft;

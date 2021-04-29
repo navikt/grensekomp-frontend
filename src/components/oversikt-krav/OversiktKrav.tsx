@@ -21,7 +21,6 @@ interface OversiktKravProps {
 const OversiktKrav = (props: OversiktKravProps) => {
   const [state, dispatch] = useReducer(OversiktKravReducer, props.state, defaultOversiktKravState);
   const { arbeidsgiverId } = useArbeidsgiver();
-  const { t, i18n } = useTranslation();
 
   const handleCloseServerFeil = () => {
     dispatch({ type: Actions.HideServerError });
