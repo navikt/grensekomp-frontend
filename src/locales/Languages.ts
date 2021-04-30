@@ -5,16 +5,26 @@ const Languages: Record<Key, Locale> = {
   SIDETITTEL: {
     nb: 'Refusjon for kompensasjon ved innreiseforbud'
   },
-  HEADER_1: {
+  BULKINNSENDING_INFO: {
     nb:
-      'Arbeidsgivere er pålagt å utbetale kompensasjon til ansatte som taper inntekt fordi de ikke kan møte på arbeid som ' +
-      'følge av innreiseforbudet under pandemien. Arbeidsgiveren forskutterer kompensasjonen og krever refusjon fra NAV.'
+      'Arbeidsgivere er pålagt å utbetale kompensasjon til ansatte som taper inntekt fordi de ikke kan møte på arbeid ' +
+      'som følge av innreiseforbudet under pandemien. Arbeidsgiveren forskutterer kompensasjonen og krever refusjon fra ' +
+      'NAV.' +
+      '\n\n' +
+      'Alle felter må fylles ut. Du kan sende inntil _50 krav om gangen_. Søker du om _flere perioder_ for samme person, ' +
+      'velg «Legg til enda en ansatt», bruk samme fnr/dnr, og skriv inn ny periode.' +
+      '-##\n' +
+      '-- Ordningen gjelder for arbeidstakere som var ansatt og hadde påbegynt arbeidet 29. januar da innreiseforbudet ble innført.\n' +
+      '-- Den ansatte må ha vært i jobb i minst fire uker før det tidspunktet man krever refusjon fra.\n' +
+      '-- Det gis bare kompensasjon for dager som den ansatte faktisk skulle ha jobbet.\n' +
+      '-- Hvis arbeidsgiveren er kjent med at den ansatte har hatt inntekt fra en annen jobb, skal det ikke gis ' +
+      'kompensasjon for dager som den ansatte har hatt annen inntekt. Det samme gjelder ytelser fra bostedslandet hvis ' +
+      'arbeidsgiveren er kjent med det.\n' +
+      '-- Avviklet ferie kan omgjøres til arbeidsdager som det gis refusjon for.\n' +
+      '-- Kompensasjonen er 70 % av sykepengegrunnlaget, begrenset opp til 70 % av 6G, [folketrygdens grunnbeløp.](https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden)\n' +
+      '-- [Søknaden blir behandlet automatisk.](https://www.nav.no/no/person/arbeid/sykmeldt-arbeidsavklaringspenger-og-yrkesskade/nyheter/kompensasjon-til-utestengte-eos-borgere/automatisert-saksbehandling-i-forbindelse-med-innreiseforbudet)\n' +
+      '##-\n'
   },
-  HEADER_2: { nb: 'Alle felter må fylles ut. Du kan sende inntil' },
-  HEADER_3: { nb: '50 krav om gangen' },
-  HEADER_4: { nb: '. Søker du om ' },
-  HEADER_5: { nb: 'flere perioder' },
-  HEADER_6: { nb: ' for samme person, velg «Legg til enda en ansatt», bruk samme fnr/dnr, og skriv inn ny periode.' },
   INFO_1: {
     nb:
       'Ordningen gjelder for arbeidstakere som var ansatt og hadde påbegynt arbeidet 29. januar da innreiseforbudet ble innført.'
@@ -128,14 +138,11 @@ const Languages: Record<Key, Locale> = {
       'og at NAV kan gjøre kontroller i ettertid for å hindre misbruk av ordningen.'
   },
 
-  BEKREFT_CONTENT_1: {
+  BEKREFT_OPPLYSNINGER: {
     nb:
       'Jeg har utbetalt lønn til de ansatte jeg søker om refusjon for ovenfor.' +
-      '\nHver enkelt ansatt taper inntekt fordi de ikke kan møte på jobb på grunn av innreiseforbudet.'
-  },
-
-  BEKREFT_CONTENT_2: {
-    nb: 'Reglene som gjelder for kompensasjon ved innreiseforbudet.'
+      '\nHver enkelt ansatt taper inntekt fordi de ikke kan møte på jobb på grunn av innreiseforbudet. ' +
+      '[Reglene som gjelder for kompensasjon ved innreiseforbudet.](https://www.nav.no/no/bedrift/refusjon-ved-innreiseforbud-under-pandemien)'
   },
 
   SEND: {
