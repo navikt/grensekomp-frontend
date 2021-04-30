@@ -13,9 +13,9 @@ const checkItemId = (itemId?: string) => {
   }
 };
 
-const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
+const BulkReducer = (state: BulkState, action: BulkActions, i18n: Function): BulkState => {
   const nextState = Object.assign({}, state);
-  const { payload, i18n } = action;
+  const { payload } = action;
   nextState.items = nextState.items ? nextState.items : [{ uniqueKey: uuid() }];
 
   switch (action.type) {

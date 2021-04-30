@@ -24,5 +24,4 @@ export enum Actions {
 export interface BulkActions {
   type: Actions;
   payload?: BulkPayload;
-  i18n: any;
 }

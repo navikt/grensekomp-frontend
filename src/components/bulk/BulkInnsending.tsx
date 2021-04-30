@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { Reducer, useEffect, useReducer } from 'react';
 import { Column, Row } from 'nav-frontend-grid';
 import ServerFeilAdvarsel from '../felles/ServerFeilAdvarsel';
 import Panel from 'nav-frontend-paneler';
@@ -10,7 +10,7 @@ import { DatoVelger } from '@navikt/helse-arbeidsgiver-felles-frontend';
 import LoggetUtAdvarsel from '../login/LoggetUtAdvarsel';
 import BulkReducer from '../../state/bulk/BulkReducer';
 import BulkState, { defaultBulkState, MAX_ITEMS } from '../../state/bulk/BulkState';
-import { Actions } from '../../state/bulk/BulkActions';
+import { Actions, BulkActions } from '../../state/bulk/BulkActions';
 import environment from '../../config/environment';
 import postBulk from '../../api/bulk/postBulk';
 import mapBulkRequest from '../../api/bulk/mapBulkRequest';
@@ -41,7 +41,13 @@ interface BulkInnsendingProps {
 
 const BulkInnsending = (props: BulkInnsendingProps) => {
   const { t, i18n } = useTranslation();
-  const [state, dispatch] = useReducer(BulkReducer, props.state, defaultBulkState);
+
+  const BulkReducerSettOpp = (i18n): Reducer<BulkState, BulkActions> => {
+    return (i18n: Function) => (state: BulkState, action: BulkActions) => BulkReducer(state, action, i18n);
+  };
+
+  const BulkReducerI18n: Reducer<BulkState, BulkActions> = BulkReducerSettOpp(i18n);
+  const [state, dispatch] = useReducer(BulkReducerI18n, props.state, defaultBulkState);
   const { arbeidsgiverId } = useArbeidsgiver();
   const showDeleteButton = state.items && state.items.length > 1;
 
