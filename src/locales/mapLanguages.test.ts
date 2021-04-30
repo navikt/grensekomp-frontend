@@ -1,9 +1,11 @@
 import mapLanguages from './mapLanguages';
+import Key from './Key';
 
 describe('mapLanguages', () => {
-  it('should', async () => {
-    expect(mapLanguages('nb')).not.toBeUndefined();
+  it('should map all language keys', () => {
+    const langs = mapLanguages('nb');
+    for (const k in Key) {
+      expect(langs[k]).not.toBeUndefined();
+    }
   });
-
-  it('should map', async () => {});
 });

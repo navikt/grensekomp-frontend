@@ -1,6 +1,6 @@
 enum Lang {
-  No,
-  En
+  nb,
+  en
 }
 
 export default Lang;
