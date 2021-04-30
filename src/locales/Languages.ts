@@ -7,10 +7,23 @@ const Languages: Record<Key, Locale> = {
   },
   BULKINNSENDING_INFO: {
     nb:
-      'Arbeidsgivere er pålagt å utbetale kompensasjon til ansatte som taper inntekt fordi de ikke kan møte på arbeid som ' +
-      'følge av innreiseforbudet under pandemien. Arbeidsgiveren forskutterer kompensasjonen og krever refusjon fra NAV.' +
-      '\n\nAlle felter må fylles ut. Du kan sende inntil _50 krav om gangen_. Søker du om _flere perioder_  for ' +
-      'samme person, velg «Legg til enda en ansatt», bruk samme fnr/dnr, og skriv inn ny periode.'
+      'Arbeidsgivere er pålagt å utbetale kompensasjon til ansatte som taper inntekt fordi de ikke kan møte på arbeid ' +
+      'som følge av innreiseforbudet under pandemien. Arbeidsgiveren forskutterer kompensasjonen og krever refusjon fra ' +
+      'NAV.' +
+      '\n\n' +
+      'Alle felter må fylles ut. Du kan sende inntil _50 krav om gangen_. Søker du om _flere perioder_ for samme person, ' +
+      'velg «Legg til enda en ansatt», bruk samme fnr/dnr, og skriv inn ny periode.' +
+      '-##\n' +
+      '-- Ordningen gjelder for arbeidstakere som var ansatt og hadde påbegynt arbeidet 29. januar da innreiseforbudet ble innført.\n' +
+      '-- Den ansatte må ha vært i jobb i minst fire uker før det tidspunktet man krever refusjon fra.\n' +
+      '-- Det gis bare kompensasjon for dager som den ansatte faktisk skulle ha jobbet.\n' +
+      '-- Hvis arbeidsgiveren er kjent med at den ansatte har hatt inntekt fra en annen jobb, skal det ikke gis ' +
+      'kompensasjon for dager som den ansatte har hatt annen inntekt. Det samme gjelder ytelser fra bostedslandet hvis ' +
+      'arbeidsgiveren er kjent med det.\n' +
+      '-- Avviklet ferie kan omgjøres til arbeidsdager som det gis refusjon for.\n' +
+      '-- Kompensasjonen er 70 % av sykepengegrunnlaget, begrenset opp til 70 % av 6G, [folketrygdens grunnbeløp.](https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden)\n' +
+      '-- [Søknaden blir behandlet automatisk.](https://www.nav.no/no/person/arbeid/sykmeldt-arbeidsavklaringspenger-og-yrkesskade/nyheter/kompensasjon-til-utestengte-eos-borgere/automatisert-saksbehandling-i-forbindelse-med-innreiseforbudet)\n' +
+      '##-\n'
   },
   INFO_1: {
     nb:

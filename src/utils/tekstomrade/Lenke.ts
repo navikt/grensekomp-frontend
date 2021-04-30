@@ -3,7 +3,7 @@ import { ReactElementDescription, RegexMatch, Rule, RuleScope } from '@navikt/te
 export const LenkeRule: Rule = {
   name: 'Lenke',
   scope: RuleScope.INLINE,
-  regex: /\[([\w\s\d.]+)\]\(((?:\/|https?:\/\/)[\w\d-./?=#]+)\)/,
+  regex: /(\[(.*)\])\((.*)\)/,
   parse(match: RegexMatch): any {
     return {
       name: this.name,
@@ -11,9 +11,8 @@ export const LenkeRule: Rule = {
     };
   },
   react(node: any): ReactElementDescription {
-    const description = node.content[0];
-    const href: string = node.content[1];
-
+    const description = node.content[1];
+    const href: string = node.content[2];
     return {
       type: 'a',
       props: { href, target: '_blank', rel: 'noopener', class: 'lenke' },
