@@ -34,7 +34,10 @@ import BeloepHjelpeLabel from './BeloepHjelpeLabel';
 import { useTranslation } from 'react-i18next';
 import HjelpeLabel from '../felles/HjelpeLabel/HjelpeLabel';
 import Key from '../../locales/Key';
-import Tekstomrade, { BoldRule, LinebreakRule } from 'nav-frontend-tekstomrade';
+import Tekstomrade, { BoldRule, HighlightRule, LinebreakRule } from 'nav-frontend-tekstomrade';
+import { ListeRule } from '../../utils/tekstomrade/Liste';
+import { UListeRule } from '../../utils/tekstomrade/UListe';
+import { LenkeRule } from '../../utils/tekstomrade/Lenke';
 
 interface BulkInnsendingProps {
   state?: BulkState;
@@ -89,7 +92,10 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
           {state.progress != true && state.kvittering != true && (
             <>
               <Panel>
-                <Tekstomrade className='typo-ingress' rules={[BoldRule, LinebreakRule]}>
+                <Tekstomrade
+                  className='typo-ingress'
+                  rules={[BoldRule, HighlightRule, LenkeRule, ListeRule, UListeRule]}
+                >
                   {t(Key.BULKINNSENDING_INFO)}
                 </Tekstomrade>
               </Panel>
