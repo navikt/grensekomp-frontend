@@ -8,7 +8,7 @@ interface LanguageProviderProps {
   children: any;
 }
 
-const LanguageProvider = ({ children, lang = 'nb' }: LanguageProviderProps) => {
+export const languageInit = (lang: string) => {
   i18n.init({
     resources: {
       nb: {
@@ -31,6 +31,11 @@ const LanguageProvider = ({ children, lang = 'nb' }: LanguageProviderProps) => {
     }
   });
   i18n.changeLanguage(lang);
+  return i18n;
+};
+
+const LanguageProvider = ({ children, lang = 'nb' }: LanguageProviderProps) => {
+  languageInit(lang);
   return <I18nextProvider i18n={i18n}>{children}</I18nextProvider>;
 };
 

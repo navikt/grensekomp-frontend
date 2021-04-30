@@ -1,4 +1,5 @@
 import validateBeloep from './validateBeloep';
+import Key from '../locales/Key';
 
 describe('validateBeloep', () => {
   it('should verify that ther is a beloep when required', () => {
@@ -23,17 +24,12 @@ describe('validateBeloep', () => {
 
   it('should return an error if beloep is not numeric', () => {
     expect(validateBeloep('money', 122, true)).not.toBeUndefined();
-    expect(validateBeloep('money', 122, true)).toBe('Oppgi beløp med kun tall med maks to tall etter komma');
-  });
-
-  it('should return an error if beloep is not numeric', () => {
-    expect(validateBeloep('money', 122, true)).not.toBeUndefined();
-    expect(validateBeloep('money', 122, true)).toBe('Oppgi beløp med kun tall med maks to tall etter komma');
+    expect(validateBeloep('money', 122, true)?.key).toBe(Key.AMOUNT_NOT_NUMERIC);
   });
 
   it('should return an error when beloep is missing and required', () => {
     expect(validateBeloep(undefined, 1000, true)).not.toBeUndefined();
-    expect(validateBeloep(undefined, 122, true)).toBe('Mangler beløp');
+    expect(validateBeloep(undefined, 122, true)?.key).toBe(Key.AMOUNT_MISSING);
   });
 
   it('should return undefined when beloep is missing and not required', () => {

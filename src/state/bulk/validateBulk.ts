@@ -7,8 +7,11 @@ import validateFra from '../../validation/validateFra';
 import validateBeloep from '../../validation/validateBeloep';
 import { validateOrgnr } from '../../validation/validateOrgnr';
 import validateLand from '../../validation/validateLand';
+import { i18n } from 'i18next';
+import formatValidation from '../../validation/formatValidation';
+import validateBekreft from '../../validation/validateBekreft';
 
-const validateBulk = (state: BulkState): BulkState => {
+const validateBulk = (state: BulkState, i18n: i18n): BulkState => {
   if (!state.validated) {
     return state;
   }
@@ -18,11 +21,11 @@ const validateBulk = (state: BulkState): BulkState => {
   nextState.items?.forEach((item, index) => {
     const RAD_FEIL = 'Rad ' + (index + 1) + ': ';
 
-    item.fnrError = validateFnr(item.fnr, state.validated);
-    item.fomError = validateFra(item.fom, state.validated);
-    item.tomError = validateTil(item.fom, item.tom, state.validated);
-    item.beloepError = validateBeloep(item.beloep, 1000000, state.validated);
-    item.landError = validateLand(item.land, state.validated);
+    item.fnrError = formatValidation(validateFnr(item.fnr, state.validated), i18n);
+    item.fomError = formatValidation(validateFra(item.fom, state.validated), i18n);
+    item.tomError = formatValidation(validateTil(item.fom, item.tom, state.validated), i18n);
+    item.beloepError = formatValidation(validateBeloep(item.beloep, 1000000, state.validated), i18n);
+    item.landError = formatValidation(validateLand(item.land, state.validated), i18n);
     item.genericError = undefined;
 
     if (item.fnrError) {
@@ -42,14 +45,14 @@ const validateBulk = (state: BulkState): BulkState => {
     }
   });
 
-  nextState.orgnrError = validateOrgnr(state.orgnr, state.validated);
+  nextState.orgnrError = formatValidation(validateOrgnr(state.orgnr, state.validated), i18n);
   if (nextState.orgnrError) {
     pushFeilmelding('orgnr', nextState.orgnrError, feilmeldinger);
   }
 
-  nextState.bekreftError = !state.bekreft ? 'Bekreft at opplysningene er korrekt' : '';
-  if (!nextState.bekreft) {
-    pushFeilmelding('bekreftFeilmeldingId', 'Bekreft at opplysningene er korrekt', feilmeldinger);
+  nextState.bekreftError = formatValidation(validateBekreft(state.bekreft, state.validated), i18n);
+  if (nextState.bekreftError) {
+    pushFeilmelding('bekreftFeilmeldingId', nextState.bekreftError || '', feilmeldinger);
   }
 
   nextState.feilmeldinger = feilmeldinger;

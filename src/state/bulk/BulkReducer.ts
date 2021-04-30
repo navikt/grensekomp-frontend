@@ -6,6 +6,7 @@ import mapBulkValidationResponse from '../../components/bulk/mapBulkValidationRe
 import mapFeilOppsummeringsFeil from '../../components/bulk/mapFeilOppsummering';
 import HttpStatus from '../../api/HttpStatus';
 import { toDato } from '../../utils/dato/toDato';
+import { i18n } from 'i18next';
 
 const checkItemId = (itemId?: string) => {
   if (itemId === undefined) {
@@ -13,7 +14,7 @@ const checkItemId = (itemId?: string) => {
   }
 };
 
-const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
+const BulkReducer = (state: BulkState, action: BulkActions, i18n: i18n): BulkState => {
   const nextState = Object.assign({}, state);
   const { payload } = action;
   nextState.items = nextState.items ? nextState.items : [{ uniqueKey: uuid() }];
@@ -21,12 +22,12 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
   switch (action.type) {
     case Actions.Orgnr:
       nextState.orgnr = payload?.orgnr;
-      return validateBulk(nextState);
+      return validateBulk(nextState, i18n);
 
     case Actions.Fnr:
       checkItemId(payload?.itemId);
       nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.fnr = payload?.fnr;
-      return validateBulk(nextState);
+      return validateBulk(nextState, i18n);
 
     case Actions.Fra:
       checkItemId(payload?.itemId);
@@ -34,7 +35,7 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
       nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.fom = payload?.fra
         ? toDato(payload.fra)
         : undefined;
-      return validateBulk(nextState);
+      return validateBulk(nextState, i18n);
 
     case Actions.Til:
       checkItemId(payload?.itemId);
@@ -42,29 +43,29 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
       nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.tom = payload?.til
         ? toDato(payload.til)
         : undefined;
-      return validateBulk(nextState);
+      return validateBulk(nextState, i18n);
 
     case Actions.Beloep:
       checkItemId(payload?.itemId);
       nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.beloep = payload?.beloep;
-      return validateBulk(nextState);
+      return validateBulk(nextState, i18n);
 
     case Actions.Land:
       checkItemId(payload?.itemId);
       nextState.items.find((item) => item.uniqueKey === payload?.itemId)!.land = payload?.land;
-      return validateBulk(nextState);
+      return validateBulk(nextState, i18n);
 
     case Actions.Bekreft:
       nextState.bekreft = payload?.bekreft;
-      return validateBulk(nextState);
+      return validateBulk(nextState, i18n);
 
     case Actions.Progress:
       nextState.progress = payload?.progress;
-      return validateBulk(nextState);
+      return validateBulk(nextState, i18n);
 
     case Actions.Kvittering:
       nextState.kvittering = payload?.kvittering;
-      return validateBulk(nextState);
+      return validateBulk(nextState, i18n);
 
     case Actions.NotAuthorized:
       nextState.notAuthorized = false;
@@ -72,7 +73,7 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
 
     case Actions.Validate:
       nextState.validated = true;
-      const validatedState = validateBulk(nextState);
+      const validatedState = validateBulk(nextState, i18n);
       validatedState.submitting = validatedState.feilmeldinger?.length === 0;
       validatedState.progress = validatedState.submitting;
       return validatedState;
@@ -115,7 +116,7 @@ const BulkReducer = (state: BulkState, action: BulkActions): BulkState => {
     case Actions.DeleteItem:
       checkItemId(payload?.itemId);
       nextState.items = state.items?.filter((i) => i.uniqueKey !== payload!!.itemId);
-      return validateBulk(nextState);
+      return validateBulk(nextState, i18n);
 
     case Actions.Reset:
       return Object.assign({}, defaultBulkState());

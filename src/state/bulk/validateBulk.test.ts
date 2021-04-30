@@ -1,5 +1,6 @@
 import BulkState from './BulkState';
 import validateBulk from './validateBulk';
+import { languageInit } from '../../locales/LanguageProvider';
 
 describe('validateBulk', () => {
   it('should map all errors', () => {
@@ -13,7 +14,7 @@ describe('validateBulk', () => {
         }
       ]
     };
-    const state = validateBulk(fromState);
+    const state = validateBulk(fromState, languageInit('nb'));
     expect(state.orgnrError).not.toBeUndefined();
     expect(state.bekreftError).not.toBeUndefined();
     expect(state.items.length).toBe(1);

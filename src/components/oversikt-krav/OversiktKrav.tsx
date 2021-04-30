@@ -4,7 +4,6 @@ import OversiktKravReducer from '../../state/oversikt-krav/OversiktKravReducer';
 import OversiktKravState, { defaultOversiktKravState } from '../../state/oversikt-krav/OversiktKravState';
 import ServerFeilAdvarsel from '../felles/ServerFeilAdvarsel';
 import Side from '../felles/Side';
-
 import 'nav-frontend-tabell-style';
 import refusjonskravList from '../../api/refusjonskravList/refusjonskravList';
 import { useArbeidsgiver } from '../../context/arbeidsgiver/ArbeidsgiverContext';
