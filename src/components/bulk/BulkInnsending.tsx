@@ -34,6 +34,7 @@ import BeloepHjelpeLabel from './BeloepHjelpeLabel';
 import { useTranslation } from 'react-i18next';
 import HjelpeLabel from '../felles/HjelpeLabel/HjelpeLabel';
 import Key from '../../locales/Key';
+import { i18n } from 'i18next';
 
 interface BulkInnsendingProps {
   state?: BulkState;
@@ -42,9 +43,8 @@ interface BulkInnsendingProps {
 const BulkInnsending = (props: BulkInnsendingProps) => {
   const { t, i18n } = useTranslation();
 
-  const BulkReducerSettOpp = (i18n): Reducer<BulkState, BulkActions> => {
-    return (i18n: Function) => (state: BulkState, action: BulkActions) => BulkReducer(state, action, i18n);
-  };
+  const BulkReducerSettOpp = (i18n: i18n): Reducer<BulkState, BulkActions> => (state: BulkState, action: BulkActions) =>
+    BulkReducer(state, action, i18n);
 
   const BulkReducerI18n: Reducer<BulkState, BulkActions> = BulkReducerSettOpp(i18n);
   const [state, dispatch] = useReducer(BulkReducerI18n, props.state, defaultBulkState);
@@ -52,17 +52,16 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
   const showDeleteButton = state.items && state.items.length > 1;
 
   const handleCloseServerFeil = () => {
-    dispatch({ type: Actions.HideServerError, i18n });
+    dispatch({ type: Actions.HideServerError });
   };
 
   const handleCloseNotAuthorized = () => {
-    dispatch({ type: Actions.NotAuthorized, i18n });
+    dispatch({ type: Actions.NotAuthorized });
   };
 
   const handleSubmitClicked = () => {
     dispatch({
       type: Actions.Validate,
-      i18n,
       payload: {}
     });
     return false;
@@ -71,22 +70,21 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
   useEffect(() => {
     dispatch({
       type: Actions.Orgnr,
-      i18n,
       payload: { orgnr: arbeidsgiverId }
     });
-  }, [arbeidsgiverId, i18n]);
+  }, [arbeidsgiverId]);
 
   useEffect(() => {
     if (state.validated === true && state.progress === true && state.submitting === true) {
       postBulk(environment.baseUrl, mapBulkRequest(state)).then((response) => {
         dispatch({
           type: Actions.HandleResponse,
-          i18n,
+
           payload: { response: response }
         });
       });
     }
-  }, [i18n, state.validated, state.progress, state.feilmeldinger, state.submitting, state.bekreft, state]);
+  }, [state.validated, state.progress, state.feilmeldinger, state.submitting, state.bekreft, state]);
 
   return (
     <Side bedriftsmeny={true} className='bulk-innsending' sidetittel={t(Key.SIDETITTEL)} subtitle={'Subtitle'}>
@@ -163,7 +161,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               onChange={(event) => {
                                 dispatch({
                                   type: Actions.Fnr,
-                                  i18n,
+
                                   payload: {
                                     itemId: item.uniqueKey,
                                     fnr: event
@@ -183,7 +181,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               onChange={(event) => {
                                 dispatch({
                                   type: Actions.Land,
-                                  i18n,
+
                                   payload: {
                                     itemId: item.uniqueKey,
                                     land: event
@@ -200,7 +198,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                                 onClick={(event) => {
                                   dispatch({
                                     type: Actions.DeleteItem,
-                                    i18n,
+
                                     payload: {
                                       itemId: item.uniqueKey
                                     }
@@ -227,7 +225,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               onChange={(dato) => {
                                 dispatch({
                                   type: Actions.Fra,
-                                  i18n,
+
                                   payload: {
                                     itemId: item.uniqueKey,
                                     fra: dato
@@ -252,7 +250,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               onChange={(dato) => {
                                 dispatch({
                                   type: Actions.Til,
-                                  i18n,
+
                                   payload: {
                                     itemId: item.uniqueKey,
                                     til: dato
@@ -273,7 +271,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               onChange={(event) => {
                                 dispatch({
                                   type: Actions.Beloep,
-                                  i18n,
+
                                   payload: {
                                     itemId: item.uniqueKey,
                                     beloep: event.currentTarget.value
@@ -297,7 +295,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           onClick={(event) => {
                             dispatch({
                               type: Actions.AddItem,
-                              i18n,
+
                               payload: {}
                             });
                           }}
@@ -318,7 +316,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                 onChange={() =>
                   dispatch({
                     type: Actions.Bekreft,
-                    i18n,
+
                     payload: { bekreft: !state.bekreft }
                   })
                 }
