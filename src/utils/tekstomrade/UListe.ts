@@ -3,14 +3,14 @@ import { ASTNode, ReactElementDescription, RegexMatch, Rule, RuleScope } from '@
 export const UListeRule: Rule = {
   name: 'UListe',
   scope: RuleScope.BLOCK,
-  regex: /(-#-|\t-#-|\s+-#-)([\s\S]*?)(-#-)/,
+  regex: /(-##)([\s\S]*?)(##-)/,
   parse(match: RegexMatch): ASTNode {
     return {
       name: this.name,
       content: [match.capture[1]]
     };
   },
-  react(node: ASTNode): ReactElementDescription {
+  react(node: any): ReactElementDescription {
     return {
       type: 'ul'
     };

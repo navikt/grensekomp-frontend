@@ -18,7 +18,6 @@ import Kvittering from '../kvittering';
 import { useArbeidsgiver } from '../../context/arbeidsgiver/ArbeidsgiverContext';
 import Side from '../felles/Side';
 import '../felles/knapper/LeggTilKnapp.sass';
-import Lenke from 'nav-frontend-lenker';
 import './BulkInnsending.sass';
 import RadNr from '../felles/RadNr';
 import LeggTilKnapp from '../felles/knapper/LeggTilKnapp';
@@ -34,10 +33,7 @@ import BeloepHjelpeLabel from './BeloepHjelpeLabel';
 import { useTranslation } from 'react-i18next';
 import HjelpeLabel from '../felles/HjelpeLabel/HjelpeLabel';
 import Key from '../../locales/Key';
-import Tekstomrade, { BoldRule, HighlightRule, LinebreakRule } from 'nav-frontend-tekstomrade';
-import { ListeRule } from '../../utils/tekstomrade/Liste';
-import { UListeRule } from '../../utils/tekstomrade/UListe';
-import { LenkeRule } from '../../utils/tekstomrade/Lenke';
+import Oversettelse from '../../locales/Oversettelse';
 
 interface BulkInnsendingProps {
   state?: BulkState;
@@ -92,38 +88,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
           {state.progress != true && state.kvittering != true && (
             <>
               <Panel>
-                <Tekstomrade
-                  className='typo-ingress'
-                  rules={[BoldRule, HighlightRule, LenkeRule, ListeRule, UListeRule]}
-                >
-                  {t(Key.BULKINNSENDING_INFO)}
-                </Tekstomrade>
-              </Panel>
-              <Panel className='bulletpoint-wrapper'>
-                <ul className='ingress-listepunkter'>
-                  <li>{t(Key.INFO_1)}</li>
-                  <li>{t(Key.INFO_2)}</li>
-                  <li>{t(Key.INFO_3)}</li>
-                  <li>{t(Key.INFO_4)}</li>
-                  <li>{t(Key.INFO_5)}</li>
-                  <li>
-                    {t(Key.INFO_6)}
-                    <Lenke
-                      target='_blank'
-                      href='https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden'
-                    >
-                      {t(Key.GRUNNBELOEP)}
-                    </Lenke>
-                  </li>
-                  <li>
-                    <Lenke
-                      target='_blank'
-                      href='https://www.nav.no/no/person/arbeid/sykmeldt-arbeidsavklaringspenger-og-yrkesskade/nyheter/kompensasjon-til-utestengte-eos-borgere/automatisert-saksbehandling-i-forbindelse-med-innreiseforbudet'
-                    >
-                      {t(Key.INFO_7)}
-                    </Lenke>
-                  </li>
-                </ul>
+                <Oversettelse langKey={Key.BULKINNSENDING_INFO} />
               </Panel>
 
               <Skillelinje />
