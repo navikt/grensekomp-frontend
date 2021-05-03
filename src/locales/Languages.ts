@@ -269,6 +269,14 @@ const Languages: Record<Key, Locale> = {
     nb:
       '_ Det har desverre oppstått en teknisk feil hos oss -\n\n' +
       'Prøv igjen litt senere, og [kontakt oss gjerne dersom det ikke ordner seg.](https://arbeidsgiver.nav.no/kontakt-oss/)'
+  },
+
+  SOEKNADSSKJEMA: {
+    nb: 'SØKNADSSKJEMA'
+  },
+
+  ROW_NUMBER: {
+    nb: 'rad-nr '
   }
 };
 
