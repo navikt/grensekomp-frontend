@@ -297,6 +297,14 @@ const Languages: Record<Key, Locale> = {
 
   LOGIN_RENEWED_INFO: {
     nb: 'Du har nå fornyet innloggingen med en time.\n' + 'Dette vinduet kan nå lukkes.'
+  },
+
+  OVERSIKTKRAV_TITLE: {
+    nb: 'Refusjon for kompensasjon ved innreiseforbud'
+  },
+
+  OVERSIKTKRAV_SUBTITLE: {
+    nb: 'Refusjoner'
   }
 };
 
