@@ -106,29 +106,12 @@ const Languages: Record<Key, Locale> = {
     nb: 'Beregning av månedsinntekt'
   },
 
-  BELOEP_HJELPE_INFO_1: {
+  BELOEP_HJELPE_INFO: {
     nb:
-      'Legg alltid inntekten i månedene oktober, november, desember 2020 når du skal fastsette beregningsperioden. Dette er et unntak fra hovedregelen.'
-  },
-
-  BELOEP_HJELPE_INFO_2: {
-    nb: 'Ut over dette gjelder '
-  },
-
-  BELOEP_HJELPE_INFO_3: {
-    nb: 'samme beregningsregler som for sykepenger.'
-  },
-
-  BELOEP_HJELPE_INFO_4: {
-    nb: 'Hvilke '
-  },
-
-  BELOEP_HJELPE_INFO_5: {
-    nb: 'inntekter som kan tas med i beregningen'
-  },
-
-  BELOEP_HJELPE_INFO_6: {
-    nb: ' er det også viktig å være klar over.'
+      '-## ' +
+      '-- Legg alltid inntekten i månedene oktober, november, desember 2020 når du skal fastsette beregningsperioden. Dette er et unntak fra hovedregelen.\n' +
+      '-- Ut over dette gjelder [samme beregningsregler som for sykepenger.](https://www.nav.no/no/bedrift/tjenester-og-skjemaer/nav-og-altinn-tjenester/inntektsmelding/beregningsregler-for-sykepenger)\n' +
+      '-- Hvilke [inntekter som kan tas med i beregningen](https://www.nav.no/no/bedrift/oppfolging/sykmeldt-arbeidstaker/sykepenger/inntekter-som-innga%CC%8Ar-i-beregning-av-ma%CC%8Anedsinntekten) er det også viktig å være klar over.\n'
   },
 
   CLOSE: {
@@ -276,6 +259,14 @@ const Languages: Record<Key, Locale> = {
 
   LOGGET_INN: {
     nb: 'Jeg har logget inn på nytt - lukk dette vinduet'
+  },
+
+  ERROR_ANSATT: {
+    nb: 'Må ha minst en ansatt'
+  },
+
+  ERROR_ORGNR: {
+    nb: 'Må ha orgnr'
   }
 };
 
