@@ -192,24 +192,8 @@ const Languages: Record<Key, Locale> = {
     nb: 'For å gå videre må du rette opp følgende:'
   },
 
-  INGEN_TILGANG: {
-    nb: 'Du har ikke rettigheter til å søke om refusjon for noen bedrifter \nTildeling av roller foregår i Altinn'
-  },
-
   ROLLER_OG_TILGANGER: {
     nb: 'Les mer om roller og tilganger.'
-  },
-
-  TIDLIGERE_SØKT: {
-    nb: 'Har du tidligere søkt om refusjon for '
-  },
-
-  TABT_ARBEIDSINNTEKT: {
-    nb: 'tapt arbeidsinntekt på grunn av innreiseforbudet'
-  },
-
-  FINN_NEDENFOR: {
-    nb: ', kan du finne tilbake til dem nedenfor.'
   },
 
   REFUSJONSKRAV: {
