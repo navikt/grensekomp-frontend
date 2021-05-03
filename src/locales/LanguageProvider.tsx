@@ -2,6 +2,9 @@ import i18n from 'i18next';
 import mapLanguages from './mapLanguages';
 import { I18nextProvider } from 'react-i18next';
 import React from 'react';
+import { useLocation } from 'react-router-dom';
+import findLangByUrl from './findLangByUrl';
+import Lang from './Lang';
 
 interface LanguageProviderProps {
   lang?: string;
@@ -12,13 +15,13 @@ export const languageInit = (lang: string) => {
   i18n.init({
     resources: {
       nb: {
-        translations: mapLanguages('nb')
+        translations: mapLanguages(Lang.nb)
       },
       en: {
-        translations: mapLanguages('en')
+        translations: mapLanguages(Lang.en)
       }
     },
-    fallbackLng: 'nb',
+    fallbackLng: Lang.nb,
     ns: ['translations'],
     defaultNS: 'translations',
     keySeparator: false,
@@ -34,8 +37,9 @@ export const languageInit = (lang: string) => {
   return i18n;
 };
 
-const LanguageProvider = ({ children, lang = 'nb' }: LanguageProviderProps) => {
-  languageInit(lang);
+const LanguageProvider = ({ children, lang = Lang.nb }: LanguageProviderProps) => {
+  let location = useLocation();
+  languageInit(findLangByUrl(location.pathname, lang));
   return <I18nextProvider i18n={i18n}>{children}</I18nextProvider>;
 };
 
