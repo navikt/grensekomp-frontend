@@ -2,10 +2,9 @@ import React from 'react';
 import ModalWrapper from 'nav-frontend-modal';
 import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 import { Innholdstittel } from 'nav-frontend-typografi';
-import injectRedirectPath from './injectRedirectPath';
 import InternLenke from '../felles/InternLenke';
-import lenker from '../../config/lenker';
 import { useTranslation } from 'react-i18next';
+import Oversettelse from '../../locales/Oversettelse';
 import Key from '../../locales/Key';
 
 interface LoggetUtAdvarselProps {
@@ -13,7 +12,6 @@ interface LoggetUtAdvarselProps {
 }
 
 const LoggetUtAdvarsel = ({ onClose }: LoggetUtAdvarselProps) => {
-  const loginServiceUrlAfterRedirect = injectRedirectPath(lenker.TokenFornyet);
   const { t } = useTranslation();
 
   const handleCloseModal = () => {
@@ -31,17 +29,7 @@ const LoggetUtAdvarsel = ({ onClose }: LoggetUtAdvarselProps) => {
     >
       <AlertStripeFeil className='logget-ut-advarsel__innhold'>
         <Innholdstittel>{t(Key.LOGGET_UT)}</Innholdstittel>
-        <ul>
-          <li>{t(Key.IKKE_LUKK)}</li>
-          <li>
-            <a href={loginServiceUrlAfterRedirect} rel='noopener noreferrer' target='_blank'>
-              {t(Key.ID_PORTEN_ÅBNE)}
-            </a>
-          </li>
-          <li>{t(Key.ID_PORTEN_LOGG_INN)}</li>
-          <li>{t(Key.RETURNER)}</li>
-          <li>{t(Key.LUKK_OG_SEND)}</li>
-        </ul>
+        <Oversettelse langKey={Key.LOGGETUTADVARSEL_INFO} />
         <InternLenke onClick={() => handleCloseModal()}>{t(Key.LOGGET_INN)}</InternLenke>
       </AlertStripeFeil>
     </ModalWrapper>

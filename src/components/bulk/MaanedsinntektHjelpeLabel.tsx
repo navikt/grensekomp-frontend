@@ -10,7 +10,7 @@ const MaanedsinntektHjelpeLabel = () => {
   return (
     <HjelpeLabel label={t(Key.BEREGNET_INNTEKT)}>
       <Innholdstittel>{t(Key.BEREGNING_INNTEKT)}</Innholdstittel>
-      <Oversettelse langKey={Key.BULKINNSENDING_INFO} />
+      <Oversettelse langKey={Key.MAANEDSINNTEKTHJELPELABEL_INFO} />
     </HjelpeLabel>
   );
 };
