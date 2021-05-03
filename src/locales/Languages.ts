@@ -267,6 +267,14 @@ const Languages: Record<Key, Locale> = {
 
   ERROR_ORGNR: {
     nb: 'Må ha orgnr'
+  },
+
+  ERROR_GENERIC: {
+    nb: 'Det oppstod en ukjent feil'
+  },
+
+  ERROR_UNKNOWN: {
+    nb: 'Ukjent feil'
   }
 };
 
