@@ -188,6 +188,12 @@ const Languages: Record<Key, Locale> = {
     nb: 'Foreløpig beregnet refusjon'
   },
 
+  BEREGNET_REFUSJON_INFO: {
+    nb:
+      'Denne beregningen tar _ikke_ høyde for andre utbetalinger den ansatte eventuelt får fra NAV, for eksempel ' +
+      'graderte sykepenger. Utbetalinger du allerede får refusjon for, vil derfor bli trukket fra beløpet du nå søker om.'
+  },
+
   FEILOPPSUMERING: {
     nb: 'For å gå videre må du rette opp følgende:'
   },
