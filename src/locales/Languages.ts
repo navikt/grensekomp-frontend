@@ -50,7 +50,8 @@ const Languages: Record<Key, Locale> = {
   },
 
   KRAVLISTE_INFO: {
-    nb: `Har du tidligere søkt om refusjon for [tapt arbeidsinntekt på grunn av innreiseforbudet](${lenker.Bulkinnsending}) kan du finne tilbake til dem nedenfor`
+    nb: `Har du tidligere søkt om refusjon for [tapt arbeidsinntekt på grunn av innreiseforbudet](${lenker.Bulkinnsending})
+    kan du finne tilbake til dem nedenfor`
   },
 
   GRUNNBELOEP: { nb: 'folketrygdens grunnbeløp.' },
