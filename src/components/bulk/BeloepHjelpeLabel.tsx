@@ -49,17 +49,17 @@ const BeloepHjelpeLabel = () => {
 
   return (
     <div className='beloephjelpelabel'>
-      <span className='hjelpetekst-beskrivelse'>{t(Key.BELOEP_HJELPE_TITLE)}</span>
+      <span className='hjelpetekst-beskrivelse'>{t(Key.BEREGNET_INNTEKT)}</span>
       <div className='hjelpetekst-refusjon'>
         <ModalWrapper
           isOpen={eksempelOpen}
           onRequestClose={() => setEksempelOpen(false)}
           closeButton={false}
-          contentLabel={t(Key.BELOEP_HJELPE_SUBTITLE)}
+          contentLabel={t(Key.BEREGNING_INNTEKT)}
           className='eksempel-modal'
         >
           <Veilederpanel svg={<SmilendeKar />}>
-            <Undertittel>{t(Key.BELOEP_HJELPE_SUBTITLE)}</Undertittel>
+            <Undertittel>{t(Key.BEREGNING_INNTEKT)}</Undertittel>
             <Normaltekst>
               <ul className='leftallign-list'>
                 <li>{t(Key.BELOEP_HJELPE_INFO_1)}</li>

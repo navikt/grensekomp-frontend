@@ -10,6 +10,13 @@ interface OversettelseProps {
   langKey: Key;
 }
 
+/*
+bullets: --
+ul start: -##
+ul end: ##-
+bold: _ text -
+link: [link name](link url)
+ */
 const Oversettelse = ({ langKey }: OversettelseProps) => {
   const { t } = useTranslation();
   return (

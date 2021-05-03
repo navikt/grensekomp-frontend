@@ -1,11 +1,15 @@
 import { AlertStripeAdvarsel } from 'nav-frontend-alertstriper';
 import { Link } from 'react-router-dom';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+import Key from '../../locales/Key';
 
-export const IngenTilgangAdvarsel = () => (
-  <AlertStripeAdvarsel>
-    <p>Du har ikke rettigheter til å søke om refusjon for noen bedrifter</p>
-    <p>Tildeling av roller foregår i Altinn</p>
-    <Link to='/min-side-arbeidsgiver/informasjon-om-tilgangsstyring'>Les mer om roller og tilganger.</Link>
-  </AlertStripeAdvarsel>
-);
+export const IngenTilgangAdvarsel = () => {
+  const { t } = useTranslation();
+  return (
+    <AlertStripeAdvarsel>
+      {t(Key.FEILOPPSUMERING)}
+      <Link to='/min-side-arbeidsgiver/informasjon-om-tilgangsstyring'>{t(Key.ROLLER_OG_TILGANGER)}</Link>
+    </AlertStripeAdvarsel>
+  );
+};
