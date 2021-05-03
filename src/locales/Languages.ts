@@ -277,6 +277,26 @@ const Languages: Record<Key, Locale> = {
 
   ROW_NUMBER: {
     nb: 'rad-nr '
+  },
+
+  ERROR_GENERIC: {
+    nb: 'Det oppstod en feil'
+  },
+
+  ERROR_LOGIN: {
+    nb: 'Vi klarte ikke logge deg inn. Vennligst prøv igjen senere.'
+  },
+
+  LOGIN: {
+    nb: 'Innlogging'
+  },
+
+  LOGIN_RENEWED: {
+    nb: 'Innloggingen er fornyet'
+  },
+
+  LOGIN_RENEWED_INFO: {
+    nb: 'Du har nå fornyet innloggingen med en time.\n' + 'Dette vinduet kan nå lukkes.'
   }
 };
 
