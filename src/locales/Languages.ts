@@ -34,7 +34,8 @@ const Languages: Record<Key, Locale> = {
       '-- Tidspunktet for beregning er 29. januar 2021. Dette betyr at det er inntekter i månedene oktober, november, ' +
       'desember 2020 som skal legges til grunn når du gjør beregningen.\n' +
       '-- Ut over særtilfellet nevnt ovenfor gjelder [samme beregningsregler som for sykepenger.](https://www.nav.no/no/bedrift/tjenester-og-skjemaer/nav-og-altinn-tjenester/inntektsmelding/beregningsregler-for-sykepenger)\n' +
-      '-- Hvilke [inntekter som kan tas med i beregningen](https://www.nav.no/no/bedrift/oppfolging/sykmeldt-arbeidstaker/sykepenger/inntekter-som-innga%CC%8Ar-i-beregning-av-ma%CC%8Anedsinntekten) er det også viktig å være klar over.'
+      '-- Hvilke [inntekter som kan tas med i beregningen](https://www.nav.no/no/bedrift/oppfolging/sykmeldt-arbeidstaker/sykepenger/inntekter-som-innga%CC%8Ar-i-beregning-av-ma%CC%8Anedsinntekten) er det også viktig å være klar over.\n' +
+      '##-\n'
   },
 
   LOGGETUTADVARSEL_INFO: {
@@ -46,7 +47,8 @@ const Languages: Record<Key, Locale> = {
       )})\n` +
       '-- Logg inn på nytt i ID-porten.\n' +
       '-- Returner til dette vinduet.\n' +
-      '-- Lukk denne meldingen og klikk igjen på knappen "Send søknad om refusjon".\n'
+      '-- Lukk denne meldingen og klikk igjen på knappen "Send søknad om refusjon".\n' +
+      '##-\n'
   },
 
   KRAVLISTE_INFO: {
@@ -112,7 +114,8 @@ const Languages: Record<Key, Locale> = {
       '-## ' +
       '-- Legg alltid inntekten i månedene oktober, november, desember 2020 når du skal fastsette beregningsperioden. Dette er et unntak fra hovedregelen.\n' +
       '-- Ut over dette gjelder [samme beregningsregler som for sykepenger.](https://www.nav.no/no/bedrift/tjenester-og-skjemaer/nav-og-altinn-tjenester/inntektsmelding/beregningsregler-for-sykepenger)\n' +
-      '-- Hvilke [inntekter som kan tas med i beregningen](https://www.nav.no/no/bedrift/oppfolging/sykmeldt-arbeidstaker/sykepenger/inntekter-som-innga%CC%8Ar-i-beregning-av-ma%CC%8Anedsinntekten) er det også viktig å være klar over.\n'
+      '-- Hvilke [inntekter som kan tas med i beregningen](https://www.nav.no/no/bedrift/oppfolging/sykmeldt-arbeidstaker/sykepenger/inntekter-som-innga%CC%8Ar-i-beregning-av-ma%CC%8Anedsinntekten) er det også viktig å være klar over.\n' +
+      '##-\n'
   },
 
   CLOSE: {
