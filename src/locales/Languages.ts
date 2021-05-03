@@ -28,7 +28,7 @@ const Languages: Record<Key, Locale> = {
       '##-\n'
   },
 
-  MAANEDSINNTEKTHJELPELABEL_INFO: {
+  MAANEDSINNTEKT_HJELPELABEL_INFO: {
     nb:
       '-## ' +
       '-- Tidspunktet for beregning er 29. januar 2021. Dette betyr at det er inntekter i månedene oktober, november, ' +
@@ -54,6 +54,10 @@ const Languages: Record<Key, Locale> = {
   KRAVLISTE_INFO: {
     nb: `Har du tidligere søkt om refusjon for [tapt arbeidsinntekt på grunn av innreiseforbudet](${lenker.Bulkinnsending})
     kan du finne tilbake til dem nedenfor`
+  },
+
+  KRAVLISTE_TITLE: {
+    nb: 'Oversikt over tidligere innsendte krav'
   },
 
   GRUNNBELOEP: { nb: 'folketrygdens grunnbeløp.' },
@@ -245,12 +249,10 @@ const Languages: Record<Key, Locale> = {
     nb: 'Min side arbeidsgiver'
   },
 
-  KVITTERING_SENDT: {
-    nb: 'En kvittering er sendt til meldingsboksen deres i '
-  },
-
-  KONTAKT: {
-    nb: 'Trenger du å kontakte oss, er det tilstrekkelig å oppgi fødselsnummeret til den ansatte.'
+  KVITTERING_INFO: {
+    nb:
+      'En kvittering er sendt til meldingsboksen deres i [Altinn](https://www.altinn.no). ' +
+      'Trenger du å kontakte oss, er det tilstrekkelig å oppgi fødselsnummeret til den ansatte.'
   },
 
   LOGGET_UT: {
@@ -267,16 +269,12 @@ const Languages: Record<Key, Locale> = {
 
   SERVERFEILADVARSEL_INFO: {
     nb:
-      '_ Det har desverre oppstått en teknisk feil hos oss -\n\n' +
+      '_Det har desverre oppstått en teknisk feil hos oss_\n\n' +
       'Prøv igjen litt senere, og [kontakt oss gjerne dersom det ikke ordner seg.](https://arbeidsgiver.nav.no/kontakt-oss/)'
   },
 
   SOEKNADSSKJEMA: {
     nb: 'SØKNADSSKJEMA'
-  },
-
-  ROW_NUMBER: {
-    nb: 'rad-nr '
   },
 
   ERROR_GENERIC: {

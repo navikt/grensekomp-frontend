@@ -5,6 +5,7 @@ import Lenke from 'nav-frontend-lenker';
 import { Row, Column } from 'nav-frontend-grid';
 import { useTranslation } from 'react-i18next';
 import Key from '../../locales/Key';
+import Oversettelse from '../../locales/Oversettelse';
 
 const Kvittering = () => {
   const { t } = useTranslation();
@@ -22,8 +23,7 @@ const Kvittering = () => {
         <Column>
           <Panel>
             <Normaltekst>
-              {t(Key.KVITTERING_SENDT)}
-              <Lenke href='https://www.altinn.no'>Altinn</Lenke>.{t(Key.KONTAKT)}
+              <Oversettelse langKey={Key.KVITTERING_INFO} />
             </Normaltekst>
           </Panel>
         </Column>

@@ -21,7 +21,7 @@ const KravListe = (props: KravListeProps) => {
   return (
     <Row className='kravliste'>
       <Column>
-        <Innholdstittel className='kravliste-tittel'>Oversikt over tidligere innsendte krav</Innholdstittel>
+        <Innholdstittel className='kravliste-tittel'>{t(Key.KRAVLISTE_TITLE)}</Innholdstittel>
         <Oversettelse langKey={Key.KRAVLISTE_INFO} />
         <Skillelinje />
         <ul className='kravliste-liste'>

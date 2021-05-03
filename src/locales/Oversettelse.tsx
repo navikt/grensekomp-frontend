@@ -14,7 +14,7 @@ interface OversettelseProps {
 bullets: --
 ul start: -##
 ul end: ##-
-bold: _ text -
+bold: _text_
 link: [link name](link url)
  */
 const Oversettelse = ({ langKey }: OversettelseProps) => {
