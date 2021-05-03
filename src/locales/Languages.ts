@@ -265,20 +265,10 @@ const Languages: Record<Key, Locale> = {
     nb: 'Jeg har logget inn på nytt - lukk dette vinduet'
   },
 
-  ERROR_ANSATT: {
-    nb: 'Må ha minst en ansatt'
-  },
-
-  ERROR_ORGNR: {
-    nb: 'Må ha orgnr'
-  },
-
-  ERROR_GENERIC: {
-    nb: 'Det oppstod en ukjent feil'
-  },
-
-  ERROR_UNKNOWN: {
-    nb: 'Ukjent feil'
+  SERVERFEILADVARSEL_INFO: {
+    nb:
+      '_ Det har desverre oppstått en teknisk feil hos oss -\n\n' +
+      'Prøv igjen litt senere, og [kontakt oss gjerne dersom det ikke ordner seg.](https://arbeidsgiver.nav.no/kontakt-oss/)'
   }
 };
 

@@ -3,6 +3,8 @@ import ModalWrapper from 'nav-frontend-modal';
 import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 import './ServerFeilAdvarsel.sass';
 import InternLenke from '../InternLenke';
+import Key from '../../../locales/Key';
+import Oversettelse from '../../../locales/Oversettelse';
 
 interface ServerFeilAdvarselProps {
   onClose: () => void;
@@ -20,13 +22,7 @@ const ServerFeilAdvarsel = (props: ServerFeilAdvarselProps) => {
       shouldCloseOnOverlayClick={false}
     >
       <AlertStripeFeil className='server-feil-advarsel--innhold'>
-        <b>Det har desverre oppstått en teknisk feil hos oss</b>
-        <br />
-        <br />
-        <div>
-          Prøv igjen litt senere, og{' '}
-          <a href={'https://arbeidsgiver.nav.no/kontakt-oss/'}>kontakt oss gjerne dersom det ikke ordner seg.</a>
-        </div>
+        <Oversettelse langKey={Key.SERVERFEILADVARSEL_INFO} />
         <InternLenke onClick={() => props.onClose()}>Skjul denne meldingen.</InternLenke>
       </AlertStripeFeil>
     </ModalWrapper>
