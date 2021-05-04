@@ -1,16 +1,20 @@
 import '@testing-library/jest-dom';
 import React from 'react';
-import { render, cleanup, fireEvent } from '@testing-library/react';
+import { cleanup, fireEvent, render } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import BeloepHjelpeLabel from './BeloepHjelpeLabel';
 import LanguageProvider from '../../locales/LanguageProvider';
+import { Router } from 'react-router-dom';
+import mockHistory from '../../mockData/mockHistory';
 
 describe('BeloepHjelpeLabel', () => {
   it('should display the component with a warning', () => {
     const component = render(
-      <LanguageProvider>
-        <BeloepHjelpeLabel />
-      </LanguageProvider>
+      <Router history={mockHistory('/')}>
+        <LanguageProvider>
+          <BeloepHjelpeLabel />
+        </LanguageProvider>
+      </Router>
     );
     expect(component.queryAllByText(/Slik regner du ut den ansattes daglige lønn/).length).toEqual(0);
 

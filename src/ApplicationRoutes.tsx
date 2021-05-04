@@ -2,16 +2,23 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import lenker from './config/lenker';
 import Bulkinnsending from './components/bulk';
-import TokenFornyet from './components/login/TokenFornyet';
 import OversiktKrav from './components/oversikt-krav';
+import PageNotFound from './components/PageNotFound';
 
-export const ApplicationRoutes = () => (
-  <div className='application-routes'>
-    <Switch>
-      <Route path={lenker.Home} exact={true} render={() => <Bulkinnsending />} />
-      <Route path={lenker.Bulkinnsending} exact={true} render={() => <Bulkinnsending />} />
-      <Route path={lenker.OversiktKrav} exact={true} render={() => <OversiktKrav />} />
-      <Route path={lenker.TokenFornyet} exact={true} render={() => <TokenFornyet />} />
-    </Switch>
-  </div>
-);
+export const ApplicationRoutes = () => {
+  return (
+    <div className='application-routes'>
+      <Switch>
+        <Route path={lenker.Bulkinnsending}>
+          <Bulkinnsending />
+        </Route>
+        <Route path={lenker.OversiktKrav}>
+          <OversiktKrav />
+        </Route>
+        <Route>
+          <PageNotFound />
+        </Route>
+      </Switch>
+    </div>
+  );
+};

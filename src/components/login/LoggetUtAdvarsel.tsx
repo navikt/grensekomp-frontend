@@ -5,14 +5,15 @@ import { Innholdstittel } from 'nav-frontend-typografi';
 import injectRedirectPath from './injectRedirectPath';
 import InternLenke from '../felles/InternLenke';
 import lenker from '../../config/lenker';
+import { useParams } from 'react-router-dom';
 
 interface LoggetUtAdvarselProps {
   onClose: Function;
 }
 
 const LoggetUtAdvarsel = ({ onClose }: LoggetUtAdvarselProps) => {
-  const loginServiceUrlAfterRedirect = injectRedirectPath(lenker.TokenFornyet);
-
+  let { language } = useParams();
+  const loginServiceUrlAfterRedirect = injectRedirectPath(lenker.TokenFornyet, language);
   const handleCloseModal = () => {
     onClose();
   };
