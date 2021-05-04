@@ -33,13 +33,6 @@ describe('ApplicationRoutes', () => {
     </Router>
   );
 
-  it('should show token fornyet', () => {
-    act(() => {
-      render(makeRoute('/nb/token-fornyet'), container);
-    });
-    expect(container.textContent).toContain('Innloggingen er fornyet');
-  });
-
   it('should show bulkinnsending', () => {
     act(() => {
       render(makeRoute('/nb/batchinnsending/krav'), container);

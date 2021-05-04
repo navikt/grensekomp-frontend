@@ -10,6 +10,7 @@ import ArbeidsgiverStatus from './context/arbeidsgiver/ArbeidsgiverStatus';
 import LanguageProvider from './locales/LanguageProvider';
 import lenker from './config/lenker';
 import PageNotFound from './components/PageNotFound';
+import TokenFornyet from './components/login/TokenFornyet';
 
 interface ApplicationProps {
   loginStatus?: LoginStatus;
@@ -30,6 +31,9 @@ export const Application = ({
     <Route path={lenker.Home} exact={true}>
       <Redirect from='/' to='/nb/batchinnsending/krav' />
     </Route>
+    <Route path={lenker.TokenFornyet}>
+      <TokenFornyet />
+    </Route>
     <Route path='/:language(nb|en)/*'>
       <LanguageProvider>
         <LoginProvider baseUrl={basePath} status={loginStatus} loginServiceUrl={loginServiceUrl}>
@@ -42,6 +46,7 @@ export const Application = ({
     <Route path='/:language/*'>
       <PageNotFound />
     </Route>
+
     <Route>
       <PageNotFound />
     </Route>

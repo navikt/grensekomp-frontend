@@ -1,6 +1,6 @@
 enum lenker {
   Home = '/',
-  TokenFornyet = '/:language/token-fornyet',
+  TokenFornyet = '/token-fornyet',
   Bulkinnsending = '/:language/batchinnsending/krav',
   OversiktKrav = '/:language/oversikt/krav'
 }
