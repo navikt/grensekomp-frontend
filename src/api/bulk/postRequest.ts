@@ -18,7 +18,8 @@ const postRequest = async (path: string, payload: any, timeout: number = 10000):
     fetch(path, {
       headers: {
         Accept: 'application/json; charset=utf-8',
-        'Content-Type': 'application/json; charset=utf-8'
+        'Content-Type': 'application/json; charset=utf-8',
+        'Accept-Language': 'no'
       },
       credentials: 'include',
       method: 'POST',
