@@ -1,6 +1,6 @@
 import Lang from './Lang';
 
-const findLangByUrl = (path: string, defaultLang: string) => {
+const findLangByUrl = (path: string, defaultLang: Lang): Lang.nb | Lang.en => {
   if (path.startsWith('/en/')) {
     return Lang.en;
   }
