@@ -33,13 +33,6 @@ describe('ApplicationRoutes', () => {
     </Router>
   );
 
-  it('should show default', () => {
-    act(() => {
-      render(makeRoute('/'), container);
-    });
-    expect(container.textContent).toContain('Refusjon for kompensasjon ved innreiseforbud');
-  });
-
   it('should show token fornyet', () => {
     act(() => {
       render(makeRoute('/nb/token-fornyet'), container);
