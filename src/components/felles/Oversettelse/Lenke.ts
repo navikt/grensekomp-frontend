@@ -14,7 +14,7 @@ export const LenkeRule: Rule = {
   },
   react(node: any): ReactElementDescription {
     const description = node.content[1];
-    const href: string = node.content[2];
+    const href = node.content[2];
 
     if (href.startsWith('http')) {
       return {
@@ -26,8 +26,8 @@ export const LenkeRule: Rule = {
 
     return {
       type: Link,
-      props: { to: href, class: 'lenke' },
-      children: description
+      props: { to: description, className: 'lenke' },
+      children: href
     };
   }
 };

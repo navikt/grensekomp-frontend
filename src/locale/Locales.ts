@@ -193,6 +193,13 @@ const Locales: Record<LangKey, Locale> = {
     nb: 'Refusjonskrav ved innreiseforbud'
   },
 
+  PAGE_NOT_FOUND_TITLE: {
+    nb: 'Siden finnes ikke'
+  },
+  PAGE_NOT_FOUND_DESCRIPTION: {
+    nb: 'Siden finnes ikke. [/nb/innsending](Gå til skjema for innsending)'
+  },
+
   SLETT_KRAV_LABEL: {
     nb: 'Er du sikker på at du vil slette kravet?'
   },
