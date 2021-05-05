@@ -8,6 +8,7 @@ import Tekstomrade, { BoldRule } from 'nav-frontend-tekstomrade';
 import { useTranslation } from 'react-i18next';
 import Key from '../../locales/Key';
 
+
 interface BeregnetRefusjonProps {
   inntekt?: string;
   fom?: Dato;
