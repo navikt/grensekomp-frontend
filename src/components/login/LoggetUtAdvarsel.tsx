@@ -6,6 +6,9 @@ import InternLenke from '../felles/InternLenke';
 import { useTranslation } from 'react-i18next';
 import Oversettelse from '../../locales/Oversettelse';
 import Key from '../../locales/Key';
+import lenker from '../../config/lenker';
+import { useParams } from 'react-router-dom';
+
 
 interface LoggetUtAdvarselProps {
   onClose: Function;
@@ -13,7 +16,8 @@ interface LoggetUtAdvarselProps {
 
 const LoggetUtAdvarsel = ({ onClose }: LoggetUtAdvarselProps) => {
   const { t } = useTranslation();
-
+  let { language } = useParams();
+  const loginServiceUrlAfterRedirect = injectRedirectPath(lenker.TokenFornyet, language);
   const handleCloseModal = () => {
     onClose();
   };

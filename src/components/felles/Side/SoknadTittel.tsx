@@ -1,5 +1,5 @@
 import Panel from 'nav-frontend-paneler';
-import { EtikettLiten, Innholdstittel } from 'nav-frontend-typografi';
+import { Undertittel, Innholdstittel } from 'nav-frontend-typografi';
 import React from 'react';
 import './SoknadTittel.sass';
 import { useTranslation } from 'react-i18next';
@@ -14,7 +14,7 @@ const SoknadTittel = (props: SoknadTittelProps) => {
   const { t } = useTranslation();
   return (
     <Panel className='panel--heading'>
-      <EtikettLiten>{props.subtitle ? props.subtitle.toUpperCase() : t(Key.SOEKNADSSKJEMA)}</EtikettLiten>
+      <Undertittel>{props.subtitle ? props.subtitle.toUpperCase() : t(Key.SOEKNADSSKJEMA)}</Undertittel>
       <Innholdstittel>{props.children}</Innholdstittel>
     </Panel>
   );
