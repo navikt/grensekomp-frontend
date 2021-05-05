@@ -32,9 +32,9 @@ import BeregnetRefusjon from './BeregnetRefusjon';
 import BeloepHjelpeLabel from './BeloepHjelpeLabel';
 import { useTranslation } from 'react-i18next';
 import HjelpeLabel from '../felles/HjelpeLabel/HjelpeLabel';
-import Key from '../../locales/Key';
 import { i18n } from 'i18next';
 import Oversettelse from '../../locales/Oversettelse';
+import Key from '../../locales/Key';
 
 interface BulkInnsendingProps {
   state?: BulkState;
@@ -139,6 +139,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                             <Bostedland
                               id={'land_' + item.uniqueKey}
                               label={t(Key.LAND_LABEL)}
+                              language={i18n.language}
                               feilmelding={item.landError}
                               disabled={item.accepted}
                               value={item.land}

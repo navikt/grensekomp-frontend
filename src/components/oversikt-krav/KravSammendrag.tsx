@@ -22,6 +22,8 @@ import SlettetKravKvittering from '../slettetKravKvittering';
 import estimertRefusjon from '../../utils/estimertRefusjon';
 import diffDato from '../../utils/dato/diffDato';
 import { parseISODato } from '../../utils/dato/parseISODato';
+import { useTranslation } from 'react-i18next';
+import Key from '../../locales/Key';
 
 interface KravSammendragProps {
   items: OversiktKravItem[];
@@ -32,6 +34,7 @@ interface KravSammendragProps {
 const KravSammendrag = (props: KravSammendragProps) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modifyId, setModifyId] = useState('');
+  const { t } = useTranslation();
 
   const [slettetKrav, setSlettetKrav] = useState<OversiktKravItem | undefined>(undefined);
   const handleSlettKrav = (itemId: string) => {
@@ -99,42 +102,46 @@ const KravSammendrag = (props: KravSammendragProps) => {
         isOpen={modalIsOpen}
         onRequestClose={() => handleCloseModal()}
         closeButton={false}
-        contentLabel='Er du sikker på at du vil slette kravet?'
+        contentLabel={t(Key.SLETT_KRAV_LABEL)}
         className='slette-modal'
         shouldCloseOnOverlayClick={false}
       >
         <Veilederpanel svg={<SmilendeKar />}>
-          <Innholdstittel>Er du sikker på at du vil slette kravet?</Innholdstittel>
+          <Innholdstittel>{t(Key.SLETT_KRAV_LABEL)}</Innholdstittel>
 
-          <Normaltekst>Fødselsnummer/D-nummer: {getIdentityNumber(modifyId)}</Normaltekst>
-          <Normaltekst>Bostedsland: {getCountry(modifyId)}</Normaltekst>
+          <Normaltekst>
+            {t(Key.ID_NUMBER)}: ${getIdentityNumber(modifyId)}
+          </Normaltekst>
+          <Normaltekst>
+            {t(Key.BOSTEDLAND)}: ${getCountry(modifyId)}
+          </Normaltekst>
           <div className='button-wrapper'>
-            <Fareknapp onClick={() => handleSlettKrav(modifyId)}>Ja - slett kravet</Fareknapp>
-            <Knapp onClick={handleCloseModal}>Avbryt</Knapp>
+            <Fareknapp onClick={() => handleSlettKrav(modifyId)}>{t(Key.SLETT_KRAV_CONFIRM)}</Fareknapp>
+            <Knapp onClick={handleCloseModal}>{t(Key.CANCEL)}</Knapp>
           </div>
         </Veilederpanel>
       </ModalWrapper>
       <Row>
         <Column>
           <Lenke href='#' onClick={handleTilbake}>
-            &lt;&lt; Tilbake til liste
+            &lt;&lt; {t(Key.TILBAKE)}
           </Lenke>
         </Column>
       </Row>
       <Row>
         <Column>
           <Undertittel className='krav-mottatt'>
-            Krav mottatt: {formaterIsoTimestampAsNoTime(props.innsending)}
+            {t(Key.KRAV_MOTTATT)}: {formaterIsoTimestampAsNoTime(props.innsending)}
           </Undertittel>
-          <Innholdstittel className='krav-tittel'>Refusjonskrav ved innreiseforbud</Innholdstittel>
+          <Innholdstittel className='krav-tittel'>{t(Key.REFUSJONSKRAV)}</Innholdstittel>
           <table className='tabell tabell--stripet'>
             <thead>
               <tr>
-                <th role='columnheader'>Fødsels-/D-nummer</th>
-                <th role='columnheader'>Bostedsland</th>
-                <th role='columnheader'>Periode</th>
-                <th role='columnheader'>Beregnet månedsinntekt</th>
-                <th role='columnheader'>Foreløpig beregnet refusjon</th>
+                <th role='columnheader'>{t(Key.ID_NUMBER)}</th>
+                <th role='columnheader'>{t(Key.BOSTEDLAND)}</th>
+                <th role='columnheader'>{t(Key.PERIODE)}</th>
+                <th role='columnheader'>{t(Key.BEREGNET_INNTEKT)}</th>
+                <th role='columnheader'>{t(Key.BEREGNET_REFUSJON)}</th>
                 <th></th>
               </tr>
             </thead>

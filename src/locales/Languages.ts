@@ -1,5 +1,7 @@
-import Key from './Key';
 import Locale from './Locale';
+import Key from './Key';
+import lenker from '../config/lenker';
+import injectRedirectPath from '../components/login/injectRedirectPath';
 
 const Languages: Record<Key, Locale> = {
   SIDETITTEL: {
@@ -25,23 +27,40 @@ const Languages: Record<Key, Locale> = {
       '-- [Søknaden blir behandlet automatisk.](https://www.nav.no/no/person/arbeid/sykmeldt-arbeidsavklaringspenger-og-yrkesskade/nyheter/kompensasjon-til-utestengte-eos-borgere/automatisert-saksbehandling-i-forbindelse-med-innreiseforbudet)\n' +
       '##-\n'
   },
-  INFO_1: {
+
+  MAANEDSINNTEKT_HJELPELABEL_INFO: {
     nb:
-      'Ordningen gjelder for arbeidstakere som var ansatt og hadde påbegynt arbeidet 29. januar da innreiseforbudet ble innført.'
+      '-## ' +
+      '-- Tidspunktet for beregning er 29. januar 2021. Dette betyr at det er inntekter i månedene oktober, november, ' +
+      'desember 2020 som skal legges til grunn når du gjør beregningen.\n' +
+      '-- Ut over særtilfellet nevnt ovenfor gjelder [samme beregningsregler som for sykepenger.](https://www.nav.no/no/bedrift/tjenester-og-skjemaer/nav-og-altinn-tjenester/inntektsmelding/beregningsregler-for-sykepenger)\n' +
+      '-- Hvilke [inntekter som kan tas med i beregningen](https://www.nav.no/no/bedrift/oppfolging/sykmeldt-arbeidstaker/sykepenger/inntekter-som-innga%CC%8Ar-i-beregning-av-ma%CC%8Anedsinntekten) er det også viktig å være klar over.\n' +
+      '##-\n'
   },
-  INFO_2: { nb: 'Den ansatte må ha vært i jobb i minst fire uker før det tidspunktet man krever refusjon fra.' },
-  INFO_3: { nb: 'Det gis bare kompensasjon for dager som den ansatte faktisk skulle ha jobbet.' },
-  INFO_4: {
+
+  LOGGETUTADVARSEL_INFO: {
     nb:
-      'Hvis arbeidsgiveren er kjent med at den ansatte har hatt inntekt fra en annen jobb, skal det ikke gis kompensasjon ' +
-      'for dager som den ansatte har hatt annen inntekt. Det samme gjelder ytelser fra bostedslandet hvis arbeidsgiveren ' +
-      'er kjent med det.'
+      '-## ' +
+      '-- Ikke lukk dette vinduet\n' +
+      `-- [Åpne ID-Porten (innlogging) i nytt vindu ved å klikke på denne lenken.](${injectRedirectPath(
+        lenker.TokenFornyet
+      )})\n` +
+      '-- Logg inn på nytt i ID-porten.\n' +
+      '-- Returner til dette vinduet.\n' +
+      '-- Lukk denne meldingen og klikk igjen på knappen "Send søknad om refusjon".\n' +
+      '##-\n'
   },
-  INFO_5: { nb: 'Avviklet ferie kan omgjøres til arbeidsdager som det gis refusjon for.' },
-  INFO_6: { nb: 'Kompensasjonen er 70 % av sykepengegrunnlaget, begrenset opp til 70 % av 6G, ' },
-  INFO_7: { nb: 'Søknaden blir behandlet automatisk.' },
+
+  KRAVLISTE_INFO: {
+    nb: `Har du tidligere søkt om refusjon for [tapt arbeidsinntekt på grunn av innreiseforbudet](${lenker.Bulkinnsending})
+    kan du finne tilbake til dem nedenfor`
+  },
+
+  KRAVLISTE_TITLE: {
+    nb: 'Oversikt over tidligere innsendte krav'
+  },
+
   GRUNNBELOEP: { nb: 'folketrygdens grunnbeløp.' },
-  AUTOMATISERT_BEHANDLING: { nb: 'Les om den automatiserte saksbehandlingen.' },
   SKJEMA_LEGEND: { nb: 'Oppgi ansatte, fraværsperiode og beløp' },
 
   NUMBER: {
@@ -86,37 +105,21 @@ const Languages: Record<Key, Locale> = {
     nb: 'Beløp'
   },
 
-  BELOEP_HJELPE_TITLE: {
+  BEREGNET_INNTEKT: {
     nb: 'Beregnet månedsinntekt'
   },
 
-  BELOEP_HJELPE_SUBTITLE: {
+  BEREGNING_INNTEKT: {
     nb: 'Beregning av månedsinntekt'
   },
 
-  BELOEP_HJELPE_INFO_1: {
+  BELOEP_HJELPE_INFO: {
     nb:
-      'Legg alltid inntekten i månedene oktober, november, desember 2020 når du skal fastsette beregningsperioden. Dette er et unntak fra hovedregelen.'
-  },
-
-  BELOEP_HJELPE_INFO_2: {
-    nb: 'Ut over dette gjelder '
-  },
-
-  BELOEP_HJELPE_INFO_3: {
-    nb: 'samme beregningsregler som for sykepenger.'
-  },
-
-  BELOEP_HJELPE_INFO_4: {
-    nb: 'Hvilke '
-  },
-
-  BELOEP_HJELPE_INFO_5: {
-    nb: 'inntekter som kan tas med i beregningen'
-  },
-
-  BELOEP_HJELPE_INFO_6: {
-    nb: ' er det også viktig å være klar over.'
+      '-## ' +
+      '-- Legg alltid inntekten i månedene oktober, november, desember 2020 når du skal fastsette beregningsperioden. Dette er et unntak fra hovedregelen.\n' +
+      '-- Ut over dette gjelder [samme beregningsregler som for sykepenger.](https://www.nav.no/no/bedrift/tjenester-og-skjemaer/nav-og-altinn-tjenester/inntektsmelding/beregningsregler-for-sykepenger)\n' +
+      '-- Hvilke [inntekter som kan tas med i beregningen](https://www.nav.no/no/bedrift/oppfolging/sykmeldt-arbeidstaker/sykepenger/inntekter-som-innga%CC%8Ar-i-beregning-av-ma%CC%8Anedsinntekten) er det også viktig å være klar over.\n' +
+      '##-\n'
   },
 
   CLOSE: {
@@ -170,7 +173,137 @@ const Languages: Record<Key, Locale> = {
   COUNTRY_MISSING: { nb: 'Mangler land' },
   COUNTRY_INVALID: { nb: 'Land ikke gyldig' },
 
-  BEKREFT: { nb: 'Bekreft at opplysningene er korrekt' }
+  BEKREFT: { nb: 'Bekreft at opplysningene er korrekt' },
+
+  BEREGNET_REFUSJON: {
+    nb: 'Foreløpig beregnet refusjon'
+  },
+
+  BEREGNET_REFUSJON_INFO: {
+    nb:
+      'Denne beregningen tar _ikke_ høyde for andre utbetalinger den ansatte eventuelt får fra NAV, for eksempel ' +
+      'graderte sykepenger. Utbetalinger du allerede får refusjon for, vil derfor bli trukket fra beløpet du nå søker om.'
+  },
+
+  FEILOPPSUMERING: {
+    nb: 'For å gå videre må du rette opp følgende:'
+  },
+
+  ROLLER_OG_TILGANGER: {
+    nb: 'Les mer om roller og tilganger.'
+  },
+
+  REFUSJONSKRAV: {
+    nb: 'Refusjonskrav ved innreiseforbud'
+  },
+
+  SLETT_KRAV_LABEL: {
+    nb: 'Er du sikker på at du vil slette kravet?'
+  },
+
+  ID_NUMBER: {
+    nb: 'Fødsels-/D-nummer'
+  },
+
+  BOSTEDLAND: {
+    nb: 'Bostedsland'
+  },
+
+  SLETT_KRAV_CONFIRM: {
+    nb: 'Ja - slett kravet'
+  },
+
+  CANCEL: {
+    nb: 'Avbryt'
+  },
+
+  TILBAKE: {
+    nb: 'Tilbake til liste'
+  },
+
+  KRAV_MOTTATT: {
+    nb: 'Krav mottatt'
+  },
+
+  KRAVET_ER_MOTTATT: {
+    nb: 'Kravet er mottatt'
+  },
+
+  PERIODE: {
+    nb: 'Periode'
+  },
+
+  KRAV_SLETTET: {
+    nb: 'Kravet er slettet'
+  },
+
+  KRAV_NY: {
+    nb: 'Her kan du sende inn nytt krav for denne arbeidstakeren om du vil.'
+  },
+
+  LOGG_UT: {
+    nb: 'Logg ut'
+  },
+
+  MIN_SIDE: {
+    nb: 'Min side arbeidsgiver'
+  },
+
+  KVITTERING_INFO: {
+    nb:
+      'En kvittering er sendt til meldingsboksen deres i [Altinn](https://www.altinn.no). ' +
+      'Trenger du å kontakte oss, er det tilstrekkelig å oppgi fødselsnummeret til den ansatte.'
+  },
+
+  LOGGET_UT: {
+    nb: 'Du er blitt logget ut, følg instruksjonene for ikke å miste data'
+  },
+
+  RETURNER: {
+    nb: 'Returner til dette vinduet.'
+  },
+
+  LOGGET_INN: {
+    nb: 'Jeg har logget inn på nytt - lukk dette vinduet'
+  },
+
+  SERVERFEILADVARSEL_INFO: {
+    nb:
+      '_Det har desverre oppstått en teknisk feil hos oss_\n\n' +
+      'Prøv igjen litt senere, og [kontakt oss gjerne dersom det ikke ordner seg.](https://arbeidsgiver.nav.no/kontakt-oss/)'
+  },
+
+  SOEKNADSSKJEMA: {
+    nb: 'SØKNADSSKJEMA'
+  },
+
+  ERROR_GENERIC: {
+    nb: 'Det oppstod en feil'
+  },
+
+  ERROR_LOGIN: {
+    nb: 'Vi klarte ikke logge deg inn. Vennligst prøv igjen senere.'
+  },
+
+  LOGIN: {
+    nb: 'Innlogging'
+  },
+
+  LOGIN_RENEWED: {
+    nb: 'Innloggingen er fornyet'
+  },
+
+  LOGIN_RENEWED_INFO: {
+    nb: 'Du har nå fornyet innloggingen med en time.\n' + 'Dette vinduet kan nå lukkes.'
+  },
+
+  OVERSIKTKRAV_TITLE: {
+    nb: 'Refusjon for kompensasjon ved innreiseforbud'
+  },
+
+  OVERSIKTKRAV_SUBTITLE: {
+    nb: 'Refusjoner'
+  }
 };
 
 export default Languages;

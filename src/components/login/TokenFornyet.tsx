@@ -3,21 +3,25 @@ import { Innholdstittel, Normaltekst } from 'nav-frontend-typografi';
 import Panel from 'nav-frontend-paneler';
 import { Container, Row } from 'nav-frontend-grid';
 import Side from '../felles/Side';
+import { useTranslation } from 'react-i18next';
+import Key from '../../locales/Key';
 
-export const TokenFornyet = () => (
-  <Side bedriftsmeny={false} sidetittel='Søknadsskjema' title='Innloggingen er fornyet' subtitle='Innlogging'>
-    <Container className={'side__innhold'}>
-      <Row>
-        <Panel>
-          <Innholdstittel>Innloggingen er fornyet</Innholdstittel>
-        </Panel>
-        <Panel>
-          <Normaltekst>Du har nå fornyet innloggingen med en time.</Normaltekst>
-          <Normaltekst>Dette vinduet kan nå lukkes.</Normaltekst>
-        </Panel>
-      </Row>
-    </Container>
-  </Side>
-);
+export const TokenFornyet = () => {
+  const { t } = useTranslation();
+  return (
+    <Side bedriftsmeny={false} sidetittel='Søknadsskjema' title={t(Key.LOGIN_RENEWED)} subtitle={t(Key.LOGIN)}>
+      <Container className={'side__innhold'}>
+        <Row>
+          <Panel>
+            <Innholdstittel>{t(Key.LOGIN_RENEWED)}</Innholdstittel>
+          </Panel>
+          <Panel>
+            <Normaltekst>{t(Key.LOGIN_RENEWED_INFO)}</Normaltekst>
+          </Panel>
+        </Row>
+      </Container>
+    </Side>
+  );
+};
 
 export default TokenFornyet;
