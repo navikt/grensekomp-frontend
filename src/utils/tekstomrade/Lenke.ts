@@ -1,4 +1,6 @@
 import { ReactElementDescription, RegexMatch, Rule, RuleScope } from '@navikt/textparser';
+import { Link } from 'react-router-dom';
+import Lenke from 'nav-frontend-lenker';
 
 export const LenkeRule: Rule = {
   name: 'Lenke',
@@ -13,9 +15,18 @@ export const LenkeRule: Rule = {
   react(node: any): ReactElementDescription {
     const description = node.content[1];
     const href: string = node.content[2];
+
+    if (href.startsWith('http')) {
+      return {
+        type: 'a',
+        props: { href, target: '_blank', rel: 'noopener', class: 'lenke' },
+        children: description
+      };
+    }
+
     return {
-      type: 'a',
-      props: { href, target: '_blank', rel: 'noopener', class: 'lenke' },
+      type: Link,
+      props: { to: href, class: 'lenke' },
       children: description
     };
   }

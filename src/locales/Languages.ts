@@ -42,10 +42,7 @@ const Languages: Record<Key, Locale> = {
     nb:
       '-## ' +
       '-- Ikke lukk dette vinduet\n' +
-      `-- [Åpne ID-Porten (innlogging) i nytt vindu ved å klikke på denne lenken.](${injectRedirectPath(
-        lenker.TokenFornyet,
-        'nb'
-      )})\n` +
+      '-- [Åpne ID-Porten (innlogging) i nytt vindu ved å klikke på denne lenken.]({{ innloggingUrl }})\n' +
       '-- Logg inn på nytt i ID-porten.\n' +
       '-- Returner til dette vinduet.\n' +
       '-- Lukk denne meldingen og klikk igjen på knappen "Send søknad om refusjon".\n' +
@@ -53,7 +50,7 @@ const Languages: Record<Key, Locale> = {
   },
 
   KRAVLISTE_INFO: {
-    nb: `Har du tidligere søkt om refusjon for [tapt arbeidsinntekt på grunn av innreiseforbudet](${lenker.Bulkinnsending})
+    nb: `Har du tidligere søkt om refusjon for [tapt arbeidsinntekt på grunn av innreiseforbudet]({{ path }})
     kan du finne tilbake til dem nedenfor`
   },
 

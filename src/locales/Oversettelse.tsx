@@ -8,6 +8,7 @@ import React from 'react';
 
 interface OversettelseProps {
   langKey: Key;
+  variables?: any;
 }
 
 /*
@@ -17,11 +18,11 @@ ul end: ##-
 bold: _text_
 link: [link name](link url)
  */
-const Oversettelse = ({ langKey }: OversettelseProps) => {
+const Oversettelse = ({ langKey, variables }: OversettelseProps) => {
   const { t } = useTranslation();
   return (
     <Tekstomrade rules={[ListeRule, UListeRule, HighlightRule, BoldRule, LenkeRule, LinebreakRule]}>
-      {t(langKey)}
+      {t(langKey, variables)}
     </Tekstomrade>
   );
 };
