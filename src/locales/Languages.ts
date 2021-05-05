@@ -43,7 +43,8 @@ const Languages: Record<Key, Locale> = {
       '-## ' +
       '-- Ikke lukk dette vinduet\n' +
       `-- [Åpne ID-Porten (innlogging) i nytt vindu ved å klikke på denne lenken.](${injectRedirectPath(
-        lenker.TokenFornyet
+        lenker.TokenFornyet,
+        'nb'
       )})\n` +
       '-- Logg inn på nytt i ID-porten.\n' +
       '-- Returner til dette vinduet.\n' +

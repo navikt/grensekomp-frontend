@@ -8,7 +8,7 @@ import Oversettelse from '../../locales/Oversettelse';
 import Key from '../../locales/Key';
 import lenker from '../../config/lenker';
 import { useParams } from 'react-router-dom';
-
+import injectRedirectPath from './injectRedirectPath';
 
 interface LoggetUtAdvarselProps {
   onClose: Function;
