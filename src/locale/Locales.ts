@@ -356,10 +356,12 @@ const Locales: Record<LangKey, Locale> = {
   },
 
   PAGE_NOT_FOUND_TITLE: {
-    nb: 'Siden finnes ikke'
+    nb: 'Siden finnes ikke',
+    en: 'Page not found'
   },
   PAGE_NOT_FOUND_DESCRIPTION: {
-    nb: 'Siden finnes ikke. [/nb/innsending](Gå til skjema for innsending)'
+    nb: 'Siden finnes ikke. [/nb/innsending](Gå til skjema for innsending)',
+    en: 'Page not found. [/en/innsending](Go back to form for submitting)'
   },
 
   SLETT_KRAV_LABEL: {
@@ -507,12 +509,12 @@ const Locales: Record<LangKey, Locale> = {
 
   FEILOPPSUMMERING_ROW: {
     nb: 'Rad {{ index }}: {{ error }}',
-    nb: 'Row {{ index }}: {{ error }}',
+    en: 'Row {{ index }}: {{ error }}'
   },
 
   KRAV_SAMMENDRAG_DELETE: {
     nb: 'Slett',
-    en: 'Delete',
+    en: 'Delete'
   }
 };
 
