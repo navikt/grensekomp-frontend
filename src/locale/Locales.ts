@@ -315,7 +315,7 @@ const Locales: Record<LangKey, Locale> = {
   },
 
   FEILOPPSUMMERING_ROW: {
-    nb: 'Rad'
+    nb: 'Rad {{ index }}: {{ error }}'
   },
 
   KRAV_SAMMENDRAG_DELETE: {

@@ -1,5 +1,7 @@
 import BulkState from '../../state/bulk/BulkState';
 import mapFeilOppsummering from './mapFeilOppsummering';
+import { languageInit } from '../../locale/LocaleProvider';
+import Language from '../../locale/Language';
 
 describe('mapFeilOppsummering', () => {
   it('should map correctly', () => {
@@ -23,7 +25,7 @@ describe('mapFeilOppsummering', () => {
         }
       ]
     } as BulkState;
-    const feilmeldinger = mapFeilOppsummering(state, 'Rad');
+    const feilmeldinger = mapFeilOppsummering(state, languageInit(Language.nb));
     expect(feilmeldinger.length).toBe(10);
     expect(feilmeldinger[0].feilmelding).toBe('feil_orgnr');
     expect(feilmeldinger[1].skjemaelementId).toBe('fnr_feil1');

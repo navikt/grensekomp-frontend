@@ -96,7 +96,7 @@ const BulkReducer = (state: BulkState, action: BulkActions, i18n: i18n): BulkSta
 
       mapBulkValidationResponse(payload.response, nextState);
 
-      nextState.feilmeldinger = mapFeilOppsummering(nextState, i18n.t(LangKey.FEILOPPSUMMERING_ROW));
+      nextState.feilmeldinger = mapFeilOppsummering(nextState, i18n);
       nextState.error = nextState.feilmeldinger.length > 0;
       nextState.kvittering = !nextState.error;
       nextState.validated = true;

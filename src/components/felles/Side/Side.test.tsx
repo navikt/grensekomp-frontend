@@ -50,7 +50,7 @@ describe('Side', () => {
       render(buildSide(true, UTEN_ARBEIDSGIVERE, ArbeidsgiverStatus.Successfully, 'SØKNADSSKJEMA'), container);
     });
     expect(container.textContent).not.toContain(BARNE_NODER);
-    expect(container.textContent).toContain(LangKey.ROLLER_OG_TILGANGER);
+    expect(container.textContent).toContain(LangKey.INGENTILGANGADVARSEL);
   });
 
   it('should show children - required and arbeidsgivere', () => {
@@ -58,7 +58,7 @@ describe('Side', () => {
       render(buildSide(true, ARBEIDSGIVERE, ArbeidsgiverStatus.Successfully, 'SØKNADSSKJEMA'), container);
     });
     expect(container.textContent).toContain(BARNE_NODER);
-    expect(container.textContent).not.toContain(LangKey.ROLLER_OG_TILGANGER);
+    expect(container.textContent).not.toContain(LangKey.INGENTILGANGADVARSEL);
   });
 
   it('should show children - not required and empty arbeidsgivere', () => {
