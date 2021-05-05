@@ -35,14 +35,14 @@ describe('ApplicationRoutes', () => {
 
   it('should show bulkinnsending', () => {
     act(() => {
-      render(makeRoute('/nb/batchinnsending/krav'), container);
+      render(makeRoute('/nb/innsending'), container);
     });
     expect(container.textContent).toContain('Refusjon for kompensasjon ved innreiseforbud');
   });
 
   it('should show bulkinnsending when no arbeidsgivere', () => {
     act(() => {
-      render(makeRoute('/nb/batchinnsending/krav', []), container);
+      render(makeRoute('/nb/innsending', []), container);
     });
     expect(container.textContent).toContain('Refusjon for kompensasjon ved innreiseforbud');
   });

@@ -5,6 +5,7 @@ import Bostedland from './Bostedland';
 describe('Bostedland', () => {
   it('should display a select box', () => {
     const mockFn = jest.fn();
+    
     render(<Bostedland label='label' language='nb' onChange={mockFn} />);
 
     expect(screen.queryByText('Finland')).toBeInTheDocument();

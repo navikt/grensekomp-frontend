@@ -27,7 +27,7 @@ const KravListe = (props: KravListeProps) => {
         <Innholdstittel className='kravliste-tittel'>{t(LangKey.KRAVLISTE_TITLE)}</Innholdstittel>
         <Oversettelse
           langKey={LangKey.KRAVLISTE_INFO}
-          variables={{ path: lenker.Bulkinnsending.replace(':language', language) }}
+          variables={{ path: lenker.Innsending.replace(':language', language) }}
         />
         <Skillelinje />
         <ul className='kravliste-liste'>

@@ -11,6 +11,7 @@ import LocaleProvider from './locale/LocaleProvider';
 import lenker from './config/lenker';
 import PageNotFound from './components/felles/PageNotFound/PageNotFound';
 import TokenFornyet from './components/login/TokenFornyet';
+import Language from './locale/Language';
 
 interface ApplicationProps {
   loginStatus?: LoginStatus;
@@ -29,7 +30,10 @@ export const Application = ({
 }: ApplicationProps) => (
   <Switch>
     <Route path={lenker.Home} exact={true}>
-      <Redirect from='/' to='/nb/batchinnsending/krav' />
+      <Redirect from='/' to={lenker.Innsending.replace(':language', 'nb')} />
+    </Route>
+    <Route path='/batchinnsending/krav'>
+      <Redirect from='/' to={lenker.Innsending.replace(':language', 'nb')} />
     </Route>
     <Route path={lenker.TokenFornyet}>
       <TokenFornyet />
@@ -46,9 +50,10 @@ export const Application = ({
     <Route path='/:language/*'>
       <PageNotFound />
     </Route>
-
     <Route>
-      <PageNotFound />
+      <LocaleProvider lang={Language.nb}>
+        <PageNotFound />
+      </LocaleProvider>
     </Route>
   </Switch>
 );

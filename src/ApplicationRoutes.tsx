@@ -9,10 +9,10 @@ export const ApplicationRoutes = () => {
   return (
     <div className='application-routes'>
       <Switch>
-        <Route path={lenker.Bulkinnsending}>
+        <Route path={lenker.Innsending}>
           <Bulkinnsending />
         </Route>
-        <Route path={lenker.OversiktKrav}>
+        <Route path={lenker.Oversikt}>
           <OversiktKrav />
         </Route>
         <Route>

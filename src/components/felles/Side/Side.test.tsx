@@ -39,7 +39,7 @@ describe('Side', () => {
     );
   };
 
-  const IKKE_RETTIGHETER = 'Du har ikke rettigheter';
+  const IKKE_RETTIGHETER = LangKey.INGENTILGANGADVARSEL;
   const BARNE_NODER = 'barnenoder';
   const ARBEIDSGIVERE = [{ Name: '' } as Organisasjon];
   const UTEN_ARBEIDSGIVERE = [];
