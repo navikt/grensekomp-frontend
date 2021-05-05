@@ -14,7 +14,7 @@ const Kvittering = () => {
       <Row>
         <Column>
           <Panel>
-            <Sidetittel>{t(LangKey.KRAVET_ER_MOTTATT)}</Sidetittel>
+            <Sidetittel>{t(LangKey.KVITTERING_TITTEL)}</Sidetittel>
           </Panel>
         </Column>
       </Row>

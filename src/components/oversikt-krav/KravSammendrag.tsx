@@ -24,6 +24,7 @@ import diffDato from '../../utils/dato/diffDato';
 import { parseISODato } from '../../utils/dato/parseISODato';
 import { useTranslation } from 'react-i18next';
 import LangKey from '../../locale/LangKey';
+import InternLenke from '../felles/InternLenke';
 
 interface KravSammendragProps {
   items: OversiktKravItem[];
@@ -123,9 +124,7 @@ const KravSammendrag = (props: KravSammendragProps) => {
       </ModalWrapper>
       <Row>
         <Column>
-          <Lenke href='#' onClick={handleTilbake}>
-            &lt;&lt; {t(LangKey.TILBAKE)}
-          </Lenke>
+          <InternLenke onClick={handleTilbake}>&lt;&lt; {t(LangKey.TILBAKE)}</InternLenke>
         </Column>
       </Row>
       <Row>

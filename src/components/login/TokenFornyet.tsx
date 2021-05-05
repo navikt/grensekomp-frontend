@@ -9,7 +9,12 @@ import LangKey from '../../locale/LangKey';
 export const TokenFornyet = () => {
   const { t } = useTranslation();
   return (
-    <Side bedriftsmeny={false} sidetittel='Søknadsskjema' title={t(LangKey.LOGIN_RENEWED)} subtitle={t(LangKey.LOGIN)}>
+    <Side
+      bedriftsmeny={false}
+      sidetittel={t(LangKey.TOKEN_FORNYET)}
+      title={t(LangKey.LOGIN_RENEWED)}
+      subtitle={t(LangKey.LOGIN)}
+    >
       <Container className={'side__innhold'}>
         <Row>
           <Panel>

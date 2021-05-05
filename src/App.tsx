@@ -8,7 +8,7 @@ import env from './config/environment';
 import { LoginStatus } from './context/login/LoginStatus';
 import ArbeidsgiverStatus from './context/arbeidsgiver/ArbeidsgiverStatus';
 import LocaleProvider from './locale/LocaleProvider';
-import lenker from './config/lenker';
+import lenker, { buildLenke } from './config/lenker';
 import PageNotFound from './components/felles/PageNotFound/PageNotFound';
 import TokenFornyet from './components/login/TokenFornyet';
 import Language from './locale/Language';
@@ -30,10 +30,10 @@ export const Application = ({
 }: ApplicationProps) => (
   <Switch>
     <Route path={lenker.Home} exact={true}>
-      <Redirect from='/' to={lenker.Innsending.replace(':language', 'nb')} />
+      <Redirect from='/' to={buildLenke(lenker.Innsending, Language.nb)} />
     </Route>
     <Route path='/batchinnsending/krav'>
-      <Redirect from='/' to={lenker.Innsending.replace(':language', 'nb')} />
+      <Redirect from='/' to={buildLenke(lenker.Innsending, Language.nb)} />
     </Route>
     <Route path={lenker.TokenFornyet}>
       <TokenFornyet />
