@@ -3,7 +3,7 @@ import React from 'react';
 import { cleanup, fireEvent, render } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import BeloepHjelpeLabel from './BeloepHjelpeLabel';
-import LanguageProvider from '../../locales/LanguageProvider';
+import LocaleProvider from '../../locale/LocaleProvider';
 import { Router } from 'react-router-dom';
 import mockHistory from '../../mockData/mockHistory';
 
@@ -11,9 +11,9 @@ describe('BeloepHjelpeLabel', () => {
   it('should display the component with a warning', () => {
     const component = render(
       <Router history={mockHistory('/')}>
-        <LanguageProvider>
+        <LocaleProvider>
           <BeloepHjelpeLabel />
-        </LanguageProvider>
+        </LocaleProvider>
       </Router>
     );
     expect(component.queryAllByText(/Slik regner du ut den ansattes daglige lønn/).length).toEqual(0);

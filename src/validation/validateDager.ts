@@ -3,7 +3,7 @@ import { Dato } from '../utils/dato/Dato';
 import dayjs from 'dayjs';
 import { datoToString } from '../utils/dato/datoToString';
 import ValidationResult from './ValidationResult';
-import LangKey from '../locales/LangKey';
+import LangKey from '../locale/LangKey';
 
 const validateDager = (
   dager: string | undefined,

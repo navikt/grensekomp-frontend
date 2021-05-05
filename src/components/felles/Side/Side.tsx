@@ -10,7 +10,7 @@ import SideIndentering from './SideIndentering';
 import { Organisasjon } from '@navikt/bedriftsmeny/lib/organisasjon';
 import { useArbeidsgiver } from '../../../context/arbeidsgiver/ArbeidsgiverContext';
 import { IngenTilgangAdvarsel } from '../../login/IngenTilgangAdvarsel';
-import LangKey from '../../../locales/LangKey';
+import LangKey from '../../../locale/LangKey';
 import { useTranslation } from 'react-i18next';
 
 interface SideProps {

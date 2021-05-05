@@ -19,7 +19,7 @@ import { useArbeidsgiver } from '../../context/arbeidsgiver/ArbeidsgiverContext'
 import Side from '../felles/Side';
 import '../felles/knapper/LeggTilKnapp.sass';
 import './BulkInnsending.sass';
-import RadNr from '../felles/RadNr';
+import RadNr from '../felles/RadNr/RadNr';
 import LeggTilKnapp from '../felles/knapper/LeggTilKnapp';
 import Slettknapp from '../felles/knapper/Slettknapp';
 import BekreftOpplysningerPanel from '../felles/BekreftOpplysningerPanel';
@@ -33,8 +33,8 @@ import BeloepHjelpeLabel from './BeloepHjelpeLabel';
 import { useTranslation } from 'react-i18next';
 import HjelpeLabel from '../felles/HjelpeLabel/HjelpeLabel';
 import { i18n } from 'i18next';
-import Oversettelse from '../../locales/Oversettelse';
-import LangKey from '../../locales/LangKey';
+import Oversettelse from '../felles/Oversettelse/Oversettelse';
+import LangKey from '../../locale/LangKey';
 
 interface BulkInnsendingProps {
   state?: BulkState;

@@ -7,9 +7,9 @@ import { ArbeidsgiverProvider } from './context/arbeidsgiver/ArbeidsgiverContext
 import env from './config/environment';
 import { LoginStatus } from './context/login/LoginStatus';
 import ArbeidsgiverStatus from './context/arbeidsgiver/ArbeidsgiverStatus';
-import LanguageProvider from './locales/LanguageProvider';
+import LocaleProvider from './locale/LocaleProvider';
 import lenker from './config/lenker';
-import PageNotFound from './components/PageNotFound';
+import PageNotFound from './components/felles/PageNotFound/PageNotFound';
 import TokenFornyet from './components/login/TokenFornyet';
 
 interface ApplicationProps {
@@ -35,13 +35,13 @@ export const Application = ({
       <TokenFornyet />
     </Route>
     <Route path='/:language(nb|en)/*'>
-      <LanguageProvider>
+      <LocaleProvider>
         <LoginProvider baseUrl={basePath} status={loginStatus} loginServiceUrl={loginServiceUrl}>
           <ArbeidsgiverProvider baseUrl={basePath} status={arbeidsgiverStatus} arbeidsgivere={arbeidsgivere}>
             <ApplicationRoutes />
           </ArbeidsgiverProvider>
         </LoginProvider>
-      </LanguageProvider>
+      </LocaleProvider>
     </Route>
     <Route path='/:language/*'>
       <PageNotFound />

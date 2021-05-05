@@ -1,7 +1,7 @@
 import Dato from '../utils/dato/Dato';
 import { parseDato } from '../utils/dato/parseDato';
 import validateDager from './validateDager';
-import LangKey from '../locales/LangKey';
+import LangKey from '../locale/LangKey';
 
 describe('validateDager', () => {
   it('should verify that there is a dager when required', () => {

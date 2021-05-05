@@ -2,7 +2,7 @@ import BulkReducer from './BulkReducer';
 import { defaultBulkState } from './BulkState';
 import { Actions } from './BulkActions';
 import BulkValidationResponse from '../../api/bulk/BulkValidationResponse';
-import { languageInit } from '../../locales/LanguageProvider';
+import { languageInit } from '../../locale/LocaleProvider';
 
 describe('BulkReducer', () => {
   const i18n = languageInit('nb');

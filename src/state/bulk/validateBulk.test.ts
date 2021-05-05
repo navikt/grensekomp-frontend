@@ -1,6 +1,6 @@
 import BulkState from './BulkState';
 import validateBulk from './validateBulk';
-import { languageInit } from '../../locales/LanguageProvider';
+import { languageInit } from '../../locale/LocaleProvider';
 
 describe('validateBulk', () => {
   it('should map all errors', () => {

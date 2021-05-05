@@ -2,7 +2,7 @@ import { AlertStripeAdvarsel } from 'nav-frontend-alertstriper';
 import { Link } from 'react-router-dom';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import LangKey from '../../locales/LangKey';
+import LangKey from '../../locale/LangKey';
 
 export const IngenTilgangAdvarsel = () => {
   const { t } = useTranslation();

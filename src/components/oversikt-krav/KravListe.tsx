@@ -8,8 +8,8 @@ import formaterIsoTimestampAsNoTime from '../../utils/formatIsoTimestampAsNoTime
 import Skillelinje from '../felles/Skillelinje';
 import './KravListe.scss';
 import { useTranslation } from 'react-i18next';
-import Oversettelse from '../../locales/Oversettelse';
-import LangKey from '../../locales/LangKey';
+import Oversettelse from '../felles/Oversettelse/Oversettelse';
+import LangKey from '../../locale/LangKey';
 import lenker from '../../config/lenker';
 import { useParams } from 'react-router-dom';
 

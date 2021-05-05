@@ -7,7 +7,7 @@ import mockHistory from './mockData/mockHistory';
 import { ArbeidsgiverProvider } from './context/arbeidsgiver/ArbeidsgiverContext';
 import ArbeidsgiverStatus from './context/arbeidsgiver/ArbeidsgiverStatus';
 import { Organisasjon } from '@navikt/bedriftsmeny/lib/organisasjon';
-import LanguageProvider from './locales/LanguageProvider';
+import LocaleProvider from './locale/LocaleProvider';
 
 describe('ApplicationRoutes', () => {
   let container = document.createElement('div');
@@ -25,11 +25,11 @@ describe('ApplicationRoutes', () => {
 
   const makeRoute = (path: string, arbeidsgivere: Array<Organisasjon> = [{ Name: '' } as Organisasjon]) => (
     <Router history={mockHistory(path)}>
-      <LanguageProvider>
+      <LocaleProvider>
         <ArbeidsgiverProvider arbeidsgivere={arbeidsgivere} status={ArbeidsgiverStatus.Successfully} baseUrl=''>
           <ApplicationRoutes />
         </ArbeidsgiverProvider>
-      </LanguageProvider>
+      </LocaleProvider>
     </Router>
   );
 

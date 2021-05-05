@@ -9,7 +9,7 @@ import testFnr from '../../mockData/testFnr';
 import testOrganisasjon from '../../mockData/testOrganisasjoner';
 import BulkInnsending from './BulkInnsending';
 import mockFetch from '../../mockData/mockFetch';
-import LanguageProvider from '../../locales/LanguageProvider';
+import LocaleProvider from '../../locale/LocaleProvider';
 
 const arbeidsgivere: Organisasjon[] = testOrganisasjon;
 
@@ -20,7 +20,7 @@ describe('BulkInnsending', () => {
 
   const buildBulkInnsending = (baseUrl: string, status: number, arbeidsgivere: any, arbeidsgiverId: string) => (
     <MemoryRouter>
-      <LanguageProvider>
+      <LocaleProvider>
         <ArbeidsgiverProvider
           arbeidsgivere={arbeidsgivere}
           status={status}
@@ -29,7 +29,7 @@ describe('BulkInnsending', () => {
         >
           <BulkInnsending />
         </ArbeidsgiverProvider>
-      </LanguageProvider>
+      </LocaleProvider>
     </MemoryRouter>
   );
 

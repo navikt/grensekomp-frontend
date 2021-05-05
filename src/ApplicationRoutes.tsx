@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import lenker from './config/lenker';
 import Bulkinnsending from './components/bulk';
 import OversiktKrav from './components/oversikt-krav';
-import PageNotFound from './components/PageNotFound';
+import PageNotFound from './components/felles/PageNotFound/PageNotFound';
 
 export const ApplicationRoutes = () => {
   return (

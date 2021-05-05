@@ -4,8 +4,8 @@ import { Normaltekst, Sidetittel } from 'nav-frontend-typografi';
 import Lenke from 'nav-frontend-lenker';
 import { Row, Column } from 'nav-frontend-grid';
 import { useTranslation } from 'react-i18next';
-import LangKey from '../../locales/LangKey';
-import Oversettelse from '../../locales/Oversettelse';
+import LangKey from '../../locale/LangKey';
+import Oversettelse from '../felles/Oversettelse/Oversettelse';
 
 const Kvittering = () => {
   const { t } = useTranslation();

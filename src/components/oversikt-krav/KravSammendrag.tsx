@@ -23,7 +23,7 @@ import estimertRefusjon from '../../utils/estimertRefusjon';
 import diffDato from '../../utils/dato/diffDato';
 import { parseISODato } from '../../utils/dato/parseISODato';
 import { useTranslation } from 'react-i18next';
-import LangKey from '../../locales/LangKey';
+import LangKey from '../../locale/LangKey';
 
 interface KravSammendragProps {
   items: OversiktKravItem[];

@@ -3,8 +3,8 @@ import ModalWrapper from 'nav-frontend-modal';
 import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 import './ServerFeilAdvarsel.sass';
 import InternLenke from '../InternLenke';
-import LangKey from '../../../locales/LangKey';
-import Oversettelse from '../../../locales/Oversettelse';
+import LangKey from '../../../locale/LangKey';
+import Oversettelse from '../Oversettelse/Oversettelse';
 
 interface ServerFeilAdvarselProps {
   onClose: () => void;

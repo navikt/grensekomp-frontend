@@ -1,7 +1,7 @@
 import { validateFnr } from './validateFnr';
 
 import testFnr from '../mockData/testFnr';
-import LangKey from '../locales/LangKey';
+import LangKey from '../locale/LangKey';
 
 describe('validateFnr', () => {
   it('should give error when undefined value and required', async () => {

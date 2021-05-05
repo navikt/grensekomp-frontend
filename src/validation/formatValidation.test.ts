@@ -1,6 +1,6 @@
 import formatValidation from './formatValidation';
-import LangKey from '../locales/LangKey';
-import { languageInit } from '../locales/LanguageProvider';
+import LangKey from '../locale/LangKey';
+import { languageInit } from '../locale/LocaleProvider';
 
 describe('formatValidation', () => {
   it('should format', () => {

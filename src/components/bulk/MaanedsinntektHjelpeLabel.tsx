@@ -1,8 +1,8 @@
 import React from 'react';
 import HjelpeLabel from '../felles/HjelpeLabel/HjelpeLabel';
 import { useTranslation } from 'react-i18next';
-import LangKey from '../../locales/LangKey';
-import Oversettelse from '../../locales/Oversettelse';
+import LangKey from '../../locale/LangKey';
+import Oversettelse from '../felles/Oversettelse/Oversettelse';
 import { Innholdstittel } from 'nav-frontend-typografi';
 
 const MaanedsinntektHjelpeLabel = () => {

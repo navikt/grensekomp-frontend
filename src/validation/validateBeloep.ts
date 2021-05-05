@@ -1,6 +1,6 @@
 import isNumericString from '../utils/isNumericString';
 import ValidationResult from './ValidationResult';
-import LangKey from '../locales/LangKey';
+import LangKey from '../locale/LangKey';
 
 const validateBeloep = (
   beloep: string | undefined,

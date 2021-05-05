@@ -1,5 +1,5 @@
 import validateBeloep from './validateBeloep';
-import LangKey from '../locales/LangKey';
+import LangKey from '../locale/LangKey';
 
 describe('validateBeloep', () => {
   it('should verify that ther is a beloep when required', () => {

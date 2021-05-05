@@ -12,7 +12,7 @@ import KravListe from './KravListe';
 import KravSammendrag from './KravSammendrag';
 import { RefusjonskravStatus } from '../../state/oversikt-krav/OversiktKravItem';
 import { useTranslation } from 'react-i18next';
-import LangKey from '../../locales/LangKey';
+import LangKey from '../../locale/LangKey';
 
 interface OversiktKravProps {
   state?: OversiktKravState;

@@ -2,7 +2,7 @@ import { Dato } from '../utils/dato/Dato';
 import isBeforeMinDate from '../utils/isBeforeMinDate';
 import { minDate } from '../config/dager';
 import ValidationResult from './ValidationResult';
-import LangKey from '../locales/LangKey';
+import LangKey from '../locale/LangKey';
 
 export const validateTil = (
   fra: Dato | undefined,

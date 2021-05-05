@@ -4,8 +4,8 @@ import React from 'react';
 import './BekreftOpplysningerPanel.scss';
 import { useTranslation } from 'react-i18next';
 import Tekstomrade from 'nav-frontend-tekstomrade';
-import LangKey from '../../../locales/LangKey';
-import { LenkeRule } from '../../../utils/tekstomrade/Lenke';
+import LangKey from '../../../locale/LangKey';
+import { LenkeRule } from '../Oversettelse/Lenke';
 
 interface BekreftOpplysningerPanelProps {
   checked: boolean;

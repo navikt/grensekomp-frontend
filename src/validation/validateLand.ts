@@ -1,6 +1,6 @@
 import landListe from '../components/bulk/Bostedland/landListe';
 import ValidationResult from './ValidationResult';
-import LangKey from '../locales/LangKey';
+import LangKey from '../locale/LangKey';
 
 const validateLand = (land: string | undefined, required: boolean = false): ValidationResult | undefined => {
   if (land === undefined || land.length === 0 || land === 'Velg land:') {
