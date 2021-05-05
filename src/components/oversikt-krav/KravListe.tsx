@@ -21,7 +21,6 @@ interface KravListeProps {
 
 const KravListe = (props: KravListeProps) => {
   const { t } = useTranslation();
-  let { language } = useParams();
   return (
     <Row className='kravliste'>
       <Column>

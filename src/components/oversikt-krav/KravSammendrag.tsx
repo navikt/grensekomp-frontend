@@ -2,16 +2,13 @@ import { Column, Row } from 'nav-frontend-grid';
 import { Innholdstittel, Normaltekst, Undertittel } from 'nav-frontend-typografi';
 import React, { useState } from 'react';
 import { Actions } from '../../state/oversikt-krav/OversiktKravActions';
-
 import 'nav-frontend-tabell-style';
 import formatNumberAsCurrency from '../../utils/formatNumberAsCurrency';
 import formatIsoDateAsNoDate from '../../utils/formatIsoDateAsNoDate';
 import SlettKravKnapp from '../felles/knapper/SlettKravKnapp';
-
 import mapIsoTilLand from '../../state/oversikt-krav/mapIsoTilLand';
 import OversiktKravItem from '../../state/oversikt-krav/OversiktKravItem';
 import formaterIsoTimestampAsNoTime from '../../utils/formatIsoTimestampAsNoTimestamp';
-import Lenke from 'nav-frontend-lenker';
 import slettKrav from '../../api/slettRefusjonskrav/slettKrav';
 import ModalWrapper from 'nav-frontend-modal';
 import { Fareknapp, Knapp } from 'nav-frontend-knapper';
