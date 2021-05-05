@@ -56,7 +56,7 @@ const SlettetKravKvittering = (props: SlettetKravKvitteringProps) => {
         <Column>
           <Panel>
             <div>
-              <InternLenke to={lenker.Bulkinnsending}>{t(LangKey.KRAV_NY)}</InternLenke>
+              <InternLenke to={lenker.Innsending}>{t(LangKey.KRAV_NY)}</InternLenke>
             </div>
             <br />
             <div>
