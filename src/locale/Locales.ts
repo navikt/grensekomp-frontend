@@ -189,16 +189,18 @@ const Locales: Record<LangKey, Locale> = {
     nb: 'For å gå videre må du rette opp følgende:'
   },
 
-  ROLLER_OG_TILGANGER: {
-    nb: 'Les mer om roller og tilganger.'
-  },
-
   REFUSJONSKRAV: {
     nb: 'Refusjonskrav ved innreiseforbud'
   },
 
   SLETT_KRAV_LABEL: {
     nb: 'Er du sikker på at du vil slette kravet?'
+  },
+  INGENTILGANGADVARSEL: {
+    nb:
+      'Du har ikke rettigheter til å søke om refusjon for noen bedrifter\n' +
+      'Tildeling av roller foregår i Altinn\n' +
+      '[https://arbeidsgiver.nav.no/min-side-arbeidsgiver/informasjon-om-tilgangsstyring](Les mer om roller og tilganger)'
   },
 
   ID_NUMBER: {

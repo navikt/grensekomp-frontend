@@ -7,6 +7,7 @@ import { Organisasjon } from '@navikt/bedriftsmeny/lib/organisasjon';
 import ArbeidsgiverStatus from '../../../context/arbeidsgiver/ArbeidsgiverStatus';
 import mockHistory from '../../../mockData/mockHistory';
 import { ArbeidsgiverProvider } from '../../../context/arbeidsgiver/ArbeidsgiverContext';
+import LangKey from '../../../locale/LangKey';
 
 describe('Side', () => {
   let container = document.createElement('div');
@@ -38,7 +39,7 @@ describe('Side', () => {
     );
   };
 
-  const IKKE_RETTIGHETER = 'Du har ikke rettigheter';
+  const IKKE_RETTIGHETER = LangKey.INGENTILGANGADVARSEL;
   const BARNE_NODER = 'barnenoder';
   const ARBEIDSGIVERE = [{ Name: '' } as Organisasjon];
   const UTEN_ARBEIDSGIVERE = [];
