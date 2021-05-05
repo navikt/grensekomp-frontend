@@ -11,7 +11,6 @@ import { useTranslation } from 'react-i18next';
 import Oversettelse from '../felles/Oversettelse/Oversettelse';
 import LangKey from '../../locale/LangKey';
 import lenker, { buildLenke } from '../../config/lenker';
-import { useParams } from 'react-router-dom';
 import Language from '../../locale/Language';
 
 interface KravListeProps {
