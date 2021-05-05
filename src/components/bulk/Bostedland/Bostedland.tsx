@@ -4,6 +4,7 @@ import landListe from './landListe';
 
 interface BostedlandProps {
   label: string;
+  language: string;
   value?: string;
   id?: string;
   disabled?: boolean;
@@ -26,7 +27,7 @@ const Bostedland = (props: BostedlandProps) => {
       <option>Velg land:</option>
       {landListe.map((enhet) => (
         <option value={enhet.iso3} key={enhet.iso3}>
-          {enhet.navn}
+          {enhet[props.language]}
         </option>
       ))}
     </Select>

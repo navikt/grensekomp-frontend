@@ -5,6 +5,9 @@ import kalkulerRefusjon from './KalkulerRefusjon';
 import formatNumberAsCurrency from '../../utils/formatNumberAsCurrency';
 import HjelpeLabel from '../felles/HjelpeLabel/HjelpeLabel';
 import Tekstomrade, { BoldRule } from 'nav-frontend-tekstomrade';
+import { useTranslation } from 'react-i18next';
+import Key from '../../locales/Key';
+
 
 interface BeregnetRefusjonProps {
   inntekt?: string;
@@ -13,16 +16,13 @@ interface BeregnetRefusjonProps {
 }
 
 const BeregnetRefusjon = ({ inntekt, fom, tom }: BeregnetRefusjonProps) => {
+  const { t } = useTranslation();
   const refusjon = kalkulerRefusjon(inntekt, fom, tom);
   return (
     <div>
       <Element className='bulk-element-nr'>
-        <HjelpeLabel label='Foreløpig beregnet refusjon'>
-          <Tekstomrade rules={[BoldRule]}>
-            Denne beregningen tar _ikke_ høyde for andre utbetalinger den ansatte eventuelt får fra NAV, for eksempel
-            graderte sykepenger. Utbetalinger du allerede får refusjon for, vil derfor bli trukket fra beløpet du nå
-            søker om.
-          </Tekstomrade>
+        <HjelpeLabel label={t(Key.BEREGNET_REFUSJON)}>
+          <Tekstomrade rules={[BoldRule]}>{t(Key.BEREGNET_REFUSJON_INFO)}</Tekstomrade>
         </HjelpeLabel>
       </Element>
       <div>

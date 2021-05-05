@@ -6,6 +6,8 @@ import { Column, Row } from 'nav-frontend-grid';
 import lenker from '../../config/lenker';
 import InternLenke from '../felles/InternLenke/InternLenke';
 import mapIsoTilLand from '../../state/oversikt-krav/mapIsoTilLand';
+import { useTranslation } from 'react-i18next';
+import Key from '../../locales/Key';
 
 interface SlettetKravKvitteringProps {
   identitetsnummer?: string;
@@ -16,49 +18,58 @@ interface SlettetKravKvitteringProps {
   refusjon?: number;
 }
 
-const SlettetKravKvittering = (props: SlettetKravKvitteringProps) => (
-  <div className='slettet-krav-kvittering'>
-    <Row>
-      <Column>
-        <Panel>
-          <Sidetittel>Kravet er slettet</Sidetittel>
-        </Panel>
-      </Column>
-    </Row>
+const SlettetKravKvittering = (props: SlettetKravKvitteringProps) => {
+  const { t } = useTranslation();
+  return (
+    <div className='slettet-krav-kvittering'>
+      <Row>
+        <Column>
+          <Panel>
+            <Sidetittel>{t(Key.KRAV_SLETTET)}</Sidetittel>
+          </Panel>
+        </Column>
+      </Row>
 
-    <Row>
-      <Column>
-        <Panel>
-          <Normaltekst>Personnummer/D-nummer: {props.identitetsnummer}</Normaltekst>
-          <Normaltekst>Bostedsland: {mapIsoTilLand(props.land)}</Normaltekst>
-          <Normaltekst>
-            Periode: {props.fom} - {props.tom}
-          </Normaltekst>
-          <Normaltekst>Beregnet månedsinntekt: {props.beloep}</Normaltekst>
-          <Normaltekst>Foreløpig beregnet refusjon: {props.refusjon}</Normaltekst>
-        </Panel>
-      </Column>
-    </Row>
+      <Row>
+        <Column>
+          <Panel>
+            <Normaltekst>
+              {t(Key.ID_NUMBER)}: {props.identitetsnummer}
+            </Normaltekst>
+            <Normaltekst>
+              {t(Key.BOSTEDLAND)}: {mapIsoTilLand(props.land)}
+            </Normaltekst>
+            <Normaltekst>
+              {t(Key.PERIODE)}: {props.fom} - {props.tom}
+            </Normaltekst>
+            <Normaltekst>
+              {t(Key.BEREGNET_INNTEKT)}: {props.beloep}
+            </Normaltekst>
+            <Normaltekst>
+              {t(Key.BEREGNET_REFUSJON)}: {props.refusjon}
+            </Normaltekst>
+          </Panel>
+        </Column>
+      </Row>
 
-    <Row>
-      <Column>
-        <Panel>
-          <div>
-            <InternLenke to={lenker.Bulkinnsending}>
-              Her kan du sende inn nytt krav for denne arbeidstakeren om du vil.
-            </InternLenke>
-          </div>
-          <br />
-          <div>
-            <Lenke href='https://loginservice.nav.no/slo'>Logg ut</Lenke>
-          </div>
-          <div>
-            <Lenke href='/min-side-arbeidsgiver/'>Min side arbeidsgiver</Lenke>
-          </div>
-        </Panel>
-      </Column>
-    </Row>
-  </div>
-);
+      <Row>
+        <Column>
+          <Panel>
+            <div>
+              <InternLenke to={lenker.Bulkinnsending}>{t(Key.KRAV_NY)}</InternLenke>
+            </div>
+            <br />
+            <div>
+              <Lenke href='https://loginservice.nav.no/slo'>{t(Key.LOGG_UT)}</Lenke>
+            </div>
+            <div>
+              <Lenke href='/min-side-arbeidsgiver/'>{t(Key.MIN_SIDE)}</Lenke>
+            </div>
+          </Panel>
+        </Column>
+      </Row>
+    </div>
+  );
+};
 
 export default SlettetKravKvittering;

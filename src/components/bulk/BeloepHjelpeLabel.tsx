@@ -4,9 +4,11 @@ import { Normaltekst, Undertittel } from 'nav-frontend-typografi';
 import ModalWrapper from 'nav-frontend-modal';
 import Veilederpanel from 'nav-frontend-veilederpanel';
 import './BeloepHjelpeLabel.scss';
-import Lenke from 'nav-frontend-lenker';
 import LeggTilKnapp from '../felles/knapper/LeggTilKnapp';
 import SmilendeKar from '../oversikt-krav/SmilendeKar';
+import { useTranslation } from 'react-i18next';
+import Key from '../../locales/Key';
+import Oversettelse from '../../locales/Oversettelse';
 
 const HjelpetekstIkon = (
   <svg
@@ -33,6 +35,7 @@ const Sprsml = () => HjelpetekstIkon;
 
 const BeloepHjelpeLabel = () => {
   const [eksempelOpen, setEksempelOpen] = useState<boolean>(false);
+  const { t } = useTranslation();
 
   const handleCloseButton = (evt) => {
     evt.preventDefault();
@@ -46,54 +49,29 @@ const BeloepHjelpeLabel = () => {
 
   return (
     <div className='beloephjelpelabel'>
-      <span className='hjelpetekst-beskrivelse'>Beregnet månedsinntekt</span>
+      <span className='hjelpetekst-beskrivelse'>{t(Key.BEREGNET_INNTEKT)}</span>
       <div className='hjelpetekst-refusjon'>
         <ModalWrapper
           isOpen={eksempelOpen}
           onRequestClose={() => setEksempelOpen(false)}
           closeButton={false}
-          contentLabel='Beregning av månedsinntekt'
+          contentLabel={t(Key.BEREGNING_INNTEKT)}
           className='eksempel-modal'
         >
           <Veilederpanel svg={<SmilendeKar />}>
-            <Undertittel>Beregning av månedsinntekt</Undertittel>
+            <Undertittel>{t(Key.BEREGNING_INNTEKT)}</Undertittel>
             <Normaltekst>
-              <ul className='leftallign-list'>
-                <li>
-                  Legg alltid inntekten i månedene oktober, november, desember 2020 når du skal fastsette
-                  beregningsperioden. Dette er et unntak fra hovedregelen.
-                </li>
-
-                <li>
-                  Ut over dette gjelder{' '}
-                  <Lenke
-                    target='_blank'
-                    href='https://www.nav.no/no/bedrift/tjenester-og-skjemaer/nav-og-altinn-tjenester/inntektsmelding/beregningsregler-for-sykepenger'
-                  >
-                    samme beregningsregler som for sykepenger.
-                  </Lenke>
-                </li>
-                <li>
-                  Hvilke{' '}
-                  <Lenke
-                    target='_blank'
-                    href='https://www.nav.no/no/bedrift/oppfolging/sykmeldt-arbeidstaker/sykepenger/inntekter-som-innga%CC%8Ar-i-beregning-av-ma%CC%8Anedsinntekten'
-                  >
-                    inntekter som kan tas med i beregningen
-                  </Lenke>{' '}
-                  er det også viktig å være klar over.
-                </li>
-              </ul>
+              <Oversettelse langKey={Key.BELOEP_HJELPE_INFO} />
             </Normaltekst>
             <LeggTilKnapp className='lukke-knapp' onClick={(evt) => handleCloseButton(evt)}>
-              Lukk dette vinduet
+              {t(Key.CLOSE)}
             </LeggTilKnapp>
           </Veilederpanel>
         </ModalWrapper>
         <div className='hjelpetekst'>
           <button role='link' className='hjelpetekst__apneknapp' onClick={(evt) => handleOpenButton(evt)}>
             <Sprsml />
-            <span className='sr-only'>Hjelp</span>
+            <span className='sr-only'>{t(Key.HELP)}</span>
           </button>
         </div>
       </div>

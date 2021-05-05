@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { Reducer, useEffect, useReducer } from 'react';
 import { Column, Row } from 'nav-frontend-grid';
 import ServerFeilAdvarsel from '../felles/ServerFeilAdvarsel';
 import Panel from 'nav-frontend-paneler';
@@ -10,7 +10,7 @@ import { DatoVelger } from '@navikt/helse-arbeidsgiver-felles-frontend';
 import LoggetUtAdvarsel from '../login/LoggetUtAdvarsel';
 import BulkReducer from '../../state/bulk/BulkReducer';
 import BulkState, { defaultBulkState, MAX_ITEMS } from '../../state/bulk/BulkState';
-import { Actions } from '../../state/bulk/BulkActions';
+import { Actions, BulkActions } from '../../state/bulk/BulkActions';
 import environment from '../../config/environment';
 import postBulk from '../../api/bulk/postBulk';
 import mapBulkRequest from '../../api/bulk/mapBulkRequest';
@@ -18,7 +18,6 @@ import Kvittering from '../kvittering';
 import { useArbeidsgiver } from '../../context/arbeidsgiver/ArbeidsgiverContext';
 import Side from '../felles/Side';
 import '../felles/knapper/LeggTilKnapp.sass';
-import Lenke from 'nav-frontend-lenker';
 import './BulkInnsending.sass';
 import RadNr from '../felles/RadNr';
 import LeggTilKnapp from '../felles/knapper/LeggTilKnapp';
@@ -29,17 +28,26 @@ import { Hovedknapp } from 'nav-frontend-knapper';
 import { toDate } from '../../utils/dato/toDate';
 import Bostedland from './Bostedland/Bostedland';
 import { maxDate, minDate } from '../../config/dager';
-import FraHjelpeLabel from './FraHjelpeLabel';
-import TilHjelpeLabel from './TilHjelpeLabel';
 import BeregnetRefusjon from './BeregnetRefusjon';
 import BeloepHjelpeLabel from './BeloepHjelpeLabel';
+import { useTranslation } from 'react-i18next';
+import HjelpeLabel from '../felles/HjelpeLabel/HjelpeLabel';
+import { i18n } from 'i18next';
+import Oversettelse from '../../locales/Oversettelse';
+import Key from '../../locales/Key';
 
 interface BulkInnsendingProps {
   state?: BulkState;
 }
 
 const BulkInnsending = (props: BulkInnsendingProps) => {
-  const [state, dispatch] = useReducer(BulkReducer, props.state, defaultBulkState);
+  const { t, i18n } = useTranslation();
+
+  const BulkReducerSettOpp = (i18n: i18n): Reducer<BulkState, BulkActions> => (state: BulkState, action: BulkActions) =>
+    BulkReducer(state, action, i18n);
+
+  const BulkReducerI18n: Reducer<BulkState, BulkActions> = BulkReducerSettOpp(i18n);
+  const [state, dispatch] = useReducer(BulkReducerI18n, props.state, defaultBulkState);
   const { arbeidsgiverId } = useArbeidsgiver();
   const showDeleteButton = state.items && state.items.length > 1;
 
@@ -78,12 +86,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
   }, [state.validated, state.progress, state.feilmeldinger, state.submitting, state.bekreft, state]);
 
   return (
-    <Side
-      bedriftsmeny={true}
-      className='bulk-innsending'
-      sidetittel='Refusjon for kompensasjon ved innreiseforbud'
-      subtitle='Bulkinnsending'
-    >
+    <Side bedriftsmeny={true} className='bulk-innsending' sidetittel={t(Key.SIDETITTEL)} subtitle={'Subtitle'}>
       <Row>
         <ServerFeilAdvarsel isOpen={state.serverError} onClose={handleCloseServerFeil} />
         <Column>
@@ -91,55 +94,13 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
           {state.progress != true && state.kvittering != true && (
             <>
               <Panel>
-                <Ingress>
-                  Arbeidsgivere er pålagt å utbetale kompensasjon til ansatte som taper inntekt fordi de ikke kan møte
-                  på arbeid som følge av innreiseforbudet under pandemien. Arbeidsgiveren forskutterer kompensasjonen og
-                  krever refusjon fra NAV.
-                </Ingress>
-                <Ingress className='air-top'>
-                  Alle felter må fylles ut. Du kan sende inntil <strong>50 krav om gangen</strong>. Søker du om{' '}
-                  <strong>flere perioder</strong> for samme person, velg «Legg til enda en ansatt», bruk samme fnr/dnr,
-                  og skriv inn ny periode.
-                </Ingress>
-              </Panel>
-              <Panel className='bulletpoint-wrapper'>
-                <ul className='ingress-listepunkter'>
-                  <li>
-                    Ordningen gjelder for arbeidstakere som var ansatt og hadde påbegynt arbeidet 29. januar da
-                    innreiseforbudet ble innført.
-                  </li>
-                  <li>Den ansatte må ha vært i jobb i minst fire uker før det tidspunktet man krever refusjon fra.</li>
-                  <li>Det gis bare kompensasjon for dager som den ansatte faktisk skulle ha jobbet.</li>
-                  <li>
-                    Hvis arbeidsgiveren er kjent med at den ansatte har hatt inntekt fra en annen jobb, skal det ikke
-                    gis kompensasjon for dager som den ansatte har hatt annen inntekt. Det samme gjelder ytelser fra
-                    bostedslandet hvis arbeidsgiveren er kjent med det.
-                  </li>
-                  <li>Avviklet ferie kan omgjøres til arbeidsdager som det gis refusjon for.</li>
-                  <li>
-                    Kompensasjonen er 70 % av sykepengegrunnlaget, begrenset opp til 70 % av 6G,&nbsp;
-                    <Lenke
-                      target='_blank'
-                      href='https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden'
-                    >
-                      folketrygdens grunnbeløp
-                    </Lenke>
-                  </li>
-                  <li>
-                    <Lenke
-                      target='_blank'
-                      href='https://www.nav.no/no/person/arbeid/sykmeldt-arbeidsavklaringspenger-og-yrkesskade/nyheter/kompensasjon-til-utestengte-eos-borgere/automatisert-saksbehandling-i-forbindelse-med-innreiseforbudet'
-                    >
-                      Søknaden blir behandlet automatisk.
-                    </Lenke>
-                  </li>
-                </ul>
+                <Oversettelse langKey={Key.BULKINNSENDING_INFO} />
               </Panel>
 
               <Skillelinje />
 
               <Panel>
-                <SkjemaGruppe aria-live='polite' legend='Oppgi ansatte, fraværsperiode og beløp'>
+                <SkjemaGruppe aria-live='polite' legend={t(Key.SKJEMA_LEGEND)}>
                   {state.items?.map((item, index) => (
                     <Row
                       key={item.uniqueKey}
@@ -148,7 +109,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                       }`}
                     >
                       <Column md='1' className='bulk-kolonne-1'>
-                        <Element className='bulk-element-nr'>{index === 0 ? 'Nr.' : '\u00A0'}</Element>
+                        <Element className='bulk-element-nr'>{index === 0 ? t(Key.NUMBER) : '\u00A0'}</Element>
                         <RadNr nr={index + 1} />
                       </Column>
 
@@ -158,8 +119,8 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                             <Fnr
                               id={'fnr_' + item.uniqueKey}
                               fnr={item.fnr}
-                              label='Fødsels-/D-nummer'
-                              placeholder='11 siffer'
+                              label={t(Key.FNR_LABEL)}
+                              placeholder={t(Key.FNR_PLACEHOLDER)}
                               feilmelding={item.fnrError}
                               disabled={item.accepted}
                               className='bulk-element'
@@ -177,7 +138,8 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                           <Column md='4'>
                             <Bostedland
                               id={'land_' + item.uniqueKey}
-                              label='Bostedsland'
+                              label={t(Key.LAND_LABEL)}
+                              language={i18n.language}
                               feilmelding={item.landError}
                               disabled={item.accepted}
                               value={item.land}
@@ -197,6 +159,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                             {showDeleteButton && (
                               <Slettknapp
                                 disabled={item.accepted}
+                                label={t(Key.SLETT_LABEL)}
                                 onClick={(event) => {
                                   dispatch({
                                     type: Actions.DeleteItem,
@@ -215,8 +178,10 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               id={'fom_' + item.uniqueKey}
                               dato={toDate(item.fom)}
                               feilmelding={item.fomError}
-                              label={<FraHjelpeLabel />}
-                              placeholder='dd.mm.åå'
+                              label={
+                                <HjelpeLabel label={t(Key.FRA_HJELPE_LABEL)}>{t(Key.FRA_HJELPE_CONTENT)}</HjelpeLabel>
+                              }
+                              placeholder={t(Key.DATO_PLACEHOLDER)}
                               disabled={item.accepted}
                               minDate={minDate}
                               maxDate={maxDate}
@@ -237,8 +202,10 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               id={'tom_' + item.uniqueKey}
                               dato={toDate(item.tom)}
                               feilmelding={item.tomError}
-                              label={<TilHjelpeLabel />}
-                              placeholder='dd.mm.åå'
+                              label={
+                                <HjelpeLabel label={t(Key.TIL_HJELPE_LABEL)}>{t(Key.TIL_HJELPE_CONTENT)}</HjelpeLabel>
+                              }
+                              placeholder={t(Key.DATO_PLACEHOLDER)}
                               disabled={item.accepted}
                               minDate={minDate}
                               maxDate={maxDate}
@@ -258,7 +225,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                             <Input
                               id={'beloep_' + item.uniqueKey}
                               label={<BeloepHjelpeLabel />}
-                              placeholder='Beløp'
+                              placeholder={t(Key.BELOEP_PLACEHOLDER)}
                               feil={item.beloepError}
                               value={item.beloep}
                               disabled={item.accepted}
@@ -293,7 +260,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                             });
                           }}
                         >
-                          + Legg til enda en ansatt
+                          + {t(Key.ADD)}
                         </LeggTilKnapp>
                       )}
                     </Column>
@@ -317,7 +284,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
               <Feilmeldingspanel feilmeldinger={state.feilmeldinger} />
 
               <Panel>
-                <Hovedknapp onClick={handleSubmitClicked}>Send krav om refusjon</Hovedknapp>
+                <Hovedknapp onClick={handleSubmitClicked}>{t(Key.SEND)}</Hovedknapp>
               </Panel>
             </>
           )}

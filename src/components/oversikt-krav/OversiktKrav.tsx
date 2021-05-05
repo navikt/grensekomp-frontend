@@ -4,7 +4,6 @@ import OversiktKravReducer from '../../state/oversikt-krav/OversiktKravReducer';
 import OversiktKravState, { defaultOversiktKravState } from '../../state/oversikt-krav/OversiktKravState';
 import ServerFeilAdvarsel from '../felles/ServerFeilAdvarsel';
 import Side from '../felles/Side';
-
 import 'nav-frontend-tabell-style';
 import refusjonskravList from '../../api/refusjonskravList/refusjonskravList';
 import { useArbeidsgiver } from '../../context/arbeidsgiver/ArbeidsgiverContext';
@@ -12,12 +11,15 @@ import unikeInnsendinger from '../../state/oversikt-krav/unikeInnsendinger';
 import KravListe from './KravListe';
 import KravSammendrag from './KravSammendrag';
 import { RefusjonskravStatus } from '../../state/oversikt-krav/OversiktKravItem';
+import { useTranslation } from 'react-i18next';
+import Key from '../../locales/Key';
 
 interface OversiktKravProps {
   state?: OversiktKravState;
 }
 
 const OversiktKrav = (props: OversiktKravProps) => {
+  const { t } = useTranslation();
   const [state, dispatch] = useReducer(OversiktKravReducer, props.state, defaultOversiktKravState);
   const { arbeidsgiverId } = useArbeidsgiver();
 
@@ -53,8 +55,8 @@ const OversiktKrav = (props: OversiktKravProps) => {
     <Side
       bedriftsmeny={true}
       className={`oversikt-krav${state.aktivtKrav ? ' aktive-krav' : ''}`}
-      sidetittel='Refusjon for kompensasjon ved innreiseforbud'
-      subtitle='Refusjoner'
+      sidetittel={t(Key.OVERSIKTKRAV_TITLE)}
+      subtitle={t(Key.OVERSIKTKRAV_SUBTITLE)}
     >
       <ServerFeilAdvarsel isOpen={state.serverError} onClose={handleCloseServerFeil} />
       {!state.aktivtKrav && <KravListe innsendinger={innsendinger} onKravClick={onKravClickHandler} />}

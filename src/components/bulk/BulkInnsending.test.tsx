@@ -9,6 +9,7 @@ import testFnr from '../../mockData/testFnr';
 import testOrganisasjon from '../../mockData/testOrganisasjoner';
 import BulkInnsending from './BulkInnsending';
 import mockFetch from '../../mockData/mockFetch';
+import LanguageProvider from '../../locales/LanguageProvider';
 
 const arbeidsgivere: Organisasjon[] = testOrganisasjon;
 
@@ -17,29 +18,30 @@ describe('BulkInnsending', () => {
     mockFetch(200, {});
   });
 
-  it('should have no a11y violations', async () => {
-    const { container } = render(
-      <MemoryRouter>
-        <ArbeidsgiverProvider baseUrl='/base/url'>
+  const buildBulkInnsending = (baseUrl: string, status: number, arbeidsgivere: any, arbeidsgiverId: string) => (
+    <MemoryRouter>
+      <LanguageProvider>
+        <ArbeidsgiverProvider
+          arbeidsgivere={arbeidsgivere}
+          status={status}
+          arbeidsgiverId={arbeidsgiverId}
+          baseUrl={baseUrl}
+        >
           <BulkInnsending />
         </ArbeidsgiverProvider>
-      </MemoryRouter>
-    );
+      </LanguageProvider>
+    </MemoryRouter>
+  );
+
+  it('should have no a11y violations', async () => {
+    const { container } = render(buildBulkInnsending('/base/url', 200, arbeidsgivere, '810007842'));
     const results = await axe(container);
-
     expect(results).toHaveNoViolations();
-
     cleanup();
   });
 
   it('should show warnings when input is missing', () => {
-    render(
-      <MemoryRouter>
-        <ArbeidsgiverProvider arbeidsgivere={arbeidsgivere} status={200} arbeidsgiverId='810007842' baseUrl='/base/url'>
-          <BulkInnsending />
-        </ArbeidsgiverProvider>
-      </MemoryRouter>
-    );
+    render(buildBulkInnsending('/base/url', 200, arbeidsgivere, '810007842'));
     const submitButton = screen.getByText(/Send krav om refusjon/);
 
     submitButton.click();
@@ -59,13 +61,7 @@ describe('BulkInnsending', () => {
   });
 
   it('should show warnings when input is missing, and the warning should dissapear when fixed', () => {
-    render(
-      <MemoryRouter>
-        <ArbeidsgiverProvider arbeidsgivere={arbeidsgivere} status={200} arbeidsgiverId='810007842' baseUrl='/base/url'>
-          <BulkInnsending />
-        </ArbeidsgiverProvider>
-      </MemoryRouter>
-    );
+    render(buildBulkInnsending('/base/url', 200, arbeidsgivere, '810007842'));
     const submitButton = screen.getByText(/Send krav om refusjon/);
     const fnrInput = screen.getByLabelText(/Fødsel/);
     const BelopInput = screen.getAllByLabelText(/Beregnet månedsinntekt/);

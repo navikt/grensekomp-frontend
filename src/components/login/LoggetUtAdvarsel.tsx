@@ -2,17 +2,22 @@ import React from 'react';
 import ModalWrapper from 'nav-frontend-modal';
 import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 import { Innholdstittel } from 'nav-frontend-typografi';
-import injectRedirectPath from './injectRedirectPath';
 import InternLenke from '../felles/InternLenke';
+import { useTranslation } from 'react-i18next';
+import Oversettelse from '../../locales/Oversettelse';
+import Key from '../../locales/Key';
 import lenker from '../../config/lenker';
+import { useParams } from 'react-router-dom';
+
 
 interface LoggetUtAdvarselProps {
   onClose: Function;
 }
 
 const LoggetUtAdvarsel = ({ onClose }: LoggetUtAdvarselProps) => {
-  const loginServiceUrlAfterRedirect = injectRedirectPath(lenker.TokenFornyet);
-
+  const { t } = useTranslation();
+  let { language } = useParams();
+  const loginServiceUrlAfterRedirect = injectRedirectPath(lenker.TokenFornyet, language);
   const handleCloseModal = () => {
     onClose();
   };
@@ -27,19 +32,9 @@ const LoggetUtAdvarsel = ({ onClose }: LoggetUtAdvarselProps) => {
       shouldCloseOnOverlayClick={false}
     >
       <AlertStripeFeil className='logget-ut-advarsel__innhold'>
-        <Innholdstittel>Du er blitt logget ut, følg instruksjonene for ikke å miste data</Innholdstittel>
-        <ul>
-          <li>Ikke lukk dette vinduet</li>
-          <li>
-            <a href={loginServiceUrlAfterRedirect} rel='noopener noreferrer' target='_blank'>
-              Åpne ID-Porten (innlogging) i nytt vindu ved å klikke på denne lenken.
-            </a>
-          </li>
-          <li>Logg inn på nytt i ID-porten.</li>
-          <li>Returner til dette vinduet.</li>
-          <li>Lukk denne meldingen og klikk igjen på knappen “Send søknad om refusjon”</li>
-        </ul>
-        <InternLenke onClick={() => handleCloseModal()}>Jeg har logget inn på nytt - lukk dette vinduet</InternLenke>
+        <Innholdstittel>{t(Key.LOGGET_UT)}</Innholdstittel>
+        <Oversettelse langKey={Key.LOGGETUTADVARSEL_INFO} />
+        <InternLenke onClick={() => handleCloseModal()}>{t(Key.LOGGET_INN)}</InternLenke>
       </AlertStripeFeil>
     </ModalWrapper>
   );

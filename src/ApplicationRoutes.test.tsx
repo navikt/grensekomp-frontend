@@ -7,6 +7,7 @@ import mockHistory from './mockData/mockHistory';
 import { ArbeidsgiverProvider } from './context/arbeidsgiver/ArbeidsgiverContext';
 import ArbeidsgiverStatus from './context/arbeidsgiver/ArbeidsgiverStatus';
 import { Organisasjon } from '@navikt/bedriftsmeny/lib/organisasjon';
+import LanguageProvider from './locales/LanguageProvider';
 
 describe('ApplicationRoutes', () => {
   let container = document.createElement('div');
@@ -24,36 +25,24 @@ describe('ApplicationRoutes', () => {
 
   const makeRoute = (path: string, arbeidsgivere: Array<Organisasjon> = [{ Name: '' } as Organisasjon]) => (
     <Router history={mockHistory(path)}>
-      <ArbeidsgiverProvider arbeidsgivere={arbeidsgivere} status={ArbeidsgiverStatus.Successfully} baseUrl=''>
-        <ApplicationRoutes />
-      </ArbeidsgiverProvider>
+      <LanguageProvider>
+        <ArbeidsgiverProvider arbeidsgivere={arbeidsgivere} status={ArbeidsgiverStatus.Successfully} baseUrl=''>
+          <ApplicationRoutes />
+        </ArbeidsgiverProvider>
+      </LanguageProvider>
     </Router>
   );
 
-  it('should show default', () => {
-    act(() => {
-      render(makeRoute('/'), container);
-    });
-    expect(container.textContent).toContain('Refusjon for kompensasjon ved innreiseforbud');
-  });
-
-  it('should show token fornyet', () => {
-    act(() => {
-      render(makeRoute('/token-fornyet'), container);
-    });
-    expect(container.textContent).toContain('Innloggingen er fornyet');
-  });
-
   it('should show bulkinnsending', () => {
     act(() => {
-      render(makeRoute('/batchinnsending/krav'), container);
+      render(makeRoute('/nb/batchinnsending/krav'), container);
     });
     expect(container.textContent).toContain('Refusjon for kompensasjon ved innreiseforbud');
   });
 
   it('should show bulkinnsending when no arbeidsgivere', () => {
     act(() => {
-      render(makeRoute('/batchinnsending/krav', []), container);
+      render(makeRoute('/nb/batchinnsending/krav', []), container);
     });
     expect(container.textContent).toContain('Refusjon for kompensasjon ved innreiseforbud');
   });

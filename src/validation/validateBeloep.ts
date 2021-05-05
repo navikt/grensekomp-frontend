@@ -1,16 +1,22 @@
 import isNumericString from '../utils/isNumericString';
+import ValidationResult from './ValidationResult';
+import Key from '../locales/Key';
 
-const validateBeloep = (beloep: string | undefined, max: number, required: boolean = false): string | undefined => {
+const validateBeloep = (
+  beloep: string | undefined,
+  max: number,
+  required: boolean = false
+): ValidationResult | undefined => {
   if (beloep === undefined || beloep.length === 0) {
-    return required ? 'Mangler beløp' : undefined;
+    return required ? { key: Key.AMOUNT_MISSING } : undefined;
   }
 
   if (!isNumericString(beloep)) {
-    return required ? 'Oppgi beløp med kun tall med maks to tall etter komma' : undefined;
+    return required ? { key: Key.AMOUNT_NOT_NUMERIC } : undefined;
   }
 
   if (parseInt(beloep) > max) {
-    return required ? 'For høyt beløp' : undefined;
+    return required ? { key: Key.AMOUNT_TOO_HIGH } : undefined;
   }
 };
 

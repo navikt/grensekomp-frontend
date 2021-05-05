@@ -1,18 +1,23 @@
 import { Dato } from '../utils/dato/Dato';
 import isBeforeMinDate from '../utils/isBeforeMinDate';
 import { minDate } from '../config/dager';
+import ValidationResult from './ValidationResult';
+import Key from '../locales/Key';
 
 export const validateTil = (
   fra: Dato | undefined,
   til: Dato | undefined,
   required: boolean = false
-): string | undefined => {
+): ValidationResult | undefined => {
   if (!til?.value) {
-    return required ? 'Mangler til dato' : undefined;
+    return required ? { key: Key.TIL_MISSING } : undefined;
   }
 
   if (required && til?.value && isBeforeMinDate(til)) {
-    return `Dato kan bare være fra og med ${minDate.toLocaleDateString('nb')}`;
+    return {
+      key: Key.TIL_INVALID,
+      value: minDate.toLocaleDateString('nb')
+    };
   }
 
   if (!fra || !til) {
@@ -23,13 +28,13 @@ export const validateTil = (
     return;
   }
   if (fra.error || !fra.millis) {
-    return fra.error;
+    return { key: Key.FOM_ERROR };
   }
   if (til.error || !til.millis) {
-    return til.error;
+    return { key: Key.TIL_ERROR };
   }
   if (fra.millis > til.millis) {
-    return 'Til dato kan ikke være før fra dato';
+    return { key: Key.TIL_TOO_EARLY };
   }
 };
 
