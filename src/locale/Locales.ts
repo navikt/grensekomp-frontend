@@ -276,7 +276,7 @@ const Locales: Record<LangKey, Locale> = {
     nb: 'Jeg har logget inn på nytt - lukk dette vinduet'
   },
 
-  SERVERFEILADVARSEL_INFO: {
+  SERVER_FEIL_ADVARSEL_TEXT: {
     nb:
       '_Det har desverre oppstått en teknisk feil hos oss_\n\n' +
       'Prøv igjen litt senere, og [kontakt oss gjerne dersom det ikke ordner seg.](https://arbeidsgiver.nav.no/kontakt-oss/)'

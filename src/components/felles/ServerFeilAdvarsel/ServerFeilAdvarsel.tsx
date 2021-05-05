@@ -24,7 +24,7 @@ const ServerFeilAdvarsel = (props: ServerFeilAdvarselProps) => {
       shouldCloseOnOverlayClick={false}
     >
       <AlertStripeFeil className='server-feil-advarsel--innhold'>
-        <Oversettelse langKey={LangKey.SERVER_FEIL_ADVARSEL} />
+        <Oversettelse langKey={LangKey.SERVER_FEIL_ADVARSEL_TEXT} />
         <InternLenke onClick={() => props.onClose()}>{t(LangKey.SERVER_FEIL_ADVARSEL_HIDE)}</InternLenke>
       </AlertStripeFeil>
     </ModalWrapper>
