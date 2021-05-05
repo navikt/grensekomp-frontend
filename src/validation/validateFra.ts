@@ -2,22 +2,22 @@ import { Dato } from '../utils/dato/Dato';
 import isBeforeMinDate from '../utils/isBeforeMinDate';
 import { minDate } from '../config/dager';
 import ValidationResult from './ValidationResult';
-import Key from '../locales/Key';
+import LangKey from '../locales/LangKey';
 
 export const validateFra = (fra: Dato | undefined, required: boolean = false): ValidationResult | undefined => {
   if (required && !fra?.value) {
-    return { key: Key.FOM_MISSING };
+    return { key: LangKey.FOM_MISSING };
   }
 
   if (required && fra?.value && isBeforeMinDate(fra)) {
     return {
-      key: Key.FOM_INVALID,
+      key: LangKey.FOM_INVALID,
       value: minDate.toLocaleDateString('nb')
     };
   }
 
   if (fra && fra.error) {
-    return required ? { key: Key.FOM_ERROR } : undefined;
+    return required ? { key: LangKey.FOM_ERROR } : undefined;
   }
 };
 

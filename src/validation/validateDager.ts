@@ -3,7 +3,7 @@ import { Dato } from '../utils/dato/Dato';
 import dayjs from 'dayjs';
 import { datoToString } from '../utils/dato/datoToString';
 import ValidationResult from './ValidationResult';
-import Key from '../locales/Key';
+import LangKey from '../locales/LangKey';
 
 const validateDager = (
   dager: string | undefined,
@@ -16,15 +16,15 @@ const validateDager = (
     return undefined;
   }
   if (dager === undefined || dager.length === 0) {
-    return { key: Key.DAY_MISSING };
+    return { key: LangKey.DAY_MISSING };
   }
 
   if (!isNumericString(dager)) {
-    return { key: Key.DAY_DIGITS_ONLY };
+    return { key: LangKey.DAY_DIGITS_ONLY };
   }
 
   if (parseInt(dager) > max) {
-    return { key: Key.DAY_TOO_HIGH };
+    return { key: LangKey.DAY_TOO_HIGH };
   }
 
   if (
@@ -32,7 +32,7 @@ const validateDager = (
     til &&
     parseInt(dager) > dayjs(datoToString(til), 'DD.MM.YYYY').diff(dayjs(datoToString(fra), 'DD.MM.YYYY'), 'day') + 1
   ) {
-    return { key: Key.DAY_INVALID };
+    return { key: LangKey.DAY_INVALID };
   }
 };
 

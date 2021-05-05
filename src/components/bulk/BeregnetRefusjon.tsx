@@ -6,8 +6,7 @@ import formatNumberAsCurrency from '../../utils/formatNumberAsCurrency';
 import HjelpeLabel from '../felles/HjelpeLabel/HjelpeLabel';
 import Tekstomrade, { BoldRule } from 'nav-frontend-tekstomrade';
 import { useTranslation } from 'react-i18next';
-import Key from '../../locales/Key';
-
+import LangKey from '../../locales/LangKey';
 
 interface BeregnetRefusjonProps {
   inntekt?: string;
@@ -21,8 +20,8 @@ const BeregnetRefusjon = ({ inntekt, fom, tom }: BeregnetRefusjonProps) => {
   return (
     <div>
       <Element className='bulk-element-nr'>
-        <HjelpeLabel label={t(Key.BEREGNET_REFUSJON)}>
-          <Tekstomrade rules={[BoldRule]}>{t(Key.BEREGNET_REFUSJON_INFO)}</Tekstomrade>
+        <HjelpeLabel label={t(LangKey.BEREGNET_REFUSJON)}>
+          <Tekstomrade rules={[BoldRule]}>{t(LangKey.BEREGNET_REFUSJON_INFO)}</Tekstomrade>
         </HjelpeLabel>
       </Element>
       <div>

@@ -9,7 +9,7 @@ import Skillelinje from '../felles/Skillelinje';
 import './KravListe.scss';
 import { useTranslation } from 'react-i18next';
 import Oversettelse from '../../locales/Oversettelse';
-import Key from '../../locales/Key';
+import LangKey from '../../locales/LangKey';
 import lenker from '../../config/lenker';
 import { useParams } from 'react-router-dom';
 
@@ -24,9 +24,9 @@ const KravListe = (props: KravListeProps) => {
   return (
     <Row className='kravliste'>
       <Column>
-        <Innholdstittel className='kravliste-tittel'>{t(Key.KRAVLISTE_TITLE)}</Innholdstittel>
+        <Innholdstittel className='kravliste-tittel'>{t(LangKey.KRAVLISTE_TITLE)}</Innholdstittel>
         <Oversettelse
-          langKey={Key.KRAVLISTE_INFO}
+          langKey={LangKey.KRAVLISTE_INFO}
           variables={{ path: lenker.Bulkinnsending.replace(':language', language) }}
         />
         <Skillelinje />
@@ -35,7 +35,7 @@ const KravListe = (props: KravListeProps) => {
             props.innsendinger.map((item) => (
               <li className='kravliste-krav' key={item}>
                 <Lenke href='#' onClick={() => props.onKravClick(item)}>
-                  {formaterIsoTimestampAsNoTime(item)} - {t(Key.REFUSJONSKRAV)}
+                  {formaterIsoTimestampAsNoTime(item)} - {t(LangKey.REFUSJONSKRAV)}
                 </Lenke>
               </li>
             ))}

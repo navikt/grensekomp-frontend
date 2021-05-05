@@ -1,5 +1,5 @@
 import validateBekreft from './validateBekreft';
-import Key from '../locales/Key';
+import LangKey from '../locales/LangKey';
 
 describe('validateBekreft', () => {
   it('should not produce error when checked', () => {
@@ -11,7 +11,7 @@ describe('validateBekreft', () => {
   });
 
   it('should produce error message when not checked', () => {
-    expect(validateBekreft(false, true)?.key).toBe(Key.BEKREFT);
+    expect(validateBekreft(false, true)?.key).toBe(LangKey.BEKREFT);
   });
 
   it('should give no errors when checked', () => {

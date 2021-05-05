@@ -5,7 +5,7 @@ import { Innholdstittel } from 'nav-frontend-typografi';
 import InternLenke from '../felles/InternLenke';
 import { useTranslation } from 'react-i18next';
 import Oversettelse from '../../locales/Oversettelse';
-import Key from '../../locales/Key';
+import LangKey from '../../locales/LangKey';
 import lenker from '../../config/lenker';
 import { useParams } from 'react-router-dom';
 import injectRedirectPath from './injectRedirectPath';
@@ -32,9 +32,9 @@ const LoggetUtAdvarsel = ({ onClose }: LoggetUtAdvarselProps) => {
       shouldCloseOnOverlayClick={false}
     >
       <AlertStripeFeil className='logget-ut-advarsel__innhold'>
-        <Innholdstittel>{t(Key.LOGGET_UT)}</Innholdstittel>
-        <Oversettelse langKey={Key.LOGGETUTADVARSEL_INFO} variables={{ innloggingUrl: 'http://www.vg.no' }} />
-        <InternLenke onClick={() => handleCloseModal()}>{t(Key.LOGGET_INN)}</InternLenke>
+        <Innholdstittel>{t(LangKey.LOGGET_UT)}</Innholdstittel>
+        <Oversettelse langKey={LangKey.LOGGETUTADVARSEL_INFO} variables={{ innloggingUrl: 'http://www.vg.no' }} />
+        <InternLenke onClick={() => handleCloseModal()}>{t(LangKey.LOGGET_INN)}</InternLenke>
       </AlertStripeFeil>
     </ModalWrapper>
   );

@@ -2,7 +2,7 @@ import { Dato } from '../utils/dato/Dato';
 import isBeforeMinDate from '../utils/isBeforeMinDate';
 import { minDate } from '../config/dager';
 import ValidationResult from './ValidationResult';
-import Key from '../locales/Key';
+import LangKey from '../locales/LangKey';
 
 export const validateTil = (
   fra: Dato | undefined,
@@ -10,12 +10,12 @@ export const validateTil = (
   required: boolean = false
 ): ValidationResult | undefined => {
   if (!til?.value) {
-    return required ? { key: Key.TIL_MISSING } : undefined;
+    return required ? { key: LangKey.TIL_MISSING } : undefined;
   }
 
   if (required && til?.value && isBeforeMinDate(til)) {
     return {
-      key: Key.TIL_INVALID,
+      key: LangKey.TIL_INVALID,
       value: minDate.toLocaleDateString('nb')
     };
   }
@@ -28,13 +28,13 @@ export const validateTil = (
     return;
   }
   if (fra.error || !fra.millis) {
-    return { key: Key.FOM_ERROR };
+    return { key: LangKey.FOM_ERROR };
   }
   if (til.error || !til.millis) {
-    return { key: Key.TIL_ERROR };
+    return { key: LangKey.TIL_ERROR };
   }
   if (fra.millis > til.millis) {
-    return { key: Key.TIL_TOO_EARLY };
+    return { key: LangKey.TIL_TOO_EARLY };
   }
 };
 

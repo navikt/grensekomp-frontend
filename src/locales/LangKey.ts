@@ -1,4 +1,4 @@
-enum Key {
+enum LangKey {
   SIDETITTEL = 'SIDETITTEL',
   NUMBER = 'NUMBER',
   FNR_LABEL = 'FNR_LABEL',
@@ -83,4 +83,4 @@ enum Key {
   OVERSIKTKRAV_SUBTITLE = 'OVERSIKTKRAV_SUBTITLE'
 }
 
-export default Key;
+export default LangKey;

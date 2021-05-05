@@ -1,9 +1,9 @@
 import Locale from './Locale';
-import Key from './Key';
+import LangKey from './LangKey';
 import lenker from '../config/lenker';
 import injectRedirectPath from '../components/login/injectRedirectPath';
 
-const Languages: Record<Key, Locale> = {
+const Languages: Record<LangKey, Locale> = {
   SIDETITTEL: {
     nb: 'Refusjon for kompensasjon ved innreiseforbud'
   },

@@ -3,7 +3,7 @@ import ModalWrapper from 'nav-frontend-modal';
 import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 import './ServerFeilAdvarsel.sass';
 import InternLenke from '../InternLenke';
-import Key from '../../../locales/Key';
+import LangKey from '../../../locales/LangKey';
 import Oversettelse from '../../../locales/Oversettelse';
 
 interface ServerFeilAdvarselProps {
@@ -22,7 +22,7 @@ const ServerFeilAdvarsel = (props: ServerFeilAdvarselProps) => {
       shouldCloseOnOverlayClick={false}
     >
       <AlertStripeFeil className='server-feil-advarsel--innhold'>
-        <Oversettelse langKey={Key.SERVERFEILADVARSEL_INFO} />
+        <Oversettelse langKey={LangKey.SERVERFEILADVARSEL_INFO} />
         <InternLenke onClick={() => props.onClose()}>Skjul denne meldingen.</InternLenke>
       </AlertStripeFeil>
     </ModalWrapper>

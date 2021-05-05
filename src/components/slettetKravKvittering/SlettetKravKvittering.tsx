@@ -7,7 +7,7 @@ import lenker from '../../config/lenker';
 import InternLenke from '../felles/InternLenke/InternLenke';
 import mapIsoTilLand from '../../state/oversikt-krav/mapIsoTilLand';
 import { useTranslation } from 'react-i18next';
-import Key from '../../locales/Key';
+import LangKey from '../../locales/LangKey';
 
 interface SlettetKravKvitteringProps {
   identitetsnummer?: string;
@@ -25,7 +25,7 @@ const SlettetKravKvittering = (props: SlettetKravKvitteringProps) => {
       <Row>
         <Column>
           <Panel>
-            <Sidetittel>{t(Key.KRAV_SLETTET)}</Sidetittel>
+            <Sidetittel>{t(LangKey.KRAV_SLETTET)}</Sidetittel>
           </Panel>
         </Column>
       </Row>
@@ -34,19 +34,19 @@ const SlettetKravKvittering = (props: SlettetKravKvitteringProps) => {
         <Column>
           <Panel>
             <Normaltekst>
-              {t(Key.ID_NUMBER)}: {props.identitetsnummer}
+              {t(LangKey.ID_NUMBER)}: {props.identitetsnummer}
             </Normaltekst>
             <Normaltekst>
-              {t(Key.BOSTEDLAND)}: {mapIsoTilLand(props.land)}
+              {t(LangKey.BOSTEDLAND)}: {mapIsoTilLand(props.land)}
             </Normaltekst>
             <Normaltekst>
-              {t(Key.PERIODE)}: {props.fom} - {props.tom}
+              {t(LangKey.PERIODE)}: {props.fom} - {props.tom}
             </Normaltekst>
             <Normaltekst>
-              {t(Key.BEREGNET_INNTEKT)}: {props.beloep}
+              {t(LangKey.BEREGNET_INNTEKT)}: {props.beloep}
             </Normaltekst>
             <Normaltekst>
-              {t(Key.BEREGNET_REFUSJON)}: {props.refusjon}
+              {t(LangKey.BEREGNET_REFUSJON)}: {props.refusjon}
             </Normaltekst>
           </Panel>
         </Column>
@@ -56,14 +56,14 @@ const SlettetKravKvittering = (props: SlettetKravKvitteringProps) => {
         <Column>
           <Panel>
             <div>
-              <InternLenke to={lenker.Bulkinnsending}>{t(Key.KRAV_NY)}</InternLenke>
+              <InternLenke to={lenker.Bulkinnsending}>{t(LangKey.KRAV_NY)}</InternLenke>
             </div>
             <br />
             <div>
-              <Lenke href='https://loginservice.nav.no/slo'>{t(Key.LOGG_UT)}</Lenke>
+              <Lenke href='https://loginservice.nav.no/slo'>{t(LangKey.LOGG_UT)}</Lenke>
             </div>
             <div>
-              <Lenke href='/min-side-arbeidsgiver/'>{t(Key.MIN_SIDE)}</Lenke>
+              <Lenke href='/min-side-arbeidsgiver/'>{t(LangKey.MIN_SIDE)}</Lenke>
             </div>
           </Panel>
         </Column>

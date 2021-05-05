@@ -4,7 +4,7 @@ import { Normaltekst, Sidetittel } from 'nav-frontend-typografi';
 import Lenke from 'nav-frontend-lenker';
 import { Row, Column } from 'nav-frontend-grid';
 import { useTranslation } from 'react-i18next';
-import Key from '../../locales/Key';
+import LangKey from '../../locales/LangKey';
 import Oversettelse from '../../locales/Oversettelse';
 
 const Kvittering = () => {
@@ -14,7 +14,7 @@ const Kvittering = () => {
       <Row>
         <Column>
           <Panel>
-            <Sidetittel>{t(Key.KRAVET_ER_MOTTATT)}</Sidetittel>
+            <Sidetittel>{t(LangKey.KRAVET_ER_MOTTATT)}</Sidetittel>
           </Panel>
         </Column>
       </Row>
@@ -23,7 +23,7 @@ const Kvittering = () => {
         <Column>
           <Panel>
             <Normaltekst>
-              <Oversettelse langKey={Key.KVITTERING_INFO} />
+              <Oversettelse langKey={LangKey.KVITTERING_INFO} />
             </Normaltekst>
           </Panel>
         </Column>
@@ -33,10 +33,10 @@ const Kvittering = () => {
         <Column>
           <Panel>
             <div>
-              <Lenke href='https://loginservice.nav.no/slo'>{t(Key.LOGG_UT)}</Lenke>
+              <Lenke href='https://loginservice.nav.no/slo'>{t(LangKey.LOGG_UT)}</Lenke>
             </div>
             <div>
-              <Lenke href='/min-side-arbeidsgiver/'>{t(Key.MIN_SIDE)}</Lenke>
+              <Lenke href='/min-side-arbeidsgiver/'>{t(LangKey.MIN_SIDE)}</Lenke>
             </div>
           </Panel>
         </Column>

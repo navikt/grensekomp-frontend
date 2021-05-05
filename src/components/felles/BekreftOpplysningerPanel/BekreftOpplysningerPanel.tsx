@@ -4,7 +4,7 @@ import React from 'react';
 import './BekreftOpplysningerPanel.scss';
 import { useTranslation } from 'react-i18next';
 import Tekstomrade from 'nav-frontend-tekstomrade';
-import Key from '../../../locales/Key';
+import LangKey from '../../../locales/LangKey';
 import { LenkeRule } from '../../../utils/tekstomrade/Lenke';
 
 interface BekreftOpplysningerPanelProps {
@@ -20,13 +20,13 @@ const BekreftOpplysningerPanel = (props: BekreftOpplysningerPanelProps) => {
     <Panel className='bekreft-opplysninger-panel'>
       <SkjemaGruppe feilmeldingId='bekreftFeilmeldingId'>
         <BekreftCheckboksPanel
-          label={t(Key.BEKREFT_LABEL)}
+          label={t(LangKey.BEKREFT_LABEL)}
           checked={props.checked}
           feil={props.feil}
           onChange={props.onChange}
         >
           <p>
-            <Tekstomrade rules={[LenkeRule]}>{t(Key.BEKREFT_OPPLYSNINGER)}</Tekstomrade>
+            <Tekstomrade rules={[LenkeRule]}>{t(LangKey.BEKREFT_OPPLYSNINGER)}</Tekstomrade>
           </p>
         </BekreftCheckboksPanel>
       </SkjemaGruppe>

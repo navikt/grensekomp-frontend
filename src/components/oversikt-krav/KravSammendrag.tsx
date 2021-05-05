@@ -23,7 +23,7 @@ import estimertRefusjon from '../../utils/estimertRefusjon';
 import diffDato from '../../utils/dato/diffDato';
 import { parseISODato } from '../../utils/dato/parseISODato';
 import { useTranslation } from 'react-i18next';
-import Key from '../../locales/Key';
+import LangKey from '../../locales/LangKey';
 
 interface KravSammendragProps {
   items: OversiktKravItem[];
@@ -102,46 +102,46 @@ const KravSammendrag = (props: KravSammendragProps) => {
         isOpen={modalIsOpen}
         onRequestClose={() => handleCloseModal()}
         closeButton={false}
-        contentLabel={t(Key.SLETT_KRAV_LABEL)}
+        contentLabel={t(LangKey.SLETT_KRAV_LABEL)}
         className='slette-modal'
         shouldCloseOnOverlayClick={false}
       >
         <Veilederpanel svg={<SmilendeKar />}>
-          <Innholdstittel>{t(Key.SLETT_KRAV_LABEL)}</Innholdstittel>
+          <Innholdstittel>{t(LangKey.SLETT_KRAV_LABEL)}</Innholdstittel>
 
           <Normaltekst>
-            {t(Key.ID_NUMBER)}: ${getIdentityNumber(modifyId)}
+            {t(LangKey.ID_NUMBER)}: ${getIdentityNumber(modifyId)}
           </Normaltekst>
           <Normaltekst>
-            {t(Key.BOSTEDLAND)}: ${getCountry(modifyId)}
+            {t(LangKey.BOSTEDLAND)}: ${getCountry(modifyId)}
           </Normaltekst>
           <div className='button-wrapper'>
-            <Fareknapp onClick={() => handleSlettKrav(modifyId)}>{t(Key.SLETT_KRAV_CONFIRM)}</Fareknapp>
-            <Knapp onClick={handleCloseModal}>{t(Key.CANCEL)}</Knapp>
+            <Fareknapp onClick={() => handleSlettKrav(modifyId)}>{t(LangKey.SLETT_KRAV_CONFIRM)}</Fareknapp>
+            <Knapp onClick={handleCloseModal}>{t(LangKey.CANCEL)}</Knapp>
           </div>
         </Veilederpanel>
       </ModalWrapper>
       <Row>
         <Column>
           <Lenke href='#' onClick={handleTilbake}>
-            &lt;&lt; {t(Key.TILBAKE)}
+            &lt;&lt; {t(LangKey.TILBAKE)}
           </Lenke>
         </Column>
       </Row>
       <Row>
         <Column>
           <Undertittel className='krav-mottatt'>
-            {t(Key.KRAV_MOTTATT)}: {formaterIsoTimestampAsNoTime(props.innsending)}
+            {t(LangKey.KRAV_MOTTATT)}: {formaterIsoTimestampAsNoTime(props.innsending)}
           </Undertittel>
-          <Innholdstittel className='krav-tittel'>{t(Key.REFUSJONSKRAV)}</Innholdstittel>
+          <Innholdstittel className='krav-tittel'>{t(LangKey.REFUSJONSKRAV)}</Innholdstittel>
           <table className='tabell tabell--stripet'>
             <thead>
               <tr>
-                <th role='columnheader'>{t(Key.ID_NUMBER)}</th>
-                <th role='columnheader'>{t(Key.BOSTEDLAND)}</th>
-                <th role='columnheader'>{t(Key.PERIODE)}</th>
-                <th role='columnheader'>{t(Key.BEREGNET_INNTEKT)}</th>
-                <th role='columnheader'>{t(Key.BEREGNET_REFUSJON)}</th>
+                <th role='columnheader'>{t(LangKey.ID_NUMBER)}</th>
+                <th role='columnheader'>{t(LangKey.BOSTEDLAND)}</th>
+                <th role='columnheader'>{t(LangKey.PERIODE)}</th>
+                <th role='columnheader'>{t(LangKey.BEREGNET_INNTEKT)}</th>
+                <th role='columnheader'>{t(LangKey.BEREGNET_REFUSJON)}</th>
                 <th></th>
               </tr>
             </thead>

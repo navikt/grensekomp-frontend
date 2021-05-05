@@ -1,5 +1,5 @@
 import ValidationResult from './ValidationResult';
-import Key from '../locales/Key';
+import LangKey from '../locales/LangKey';
 
 const validateBekreft = (bekreft?: boolean, required: boolean = false): ValidationResult | undefined => {
   if (required === false) {
@@ -7,7 +7,7 @@ const validateBekreft = (bekreft?: boolean, required: boolean = false): Validati
   }
   if (bekreft !== true) {
     return {
-      key: Key.BEKREFT
+      key: LangKey.BEKREFT
     };
   }
 };

@@ -1,4 +1,4 @@
-import Key from './Key';
+import LangKey from './LangKey';
 import { useTranslation } from 'react-i18next';
 import Tekstomrade, { BoldRule, HighlightRule, LinebreakRule } from 'nav-frontend-tekstomrade';
 import { ListeRule } from '../utils/tekstomrade/Liste';
@@ -7,7 +7,7 @@ import { LenkeRule } from '../utils/tekstomrade/Lenke';
 import React from 'react';
 
 interface OversettelseProps {
-  langKey: Key;
+  langKey: LangKey;
   variables?: any;
 }
 

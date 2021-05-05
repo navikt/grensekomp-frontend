@@ -7,7 +7,7 @@ import './BeloepHjelpeLabel.scss';
 import LeggTilKnapp from '../felles/knapper/LeggTilKnapp';
 import SmilendeKar from '../oversikt-krav/SmilendeKar';
 import { useTranslation } from 'react-i18next';
-import Key from '../../locales/Key';
+import LangKey from '../../locales/LangKey';
 import Oversettelse from '../../locales/Oversettelse';
 
 const HjelpetekstIkon = (
@@ -49,29 +49,29 @@ const BeloepHjelpeLabel = () => {
 
   return (
     <div className='beloephjelpelabel'>
-      <span className='hjelpetekst-beskrivelse'>{t(Key.BEREGNET_INNTEKT)}</span>
+      <span className='hjelpetekst-beskrivelse'>{t(LangKey.BEREGNET_INNTEKT)}</span>
       <div className='hjelpetekst-refusjon'>
         <ModalWrapper
           isOpen={eksempelOpen}
           onRequestClose={() => setEksempelOpen(false)}
           closeButton={false}
-          contentLabel={t(Key.BEREGNING_INNTEKT)}
+          contentLabel={t(LangKey.BEREGNING_INNTEKT)}
           className='eksempel-modal'
         >
           <Veilederpanel svg={<SmilendeKar />}>
-            <Undertittel>{t(Key.BEREGNING_INNTEKT)}</Undertittel>
+            <Undertittel>{t(LangKey.BEREGNING_INNTEKT)}</Undertittel>
             <Normaltekst>
-              <Oversettelse langKey={Key.BELOEP_HJELPE_INFO} />
+              <Oversettelse langKey={LangKey.BELOEP_HJELPE_INFO} />
             </Normaltekst>
             <LeggTilKnapp className='lukke-knapp' onClick={(evt) => handleCloseButton(evt)}>
-              {t(Key.CLOSE)}
+              {t(LangKey.CLOSE)}
             </LeggTilKnapp>
           </Veilederpanel>
         </ModalWrapper>
         <div className='hjelpetekst'>
           <button role='link' className='hjelpetekst__apneknapp' onClick={(evt) => handleOpenButton(evt)}>
             <Sprsml />
-            <span className='sr-only'>{t(Key.HELP)}</span>
+            <span className='sr-only'>{t(LangKey.HELP)}</span>
           </button>
         </div>
       </div>

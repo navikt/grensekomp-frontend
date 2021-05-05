@@ -10,7 +10,7 @@ import SideIndentering from './SideIndentering';
 import { Organisasjon } from '@navikt/bedriftsmeny/lib/organisasjon';
 import { useArbeidsgiver } from '../../../context/arbeidsgiver/ArbeidsgiverContext';
 import { IngenTilgangAdvarsel } from '../../login/IngenTilgangAdvarsel';
-import Key from '../../../locales/Key';
+import LangKey from '../../../locales/LangKey';
 import { useTranslation } from 'react-i18next';
 
 interface SideProps {
@@ -43,7 +43,7 @@ const Side = (props: SideProps) => {
           <Row>
             <Column>
               <div className={'side__minside_arbeidsgiver'}>
-                <Lenke href='/min-side-arbeidsgiver/'>&lt;&lt; {t(Key.MIN_SIDE)}</Lenke>
+                <Lenke href='/min-side-arbeidsgiver/'>&lt;&lt; {t(LangKey.MIN_SIDE)}</Lenke>
               </div>
             </Column>
           </Row>
