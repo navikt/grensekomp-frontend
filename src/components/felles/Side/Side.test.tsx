@@ -7,6 +7,7 @@ import { Organisasjon } from '@navikt/bedriftsmeny/lib/organisasjon';
 import ArbeidsgiverStatus from '../../../context/arbeidsgiver/ArbeidsgiverStatus';
 import mockHistory from '../../../mockData/mockHistory';
 import { ArbeidsgiverProvider } from '../../../context/arbeidsgiver/ArbeidsgiverContext';
+import LangKey from '../../../locale/LangKey';
 
 describe('Side', () => {
   let container = document.createElement('div');
@@ -49,7 +50,7 @@ describe('Side', () => {
       render(buildSide(true, UTEN_ARBEIDSGIVERE, ArbeidsgiverStatus.Successfully, 'SØKNADSSKJEMA'), container);
     });
     expect(container.textContent).not.toContain(BARNE_NODER);
-    expect(container.textContent).toContain(IKKE_RETTIGHETER);
+    expect(container.textContent).toContain(LangKey.ROLLER_OG_TILGANGER);
   });
 
   it('should show children - required and arbeidsgivere', () => {
@@ -57,7 +58,7 @@ describe('Side', () => {
       render(buildSide(true, ARBEIDSGIVERE, ArbeidsgiverStatus.Successfully, 'SØKNADSSKJEMA'), container);
     });
     expect(container.textContent).toContain(BARNE_NODER);
-    expect(container.textContent).not.toContain(IKKE_RETTIGHETER);
+    expect(container.textContent).not.toContain(LangKey.ROLLER_OG_TILGANGER);
   });
 
   it('should show children - not required and empty arbeidsgivere', () => {

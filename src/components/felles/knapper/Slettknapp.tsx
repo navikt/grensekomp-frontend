@@ -14,14 +14,14 @@ const DeleteIcon = () => (
 interface SlettknappProps {
   onClick: any;
   disabled?: boolean;
-  label: string;
+  children: React.ReactNode;
 }
 
-const Slettknapp = ({ onClick, disabled, label }: SlettknappProps) => {
+const Slettknapp = ({ onClick, disabled, children }: SlettknappProps) => {
   return (
     <Fareknapp onClick={onClick} className={'slett-knapp'} disabled={disabled}>
       <DeleteIcon />
-      &nbsp;{label}
+      &nbsp;{children}
     </Fareknapp>
   );
 };

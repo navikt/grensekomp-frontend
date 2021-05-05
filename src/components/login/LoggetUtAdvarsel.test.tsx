@@ -5,6 +5,7 @@ import { render, fireEvent, screen } from '@testing-library/react';
 import LoggetUtAdvarsel from './LoggetUtAdvarsel';
 import { Router } from 'react-router-dom';
 import mockHistory from '../../mockData/mockHistory';
+import LangKey from '../../locale/LangKey';
 
 describe('LoggetUtAdvarsel', () => {
   it('should display the modal if the token is invalid', () => {
@@ -14,7 +15,7 @@ describe('LoggetUtAdvarsel', () => {
       </Router>
     );
 
-    expect(screen.getByText('Du er blitt logget ut, følg instruksjonene for ikke å miste data')).toBeInTheDocument();
+    expect(screen.getByText(LangKey.LOGGET_UT)).toBeInTheDocument();
   });
 
   it('should display the modal if the token is invalid and close it when close is clicked', () => {
@@ -25,8 +26,8 @@ describe('LoggetUtAdvarsel', () => {
       </Router>
     );
 
-    const closeLink = screen.getByText(/Jeg har logget inn på nytt/);
-    expect(screen.getByText('Du er blitt logget ut, følg instruksjonene for ikke å miste data')).toBeInTheDocument();
+    const closeLink = screen.getByText(LangKey.LOGGET_INN);
+    expect(screen.getByText(LangKey.LOGGET_UT)).toBeInTheDocument();
 
     fireEvent.click(closeLink);
 

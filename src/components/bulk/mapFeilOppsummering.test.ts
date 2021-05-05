@@ -23,7 +23,7 @@ describe('mapFeilOppsummering', () => {
         }
       ]
     } as BulkState;
-    const feilmeldinger = mapFeilOppsummering(state);
+    const feilmeldinger = mapFeilOppsummering(state, 'Rad');
     expect(feilmeldinger.length).toBe(10);
     expect(feilmeldinger[0].feilmelding).toBe('feil_orgnr');
     expect(feilmeldinger[1].skjemaelementId).toBe('fnr_feil1');
