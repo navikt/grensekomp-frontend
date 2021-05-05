@@ -40,8 +40,8 @@ export const languageInit = (lang: Language) => {
 const LocaleProvider = ({ children, lang = Language.nb }: LocaleProviderProps) => {
   let { language } = useParams();
   // const locale = useLocale(); Bruk useLocale
-  const newLocationNO = '/grensekomp/nb/batchinnsending/krav' + location.search;
-  const newLocationEN = '/grensekomp/en/batchinnsending/krav' + location.search;
+  const newLocationNO = '/grensekomp/nb/innsending' + location.search;
+  const newLocationEN = '/grensekomp/en/innsending' + location.search;
   setAvailableLanguages([
     { locale: Language.nb, url: newLocationNO },
     { locale: Language.en, url: newLocationEN }
