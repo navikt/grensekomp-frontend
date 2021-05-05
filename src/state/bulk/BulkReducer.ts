@@ -3,10 +3,11 @@ import { Actions, BulkActions } from './BulkActions';
 import { v4 as uuid } from 'uuid';
 import validateBulk from './validateBulk';
 import mapBulkValidationResponse from '../../components/bulk/mapBulkValidationResponse';
-import mapFeilOppsummeringsFeil from '../../components/bulk/mapFeilOppsummering';
+import mapFeilOppsummering from '../../components/bulk/mapFeilOppsummering';
 import HttpStatus from '../../api/HttpStatus';
 import { toDato } from '../../utils/dato/toDato';
 import { i18n } from 'i18next';
+import LangKey from '../../locale/LangKey';
 
 const checkItemId = (itemId?: string) => {
   if (itemId === undefined) {
@@ -95,7 +96,7 @@ const BulkReducer = (state: BulkState, action: BulkActions, i18n: i18n): BulkSta
 
       mapBulkValidationResponse(payload.response, nextState);
 
-      nextState.feilmeldinger = mapFeilOppsummeringsFeil(nextState);
+      nextState.feilmeldinger = mapFeilOppsummering(nextState, i18n);
       nextState.error = nextState.feilmeldinger.length > 0;
       nextState.kvittering = !nextState.error;
       nextState.validated = true;

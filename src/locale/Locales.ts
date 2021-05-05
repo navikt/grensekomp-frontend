@@ -312,6 +312,14 @@ const Locales: Record<LangKey, Locale> = {
 
   OVERSIKTKRAV_SUBTITLE: {
     nb: 'Refusjoner'
+  },
+
+  FEILOPPSUMMERING_ROW: {
+    nb: 'Rad {{ index }}: {{ error }}'
+  },
+
+  KRAV_SAMMENDRAG_DELETE: {
+    nb: 'Slett'
   }
 };
 

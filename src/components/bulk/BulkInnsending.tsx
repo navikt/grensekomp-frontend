@@ -2,7 +2,7 @@ import React, { Reducer, useEffect, useReducer } from 'react';
 import { Column, Row } from 'nav-frontend-grid';
 import ServerFeilAdvarsel from '../felles/ServerFeilAdvarsel';
 import Panel from 'nav-frontend-paneler';
-import { Element, Ingress } from 'nav-frontend-typografi';
+import { Element } from 'nav-frontend-typografi';
 import Skillelinje from '../felles/Skillelinje';
 import { Input, SkjemaGruppe } from 'nav-frontend-skjema';
 import Fnr from '../felles/Fnr';
@@ -159,7 +159,6 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                             {showDeleteButton && (
                               <Slettknapp
                                 disabled={item.accepted}
-                                label={t(LangKey.SLETT_LABEL)}
                                 onClick={(event) => {
                                   dispatch({
                                     type: Actions.DeleteItem,
@@ -168,7 +167,9 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                                     }
                                   });
                                 }}
-                              />
+                              >
+                                {t(LangKey.SLETT_LABEL)}
+                              </Slettknapp>
                             )}
                           </Column>
                         </Row>

@@ -34,6 +34,7 @@ describe('BulkInnsending', () => {
   );
 
   it('should have no a11y violations', async () => {
+    jest.setTimeout(30000);
     const { container } = render(buildBulkInnsending('/base/url', 200, arbeidsgivere, '810007842'));
     const results = await axe(container);
     expect(results).toHaveNoViolations();

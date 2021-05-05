@@ -10,7 +10,7 @@ import SlettKravKnapp from './SlettKravKnapp';
 describe('SlettKravKnapp', () => {
   it('should display the component and handle a button click', () => {
     const mockKnapp = jest.fn();
-    const component = render(<SlettKravKnapp onClick={mockKnapp} />);
+    const component = render(<SlettKravKnapp onClick={mockKnapp}>Slett</SlettKravKnapp>);
 
     const knappen = component.getByText(/Slett/);
 
@@ -21,7 +21,7 @@ describe('SlettKravKnapp', () => {
 
   it('should have no a11y violations', async () => {
     const mockKnapp = jest.fn();
-    const { container } = render(<SlettKravKnapp onClick={mockKnapp} />);
+    const { container } = render(<SlettKravKnapp onClick={mockKnapp}>Slett</SlettKravKnapp>);
     const results = await axe(container);
 
     expect(results).toHaveNoViolations();

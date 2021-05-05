@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Children } from 'react';
 import { Knapp } from 'nav-frontend-knapper';
 import './SlettKravKnapp.scss';
 
@@ -14,13 +14,14 @@ const DeleteIcon = () => (
 interface SlettKravKnappProps {
   onClick: any;
   disabled?: boolean;
+  children: React.ReactNode;
 }
 
-const SlettKravKnapp = ({ onClick, disabled }: SlettKravKnappProps) => {
+const SlettKravKnapp = ({ onClick, disabled, children }: SlettKravKnappProps) => {
   return (
     <Knapp onClick={onClick} className={'slett-krav-knapp lenke'} disabled={disabled}>
       <DeleteIcon />
-      &nbsp;Slett
+      &nbsp;{children}
     </Knapp>
   );
 };

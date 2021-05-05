@@ -165,7 +165,9 @@ const KravSammendrag = (props: KravSammendragProps) => {
                         : ''}
                     </td>
                     <td>
-                      <SlettKravKnapp onClick={() => handleRequestSlettInnsending(item.id)} />
+                      <SlettKravKnapp onClick={() => handleRequestSlettInnsending(item.id)}>
+                        {t(LangKey.KRAV_SAMMENDRAG_DELETE)}
+                      </SlettKravKnapp>
                     </td>
                   </tr>
                 ))}
