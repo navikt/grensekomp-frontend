@@ -139,6 +139,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                             <Bostedland
                               id={'land_' + item.uniqueKey}
                               label={t(Key.LAND_LABEL)}
+                              language={i18n.language}
                               feilmelding={item.landError}
                               disabled={item.accepted}
                               value={item.land}

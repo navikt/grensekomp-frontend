@@ -1,5 +1,5 @@
 interface Land {
-  navn: string;
+  nb: string;
   iso3: string;
 }
 
