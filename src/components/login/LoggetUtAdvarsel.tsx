@@ -33,7 +33,10 @@ const LoggetUtAdvarsel = ({ onClose }: LoggetUtAdvarselProps) => {
     >
       <AlertStripeFeil className='logget-ut-advarsel__innhold'>
         <Innholdstittel>{t(LangKey.LOGGET_UT)}</Innholdstittel>
-        <Oversettelse langKey={LangKey.LOGGETUTADVARSEL_INFO} variables={{ innloggingUrl: 'http://www.vg.no' }} />
+        <Oversettelse
+          langKey={LangKey.LOGGETUTADVARSEL_INFO}
+          variables={{ innloggingUrl: loginServiceUrlAfterRedirect }}
+        />
         <InternLenke onClick={() => handleCloseModal()}>{t(LangKey.LOGGET_INN)}</InternLenke>
       </AlertStripeFeil>
     </ModalWrapper>

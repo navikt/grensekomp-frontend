@@ -25,7 +25,7 @@ const SlettetKravKvittering = (props: SlettetKravKvitteringProps) => {
       <Row>
         <Column>
           <Panel>
-            <Sidetittel>{t(LangKey.KRAV_SLETTET)}</Sidetittel>
+            <Sidetittel>{t(LangKey.SLETTET_KRAV_KVITTERING_TITTEL)}</Sidetittel>
           </Panel>
         </Column>
       </Row>

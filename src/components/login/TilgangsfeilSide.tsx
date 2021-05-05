@@ -9,7 +9,7 @@ export const TilgangsfeilSide = () => {
   return (
     <Side
       className='tilgangsfeil-side'
-      sidetittel='Søknadsskjema'
+      sidetittel={t(LangKey.TILGANGSFEILSIDE)}
       subtitle={t(LangKey.ERROR_GENERIC)}
       bedriftsmeny={false}
     >
