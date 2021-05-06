@@ -1,6 +1,6 @@
 import { Locale } from '../../../locale/Locales';
 
-interface Land extends Locale {
+export interface Land extends Locale {
   iso3: string;
 }
 
@@ -35,8 +35,9 @@ const landListe: Land[] = [
   { nb: 'Tsjekkia', en: 'Czech Republic', iso3: 'CZE' },
   { nb: 'Tyskland', en: 'Germany', iso3: 'DEU' },
   { nb: 'Ungarn', en: 'Hungary', iso3: 'HUN' },
-  { nb: 'Østerrike', en: 'Austria', iso3: 'AUT' },
-  { nb: 'Øvrige land', en: 'Other country', iso3: 'XUK' }
+  { nb: 'Østerrike', en: 'Austria', iso3: 'AUT' }
 ];
+
+export const otherCountry: Land = { nb: 'Øvrige land', en: 'Other country', iso3: 'XUK' };
 
 export default landListe;
