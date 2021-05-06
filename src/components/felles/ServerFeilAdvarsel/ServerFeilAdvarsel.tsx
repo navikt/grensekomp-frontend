@@ -5,6 +5,7 @@ import './ServerFeilAdvarsel.sass';
 import InternLenke from '../InternLenke';
 import LangKey from '../../../locale/LangKey';
 import Oversettelse from '../Oversettelse/Oversettelse';
+import { useTranslation } from 'react-i18next';
 
 interface ServerFeilAdvarselProps {
   onClose: () => void;
@@ -12,6 +13,7 @@ interface ServerFeilAdvarselProps {
 }
 
 const ServerFeilAdvarsel = (props: ServerFeilAdvarselProps) => {
+  const { t } = useTranslation();
   return (
     <ModalWrapper
       isOpen={props.isOpen!}
@@ -22,8 +24,8 @@ const ServerFeilAdvarsel = (props: ServerFeilAdvarselProps) => {
       shouldCloseOnOverlayClick={false}
     >
       <AlertStripeFeil className='server-feil-advarsel--innhold'>
-        <Oversettelse langKey={LangKey.SERVERFEILADVARSEL_INFO} />
-        <InternLenke onClick={() => props.onClose()}>Skjul denne meldingen.</InternLenke>
+        <Oversettelse langKey={LangKey.SERVER_FEIL_ADVARSEL_TEXT} />
+        <InternLenke onClick={() => props.onClose()}>{t(LangKey.SERVER_FEIL_ADVARSEL_HIDE)}</InternLenke>
       </AlertStripeFeil>
     </ModalWrapper>
   );

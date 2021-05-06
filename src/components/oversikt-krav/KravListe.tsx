@@ -10,8 +10,8 @@ import './KravListe.scss';
 import { useTranslation } from 'react-i18next';
 import Oversettelse from '../felles/Oversettelse/Oversettelse';
 import LangKey from '../../locale/LangKey';
-import lenker from '../../config/lenker';
-import { useParams } from 'react-router-dom';
+import lenker, { buildLenke } from '../../config/lenker';
+import Language from '../../locale/Language';
 
 interface KravListeProps {
   innsendinger: string[];
@@ -20,14 +20,13 @@ interface KravListeProps {
 
 const KravListe = (props: KravListeProps) => {
   const { t } = useTranslation();
-  let { language } = useParams();
   return (
     <Row className='kravliste'>
       <Column>
         <Innholdstittel className='kravliste-tittel'>{t(LangKey.KRAVLISTE_TITLE)}</Innholdstittel>
         <Oversettelse
           langKey={LangKey.KRAVLISTE_INFO}
-          variables={{ path: lenker.Innsending.replace(':language', language) }}
+          variables={{ path: buildLenke(lenker.Innsending, Language.nb) }}
         />
         <Skillelinje />
         <ul className='kravliste-liste'>

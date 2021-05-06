@@ -409,7 +409,7 @@ const Locales: Record<LangKey, Locale> = {
     en: 'Claim received'
   },
 
-  KRAVET_ER_MOTTATT: {
+  KVITTERING_TITTEL: {
     nb: 'Kravet er mottatt',
     en: 'The claim has been received'
   },
@@ -419,7 +419,7 @@ const Locales: Record<LangKey, Locale> = {
     en: 'Period'
   },
 
-  KRAV_SLETTET: {
+  SLETTET_KRAV_KVITTERING_TITTEL: {
     nb: 'Kravet er slettet',
     en: 'The claim has been deleted'
   },
@@ -458,7 +458,7 @@ const Locales: Record<LangKey, Locale> = {
     en: 'I logged in again - close this window'
   },
 
-  SERVERFEILADVARSEL_INFO: {
+  SERVER_FEIL_ADVARSEL_TEXT: {
     nb:
       '_Det har desverre oppstått en teknisk feil hos oss_\n\n' +
       'Prøv igjen litt senere, og [kontakt oss gjerne dersom det ikke ordner seg.](https://arbeidsgiver.nav.no/kontakt-oss/)',
@@ -515,6 +515,21 @@ const Locales: Record<LangKey, Locale> = {
   KRAV_SAMMENDRAG_DELETE: {
     nb: 'Slett',
     en: 'Delete'
+  },
+
+  TILGANGSFEILSIDE: {
+    nb: 'Du har ikke tilgang',
+    en: 'No access'
+  },
+
+  SERVER_FEIL_ADVARSEL_HIDE: {
+    nb: 'Skjul denne meldingen.',
+    en: 'Hide this message.'
+  },
+
+  TOKEN_FORNYET: {
+    nb: 'Token er fornyet',
+    en: 'Token is renewed'
   }
 };
 

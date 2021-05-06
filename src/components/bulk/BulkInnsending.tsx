@@ -2,7 +2,7 @@ import React, { Reducer, useEffect, useReducer } from 'react';
 import { Column, Row } from 'nav-frontend-grid';
 import ServerFeilAdvarsel from '../felles/ServerFeilAdvarsel';
 import Panel from 'nav-frontend-paneler';
-import { Element } from 'nav-frontend-typografi';
+import { Element, Ingress } from 'nav-frontend-typografi';
 import Skillelinje from '../felles/Skillelinje';
 import { Input, SkjemaGruppe } from 'nav-frontend-skjema';
 import Fnr from '../felles/Fnr';
@@ -94,7 +94,9 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
           {state.progress != true && state.kvittering != true && (
             <>
               <Panel>
-                <Oversettelse langKey={LangKey.BULKINNSENDING_INFO} />
+                <Ingress>
+                  <Oversettelse langKey={LangKey.BULKINNSENDING_INFO} />
+                </Ingress>
               </Panel>
 
               <Skillelinje />
