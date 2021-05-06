@@ -110,10 +110,10 @@ const KravSammendrag = (props: KravSammendragProps) => {
           <Innholdstittel>{t(LangKey.SLETT_KRAV_LABEL)}</Innholdstittel>
 
           <Normaltekst>
-            {t(LangKey.ID_NUMBER)}: ${getIdentityNumber(modifyId)}
+            {t(LangKey.ID_NUMBER)}: {getIdentityNumber(modifyId)}
           </Normaltekst>
           <Normaltekst>
-            {t(LangKey.BOSTEDLAND)}: ${getCountry(modifyId)}
+            {t(LangKey.BOSTEDLAND)}: {getCountry(modifyId)}
           </Normaltekst>
           <div className='button-wrapper'>
             <Fareknapp onClick={() => handleSlettKrav(modifyId)}>{t(LangKey.SLETT_KRAV_CONFIRM)}</Fareknapp>

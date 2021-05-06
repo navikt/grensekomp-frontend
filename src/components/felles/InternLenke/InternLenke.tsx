@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Lenke from 'nav-frontend-lenker';
 
 interface InternLenkeProps {
-  to?: string;
+  to?: any;
   children?: any;
   className?: string;
   onClick?: any;

@@ -7,7 +7,6 @@ import mapFeilOppsummering from '../../components/bulk/mapFeilOppsummering';
 import HttpStatus from '../../api/HttpStatus';
 import { toDato } from '../../utils/dato/toDato';
 import { i18n } from 'i18next';
-import LangKey from '../../locale/LangKey';
 
 const checkItemId = (itemId?: string) => {
   if (itemId === undefined) {
@@ -100,6 +99,17 @@ const BulkReducer = (state: BulkState, action: BulkActions, i18n: i18n): BulkSta
       nextState.error = nextState.feilmeldinger.length > 0;
       nextState.kvittering = !nextState.error;
       nextState.validated = true;
+
+      return nextState;
+
+    case Actions.ResubmitItem:
+      if (nextState.items.length > 1) {
+        return nextState;
+      }
+
+      nextState.items[0].fnr = payload?.fnr;
+      nextState.items[0].beloep = payload?.beloep;
+      nextState.items[0].land = payload?.land;
 
       return nextState;
 
