@@ -38,6 +38,7 @@ const landListe: Land[] = [
   { nb: 'Østerrike', en: 'Austria', iso3: 'AUT' }
 ];
 
+export const selectCountry: Land = { nb: 'Velg land:', en: 'Select country:', iso3: '' };
 export const otherCountry: Land = { nb: 'Øvrige land', en: 'Other country', iso3: 'XUK' };
 
 export default landListe;

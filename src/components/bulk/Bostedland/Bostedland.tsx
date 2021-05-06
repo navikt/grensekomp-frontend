@@ -1,6 +1,6 @@
 import React from 'react';
 import { Select } from 'nav-frontend-skjema';
-import landListe, { Land, otherCountry } from './landListe';
+import landListe, { Land, otherCountry, selectCountry } from './landListe';
 
 interface BostedlandProps {
   label: string;
@@ -14,7 +14,7 @@ interface BostedlandProps {
 }
 
 const Bostedland = (props: BostedlandProps) => {
-  const sortedLandListe: Land[] = landListe.sort((a, b) => a[props.language] - b[props.language]);
+  const sortedLandListe: Land[] = landListe.sort((a: Land, b: Land) => a[props.language] - b[props.language]);
   return (
     <Select
       id={props.id}
@@ -25,7 +25,7 @@ const Bostedland = (props: BostedlandProps) => {
       onChange={(evt) => props.onChange(evt.target.value)}
       className={props.className}
     >
-      <option>Velg land:</option>
+      <option>{selectCountry[props.language]}</option>
       {sortedLandListe.map((enhet) => (
         <option value={enhet.iso3} key={enhet.iso3}>
           {enhet[props.language]}
