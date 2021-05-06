@@ -148,7 +148,6 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               placeholder={t(LangKey.FNR_PLACEHOLDER)}
                               feilmelding={item.fnrError}
                               disabled={item.accepted}
-                              defaultValue={item.fnr}
                               className='bulk-element'
                               onChange={(event) => {
                                 dispatch({
@@ -260,7 +259,6 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               feil={item.beloepError}
                               value={item.beloep}
                               disabled={item.accepted}
-                              defaultValue={item.beloep}
                               className='bulk-element'
                               onChange={(event) => {
                                 dispatch({

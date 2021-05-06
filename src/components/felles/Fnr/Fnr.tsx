@@ -9,7 +9,6 @@ interface FnrProps {
   feilmelding?: string;
   placeholder: string;
   className?: string;
-  defaultValue?: string | number | readonly string[] | undefined;
   onChange: (fnr: string) => void;
   onValidate?: (valid: boolean) => void;
 }
@@ -22,7 +21,6 @@ const Fnr = (props: FnrProps) => {
       placeholder={props.placeholder}
       id={props.id}
       disabled={props.disabled}
-      defaultValue={props.defaultValue}
       label={props.label}
       onValidate={(valid) => (props.onValidate ? props.onValidate(valid) : null)}
       onChange={(evt) => props.onChange(evt.target.value)}
