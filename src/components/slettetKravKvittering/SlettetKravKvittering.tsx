@@ -20,10 +20,14 @@ interface SlettetKravKvitteringProps {
   refusjon?: number;
 }
 
+interface PathParams {
+  language: string;
+}
+
 const SlettetKravKvittering = (props: SlettetKravKvitteringProps) => {
   const { t } = useTranslation();
 
-  const { language } = useParams();
+  const { language } = useParams<PathParams>();
 
   const endringsdata: Endringsdata = {
     identitetsnummer: props.identitetsnummer ?? '',
