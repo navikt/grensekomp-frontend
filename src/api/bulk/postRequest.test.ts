@@ -66,47 +66,10 @@ describe('postRequest', () => {
   });
 
   it('should pass on the violation when the server responds with 422', async () => {
-    const expected = [
-      {
-        status: 422,
-        validationResponses: [
-          {
-            validationType: 'RefusjonsdagerKanIkkeOverstigePeriodelengdenConstraint',
-            message: '',
-            propertyPath: 'periode',
-            invalidValue: {
-              fom: '2021-02-01',
-              tom: '2021-02-02',
-              antallDagerMedRefusjon: 9,
-              beloep: 123.0
-            }
-          }
-        ]
-      }
-    ];
-
-    const response = [
-      {
-        status: 422,
-        validationErrors: [
-          {
-            validationType: 'RefusjonsdagerKanIkkeOverstigePeriodelengdenConstraint',
-            message: '',
-            propertyPath: 'periode',
-            invalidValue: {
-              fom: '2021-02-01',
-              tom: '2021-02-02',
-              antallDagerMedRefusjon: 9,
-              beloep: 123.0
-            }
-          } as ValidationProblemDetail
-        ]
-      }
-    ];
-    mockFetch(422, response);
+    mockFetch(422, []);
     expect(await postRequest('/Path', {})).toEqual({
-      status: 422,
-      validationResponses: expected
+      status: HttpStatus.UnprocessableEntity,
+      validationResponses: []
     });
   });
 });
