@@ -110,6 +110,16 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
     }
   }, [endringsdata.identitetsnummer, endringsdata.beloep, endringsdata.isoLand]);
 
+  const isReinsending = !!endringsdata.identitetsnummer;
+
+  const ingresstekstLangKey = isReinsending ? LangKey.BULKINNSENDING_INFO_REINNSENDING : LangKey.BULKINNSENDING_INFO;
+
+  const skjemaoverskriftLangKey = isReinsending
+    ? LangKey.BULKINNSENDING_SKJEMA_OVERSKRIFT_REINNSENDING
+    : LangKey.BULKINNSENDING_SKJEMA_OVERSKRIFT;
+
+  const reinnsendingClass = isReinsending ? ' reinnsending' : '';
+
   return (
     <Side bedriftsmeny={true} className='bulk-innsending' sidetittel={t(LangKey.SIDETITTEL)} subtitle={'Subtitle'}>
       <Row>
@@ -120,14 +130,14 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
             <>
               <Panel>
                 <Ingress>
-                  <Oversettelse langKey={LangKey.BULKINNSENDING_INFO} />
+                  <Oversettelse langKey={ingresstekstLangKey} />
                 </Ingress>
               </Panel>
 
               <Skillelinje />
 
               <Panel>
-                <SkjemaGruppe aria-live='polite' legend={t(LangKey.SKJEMA_LEGEND)}>
+                <SkjemaGruppe aria-live='polite' legend={t(skjemaoverskriftLangKey)}>
                   {state.items?.map((item, index) => (
                     <Row
                       key={item.uniqueKey}
@@ -135,12 +145,14 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                         index > 0 ? 'not-first-row' : 'first-row'
                       }`}
                     >
-                      <Column md='1' className='bulk-kolonne-1'>
-                        <Element className='bulk-element-nr'>{index === 0 ? t(LangKey.NUMBER) : '\u00A0'}</Element>
-                        <RadNr nr={index + 1} />
-                      </Column>
+                      {!isReinsending && (
+                        <Column md='1' className='bulk-kolonne-1'>
+                          <Element className='bulk-element-nr'>{index === 0 ? t(LangKey.NUMBER) : '\u00A0'}</Element>
+                          <RadNr nr={index + 1} />
+                        </Column>
+                      )}
 
-                      <Column md='11' className='bulk-main-input-wrapper'>
+                      <Column md='11' className={'bulk-main-input-wrapper' + reinnsendingClass}>
                         <Row>
                           <Column md='2' className='bulk-kolonne-2'>
                             <Fnr
@@ -283,7 +295,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                   <Row>
                     <Column md='1' className='bulk-kolonne-1'></Column>
                     <Column md='6'>
-                      {state.items && state.items.length < MAX_ITEMS && (
+                      {state.items && state.items.length < MAX_ITEMS && !isReinsending && (
                         <LeggTilKnapp
                           onClick={(event) => {
                             dispatch({
