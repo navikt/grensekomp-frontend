@@ -35,6 +35,8 @@ import HjelpeLabel from '../felles/HjelpeLabel/HjelpeLabel';
 import { i18n } from 'i18next';
 import Oversettelse from '../felles/Oversettelse/Oversettelse';
 import LangKey from '../../locale/LangKey';
+import { useLocation } from 'react-router';
+import Endringsdata from './Endringsdata';
 
 interface BulkInnsendingProps {
   state?: BulkState;
@@ -42,6 +44,16 @@ interface BulkInnsendingProps {
 
 const BulkInnsending = (props: BulkInnsendingProps) => {
   const { t, i18n } = useTranslation();
+
+  const locationData = useLocation();
+
+  const endringsdata: Endringsdata = {};
+
+  if (locationData.state && locationData.state.identitetsnummer) {
+    endringsdata.identitetsnummer = locationData.state.identitetsnummer;
+    endringsdata.beloep = locationData.state.beloep;
+    endringsdata.isoLand = locationData.state.isoLand;
+  }
 
   const BulkReducerSettOpp = (i18n: i18n): Reducer<BulkState, BulkActions> => (state: BulkState, action: BulkActions) =>
     BulkReducer(state, action, i18n);
@@ -84,6 +96,19 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
       });
     }
   }, [state.validated, state.progress, state.feilmeldinger, state.submitting, state.bekreft, state]);
+
+  useEffect(() => {
+    if (endringsdata.identitetsnummer) {
+      dispatch({
+        type: Actions.ResubmitItem,
+        payload: {
+          fnr: endringsdata.identitetsnummer,
+          beloep: endringsdata.beloep ? endringsdata.beloep.toString() : '',
+          land: endringsdata.isoLand
+        }
+      });
+    }
+  }, [endringsdata.identitetsnummer, endringsdata.beloep, endringsdata.isoLand]);
 
   return (
     <Side bedriftsmeny={true} className='bulk-innsending' sidetittel={t(LangKey.SIDETITTEL)} subtitle={'Subtitle'}>

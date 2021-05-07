@@ -18,7 +18,8 @@ export enum Actions {
   KontrollDager,
   AddItem,
   DeleteItem,
-  HideServerError
+  HideServerError,
+  ResubmitItem
 }
 
 export interface BulkActions {
