@@ -35,6 +35,7 @@ import HjelpeLabel from '../felles/HjelpeLabel/HjelpeLabel';
 import { i18n } from 'i18next';
 import Oversettelse from '../felles/Oversettelse/Oversettelse';
 import LangKey from '../../locale/LangKey';
+import { useLanguage } from '../../context/language/LanguageContext';
 
 interface BulkInnsendingProps {
   state?: BulkState;
