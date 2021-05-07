@@ -14,7 +14,9 @@ interface BostedlandProps {
 }
 
 const Bostedland = (props: BostedlandProps) => {
-  const sortedLandListe: Land[] = landListe.sort((a: Land, b: Land) => a[props.language] - b[props.language]);
+  const sortedLandListe: Land[] = landListe.sort((a: Land, b: Land) =>
+    a[props.language] > b[props.language] ? 1 : -1
+  );
   return (
     <Select
       id={props.id}
