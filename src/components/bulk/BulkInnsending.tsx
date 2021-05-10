@@ -55,8 +55,10 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
     endringsdata.isoLand = locationData.state.isoLand;
   }
 
-  const BulkReducerSettOpp = (i18n: i18n): Reducer<BulkState, BulkActions> => (state: BulkState, action: BulkActions) =>
-    BulkReducer(state, action, i18n);
+  const BulkReducerSettOpp = (i18n: i18n): Reducer<BulkState, BulkActions> => (
+    bulkState: BulkState,
+    action: BulkActions
+  ) => BulkReducer(bulkState, action, i18n);
 
   const BulkReducerI18n: Reducer<BulkState, BulkActions> = BulkReducerSettOpp(i18n);
   const [state, dispatch] = useReducer(BulkReducerI18n, props.state, defaultBulkState);
