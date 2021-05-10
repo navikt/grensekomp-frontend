@@ -8,8 +8,6 @@ import InternLenke from '../felles/InternLenke/InternLenke';
 import mapIsoTilLand from '../../state/oversikt-krav/mapIsoTilLand';
 import { useTranslation } from 'react-i18next';
 import LangKey from '../../locale/LangKey';
-import Endringsdata from '../bulk/Endringsdata';
-import { useParams } from 'react-router';
 
 interface SlettetKravKvitteringProps {
   identitetsnummer?: string;
@@ -20,21 +18,8 @@ interface SlettetKravKvitteringProps {
   refusjon?: number;
 }
 
-interface PathParams {
-  language: string;
-}
-
 const SlettetKravKvittering = (props: SlettetKravKvitteringProps) => {
   const { t } = useTranslation();
-
-  const { language } = useParams<PathParams>();
-
-  const endringsdata: Endringsdata = {
-    identitetsnummer: props.identitetsnummer ?? '',
-    isoLand: props.land ?? '',
-    beloep: props.beloep ?? 0
-  };
-
   return (
     <div className='slettet-krav-kvittering'>
       <Row>
@@ -71,14 +56,7 @@ const SlettetKravKvittering = (props: SlettetKravKvitteringProps) => {
         <Column>
           <Panel>
             <div>
-              <InternLenke
-                to={{
-                  pathname: lenker.Innsending.replace(':language', language),
-                  state: endringsdata
-                }}
-              >
-                {t(LangKey.KRAV_NY)}
-              </InternLenke>
+              <InternLenke to={lenker.Innsending}>{t(LangKey.KRAV_NY)}</InternLenke>
             </div>
             <br />
             <div>

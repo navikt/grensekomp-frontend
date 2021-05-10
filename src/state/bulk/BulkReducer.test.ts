@@ -3,10 +3,9 @@ import { defaultBulkState } from './BulkState';
 import { Actions } from './BulkActions';
 import BulkValidationResponse from '../../api/bulk/BulkValidationResponse';
 import { languageInit } from '../../locale/LocaleProvider';
-import Language from '../../locale/Language';
 
 describe('BulkReducer', () => {
-  const i18n = languageInit(Language.nb);
+  const i18n = languageInit('nb');
 
   it('should throw error', () => {
     expect(() => {
@@ -50,38 +49,6 @@ describe('BulkReducer', () => {
     );
 
     expect(state.items.find((item) => item.uniqueKey === '1')!.fnr).toBeUndefined();
-  });
-
-  it('should set the data on the first item for resubmit', () => {
-    let state = BulkReducer(
-      defaultBulkState(),
-      {
-        type: Actions.ResubmitItem,
-        payload: {
-          fnr: '2',
-          beloep: '123',
-          land: 'SWE'
-        }
-      },
-      i18n
-    );
-
-    expect(state.items.find((item) => item.uniqueKey === '1')!.fnr).toEqual('2');
-    expect(state.items.find((item) => item.uniqueKey === '1')!.beloep).toEqual('123');
-    expect(state.items.find((item) => item.uniqueKey === '1')!.land).toEqual('SWE');
-    expect(state.items.length).toBe(1);
-  });
-
-  it('should add an item', () => {
-    let state = BulkReducer(
-      defaultBulkState(),
-      {
-        type: Actions.AddItem
-      },
-      i18n
-    );
-
-    expect(state.items.length).toBe(2);
   });
 
   it('should set the orgnr', () => {
@@ -348,7 +315,7 @@ describe('BulkReducer', () => {
   it('should reset to defaults', () => {
     const defaultState = defaultBulkState();
 
-    let state = BulkReducer(defaultState, { type: Actions.Reset }, i18n);
+    let state = BulkReducer(defaultState, { type: Actions.Reset, i18n });
     expect(state.items).not.toBeUndefined();
     expect(defaultState.items).not.toBeUndefined();
     state = BulkReducer(
