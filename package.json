@@ -119,15 +119,6 @@
     "ts-jest": "^26.5.1",
     "yet-another-fetch-mock": "^4.1.0"
   },
-  "prettier": {
-    "printWidth": 120,
-    "parser": "typescript",
-    "singleQuote": true,
-    "bracketSpacing": true,
-    "trailingComma": "none",
-    "filepath": "src",
-    "jsxSingleQuote": true
-  },
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged --pattern '**/*.*(ts|tsx|js)'"

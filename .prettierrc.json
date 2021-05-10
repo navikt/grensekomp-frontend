@@ -1,0 +1,12 @@
+{
+  "printWidth": 120,
+  "parser": "typescript",
+  "singleQuote": true,
+
+  "bracketSpacing": true,
+  "trailingComma": "none",
+  "embeddedLanguageFormatting": "off",
+
+  "filepath": "src",
+  "jsxSingleQuote": true
+}
