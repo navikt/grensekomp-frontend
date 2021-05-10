@@ -133,11 +133,6 @@ const Locales: Record<LangKey, Locale> = {
     en: 'Overview of previously submitted claims'
   },
 
-  GRUNNBELOEP: {
-    nb: 'folketrygdens grunnbeløp.',
-    en: 'the National Insurance basic amount (“G”).'
-  },
-
   BULKINNSENDING_SKJEMA_OVERSKRIFT: {
     nb: 'Oppgi ansatte, fraværsperiode og beløp',
     en: 'Enter employees, period of absence and amount'
