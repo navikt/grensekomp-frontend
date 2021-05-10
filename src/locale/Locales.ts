@@ -92,8 +92,36 @@ const Locales: Record<LangKey, Locale> = {
   },
 
   BULKINNSENDING_INFO_REINNSENDING: {
-    nb: '',
-    en: ''
+    nb:
+      'Arbeidsgivere er pålagt å utbetale kompensasjon til ansatte som taper inntekt fordi de ikke kan møte på arbeid ' +
+      'som følge av innreiseforbudet under pandemien. Arbeidsgiveren forskutterer kompensasjonen og krever refusjon fra ' +
+      'NAV.' +
+      '-##\n' +
+      '-- Ordningen gjelder for arbeidstakere som var ansatt og hadde påbegynt arbeidet 29. januar da innreiseforbudet ble innført.\n' +
+      '-- Den ansatte må ha vært i jobb i minst fire uker før det tidspunktet man krever refusjon fra.\n' +
+      '-- Det gis bare kompensasjon for dager som den ansatte faktisk skulle ha jobbet.\n' +
+      '-- Hvis arbeidsgiveren er kjent med at den ansatte har hatt inntekt fra en annen jobb, skal det ikke gis ' +
+      'kompensasjon for dager som den ansatte har hatt annen inntekt. Det samme gjelder ytelser fra bostedslandet hvis ' +
+      'arbeidsgiveren er kjent med det.\n' +
+      '-- Avviklet ferie kan omgjøres til arbeidsdager som det gis refusjon for.\n' +
+      '-- Kompensasjonen er 70 % av sykepengegrunnlaget, begrenset opp til 70 % av 6G, [folketrygdens grunnbeløp.](https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden)\n' +
+      '-- [Søknaden blir behandlet automatisk.](https://www.nav.no/no/person/arbeid/sykmeldt-arbeidsavklaringspenger-og-yrkesskade/nyheter/kompensasjon-til-utestengte-eos-borgere/automatisert-saksbehandling-i-forbindelse-med-innreiseforbudet)\n' +
+      '##-\n',
+    en:
+      'Employers are required to pay compensation to employees who are losing income because they cannot get to work as a ' +
+      'result of the current restrictions on entry into Norway in connection with the pandemic. The employer must pay this ' +
+      'compensation in advance and then claim reimbursement from NAV.' +
+      '-##\n' +
+      '-- The scheme applies to employees who were employed and had started work at 29 January when the ban on entry into Norway was introduced.\n' +
+      '-- The employee must have been working for at least four weeks before the day from which you are claiming reimbursement.\n' +
+      '-- Compensation is only given for days that the employee ought actually to have worked.\n' +
+      '-- If the employer is aware that the employee has had income from another job, no compensation shall be given for days ' +
+      'on which the employee has had other income. The same applies to benefits from the country of residence if the employer ' +
+      'is aware of it.\n' +
+      '-- Holiday days that were taken can be converted into working days for which reimbursement will be granted.\n' +
+      '-- The compensation amounts to 70% of the basis for calculation of sickness benefit, limited upwards to 70% of 6 x [the National Insurance basic amount (“G”).](https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden)\n' +
+      '-- [The application will be processed automatically.](https://www.nav.no/no/person/arbeid/sykmeldt-arbeidsavklaringspenger-og-yrkesskade/nyheter/kompensasjon-til-utestengte-eos-borgere/automatisert-saksbehandling-i-forbindelse-med-innreiseforbudet)\n' +
+      '##-\n'
   },
 
   NUMBER: {
@@ -226,7 +254,7 @@ const Locales: Record<LangKey, Locale> = {
 
   ORGNR_INVALID: {
     nb: 'Ugyldig virksomhetsnummer',
-    en: 'invalid business number'
+    en: 'Invalid business number'
   },
 
   AMOUNT_MISSING: {
