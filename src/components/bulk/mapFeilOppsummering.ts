@@ -1,10 +1,10 @@
 import BulkState from '../../state/bulk/BulkState';
 import { pushFeilmelding } from '../felles/Feilmeldingspanel/pushFeilmelding';
 import { FeiloppsummeringFeil } from 'nav-frontend-skjema';
-import { i18n } from 'i18next';
+import { i18n as i18nInterface } from 'i18next';
 import LangKey from '../../locale/LangKey';
 
-const mapFeilOppsummering = (state: BulkState, i18n: i18n): FeiloppsummeringFeil[] => {
+const mapFeilOppsummering = (state: BulkState, i18n: i18nInterface): FeiloppsummeringFeil[] => {
   const feilmeldinger = new Array<FeiloppsummeringFeil>();
   if (state.orgnrError) {
     pushFeilmelding('orgnr', state.orgnrError, feilmeldinger);
