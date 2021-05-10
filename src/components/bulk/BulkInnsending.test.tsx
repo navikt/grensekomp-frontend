@@ -47,14 +47,14 @@ describe('BulkInnsending', () => {
 
     submitButton.click();
 
-    expect(screen.getAllByText(/Mangler fødselsnummer/).length).toBe(2);
+    expect(screen.getAllByText(/Mangler ID-nummer/).length).toBe(2);
     expect(screen.getAllByText(/Mangler fra dato/).length).toBe(2);
     expect(screen.getAllByText(/Mangler til dato/).length).toBe(2);
     expect(screen.getAllByText(/Mangler beløp/).length).toBe(2);
     expect(screen.getAllByText(/Bekreft at opplysningene er korrekt/).length).toBe(2);
 
     waitFor(() => {
-      expect(screen.getByText(/Rad 1: Mangler fødselsnummer/)).toBeInTheDocument();
+      expect(screen.getByText(/Rad 1: Mangler ID-nummer/)).toBeInTheDocument();
     });
     expect(screen.getByText(/Rad 1: Mangler fra dato/)).toBeInTheDocument();
     expect(screen.getByText(/Rad 1: Mangler til dato/)).toBeInTheDocument();
@@ -70,20 +70,20 @@ describe('BulkInnsending', () => {
 
     submitButton.click();
 
-    expect(screen.getAllByText(/Mangler fødselsnummer/).length).toBe(2);
+    expect(screen.getAllByText(/Mangler ID-nummer/).length).toBe(2);
     expect(screen.getAllByText(/Mangler fra dato/).length).toBe(2);
     expect(screen.getAllByText(/Mangler til dato/).length).toBe(2);
     expect(screen.getAllByText(/Mangler beløp/).length).toBe(2);
     expect(screen.getAllByText(/Bekreft at opplysningene er korrekt/).length).toBe(2);
 
-    expect(screen.getByText(/Rad 1: Mangler fødselsnummer/)).toBeInTheDocument();
+    expect(screen.getByText(/Rad 1: Mangler ID-nummer/)).toBeInTheDocument();
     expect(screen.getByText(/Rad 1: Mangler fra dato/)).toBeInTheDocument();
     expect(screen.getByText(/Rad 1: Mangler til dato/)).toBeInTheDocument();
     expect(screen.getByText(/Rad 1: Mangler beløp/)).toBeInTheDocument();
 
     userEvent.type(fnrInput, testFnr.GyldigeFraDolly.TestPerson1);
-    expect(screen.queryByText(/Mangler fødselsnummer/)).not.toBeInTheDocument();
-    expect(screen.queryByText(/Fødselsnummer må fylles ut/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/Mangler ID-nummer/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/Rad 1: Mangler ID-nummer/)).not.toBeInTheDocument();
 
     userEvent.type(BelopInput[1], '123');
     expect(screen.queryByText(/Mangler beløp/)).not.toBeInTheDocument();
