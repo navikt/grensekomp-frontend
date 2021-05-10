@@ -77,7 +77,7 @@ const Locales: Record<LangKey, Locale> = {
       '##-\n',
     en:
       '-## ' +
-      `-- Don't close this window\n` +
+      "-- Don't close this window\n" +
       '-- [Open ID-Porten (to log in) in a new window by clicking this link.]({{ innloggingUrl }})\n' +
       '-- Log in again in ID-porten.\n' +
       '-- Return to this window.\n' +
