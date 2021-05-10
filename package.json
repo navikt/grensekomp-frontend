@@ -34,6 +34,7 @@
     "@sentry/browser": "5.x",
     "dayjs": "1.x",
     "i18next": "20.x",
+    "postcss": "8.2.14",
     "nav-frontend-alertstriper": "3.x",
     "nav-frontend-alertstriper-style": "2.x",
     "nav-frontend-chevron": "1.x",
