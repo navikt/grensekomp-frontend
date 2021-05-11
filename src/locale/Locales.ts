@@ -45,7 +45,7 @@ const Locales: Record<LangKey, Locale> = {
       'is aware of it.\n' +
       '-- Holiday days that were taken can be converted into working days for which reimbursement will be granted.\n' +
       '-- The compensation amounts to 70% of the basis for calculation of sickness benefit, limited upwards to 70% of 6 x [the National Insurance basic amount (“G”).](https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden)\n' +
-      '-- [The application will be processed automatically.](https://www.nav.no/no/person/arbeid/sykmeldt-arbeidsavklaringspenger-og-yrkesskade/nyheter/kompensasjon-til-utestengte-eos-borgere/automatisert-saksbehandling-i-forbindelse-med-innreiseforbudet)\n' +
+      '-- [The application will be processed automatically.](https://www.nav.no/en/home/employers/automated-case-processing-in-connection-with-entry-ban)\n' +
       '##-\n'
   },
 
