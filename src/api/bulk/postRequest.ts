@@ -1,7 +1,12 @@
 import HttpStatus from '../HttpStatus';
 import BulkValidationResponse from './BulkValidationResponse';
 
-const postRequest = async (path: string, payload: any, timeout: number = 10000): Promise<BulkValidationResponse> => {
+const postRequest = async (
+  path: string,
+  payload: any,
+  timeout: number = 10000,
+  lang: string = 'nb'
+): Promise<BulkValidationResponse> => {
   return Promise.race([
     new Promise<BulkValidationResponse>((_, reject) => {
       const id = setTimeout(() => {
@@ -18,7 +23,8 @@ const postRequest = async (path: string, payload: any, timeout: number = 10000):
     fetch(path, {
       headers: {
         Accept: 'application/json; charset=utf-8',
-        'Content-Type': 'application/json; charset=utf-8'
+        'Content-Type': 'application/json; charset=utf-8',
+        'Accept-Language': lang
       },
       credentials: 'include',
       method: 'POST',
