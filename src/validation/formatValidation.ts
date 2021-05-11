@@ -1,7 +1,7 @@
 import ValidationResult from './ValidationResult';
-import { i18n } from 'i18next';
+import { i18n as i18nInterface } from 'i18next';
 
-const formatValidation = (validationResult: ValidationResult | undefined, i18n: i18n): string | undefined => {
+const formatValidation = (validationResult: ValidationResult | undefined, i18n: i18nInterface): string | undefined => {
   if (!validationResult) {
     return;
   }
