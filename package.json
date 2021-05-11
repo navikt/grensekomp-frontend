@@ -118,6 +118,7 @@
     "snyk": "1.x",
     "timezone-mock": "1.x",
     "ts-jest": "26.x",
+    "webpack-cli": "^4.7.0",
     "yet-another-fetch-mock": "4.x"
   },
   "husky": {
