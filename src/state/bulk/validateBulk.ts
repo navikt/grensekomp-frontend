@@ -7,11 +7,11 @@ import validateFra from '../../validation/validateFra';
 import validateBeloep from '../../validation/validateBeloep';
 import { validateOrgnr } from '../../validation/validateOrgnr';
 import validateLand from '../../validation/validateLand';
-import { i18n as i18nInterface } from 'i18next';
+import { i18n } from 'i18next';
 import formatValidation from '../../validation/formatValidation';
 import validateBekreft from '../../validation/validateBekreft';
 
-const validateBulk = (state: BulkState, i18n: i18nInterface): BulkState => {
+const validateBulk = (state: BulkState, Translate: i18n): BulkState => {
   if (!state.validated) {
     return state;
   }
@@ -21,11 +21,11 @@ const validateBulk = (state: BulkState, i18n: i18nInterface): BulkState => {
   nextState.items?.forEach((item, index) => {
     const RAD_FEIL = 'Rad ' + (index + 1) + ': ';
 
-    item.fnrError = formatValidation(validateFnr(item.fnr, state.validated), i18n);
-    item.fomError = formatValidation(validateFra(item.fom, state.validated), i18n);
-    item.tomError = formatValidation(validateTil(item.fom, item.tom, state.validated), i18n);
-    item.beloepError = formatValidation(validateBeloep(item.beloep, 1000000, state.validated), i18n);
-    item.landError = formatValidation(validateLand(item.land, state.validated), i18n);
+    item.fnrError = formatValidation(validateFnr(item.fnr, state.validated), Translate);
+    item.fomError = formatValidation(validateFra(item.fom, state.validated), Translate);
+    item.tomError = formatValidation(validateTil(item.fom, item.tom, state.validated), Translate);
+    item.beloepError = formatValidation(validateBeloep(item.beloep, 1000000, state.validated), Translate);
+    item.landError = formatValidation(validateLand(item.land, state.validated), Translate);
     item.genericError = undefined;
 
     if (item.fnrError) {
@@ -45,12 +45,12 @@ const validateBulk = (state: BulkState, i18n: i18nInterface): BulkState => {
     }
   });
 
-  nextState.orgnrError = formatValidation(validateOrgnr(state.orgnr, state.validated), i18n);
+  nextState.orgnrError = formatValidation(validateOrgnr(state.orgnr, state.validated), Translate);
   if (nextState.orgnrError) {
     pushFeilmelding('orgnr', nextState.orgnrError, feilmeldinger);
   }
 
-  nextState.bekreftError = formatValidation(validateBekreft(state.bekreft, state.validated), i18n);
+  nextState.bekreftError = formatValidation(validateBekreft(state.bekreft, state.validated), Translate);
   if (nextState.bekreftError) {
     pushFeilmelding('bekreftFeilmeldingId', nextState.bekreftError || '', feilmeldinger);
   }
