@@ -7,11 +7,11 @@ import validateFra from '../../validation/validateFra';
 import validateBeloep from '../../validation/validateBeloep';
 import { validateOrgnr } from '../../validation/validateOrgnr';
 import validateLand from '../../validation/validateLand';
-import { i18n } from 'i18next';
+import { i18n as i18nInterface } from 'i18next';
 import formatValidation from '../../validation/formatValidation';
 import validateBekreft from '../../validation/validateBekreft';
 
-const validateBulk = (state: BulkState, i18n: i18n): BulkState => {
+const validateBulk = (state: BulkState, i18n: i18nInterface): BulkState => {
   if (!state.validated) {
     return state;
   }

@@ -6,7 +6,7 @@ import mapBulkValidationResponse from '../../components/bulk/mapBulkValidationRe
 import mapFeilOppsummering from '../../components/bulk/mapFeilOppsummering';
 import HttpStatus from '../../api/HttpStatus';
 import { toDato } from '../../utils/dato/toDato';
-import { i18n } from 'i18next';
+import { i18n as i18nInterface } from 'i18next';
 
 const checkItemId = (itemId?: string) => {
   if (itemId === undefined) {
@@ -14,7 +14,7 @@ const checkItemId = (itemId?: string) => {
   }
 };
 
-const BulkReducer = (state: BulkState, action: BulkActions, i18n: i18n): BulkState => {
+const BulkReducer = (state: BulkState, action: BulkActions, i18n: i18nInterface): BulkState => {
   const nextState = Object.assign({}, state);
   const { payload } = action;
   nextState.items = nextState.items ? nextState.items : [{ uniqueKey: uuid() }];
