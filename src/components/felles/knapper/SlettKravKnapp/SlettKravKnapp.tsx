@@ -1,4 +1,4 @@
-import React, { Children } from 'react';
+import React from 'react';
 import { Knapp } from 'nav-frontend-knapper';
 import './SlettKravKnapp.scss';
 
