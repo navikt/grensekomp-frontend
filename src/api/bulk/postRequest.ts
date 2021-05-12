@@ -4,8 +4,8 @@ import BulkValidationResponse from './BulkValidationResponse';
 const postRequest = async (
   path: string,
   payload: any,
-  timeout: number = 10000,
-  lang: string = 'nb'
+  lang: string = 'nb',
+  timeout: number = 10000
 ): Promise<BulkValidationResponse> => {
   return Promise.race([
     new Promise<BulkValidationResponse>((_, reject) => {
