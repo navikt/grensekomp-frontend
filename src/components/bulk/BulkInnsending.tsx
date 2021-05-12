@@ -43,10 +43,14 @@ interface BulkInnsendingProps {
   state?: BulkState;
 }
 
+interface PathParams {
+  language: string;
+}
+
 const BulkInnsending = (props: BulkInnsendingProps) => {
   const { t, i18n } = useTranslation();
 
-  let { language } = useParams();
+  let { language } = useParams<PathParams>();
 
   const locationData = useLocation();
 
