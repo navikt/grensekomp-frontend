@@ -38,13 +38,14 @@ import LangKey from '../../locale/LangKey';
 import { useLocation } from 'react-router';
 import { useParams } from 'react-router-dom';
 import Endringsdata from './Endringsdata';
+import Language from '../../locale/Language';
 
 interface BulkInnsendingProps {
   state?: BulkState;
 }
 
-interface PathParams {
-  language: string;
+export interface PathParams {
+  language: Language;
 }
 
 const BulkInnsending = (props: BulkInnsendingProps) => {
@@ -62,10 +63,10 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
     endringsdata.isoLand = locationData.state.isoLand;
   }
 
-  const BulkReducerSettOpp = (Translate: i18n): Reducer<BulkState, BulkActions> => (
-    bulkState: BulkState,
-    action: BulkActions
-  ) => BulkReducer(bulkState, action, Translate);
+  const BulkReducerSettOpp =
+    (Translate: i18n): Reducer<BulkState, BulkActions> =>
+    (bulkState: BulkState, action: BulkActions) =>
+      BulkReducer(bulkState, action, Translate);
 
   const BulkReducerI18n: Reducer<BulkState, BulkActions> = BulkReducerSettOpp(i18n);
   const [state, dispatch] = useReducer(BulkReducerI18n, props.state, defaultBulkState);
