@@ -1,6 +1,5 @@
 import { ReactElementDescription, RegexMatch, Rule, RuleScope } from '@navikt/textparser';
 import { Link } from 'react-router-dom';
-import Lenke from 'nav-frontend-lenker';
 
 export const LenkeRule: Rule = {
   name: 'Lenke',
