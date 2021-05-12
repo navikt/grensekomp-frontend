@@ -3,6 +3,9 @@
   "version": "0.1.13",
   "private": true,
   "homepage": "/grensekomp",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "start": "BROWSER=firefox react-scripts start --development",
     "build": "react-scripts build",
