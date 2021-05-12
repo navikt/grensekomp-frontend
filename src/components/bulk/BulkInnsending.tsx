@@ -100,7 +100,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
         });
       });
     }
-  }, [state.validated, state.progress, state.feilmeldinger, state.submitting, state.bekreft, state]);
+  }, [state.validated, state.progress, state.feilmeldinger, state.submitting, state.bekreft, state, language]);
 
   useEffect(() => {
     if (endringsdata.identitetsnummer) {
