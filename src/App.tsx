@@ -35,8 +35,8 @@ export const Application = ({
     <Route path='/batchinnsending/krav'>
       <Redirect from='/' to={buildLenke(lenker.Innsending, Language.nb)} />
     </Route>
-    <Route path={lenker.TokenFornyet}>
-      <TokenFornyet />
+    <Route path={lenker.TokenFornyetGammel}>
+      <Redirect from='/' to={buildLenke(lenker.TokenFornyet, Language.nb)} />
     </Route>
     <Route path='/:language(nb|en)/*'>
       <LocaleProvider>
