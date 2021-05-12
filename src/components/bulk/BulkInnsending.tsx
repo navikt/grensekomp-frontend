@@ -63,7 +63,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
 
   const endringsdata: Endringsdata = {};
 
-  if (locationData && locationData.state && locationData.state.identitetsnummer) {
+  if (locationData.state?.identitetsnummer) {
     endringsdata.identitetsnummer = locationData.state.identitetsnummer;
     endringsdata.beloep = locationData.state.beloep;
     endringsdata.isoLand = locationData.state.isoLand;
