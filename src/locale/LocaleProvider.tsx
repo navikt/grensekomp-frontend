@@ -5,6 +5,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import Language from './Language';
 import { setAvailableLanguages, setParams } from '@navikt/nav-dekoratoren-moduler';
+import { PathParams } from '../components/bulk/BulkInnsending';
 
 interface LocaleProviderProps {
   lang?: Language;
@@ -38,7 +39,7 @@ export const languageInit = (lang: Language) => {
 };
 
 const LocaleProvider = ({ children, lang = Language.nb }: LocaleProviderProps) => {
-  let { language } = useParams();
+  let { language } = useParams<PathParams>();
   // const locale = useLocale(); Bruk useLocale
   const newLocationNO = '/grensekomp/nb/innsending' + location.search;
   const newLocationEN = '/grensekomp/en/innsending' + location.search;

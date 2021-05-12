@@ -9,6 +9,7 @@ import LangKey from '../../locale/LangKey';
 import lenker from '../../config/lenker';
 import { useParams } from 'react-router-dom';
 import injectRedirectPath from './injectRedirectPath';
+import { PathParams } from '../bulk/BulkInnsending';
 
 interface LoggetUtAdvarselProps {
   onClose: Function;
@@ -16,7 +17,7 @@ interface LoggetUtAdvarselProps {
 
 const LoggetUtAdvarsel = ({ onClose }: LoggetUtAdvarselProps) => {
   const { t } = useTranslation();
-  let { language } = useParams();
+  let { language } = useParams<PathParams>();
   const loginServiceUrlAfterRedirect = injectRedirectPath(lenker.TokenFornyet, language);
   const handleCloseModal = () => {
     onClose();
