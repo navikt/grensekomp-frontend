@@ -6,7 +6,7 @@
   "scripts": {
     "start": "BROWSER=firefox react-scripts start --development",
     "build": "react-scripts build",
-    "test": "react-scripts test --color --watchAll=false --coverage --env=jest-environment-jsdom-sixteen",
+    "test": "react-scripts test --color --watchAll=false --coverage",
     "lint": "eslint src/**/*.ts*",
     "lint:fix": "eslint src/**/*.ts* --fix",
     "pretty-please": "pretty-quick --staged"
