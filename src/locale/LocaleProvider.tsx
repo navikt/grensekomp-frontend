@@ -37,6 +37,8 @@ export const languageInit = (lang: Language) => {
   return i18n;
 };
 
+
+
 const LocaleProvider = ({ children, lang = Language.nb }: LocaleProviderProps) => {
   let { language } = useParams();
   // const locale = useLocale(); Bruk useLocale
