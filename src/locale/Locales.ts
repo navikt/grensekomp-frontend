@@ -239,7 +239,7 @@ const Locales: Record<LangKey, Locale> = {
     en:
       'I have paid the employees listed above for whom I am applying for reimbursement.\n' +
       'Each individual employee is losing money because they cannot show up for work due to the entry ban.' +
-      '[The rules for compensation in connection with the entry ban.](https://www.nav.no/no/bedrift/refusjon-ved-innreiseforbud-under-pandemien)'
+      '[The rules for compensation in connection with the entry ban.](https://www.nav.no/en/home/benefits-and-services/entry-ban-during-the-pandemic--compensation-for-lost-income/entry-ban-during-the-pandemic-reimbursement-for-compensation)'
   },
 
   SEND: {
