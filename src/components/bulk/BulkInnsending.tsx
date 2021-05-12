@@ -36,6 +36,7 @@ import { i18n } from 'i18next';
 import Oversettelse from '../felles/Oversettelse/Oversettelse';
 import LangKey from '../../locale/LangKey';
 import { useLocation } from 'react-router';
+import { useParams } from 'react-router-dom';
 import Endringsdata from './Endringsdata';
 
 interface BulkInnsendingProps {
@@ -44,6 +45,8 @@ interface BulkInnsendingProps {
 
 const BulkInnsending = (props: BulkInnsendingProps) => {
   const { t, i18n } = useTranslation();
+
+  let { language } = useParams();
 
   const locationData = useLocation();
 
@@ -90,14 +93,14 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
 
   useEffect(() => {
     if (state.validated === true && state.progress === true && state.submitting === true) {
-      postBulk(environment.baseUrl, mapBulkRequest(state)).then((response) => {
+      postBulk(environment.baseUrl, mapBulkRequest(state), language).then((response) => {
         dispatch({
           type: Actions.HandleResponse,
           payload: { response: response }
         });
       });
     }
-  }, [state.validated, state.progress, state.feilmeldinger, state.submitting, state.bekreft, state]);
+  }, [state.validated, state.progress, state.feilmeldinger, state.submitting, state.bekreft, state, language]);
 
   useEffect(() => {
     if (endringsdata.identitetsnummer) {
