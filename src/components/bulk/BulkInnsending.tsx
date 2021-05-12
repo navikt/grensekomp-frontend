@@ -48,16 +48,22 @@ export interface PathParams {
   language: Language;
 }
 
+interface LocationParams {
+  identitetsnummer: string;
+  beloep: number;
+  isoLand: string;
+}
+
 const BulkInnsending = (props: BulkInnsendingProps) => {
   const { t, i18n } = useTranslation();
 
   let { language } = useParams<PathParams>();
 
-  const locationData = useLocation();
+  const locationData = useLocation<LocationParams>();
 
   const endringsdata: Endringsdata = {};
 
-  if (locationData.state && locationData.state.identitetsnummer) {
+  if (locationData && locationData.state && locationData.state.identitetsnummer) {
     endringsdata.identitetsnummer = locationData.state.identitetsnummer;
     endringsdata.beloep = locationData.state.beloep;
     endringsdata.isoLand = locationData.state.isoLand;
