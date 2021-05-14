@@ -10,7 +10,6 @@ import ArbeidsgiverStatus from './context/arbeidsgiver/ArbeidsgiverStatus';
 import LocaleProvider from './locale/LocaleProvider';
 import lenker, { buildLenke } from './config/lenker';
 import PageNotFound from './components/felles/PageNotFound/PageNotFound';
-import TokenFornyet from './components/login/TokenFornyet';
 import Language from './locale/Language';
 
 interface ApplicationProps {
