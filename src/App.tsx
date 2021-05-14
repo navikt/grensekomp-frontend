@@ -10,7 +10,6 @@ import ArbeidsgiverStatus from './context/arbeidsgiver/ArbeidsgiverStatus';
 import LocaleProvider from './locale/LocaleProvider';
 import lenker, { buildLenke } from './config/lenker';
 import PageNotFound from './components/felles/PageNotFound/PageNotFound';
-import TokenFornyet from './components/login/TokenFornyet';
 import Language from './locale/Language';
 
 interface ApplicationProps {
@@ -34,9 +33,6 @@ export const Application = ({
     </Route>
     <Route path='/batchinnsending/krav'>
       <Redirect from='/' to={buildLenke(lenker.Innsending, Language.nb)} />
-    </Route>
-    <Route path={lenker.TokenFornyet}>
-      <TokenFornyet />
     </Route>
     <Route path='/:language(nb|en)/*'>
       <LocaleProvider>

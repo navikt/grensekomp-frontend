@@ -2,7 +2,7 @@ import Language from '../locale/Language';
 
 enum lenker {
   Home = '/',
-  TokenFornyet = '/token-fornyet',
+  TokenFornyet = '/:language/token-fornyet',
   Innsending = '/:language/innsending',
   Oversikt = '/:language/oversikt'
 }
