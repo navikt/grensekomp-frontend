@@ -11,9 +11,9 @@ import lenker, { buildLenke } from './config/lenker';
 import PageNotFound from './components/felles/PageNotFound/PageNotFound';
 import TokenFornyet from './components/login/TokenFornyet';
 import Language from './locale/Language';
-import { LanguageProvider } from './context/language/LanguageContext';
-import Languages from './config/Languages';
-import i18n from 'i18next';
+import LanguageBundle from './config/LanguageBundle';
+import i18next from 'i18next';
+import { LanguageProvider } from '@navikt/helse-arbeidsgiver-felles-frontend';
 
 interface ApplicationProps {
   loginStatus?: LoginStatus;
@@ -41,19 +41,11 @@ export const Application = ({
       <TokenFornyet />
     </Route>
     <Route path='/:language/*'>
-      <LanguageProvider
-        i18n={i18n}
-        useParams={useParams}
-        bundle={Languages}
-        defaultLanguage='nb'
-        languages={['nb', 'en']}
-      >
-        <LoginProvider baseUrl={basePath} status={loginStatus} loginServiceUrl={loginServiceUrl}>
-          <ArbeidsgiverProvider baseUrl={basePath} status={arbeidsgiverStatus} arbeidsgivere={arbeidsgivere}>
-            <ApplicationRoutes />
-          </ArbeidsgiverProvider>
-        </LoginProvider>
-      </LanguageProvider>
+      <LoginProvider baseUrl={basePath} status={loginStatus} loginServiceUrl={loginServiceUrl}>
+        <ArbeidsgiverProvider baseUrl={basePath} status={arbeidsgiverStatus} arbeidsgivere={arbeidsgivere}>
+          <ApplicationRoutes />
+        </ArbeidsgiverProvider>
+      </LoginProvider>
     </Route>
     <Route path='/:language/*'>
       <PageNotFound />
@@ -63,7 +55,9 @@ export const Application = ({
 
 const App = () => (
   <BrowserRouter basename='grensekomp'>
-    <Application />
+    <LanguageProvider i18n={i18next} bundle={LanguageBundle} languages={['nb', 'en']}>
+      <Application />
+    </LanguageProvider>
   </BrowserRouter>
 );
 

@@ -1,5 +1,6 @@
 .idea/
 *.iml
+.yarn
 
 # dependencies
 /node_modules
