@@ -1,4 +1,4 @@
-import { Locale } from '../../../locale/Locales';
+import { Locale } from '@navikt/helse-arbeidsgiver-felles-frontend';
 
 export interface Land extends Locale {
   iso3: string;

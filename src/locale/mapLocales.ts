@@ -1,8 +1,8 @@
-import Locales from './Locales';
+import LanguageBundle from '../config/LanguageBundle';
 
 const mapLocales = (lang: string) => {
   let allTranslatedKeys = {};
-  Object.keys(Locales).forEach((e) => (allTranslatedKeys[e] = Locales[e][lang]));
+  Object.keys(LanguageBundle).forEach((e) => (allTranslatedKeys[e] = LanguageBundle[e][lang]));
   return allTranslatedKeys;
 };
 

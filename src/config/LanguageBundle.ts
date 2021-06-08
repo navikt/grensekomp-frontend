@@ -1,11 +1,7 @@
-import LangKey from './LangKey';
+import { Locale } from '@navikt/helse-arbeidsgiver-felles-frontend';
+import LangKey from '../locale/LangKey';
 
-export interface Locale {
-  en: string;
-  nb: string;
-}
-
-const Locales: Record<LangKey, Locale> = {
+const LanguageBundle: Record<LangKey, Locale> = {
   SIDETITTEL: {
     nb: 'Refusjon for kompensasjon ved innreiseforbud',
     en: 'Entry ban - reimbursement for compensation'
@@ -554,4 +550,4 @@ const Locales: Record<LangKey, Locale> = {
   }
 };
 
-export default Locales;
+export default LanguageBundle;
