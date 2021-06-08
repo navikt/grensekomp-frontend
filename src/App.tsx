@@ -8,7 +8,6 @@ import env from './config/environment';
 import { LoginStatus } from './context/login/LoginStatus';
 import ArbeidsgiverStatus from './context/arbeidsgiver/ArbeidsgiverStatus';
 import lenker, { buildLenke } from './config/lenker';
-import PageNotFound from './components/felles/PageNotFound/PageNotFound';
 import TokenFornyet from './components/login/TokenFornyet';
 import Language from './locale/Language';
 import LanguageBundle from './config/LanguageBundle';
@@ -46,9 +45,6 @@ export const Application = ({
           <ApplicationRoutes />
         </ArbeidsgiverProvider>
       </LoginProvider>
-    </Route>
-    <Route path='/:language/*'>
-      <PageNotFound />
     </Route>
   </Switch>
 );

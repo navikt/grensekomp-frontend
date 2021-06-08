@@ -216,7 +216,7 @@ const LanguageBundle: Record<LangKey, Locale> = {
     en: 'Add another employee'
   },
 
-  BEKREFT_LABEL: {
+  BEKREFTOPPLYSNINGER_BEKREFT_LABEL: {
     nb:
       'Jeg bekrefter at jeg har satt meg inn i reglene, og at opplysningene jeg har gitt, er riktige og fullstendige. ' +
       'Jeg vet at NAV kan trekke tilbake retten til å få dekket lønnsutgiftene ved feil eller mangelfulle opplysninger, ' +
@@ -227,7 +227,7 @@ const LanguageBundle: Record<LangKey, Locale> = {
       'or incomplete information, and that NAV may verify the information afterwards to prevent misuse of the scheme.'
   },
 
-  BEKREFT_OPPLYSNINGER: {
+  BEKREFTOPPLYSNINGER_BEKREFT_OPPLYSNINGER: {
     nb:
       'Jeg har utbetalt lønn til de ansatte jeg søker om refusjon for ovenfor.\n' +
       'Hver enkelt ansatt taper inntekt fordi de ikke kan møte på jobb på grunn av innreiseforbudet. ' +
