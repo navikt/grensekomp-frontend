@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Redirect, Route, Switch, useParams } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { LoginProvider } from './context/login/LoginContext';
 import { ApplicationRoutes } from './ApplicationRoutes';
 import { Organisasjon } from '@navikt/bedriftsmeny/lib/organisasjon';
