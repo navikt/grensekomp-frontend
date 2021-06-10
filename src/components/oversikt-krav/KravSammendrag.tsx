@@ -5,7 +5,6 @@ import { Actions } from '../../state/oversikt-krav/OversiktKravActions';
 import 'nav-frontend-tabell-style';
 import formatNumberAsCurrency from '../../utils/formatNumberAsCurrency';
 import formatIsoDateAsNoDate from '../../utils/formatIsoDateAsNoDate';
-import SlettKravKnapp from '../felles/knapper/SlettKravKnapp';
 import mapIsoTilLand from '../../state/oversikt-krav/mapIsoTilLand';
 import OversiktKravItem from '../../state/oversikt-krav/OversiktKravItem';
 import formaterIsoTimestampAsNoTime from '../../utils/formatIsoTimestampAsNoTimestamp';
@@ -21,7 +20,7 @@ import diffDato from '../../utils/dato/diffDato';
 import { parseISODato } from '../../utils/dato/parseISODato';
 import { useTranslation } from 'react-i18next';
 import LangKey from '../../language/LangKey';
-import InternLenke from '../felles/InternLenke';
+import { InternLenke, SlettKravKnapp } from '@navikt/helse-arbeidsgiver-felles-frontend';
 
 interface KravSammendragProps {
   items: OversiktKravItem[];

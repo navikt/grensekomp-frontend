@@ -3,10 +3,10 @@ import { Element, Normaltekst } from 'nav-frontend-typografi';
 import Dato from '../../utils/dato/Dato';
 import kalkulerRefusjon from './KalkulerRefusjon';
 import formatNumberAsCurrency from '../../utils/formatNumberAsCurrency';
-import HjelpeLabel from '../felles/HjelpeLabel/HjelpeLabel';
 import Tekstomrade, { BoldRule } from 'nav-frontend-tekstomrade';
 import { useTranslation } from 'react-i18next';
 import LangKey from '../../language/LangKey';
+import { HjelpeLabel } from '@navikt/helse-arbeidsgiver-felles-frontend';
 
 interface BeregnetRefusjonProps {
   inntekt?: string;

@@ -1,6 +1,6 @@
 import { FeiloppsummeringFeil } from 'nav-frontend-skjema';
-import { ValidationState } from '../validation/ValidationState';
 import OversiktKravItem from './OversiktKravItem';
+import { ValidationState } from '@navikt/helse-arbeidsgiver-felles-frontend';
 
 export const defaultOversiktKravState = (state?: OversiktKravState): OversiktKravState => {
   return Object.assign(

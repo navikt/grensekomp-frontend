@@ -1,27 +1,34 @@
 import React, { Reducer, useEffect, useReducer } from 'react';
 import { Column, Row } from 'nav-frontend-grid';
-import ServerFeilAdvarsel from '../felles/ServerFeilAdvarsel';
 import Panel from 'nav-frontend-paneler';
 import { Element, Ingress } from 'nav-frontend-typografi';
-import Skillelinje from '../felles/Skillelinje';
 import { Input, SkjemaGruppe } from 'nav-frontend-skjema';
-import { DatoVelger, Fnr, BekreftOpplysningerPanel, Language } from '@navikt/helse-arbeidsgiver-felles-frontend';
-import LoggetUtAdvarsel from '../login/LoggetUtAdvarsel';
+import {
+  DatoVelger,
+  Fnr,
+  BekreftOpplysningerPanel,
+  Language,
+  Feilmeldingspanel,
+  Side,
+  Oversettelse,
+  Slettknapp,
+  HjelpeLabel,
+  LeggTilKnapp,
+  ServerFeilAdvarsel,
+  Skillelinje,
+  useArbeidsgiver,
+  Kvittering,
+  LoggetUtAdvarsel
+} from '@navikt/helse-arbeidsgiver-felles-frontend';
 import BulkReducer from '../../state/bulk/BulkReducer';
 import BulkState, { defaultBulkState, MAX_ITEMS } from '../../state/bulk/BulkState';
 import { Actions, BulkActions } from '../../state/bulk/BulkActions';
-import environment from '../../config/environment';
+import env from '../../config/environment';
 import postBulk from '../../api/bulk/postBulk';
 import mapBulkRequest from '../../api/bulk/mapBulkRequest';
-import Kvittering from '../kvittering';
-import { useArbeidsgiver } from '../../context/arbeidsgiver/ArbeidsgiverContext';
-import Side from '../felles/Side';
-import '../felles/knapper/LeggTilKnapp.sass';
+//import '../felles/knapper/LeggTilKnapp.sass';
 import './BulkInnsending.sass';
 import RadNr from '../felles/RadNr/RadNr';
-import LeggTilKnapp from '../felles/knapper/LeggTilKnapp';
-import Slettknapp from '../felles/knapper/Slettknapp';
-import Feilmeldingspanel from '../felles/Feilmeldingspanel';
 import { Hovedknapp } from 'nav-frontend-knapper';
 import { toDate } from '../../utils/dato/toDate';
 import Bostedland from './Bostedland/Bostedland';
@@ -29,9 +36,7 @@ import { maxDate, minDate } from '../../config/dager';
 import BeregnetRefusjon from './BeregnetRefusjon';
 import BeloepHjelpeLabel from './BeloepHjelpeLabel';
 import { useTranslation } from 'react-i18next';
-import HjelpeLabel from '../felles/HjelpeLabel/HjelpeLabel';
 import { i18n } from 'i18next';
-import Oversettelse from '../felles/Oversettelse/Oversettelse';
 import LangKey from '../../language/LangKey';
 import { useLocation } from 'react-router';
 import { useParams } from 'react-router-dom';
@@ -101,7 +106,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
 
   useEffect(() => {
     if (state.validated === true && state.progress === true && state.submitting === true) {
-      postBulk(environment.baseUrl, mapBulkRequest(state), language).then((response) => {
+      postBulk(env.baseUrl, mapBulkRequest(state), language).then((response) => {
         dispatch({
           type: Actions.HandleResponse,
           payload: { response: response }
@@ -346,7 +351,13 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
             </>
           )}
         </Column>
-        {state.notAuthorized && <LoggetUtAdvarsel onClose={handleCloseNotAuthorized} />}
+        {state.notAuthorized && (
+          <LoggetUtAdvarsel
+            loginServiceUrl={env.loginServiceUrl}
+            tokenFornyet={''}
+            onClose={handleCloseNotAuthorized}
+          />
+        )}
       </Row>
     </Side>
   );

@@ -1,8 +1,8 @@
 import BulkState from '../../state/bulk/BulkState';
-import { pushFeilmelding } from '../felles/Feilmeldingspanel/pushFeilmelding';
 import { FeiloppsummeringFeil } from 'nav-frontend-skjema';
 import { i18n } from 'i18next';
 import LangKey from '../../language/LangKey';
+import { pushFeilmelding } from '@navikt/helse-arbeidsgiver-felles-frontend';
 
 const mapFeilOppsummering = (state: BulkState, Translate: i18n): FeiloppsummeringFeil[] => {
   const feilmeldinger = new Array<FeiloppsummeringFeil>();

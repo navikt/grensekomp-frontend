@@ -1,15 +1,18 @@
 import BulkState from './BulkState';
 import { FeiloppsummeringFeil } from 'nav-frontend-skjema';
-import { pushFeilmelding } from '../../components/felles/Feilmeldingspanel/pushFeilmelding';
-import { validateFnr } from '../../validation/validateFnr';
-import validateTil from '../../validation/validateTil';
-import validateFra from '../../validation/validateFra';
-import validateBeloep from '../../validation/validateBeloep';
-import { validateOrgnr } from '../../validation/validateOrgnr';
 import validateLand from '../../validation/validateLand';
 import { i18n } from 'i18next';
-import formatValidation from '../../validation/formatValidation';
-import validateBekreft from '../../validation/validateBekreft';
+import {
+  validateFra,
+  validateTil,
+  validateOrgnr,
+  validateFnr,
+  formatValidation,
+  pushFeilmelding,
+  validateBekreft,
+  validateBeloep
+} from '@navikt/helse-arbeidsgiver-felles-frontend';
+import { minDate } from '../../config/dager';
 
 const validateBulk = (state: BulkState, Translate: i18n): BulkState => {
   if (!state.validated) {
@@ -22,8 +25,8 @@ const validateBulk = (state: BulkState, Translate: i18n): BulkState => {
     const RAD_FEIL = 'Rad ' + (index + 1) + ': ';
 
     item.fnrError = formatValidation(validateFnr(item.fnr, state.validated), Translate);
-    item.fomError = formatValidation(validateFra(item.fom, state.validated), Translate);
-    item.tomError = formatValidation(validateTil(item.fom, item.tom, state.validated), Translate);
+    item.fomError = formatValidation(validateFra(item.fom, minDate, state.validated), Translate);
+    item.tomError = formatValidation(validateTil(item.fom, item.tom, minDate, state.validated), Translate);
     item.beloepError = formatValidation(validateBeloep(item.beloep, 1000000, state.validated), Translate);
     item.landError = formatValidation(validateLand(item.land, state.validated), Translate);
     item.genericError = undefined;
