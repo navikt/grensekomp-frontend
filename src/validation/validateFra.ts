@@ -2,7 +2,7 @@ import { Dato } from '../utils/dato/Dato';
 import isBeforeMinDate from '../utils/isBeforeMinDate';
 import { minDate } from '../config/dager';
 import ValidationResult from './ValidationResult';
-import LangKey from '../locale/LangKey';
+import LangKey from '../language/LangKey';
 
 export const validateFra = (fra: Dato | undefined, required: boolean = false): ValidationResult | undefined => {
   if (required && !fra?.value) {

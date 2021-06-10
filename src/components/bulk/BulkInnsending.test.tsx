@@ -9,7 +9,9 @@ import testFnr from '../../mockData/testFnr';
 import testOrganisasjon from '../../mockData/testOrganisasjoner';
 import BulkInnsending from './BulkInnsending';
 import mockFetch from '../../mockData/mockFetch';
-import LocaleProvider from '../../locale/LocaleProvider';
+import { LanguageProvider } from '@navikt/helse-arbeidsgiver-felles-frontend';
+import i18next from 'i18next';
+import LanguageBundle from '../../config/LanguageBundle';
 
 const arbeidsgivere: Organisasjon[] = testOrganisasjon;
 
@@ -20,7 +22,7 @@ describe('BulkInnsending', () => {
 
   const buildBulkInnsending = (baseUrl: string, status: number, arbeidsgivere: any, arbeidsgiverId: string) => (
     <MemoryRouter>
-      <LocaleProvider>
+      <LanguageProvider i18n={i18next} bundle={LanguageBundle} languages={[]}>
         <ArbeidsgiverProvider
           arbeidsgivere={arbeidsgivere}
           status={status}
@@ -29,7 +31,7 @@ describe('BulkInnsending', () => {
         >
           <BulkInnsending />
         </ArbeidsgiverProvider>
-      </LocaleProvider>
+      </LanguageProvider>
     </MemoryRouter>
   );
 

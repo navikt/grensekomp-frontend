@@ -3,7 +3,7 @@ import ModalWrapper from 'nav-frontend-modal';
 import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 import './ServerFeilAdvarsel.sass';
 import InternLenke from '../InternLenke';
-import LangKey from '../../../locale/LangKey';
+import LangKey from '../../../language/LangKey';
 import Oversettelse from '../Oversettelse/Oversettelse';
 import { useTranslation } from 'react-i18next';
 

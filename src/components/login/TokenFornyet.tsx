@@ -4,7 +4,7 @@ import Panel from 'nav-frontend-paneler';
 import { Container, Row } from 'nav-frontend-grid';
 import Side from '../felles/Side';
 import { useTranslation } from 'react-i18next';
-import LangKey from '../../locale/LangKey';
+import LangKey from '../../language/LangKey';
 
 export const TokenFornyet = () => {
   const { t } = useTranslation();

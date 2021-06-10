@@ -3,7 +3,7 @@ import { Undertittel, Innholdstittel } from 'nav-frontend-typografi';
 import React from 'react';
 import './SoknadTittel.sass';
 import { useTranslation } from 'react-i18next';
-import LangKey from '../../../locale/LangKey';
+import LangKey from '../../../language/LangKey';
 
 interface SoknadTittelProps {
   children: any;

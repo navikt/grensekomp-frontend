@@ -1,5 +1,5 @@
-import Language from '../../locale/Language';
 import injectRedirectPath from './injectRedirectPath';
+import { Language } from '@navikt/helse-arbeidsgiver-felles-frontend';
 
 describe('injectRedirectPath', () => {
   it('should inject the param', () => {

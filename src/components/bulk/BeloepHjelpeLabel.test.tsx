@@ -3,17 +3,19 @@ import React from 'react';
 import { cleanup, fireEvent, render } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import BeloepHjelpeLabel from './BeloepHjelpeLabel';
-import LocaleProvider from '../../locale/LocaleProvider';
 import { Router } from 'react-router-dom';
 import mockHistory from '../../mockData/mockHistory';
+import i18next from 'i18next';
+import LanguageBundle from '../../config/LanguageBundle';
+import { LanguageProvider } from '@navikt/helse-arbeidsgiver-felles-frontend';
 
 describe('BeloepHjelpeLabel', () => {
   it('should display the component with a warning', () => {
     const component = render(
       <Router history={mockHistory('/')}>
-        <LocaleProvider>
+        <LanguageProvider i18n={i18next} bundle={LanguageBundle} languages={[]}>
           <BeloepHjelpeLabel />
-        </LocaleProvider>
+        </LanguageProvider>
       </Router>
     );
     expect(component.queryAllByText(/Slik regner du ut den ansattes daglige lønn/).length).toEqual(0);

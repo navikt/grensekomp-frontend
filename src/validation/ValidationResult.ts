@@ -1,4 +1,4 @@
-import LangKey from '../locale/LangKey';
+import LangKey from '../language/LangKey';
 
 interface ValidationResult {
   key: LangKey;

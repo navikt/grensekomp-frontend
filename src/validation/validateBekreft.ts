@@ -1,5 +1,5 @@
 import ValidationResult from './ValidationResult';
-import LangKey from '../locale/LangKey';
+import LangKey from '../language/LangKey';
 
 const validateBekreft = (bekreft?: boolean, required: boolean = false): ValidationResult | undefined => {
   if (required === false) {

@@ -2,7 +2,7 @@ import Panel from 'nav-frontend-paneler';
 import { Feiloppsummering, FeiloppsummeringFeil } from 'nav-frontend-skjema';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import LangKey from '../../../locale/LangKey';
+import LangKey from '../../../language/LangKey';
 
 interface FeilmeldingspanelProps {
   feilmeldinger: Array<FeiloppsummeringFeil>;

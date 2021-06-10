@@ -1,7 +1,9 @@
 import BulkState from '../../state/bulk/BulkState';
 import mapFeilOppsummering from './mapFeilOppsummering';
-import { languageInit } from '../../locale/LocaleProvider';
-import Language from '../../locale/Language';
+import { languageInit } from '../../language/languageInit';
+import i18next from 'i18next';
+import LanguageBundle from '../../config/LanguageBundle';
+import { Language } from '@navikt/helse-arbeidsgiver-felles-frontend';
 
 describe('mapFeilOppsummering', () => {
   it('should map correctly', () => {
@@ -25,7 +27,7 @@ describe('mapFeilOppsummering', () => {
         }
       ]
     } as BulkState;
-    const feilmeldinger = mapFeilOppsummering(state, languageInit(Language.nb));
+    const feilmeldinger = mapFeilOppsummering(state, languageInit(i18next, Language.nb, LanguageBundle));
     expect(feilmeldinger.length).toBe(10);
     expect(feilmeldinger[0].feilmelding).toBe('feil_orgnr');
     expect(feilmeldinger[1].skjemaelementId).toBe('fnr_feil1');

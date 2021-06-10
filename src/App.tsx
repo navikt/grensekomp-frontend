@@ -7,10 +7,11 @@ import { ArbeidsgiverProvider } from './context/arbeidsgiver/ArbeidsgiverContext
 import env from './config/environment';
 import { LoginStatus } from './context/login/LoginStatus';
 import ArbeidsgiverStatus from './context/arbeidsgiver/ArbeidsgiverStatus';
-import LocaleProvider from './locale/LocaleProvider';
 import lenker, { buildLenke } from './config/lenker';
-import PageNotFound from './components/felles/PageNotFound/PageNotFound';
-import Language from './locale/Language';
+import TokenFornyet from './components/login/TokenFornyet';
+import LanguageBundle from './config/LanguageBundle';
+import i18next from 'i18next';
+import { Language, LanguageProvider } from '@navikt/helse-arbeidsgiver-felles-frontend';
 
 interface ApplicationProps {
   loginStatus?: LoginStatus;
@@ -34,29 +35,24 @@ export const Application = ({
     <Route path='/batchinnsending/krav'>
       <Redirect from='/' to={buildLenke(lenker.Innsending, Language.nb)} />
     </Route>
-    <Route path='/:language(nb|en)/*'>
-      <LocaleProvider>
-        <LoginProvider baseUrl={basePath} status={loginStatus} loginServiceUrl={loginServiceUrl}>
-          <ArbeidsgiverProvider baseUrl={basePath} status={arbeidsgiverStatus} arbeidsgivere={arbeidsgivere}>
-            <ApplicationRoutes />
-          </ArbeidsgiverProvider>
-        </LoginProvider>
-      </LocaleProvider>
+    <Route path={lenker.TokenFornyet}>
+      <TokenFornyet />
     </Route>
     <Route path='/:language/*'>
-      <PageNotFound />
-    </Route>
-    <Route>
-      <LocaleProvider lang={Language.nb}>
-        <PageNotFound />
-      </LocaleProvider>
+      <LoginProvider baseUrl={basePath} status={loginStatus} loginServiceUrl={loginServiceUrl}>
+        <ArbeidsgiverProvider baseUrl={basePath} status={arbeidsgiverStatus} arbeidsgivere={arbeidsgivere}>
+          <ApplicationRoutes />
+        </ArbeidsgiverProvider>
+      </LoginProvider>
     </Route>
   </Switch>
 );
 
 const App = () => (
   <BrowserRouter basename='grensekomp'>
-    <Application />
+    <LanguageProvider i18n={i18next} bundle={LanguageBundle} languages={['nb', 'en']}>
+      <Application />
+    </LanguageProvider>
   </BrowserRouter>
 );
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import Side from '../Side';
 import Oversettelse from '../Oversettelse/Oversettelse';
-import LangKey from '../../../locale/LangKey';
+import LangKey from '../../../language/LangKey';
 import { useTranslation } from 'react-i18next';
 
 const PageNotFound = () => {
