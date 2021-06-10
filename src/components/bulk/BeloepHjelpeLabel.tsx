@@ -7,7 +7,7 @@ import './BeloepHjelpeLabel.scss';
 import LeggTilKnapp from '../felles/knapper/LeggTilKnapp';
 import SmilendeKar from '../oversikt-krav/SmilendeKar';
 import { useTranslation } from 'react-i18next';
-import LangKey from '../../locale/LangKey';
+import LangKey from '../../language/LangKey';
 import Oversettelse from '../felles/Oversettelse/Oversettelse';
 
 const HjelpetekstIkon = (

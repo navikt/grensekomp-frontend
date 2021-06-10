@@ -1,5 +1,5 @@
 import { Locale } from '@navikt/helse-arbeidsgiver-felles-frontend';
-import LangKey from '../locale/LangKey';
+import LangKey from '../language/LangKey';
 
 const LanguageBundle: Record<LangKey, Locale> = {
   SIDETITTEL: {

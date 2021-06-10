@@ -9,10 +9,9 @@ import { LoginStatus } from './context/login/LoginStatus';
 import ArbeidsgiverStatus from './context/arbeidsgiver/ArbeidsgiverStatus';
 import lenker, { buildLenke } from './config/lenker';
 import TokenFornyet from './components/login/TokenFornyet';
-import Language from './locale/Language';
 import LanguageBundle from './config/LanguageBundle';
 import i18next from 'i18next';
-import { LanguageProvider } from '@navikt/helse-arbeidsgiver-felles-frontend';
+import { Language, LanguageProvider } from '@navikt/helse-arbeidsgiver-felles-frontend';
 
 interface ApplicationProps {
   loginStatus?: LoginStatus;

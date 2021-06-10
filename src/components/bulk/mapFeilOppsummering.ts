@@ -2,7 +2,7 @@ import BulkState from '../../state/bulk/BulkState';
 import { pushFeilmelding } from '../felles/Feilmeldingspanel/pushFeilmelding';
 import { FeiloppsummeringFeil } from 'nav-frontend-skjema';
 import { i18n } from 'i18next';
-import LangKey from '../../locale/LangKey';
+import LangKey from '../../language/LangKey';
 
 const mapFeilOppsummering = (state: BulkState, Translate: i18n): FeiloppsummeringFeil[] => {
   const feilmeldinger = new Array<FeiloppsummeringFeil>();

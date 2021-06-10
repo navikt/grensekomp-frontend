@@ -7,7 +7,9 @@ import mockHistory from './mockData/mockHistory';
 import { ArbeidsgiverProvider } from './context/arbeidsgiver/ArbeidsgiverContext';
 import ArbeidsgiverStatus from './context/arbeidsgiver/ArbeidsgiverStatus';
 import { Organisasjon } from '@navikt/bedriftsmeny/lib/organisasjon';
-import LocaleProvider from './locale/LocaleProvider';
+import i18next from 'i18next';
+import LanguageBundle from './config/LanguageBundle';
+import { LanguageProvider } from '@navikt/helse-arbeidsgiver-felles-frontend';
 
 describe('ApplicationRoutes', () => {
   let container = document.createElement('div');
@@ -25,11 +27,11 @@ describe('ApplicationRoutes', () => {
 
   const makeRoute = (path: string, arbeidsgivere: Array<Organisasjon> = [{ Name: '' } as Organisasjon]) => (
     <Router history={mockHistory(path)}>
-      <LocaleProvider>
+      <LanguageProvider i18n={i18next} bundle={LanguageBundle} languages={[]}>
         <ArbeidsgiverProvider arbeidsgivere={arbeidsgivere} status={ArbeidsgiverStatus.Successfully} baseUrl=''>
           <ApplicationRoutes />
         </ArbeidsgiverProvider>
-      </LocaleProvider>
+      </LanguageProvider>
     </Router>
   );
 

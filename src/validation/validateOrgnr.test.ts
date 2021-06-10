@@ -1,6 +1,6 @@
 import { validateOrgnr } from './validateOrgnr';
 import testOrgnr from '../mockData/testOrgnr';
-import LangKey from '../locale/LangKey';
+import LangKey from '../language/LangKey';
 
 describe('validateOrgnr', () => {
   it('should not give error when valid fnr', async () => {

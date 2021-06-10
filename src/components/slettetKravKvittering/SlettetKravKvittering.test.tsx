@@ -4,7 +4,7 @@ import { axe } from 'jest-axe';
 import SlettetKravKvittering from './SlettetKravKvittering';
 import { Router, MemoryRouter, Route } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
-import LangKey from '../../locale/LangKey';
+import LangKey from '../../language/LangKey';
 
 describe('SlettetKravKvittering', () => {
   it('should have no a11y violations', async () => {

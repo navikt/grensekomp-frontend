@@ -1,4 +1,4 @@
-import LangKey from '../../../locale/LangKey';
+import LangKey from '../../../language/LangKey';
 import { useTranslation } from 'react-i18next';
 import Tekstomrade, { BoldRule, HighlightRule, LinebreakRule } from 'nav-frontend-tekstomrade';
 import { ListeRule } from './Liste';

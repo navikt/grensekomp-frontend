@@ -7,7 +7,7 @@ import lenker from '../../config/lenker';
 import InternLenke from '../felles/InternLenke/InternLenke';
 import mapIsoTilLand from '../../state/oversikt-krav/mapIsoTilLand';
 import { useTranslation } from 'react-i18next';
-import LangKey from '../../locale/LangKey';
+import LangKey from '../../language/LangKey';
 import Endringsdata from '../bulk/Endringsdata';
 import { useParams } from 'react-router';
 

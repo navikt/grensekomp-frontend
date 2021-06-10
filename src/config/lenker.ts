@@ -1,4 +1,4 @@
-import Language from '../locale/Language';
+import Language from '../language/Language';
 
 enum lenker {
   Home = '/',

@@ -1,6 +1,6 @@
 import { AlertStripeAdvarsel } from 'nav-frontend-alertstriper';
 import React from 'react';
-import LangKey from '../../locale/LangKey';
+import LangKey from '../../language/LangKey';
 import Oversettelse from '../felles/Oversettelse/Oversettelse';
 
 export const IngenTilgangAdvarsel = () => {

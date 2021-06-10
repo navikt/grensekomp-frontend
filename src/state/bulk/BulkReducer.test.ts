@@ -2,11 +2,13 @@ import BulkReducer from './BulkReducer';
 import { defaultBulkState } from './BulkState';
 import { Actions } from './BulkActions';
 import BulkValidationResponse from '../../api/bulk/BulkValidationResponse';
-import { languageInit } from '../../locale/LocaleProvider';
-import Language from '../../locale/Language';
+import { languageInit } from '../../language/languageInit';
+import i18next from 'i18next';
+import LanguageBundle from '../../config/LanguageBundle';
+import { Language } from '@navikt/helse-arbeidsgiver-felles-frontend';
 
 describe('BulkReducer', () => {
-  const i18n = languageInit(Language.nb);
+  const i18n = languageInit(i18next, Language.nb, LanguageBundle);
 
   it('should throw error', () => {
     expect(() => {

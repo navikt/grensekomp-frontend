@@ -6,7 +6,7 @@ import formatNumberAsCurrency from '../../utils/formatNumberAsCurrency';
 import HjelpeLabel from '../felles/HjelpeLabel/HjelpeLabel';
 import Tekstomrade, { BoldRule } from 'nav-frontend-tekstomrade';
 import { useTranslation } from 'react-i18next';
-import LangKey from '../../locale/LangKey';
+import LangKey from '../../language/LangKey';
 
 interface BeregnetRefusjonProps {
   inntekt?: string;

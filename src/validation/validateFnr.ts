@@ -1,6 +1,6 @@
 import isValidFnr from '../utils/isValidFnr';
 import ValidationResult from './ValidationResult';
-import LangKey from '../locale/LangKey';
+import LangKey from '../language/LangKey';
 
 export const validateFnr = (orgnr?: string, required: boolean = false): ValidationResult | undefined => {
   if (orgnr == undefined || orgnr == '') {

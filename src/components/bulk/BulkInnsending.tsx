@@ -32,11 +32,11 @@ import { useTranslation } from 'react-i18next';
 import HjelpeLabel from '../felles/HjelpeLabel/HjelpeLabel';
 import { i18n } from 'i18next';
 import Oversettelse from '../felles/Oversettelse/Oversettelse';
-import LangKey from '../../locale/LangKey';
+import LangKey from '../../language/LangKey';
 import { useLocation } from 'react-router';
 import { useParams } from 'react-router-dom';
 import Endringsdata from './Endringsdata';
-import Language from '../../locale/Language';
+import Language from '../../language/Language';
 
 interface BulkInnsendingProps {
   state?: BulkState;

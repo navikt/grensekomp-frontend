@@ -5,7 +5,7 @@ import { render, fireEvent, screen } from '@testing-library/react';
 import LoggetUtAdvarsel from './LoggetUtAdvarsel';
 import { Router } from 'react-router-dom';
 import mockHistory from '../../mockData/mockHistory';
-import LangKey from '../../locale/LangKey';
+import LangKey from '../../language/LangKey';
 
 describe('LoggetUtAdvarsel', () => {
   it('should display the modal if the token is invalid', () => {

@@ -7,7 +7,7 @@ import { Organisasjon } from '@navikt/bedriftsmeny/lib/organisasjon';
 import ArbeidsgiverStatus from '../../../context/arbeidsgiver/ArbeidsgiverStatus';
 import mockHistory from '../../../mockData/mockHistory';
 import { ArbeidsgiverProvider } from '../../../context/arbeidsgiver/ArbeidsgiverContext';
-import LangKey from '../../../locale/LangKey';
+import LangKey from '../../../language/LangKey';
 
 describe('Side', () => {
   let container = document.createElement('div');

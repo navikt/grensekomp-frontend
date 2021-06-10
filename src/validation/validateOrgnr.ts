@@ -1,5 +1,5 @@
 import isValidOrgnr from '../utils/isValidOrgnr';
-import LangKey from '../locale/LangKey';
+import LangKey from '../language/LangKey';
 import ValidationResult from './ValidationResult';
 
 export const validateOrgnr = (orgnr?: string, required: boolean = false): ValidationResult | undefined => {

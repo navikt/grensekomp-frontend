@@ -20,7 +20,7 @@ import estimertRefusjon from '../../utils/estimertRefusjon';
 import diffDato from '../../utils/dato/diffDato';
 import { parseISODato } from '../../utils/dato/parseISODato';
 import { useTranslation } from 'react-i18next';
-import LangKey from '../../locale/LangKey';
+import LangKey from '../../language/LangKey';
 import InternLenke from '../felles/InternLenke';
 
 interface KravSammendragProps {

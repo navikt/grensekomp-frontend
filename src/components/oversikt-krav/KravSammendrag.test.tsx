@@ -3,7 +3,7 @@ import { render, cleanup, screen } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import KravSammendrag from './KravSammendrag';
 import mockKravSammendragItems from '../../mockData/mockKravSammendragItems';
-import LangKey from '../../locale/LangKey';
+import LangKey from '../../language/LangKey';
 
 const innsending = '2021-03-08T16:53:34.054712';
 

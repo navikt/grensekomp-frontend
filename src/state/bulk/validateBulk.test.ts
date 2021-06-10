@@ -1,6 +1,9 @@
 import BulkState from './BulkState';
 import validateBulk from './validateBulk';
-import { languageInit } from '../../locale/LocaleProvider';
+import { languageInit } from '../../language/languageInit';
+import i18next from 'i18next';
+import LanguageBundle from '../../config/LanguageBundle';
+import { Language } from '@navikt/helse-arbeidsgiver-felles-frontend';
 
 describe('validateBulk', () => {
   it('should map all errors', () => {
@@ -14,7 +17,7 @@ describe('validateBulk', () => {
         }
       ]
     };
-    const state = validateBulk(fromState, languageInit('nb'));
+    const state = validateBulk(fromState, languageInit(i18next, Language.nb, LanguageBundle));
     expect(state.orgnrError).not.toBeUndefined();
     expect(state.bekreftError).not.toBeUndefined();
     expect(state.items.length).toBe(1);
