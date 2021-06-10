@@ -1,4 +1,4 @@
-import Language from '../language/Language';
+import { Language } from '@navikt/helse-arbeidsgiver-felles-frontend';
 
 enum lenker {
   Home = '/',
