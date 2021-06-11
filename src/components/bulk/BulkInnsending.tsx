@@ -26,7 +26,6 @@ import { Actions, BulkActions } from '../../state/bulk/BulkActions';
 import env from '../../config/environment';
 import postBulk from '../../api/bulk/postBulk';
 import mapBulkRequest from '../../api/bulk/mapBulkRequest';
-//import '../felles/knapper/LeggTilKnapp.sass';
 import './BulkInnsending.sass';
 import RadNr from '../felles/RadNr/RadNr';
 import { Hovedknapp } from 'nav-frontend-knapper';
