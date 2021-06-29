@@ -175,7 +175,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               placeholder={t(LangKey.FNR_PLACEHOLDER)}
                               feilmelding={item.fnrError}
                               disabled={item.accepted}
-                              className='bulk-element'
+                              className={`bulk-element ${language}`}
                               onChange={(event) => {
                                 dispatch({
                                   type: Actions.Fnr,
@@ -195,7 +195,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               feilmelding={item.landError}
                               disabled={item.accepted}
                               value={item.land}
-                              className='bulk-element'
+                              className={`bulk-element ${language}`}
                               onChange={(event) => {
                                 dispatch({
                                   type: Actions.Land,
