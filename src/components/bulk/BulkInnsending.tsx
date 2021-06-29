@@ -36,13 +36,10 @@ import LangKey from '../../language/LangKey';
 import { useLocation } from 'react-router';
 import { useParams } from 'react-router-dom';
 import Endringsdata from './Endringsdata';
+import { PathParams } from '../pathParams';
 
 interface BulkInnsendingProps {
   state?: BulkState;
-}
-
-export interface PathParams {
-  language: Language;
 }
 
 interface LocationParams {

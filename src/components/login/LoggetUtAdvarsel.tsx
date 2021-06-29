@@ -9,7 +9,7 @@ import LangKey from '../../language/LangKey';
 import lenker from '../../config/lenker';
 import { useParams } from 'react-router-dom';
 import injectRedirectPath from './injectRedirectPath';
-import { PathParams } from '../bulk/BulkInnsending';
+import { PathParams } from '../pathParams';
 
 interface LoggetUtAdvarselProps {
   onClose: Function;
