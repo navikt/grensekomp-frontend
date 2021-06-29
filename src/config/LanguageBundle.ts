@@ -253,17 +253,17 @@ const LanguageBundle: Record<LangKey, Locale> = {
     en: 'Invalid business number'
   },
 
-  AMOUNT_MISSING: {
+  VALIDATE_BELOEP_AMOUNT_MISSING: {
     nb: 'Mangler beløp',
     en: 'Missing amount'
   },
 
-  AMOUNT_NOT_NUMERIC: {
+  VALIDATE_BELOEP_AMOUNT_NOT_NUMERIC: {
     nb: 'Oppgi beløp med kun tall med maks to tall etter komma',
     en: 'Enter amounts with only numbers with a maximum of two numbers after the comma'
   },
 
-  AMOUNT_TOO_HIGH: {
+  VALIDATE_BELOEP_AMOUNT_TOO_HIGH: {
     nb: 'For høyt beløp',
     en: 'Amount too high'
   },
@@ -288,47 +288,52 @@ const LanguageBundle: Record<LangKey, Locale> = {
     en: 'The number of refund days can not be more than the days in the period'
   },
 
-  FNR_MISSING: {
+  VALIDATE_FNR_MISSING: {
     nb: 'Mangler ID-nummer',
     en: 'Missing ID-number'
   },
 
-  FNR_INVALID: {
+  VALIDATE_FNR_INVALID: {
     nb: 'Ugyldig ID-nummer',
     en: 'Invalid ID-number'
   },
 
-  FOM_MISSING: {
+  VALIDATE_FRA_MISSING: {
     nb: 'Mangler fra dato',
     en: 'Missing from date'
   },
 
-  FOM_INVALID: {
+  VALIDATE_FRA_FOM_INVALID: {
     nb: 'Dato kan bare være fra og med $value',
     en: 'Date can only be from $value'
   },
 
-  FOM_ERROR: {
+  VALIDATE_FRA_FOM_ERROR: {
     nb: 'Feil dato',
     en: 'Incorrect date'
   },
 
-  TIL_MISSING: {
+  VALIDATE_TIL_MISSING: {
     nb: 'Mangler til dato',
     en: 'Missing to date'
   },
 
-  TIL_INVALID: {
+  VALIDATE_TIL_INVALID: {
     nb: 'Dato kan bare være fra og med $value',
     en: 'Date can only be from $value'
   },
 
-  TIL_ERROR: {
+  VALIDATE_TIL_ERROR: {
     nb: 'Feil dato',
     en: 'Incorrect date'
   },
 
-  TIL_TOO_EARLY: {
+  VALIDATE_TIL_FOM_ERROR: {
+    nb: 'Feil dato',
+    en: 'Incorrect date'
+  },
+
+  VALIDATE_TIL_TOO_EARLY: {
     nb: 'Til dato kan ikke være før fra dato',
     en: 'To date can not be before from date'
   },
@@ -343,7 +348,7 @@ const LanguageBundle: Record<LangKey, Locale> = {
     en: 'Country not valid'
   },
 
-  BEKREFT: {
+  VALIDATE_BEKREFT_NOT_CHECKED: {
     nb: 'Bekreft at opplysningene er korrekt',
     en: 'Confirm that the information is correct'
   },

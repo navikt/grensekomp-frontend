@@ -3,8 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import lenker from './config/lenker';
 import Bulkinnsending from './components/bulk';
 import OversiktKrav from './components/oversikt-krav';
-import PageNotFound from './components/felles/PageNotFound/PageNotFound';
-import TokenFornyet from './components/login/TokenFornyet';
+import { PageNotFound, TokenFornyet } from '@navikt/helse-arbeidsgiver-felles-frontend';
 
 export const ApplicationRoutes = () => {
   return (

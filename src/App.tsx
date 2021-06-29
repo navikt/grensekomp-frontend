@@ -1,17 +1,20 @@
 import React from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import { LoginProvider } from './context/login/LoginContext';
 import { ApplicationRoutes } from './ApplicationRoutes';
 import { Organisasjon } from '@navikt/bedriftsmeny/lib/organisasjon';
-import { ArbeidsgiverProvider } from './context/arbeidsgiver/ArbeidsgiverContext';
 import env from './config/environment';
-import { LoginStatus } from './context/login/LoginStatus';
-import ArbeidsgiverStatus from './context/arbeidsgiver/ArbeidsgiverStatus';
 import lenker, { buildLenke } from './config/lenker';
-import TokenFornyet from './components/login/TokenFornyet';
 import LanguageBundle from './config/LanguageBundle';
 import i18next from 'i18next';
-import { Language, LanguageProvider } from '@navikt/helse-arbeidsgiver-felles-frontend';
+import {
+  ArbeidsgiverProvider,
+  ArbeidsgiverStatus,
+  Language,
+  LanguageProvider,
+  LoginProvider,
+  TokenFornyet
+} from '@navikt/helse-arbeidsgiver-felles-frontend';
+import { LoginStatus } from './context/login/LoginStatus';
 
 interface ApplicationProps {
   loginStatus?: LoginStatus;

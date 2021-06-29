@@ -1,5 +1,5 @@
 import landListe from '../components/bulk/Bostedland/landListe';
-import ValidationResult from './ValidationResult';
+import { ValidationResult } from '@navikt/helse-arbeidsgiver-felles-frontend';
 import LangKey from '../language/LangKey';
 
 const validateLand = (land: string | undefined, required: boolean = false): ValidationResult | undefined => {

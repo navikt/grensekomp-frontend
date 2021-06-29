@@ -2,17 +2,15 @@ import React, { useEffect, useReducer } from 'react';
 import { Actions } from '../../state/oversikt-krav/OversiktKravActions';
 import OversiktKravReducer from '../../state/oversikt-krav/OversiktKravReducer';
 import OversiktKravState, { defaultOversiktKravState } from '../../state/oversikt-krav/OversiktKravState';
-import ServerFeilAdvarsel from '../felles/ServerFeilAdvarsel';
-import Side from '../felles/Side';
 import 'nav-frontend-tabell-style';
 import refusjonskravList from '../../api/refusjonskravList/refusjonskravList';
-import { useArbeidsgiver } from '../../context/arbeidsgiver/ArbeidsgiverContext';
 import unikeInnsendinger from '../../state/oversikt-krav/unikeInnsendinger';
 import KravListe from './KravListe';
 import KravSammendrag from './KravSammendrag';
 import { RefusjonskravStatus } from '../../state/oversikt-krav/OversiktKravItem';
 import { useTranslation } from 'react-i18next';
 import LangKey from '../../language/LangKey';
+import { ServerFeilAdvarsel, Side, useArbeidsgiver } from '@navikt/helse-arbeidsgiver-felles-frontend';
 
 interface OversiktKravProps {
   state?: OversiktKravState;

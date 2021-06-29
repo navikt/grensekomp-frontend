@@ -3,13 +3,12 @@ import { render, cleanup, screen, waitFor } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
-import { ArbeidsgiverProvider } from '../../context/arbeidsgiver/ArbeidsgiverContext';
 import { Organisasjon } from '@navikt/bedriftsmeny/lib/organisasjon';
 import testFnr from '../../mockData/testFnr';
 import testOrganisasjon from '../../mockData/testOrganisasjoner';
 import BulkInnsending from './BulkInnsending';
 import mockFetch from '../../mockData/mockFetch';
-import { LanguageProvider } from '@navikt/helse-arbeidsgiver-felles-frontend';
+import { ArbeidsgiverProvider, LanguageProvider } from '@navikt/helse-arbeidsgiver-felles-frontend';
 import i18next from 'i18next';
 import LanguageBundle from '../../config/LanguageBundle';
 

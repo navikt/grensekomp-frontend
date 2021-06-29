@@ -1,6 +1,6 @@
 import OversiktKravState from '../../state/oversikt-krav/OversiktKravState';
-import { pushFeilmelding } from '../felles/Feilmeldingspanel/pushFeilmelding';
 import { FeiloppsummeringFeil } from 'nav-frontend-skjema';
+import { pushFeilmelding } from '@navikt/helse-arbeidsgiver-felles-frontend';
 
 const mapFeilOppsummering = (state: OversiktKravState): FeiloppsummeringFeil[] => {
   const feilmeldinger = new Array<FeiloppsummeringFeil>();
