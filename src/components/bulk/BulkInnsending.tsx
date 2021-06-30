@@ -5,7 +5,7 @@ import Panel from 'nav-frontend-paneler';
 import { Element, Ingress } from 'nav-frontend-typografi';
 import Skillelinje from '../felles/Skillelinje';
 import { Input, SkjemaGruppe } from 'nav-frontend-skjema';
-import { DatoVelger, Fnr, BekreftOpplysningerPanel, Language } from '@navikt/helse-arbeidsgiver-felles-frontend';
+import { DatoVelger, Fnr, BekreftOpplysningerPanel } from '@navikt/helse-arbeidsgiver-felles-frontend';
 import LoggetUtAdvarsel from '../login/LoggetUtAdvarsel';
 import BulkReducer from '../../state/bulk/BulkReducer';
 import BulkState, { defaultBulkState, MAX_ITEMS } from '../../state/bulk/BulkState';
