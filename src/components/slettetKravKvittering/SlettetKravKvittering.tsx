@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next';
 import LangKey from '../../language/LangKey';
 import Endringsdata from '../bulk/Endringsdata';
 import { useParams } from 'react-router';
+import { PathParams } from '../pathParams';
 
 interface SlettetKravKvitteringProps {
   identitetsnummer?: string;
@@ -18,10 +19,6 @@ interface SlettetKravKvitteringProps {
   tom?: string;
   beloep?: number;
   refusjon?: number;
-}
-
-interface PathParams {
-  language: string;
 }
 
 const SlettetKravKvittering = (props: SlettetKravKvitteringProps) => {
