@@ -5,7 +5,7 @@ import Lenke from 'nav-frontend-lenker';
 import { Row, Column } from 'nav-frontend-grid';
 import { useTranslation } from 'react-i18next';
 import LangKey from '../../language/LangKey';
-import Oversettelse from '../felles/Oversettelse/Oversettelse';
+import { Oversettelse } from '@navikt/helse-arbeidsgiver-felles-frontend';
 
 const Kvittering = () => {
   const { t } = useTranslation();

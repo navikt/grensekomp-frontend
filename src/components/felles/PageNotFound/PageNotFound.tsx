@@ -1,8 +1,8 @@
 import React from 'react';
 import Side from '../Side';
-import Oversettelse from '../Oversettelse/Oversettelse';
 import LangKey from '../../../language/LangKey';
 import { useTranslation } from 'react-i18next';
+import { Oversettelse } from '@navikt/helse-arbeidsgiver-felles-frontend';
 
 const PageNotFound = () => {
   const { t } = useTranslation();

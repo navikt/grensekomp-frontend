@@ -8,10 +8,9 @@ import formaterIsoTimestampAsNoTime from '../../utils/formatIsoTimestampAsNoTime
 import Skillelinje from '../felles/Skillelinje';
 import './KravListe.scss';
 import { useTranslation } from 'react-i18next';
-import Oversettelse from '../felles/Oversettelse/Oversettelse';
 import LangKey from '../../language/LangKey';
 import lenker, { buildLenke } from '../../config/lenker';
-import { Language } from '@navikt/helse-arbeidsgiver-felles-frontend';
+import { Language, Oversettelse } from '@navikt/helse-arbeidsgiver-felles-frontend';
 
 interface KravListeProps {
   innsendinger: string[];

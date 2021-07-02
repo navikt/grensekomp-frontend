@@ -1,7 +1,7 @@
+import { Oversettelse } from '@navikt/helse-arbeidsgiver-felles-frontend';
 import { AlertStripeAdvarsel } from 'nav-frontend-alertstriper';
 import React from 'react';
 import LangKey from '../../language/LangKey';
-import Oversettelse from '../felles/Oversettelse/Oversettelse';
 
 export const IngenTilgangAdvarsel = () => {
   return (

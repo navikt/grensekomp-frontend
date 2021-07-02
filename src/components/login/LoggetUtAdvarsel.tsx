@@ -4,12 +4,12 @@ import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 import { Innholdstittel } from 'nav-frontend-typografi';
 import InternLenke from '../felles/InternLenke';
 import { useTranslation } from 'react-i18next';
-import Oversettelse from '../felles/Oversettelse/Oversettelse';
 import LangKey from '../../language/LangKey';
 import lenker from '../../config/lenker';
 import { useParams } from 'react-router-dom';
 import injectRedirectPath from './injectRedirectPath';
 import { PathParams } from '../pathParams';
+import { Oversettelse } from '@navikt/helse-arbeidsgiver-felles-frontend';
 
 interface LoggetUtAdvarselProps {
   onClose: Function;

@@ -4,8 +4,8 @@ import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 import './ServerFeilAdvarsel.sass';
 import InternLenke from '../InternLenke';
 import LangKey from '../../../language/LangKey';
-import Oversettelse from '../Oversettelse/Oversettelse';
 import { useTranslation } from 'react-i18next';
+import { Oversettelse } from '@navikt/helse-arbeidsgiver-felles-frontend';
 
 interface ServerFeilAdvarselProps {
   onClose: () => void;

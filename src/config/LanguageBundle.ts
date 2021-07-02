@@ -49,7 +49,7 @@ const LanguageBundle: Record<LangKey, Locale> = {
     nb:
       '-## ' +
       '-- Ikke lukk dette vinduet\n' +
-      '-- [Åpne ID-Porten (innlogging) i nytt vindu ved å klikke på denne lenken.]({{ innloggingUrl }})\n' +
+      '-- [Åpne ID-Porten (innlogging) i nytt vindu ved å klikke på denne lenken.]({{-innloggingUrl}})\n' +
       '-- Logg inn på nytt i ID-porten.\n' +
       '-- Returner til dette vinduet.\n' +
       '-- Lukk denne meldingen og klikk igjen på knappen "Send krav om refusjon".\n' +
@@ -57,7 +57,7 @@ const LanguageBundle: Record<LangKey, Locale> = {
     en:
       '-## ' +
       "-- Don't close this window\n" +
-      '-- [Open ID-Porten (to log in) in a new window by clicking this link.]({{ innloggingUrl }})\n' +
+      '-- [Open ID-Porten (to log in) in a new window by clicking this link.]({{-innloggingUrl}})\n' +
       '-- Log in again in ID-porten.\n' +
       '-- Return to this window.\n' +
       '-- Close this message and click again on the button "Submit claim for reimbursement".\n' +
@@ -66,10 +66,10 @@ const LanguageBundle: Record<LangKey, Locale> = {
 
   KRAVLISTE_INFO: {
     nb:
-      'Har du tidligere søkt om refusjon for [tapt arbeidsinntekt på grunn av innreiseforbudet]({{ path }}) ' +
+      'Har du tidligere søkt om refusjon for [tapt arbeidsinntekt på grunn av innreiseforbudet]({{-path}}) ' +
       'kan du finne tilbake til dem nedenfor',
     en:
-      'If you previously applied for [lost earnings due to the entry ban]({{ path }}) ' + 'you can return to them below'
+      'If you previously applied for [lost earnings due to the entry ban]({{-path}}) ' + 'you can return to them below'
   },
 
   KRAVLISTE_TITLE: {
