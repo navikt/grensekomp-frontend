@@ -32,8 +32,14 @@ export const Application = ({
     <Route path={lenker.Home} exact={true}>
       <Redirect from='/' to={buildLenke(lenker.Innsending, Language.nb)} />
     </Route>
-    <Route path='/batchinnsending/krav'>
+    <Route path={lenker.InnsendingLegacy}>
       <Redirect from='/' to={buildLenke(lenker.Innsending, Language.nb)} />
+    </Route>
+    <Route path={lenker.OversiktLegacy}>
+      <Redirect from='/' to={buildLenke(lenker.Oversikt, Language.nb)} />
+    </Route>
+    <Route path={lenker.OversiktKrav}>
+      <Redirect from='/' to={buildLenke(lenker.Oversikt, Language.nb)} />
     </Route>
     <Route path={lenker.TokenFornyet}>
       <TokenFornyet />
