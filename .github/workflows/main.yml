@@ -10,7 +10,6 @@ env:
   IMAGE: ghcr.io/navikt/grensekomp-frontend:${{ github.sha }}
   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
 jobs:
 
@@ -40,16 +39,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-  Snyk:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-      - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/node@master
-
-
   Docker:
-    needs: [Bygg, Snyk]
+    needs: [Bygg]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
