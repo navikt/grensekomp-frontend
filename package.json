@@ -36,7 +36,7 @@
   "dependencies": {
     "@navikt/bedriftsmeny": "3.x",
     "@navikt/fnrvalidator": "1.x",
-    "@navikt/helse-arbeidsgiver-felles-frontend": "0.2.8",
+    "@navikt/helse-arbeidsgiver-felles-frontend": "0.3.0",
     "@navikt/nav-dekoratoren-moduler": "1.x",
     "@sentry/browser": "6.x",
     "dayjs": "1.x",
@@ -79,7 +79,7 @@
     "nav-frontend-veilederpanel-style": "2.0.1",
     "react": "17.x",
     "react-app-polyfill": "2.x",
-    "react-dom": "16.14.0",
+    "react-dom": "^17.0.2",
     "react-i18next": "11.x",
     "react-modal": "3.x",
     "react-router-dom": "5.x",
