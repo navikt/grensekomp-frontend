@@ -2,7 +2,7 @@ import React, { Reducer, useEffect, useReducer } from 'react';
 import { Column, Row } from 'nav-frontend-grid';
 import ServerFeilAdvarsel from '../felles/ServerFeilAdvarsel';
 import Panel from 'nav-frontend-paneler';
-import { Element, Ingress } from 'nav-frontend-typografi';
+import { Element } from 'nav-frontend-typografi';
 import Skillelinje from '../felles/Skillelinje';
 import { Input, SkjemaGruppe } from 'nav-frontend-skjema';
 import { DatoVelger, Fnr, BekreftOpplysningerPanel, Oversettelse } from '@navikt/helse-arbeidsgiver-felles-frontend';
@@ -138,9 +138,9 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
           {state.progress != true && state.kvittering != true && (
             <>
               <Panel>
-                <Ingress>
+                <div className='typo-ingress'>
                   <Oversettelse langKey={ingresstekstLangKey} />
-                </Ingress>
+                </div>
               </Panel>
 
               <Skillelinje />
