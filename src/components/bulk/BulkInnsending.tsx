@@ -138,9 +138,9 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
           {state.progress != true && state.kvittering != true && (
             <>
               <Panel>
-                <Ingress>
+                <div>
                   <Oversettelse langKey={ingresstekstLangKey} />
-                </Ingress>
+                </div>
               </Panel>
 
               <Skillelinje />

@@ -13,9 +13,9 @@ import { LanguageProvider } from '@navikt/helse-arbeidsgiver-felles-frontend';
 import i18next from 'i18next';
 import LanguageBundle from '../../config/LanguageBundle';
 
-const arbeidsgivere: Organisasjon[] = testOrganisasjon;
-
 describe('BulkInnsending', () => {
+  const arbeidsgivere: Organisasjon[] = testOrganisasjon;
+
   beforeEach(() => {
     mockFetch(200, {});
   });
@@ -55,12 +55,11 @@ describe('BulkInnsending', () => {
     expect(screen.getAllByText(/Mangler beløp/).length).toBe(2);
     expect(screen.getAllByText(/Bekreft at opplysningene er korrekt/).length).toBe(2);
 
-    waitFor(() => {
-      expect(screen.getByText(/Rad 1: Mangler ID-nummer/)).toBeInTheDocument();
-    });
+    expect(screen.getByText(/Rad 1: Mangler ID-nummer/)).toBeInTheDocument();
     expect(screen.getByText(/Rad 1: Mangler fra dato/)).toBeInTheDocument();
     expect(screen.getByText(/Rad 1: Mangler til dato/)).toBeInTheDocument();
     expect(screen.getByText(/Rad 1: Mangler beløp/)).toBeInTheDocument();
+    cleanup();
   });
 
   it('should show warnings when input is missing, and the warning should dissapear when fixed', () => {
@@ -93,5 +92,6 @@ describe('BulkInnsending', () => {
 
     userEvent.click(bekreftCheckbox);
     expect(screen.queryByText(/Bekreft at opplysningene er korrekt/)).not.toBeInTheDocument();
+    cleanup();
   });
 });

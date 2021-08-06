@@ -19,11 +19,13 @@ const BeregnetRefusjon = ({ inntekt, fom, tom }: BeregnetRefusjonProps) => {
   const refusjon = kalkulerRefusjon(inntekt, fom, tom);
   return (
     <div>
-      <Element className='bulk-element-nr'>
+      <div className='bulk-element-nr'>
         <HjelpeLabel label={t(LangKey.BEREGNET_REFUSJON)}>
-          <Tekstomrade rules={[BoldRule]}>{t(LangKey.BEREGNET_REFUSJON_INFO)}</Tekstomrade>
+          <Tekstomrade as='div' rules={[BoldRule]}>
+            {t(LangKey.BEREGNET_REFUSJON_INFO)}
+          </Tekstomrade>
         </HjelpeLabel>
-      </Element>
+      </div>
       <div>
         <Normaltekst className='beregnet-refusjon'>{formatNumberAsCurrency(refusjon)}</Normaltekst>
       </div>
