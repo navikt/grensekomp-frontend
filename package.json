@@ -3,7 +3,6 @@
   "version": "0.1.33",
   "private": true,
   "homepage": "/grensekomp",
-  "type": "module",
   "scripts": {
     "start": "BROWSER=firefox react-scripts start --development",
     "build": "react-scripts build",
