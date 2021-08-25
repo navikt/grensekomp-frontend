@@ -12,6 +12,7 @@
     "lint:fix": "eslint src/**/*.ts* --fix",
     "pretty-please": "pretty-quick --staged",
     "pretty-commit": "pretty-quick --staged --pattern '**/*.*(ts|tsx|js)'",
+    "test:int": "testcafe firefox --hostname localhost tests/ --skip-js-errors --dev",
     "prepare": "husky install"
   },
   "engines": {
