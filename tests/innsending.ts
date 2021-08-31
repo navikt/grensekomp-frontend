@@ -182,7 +182,7 @@ test('Klikk submit uten data, fjern feilmeldinger en etter en og send inn', asyn
     .expect(Selector('html').textContent)
     .notContains('Mangler til dato')
     .expect(Selector('html').textContent)
-    .contains('296,00');
+    .contains('296');
 
   await t.click(ReactSelector('Hovedknapp')).expect(Selector('html').textContent).contains('Kravet er mottatt');
 });
