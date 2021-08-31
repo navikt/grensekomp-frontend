@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import * as Sentry from '@sentry/browser';
+import { Integrations } from '@sentry/tracing';
 import '@navikt/bedriftsmeny/lib/bedriftsmeny.css';
 import 'nav-frontend-core/dist/main.css';
 import 'nav-frontend-typografi-style/dist/main.css';
@@ -32,6 +33,8 @@ document.querySelector('meta[name=buildNr]').setAttribute('content', version);
 if (env.environmentMode !== EnvironmentType.LOCAL) {
   Sentry.init({
     dsn: 'https://fe8f051bd96d419c95b3c1d414874479@sentry.gc.nav.no/73',
+    integrations: [new Integrations.BrowserTracing()],
+    tracesSampleRate: 0.5,
     environment: 'dev'
   });
 }
