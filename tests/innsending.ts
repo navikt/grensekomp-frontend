@@ -180,7 +180,9 @@ test('Klikk submit uten data, fjern feilmeldinger en etter en og send inn', asyn
     .click(Selector('#tom_1'))
     .click(valgtTilDato)
     .expect(Selector('html').textContent)
-    .notContains('Mangler til dato');
+    .notContains('Mangler til dato')
+    .expect(Selector('html').textContent)
+    .contains('296');
 
   await t.click(ReactSelector('Hovedknapp')).expect(Selector('html').textContent).contains('Kravet er mottatt');
 });
