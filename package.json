@@ -38,7 +38,7 @@
     "@navikt/bedriftsmeny": "3.x",
     "@navikt/fnrvalidator": "1.x",
     "@navikt/helse-arbeidsgiver-felles-frontend": "0.3.0",
-    "@navikt/nav-dekoratoren-moduler": "1.4.0",
+    "@navikt/nav-dekoratoren-moduler": "1.4.1",
     "@sentry/browser": "6.10.0",
     "@sentry/tracing": "^6.11.0",
     "dayjs": "^1.10.6",
