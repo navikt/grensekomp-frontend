@@ -85,7 +85,7 @@
     "react-i18next": "11.x",
     "react-modal": "3.x",
     "react-router-dom": "5.x",
-    "typescript": "4.x",
+    "typescript": "4.4.2",
     "uuid": "8.x"
   },
   "snyk": true,
