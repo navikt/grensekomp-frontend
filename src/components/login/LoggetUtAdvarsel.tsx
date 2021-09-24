@@ -33,11 +33,8 @@ const LoggetUtAdvarsel = ({ onClose }: LoggetUtAdvarselProps) => {
       shouldCloseOnOverlayClick={false}
     >
       <AlertStripeFeil className='logget-ut-advarsel__innhold'>
-        <Innholdstittel>{t(LangKey.LOGGET_UT)}</Innholdstittel>
-        <Oversettelse
-          langKey={LangKey.LOGGETUTADVARSEL_INFO}
-          variables={{ innloggingUrl: loginServiceUrlAfterRedirect }}
-        />
+        <Innholdstittel>Du er blitt logget ut, følg instruksjonene for ikke å miste data</Innholdstittel>
+        Tekst
         <InternLenke onClick={() => handleCloseModal()}>{t(LangKey.LOGGET_INN)}</InternLenke>
       </AlertStripeFeil>
     </ModalWrapper>

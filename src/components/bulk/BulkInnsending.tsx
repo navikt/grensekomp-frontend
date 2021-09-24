@@ -1,5 +1,6 @@
 import React, { Reducer, useEffect, useReducer } from 'react';
 import { Column, Row } from 'nav-frontend-grid';
+import { AlertStripeAdvarsel } from 'nav-frontend-alertstriper';
 import ServerFeilAdvarsel from '../felles/ServerFeilAdvarsel';
 import Panel from 'nav-frontend-paneler';
 import { Element } from 'nav-frontend-typografi';
@@ -137,6 +138,9 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
           {state.kvittering === true && <Kvittering />}
           {state.progress != true && state.kvittering != true && (
             <>
+              <Panel>
+                <AlertStripeAdvarsel>{t(LangKey.ADVARSEL_AVSLUTTES)}</AlertStripeAdvarsel>
+              </Panel>
               <Panel>
                 <div className='typo-ingress'>
                   <Oversettelse langKey={ingresstekstLangKey} />

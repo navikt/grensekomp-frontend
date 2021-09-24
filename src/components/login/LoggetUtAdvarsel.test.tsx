@@ -15,7 +15,7 @@ describe('LoggetUtAdvarsel', () => {
       </Router>
     );
 
-    expect(screen.getByText(LangKey.LOGGET_UT)).toBeInTheDocument();
+    expect(screen.getByText(/Du er blitt logget ut/)).toBeInTheDocument();
   });
 
   it('should display the modal if the token is invalid and close it when close is clicked', () => {
@@ -27,7 +27,7 @@ describe('LoggetUtAdvarsel', () => {
     );
 
     const closeLink = screen.getByText(LangKey.LOGGET_INN);
-    expect(screen.getByText(LangKey.LOGGET_UT)).toBeInTheDocument();
+    expect(screen.getByText(/Du er blitt logget ut/)).toBeInTheDocument();
 
     fireEvent.click(closeLink);
 
