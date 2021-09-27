@@ -9,7 +9,7 @@ import lenker from '../../config/lenker';
 import { useParams } from 'react-router-dom';
 import injectRedirectPath from './injectRedirectPath';
 import { PathParams } from '../pathParams';
-import { Oversettelse } from '@navikt/helse-arbeidsgiver-felles-frontend';
+import Oversettelse from '@navikt/helse-arbeidsgiver-felles-frontend/dist/components/Oversettelse/Oversettelse';
 
 interface LoggetUtAdvarselProps {
   onClose: Function;
@@ -33,8 +33,13 @@ const LoggetUtAdvarsel = ({ onClose }: LoggetUtAdvarselProps) => {
       shouldCloseOnOverlayClick={false}
     >
       <AlertStripeFeil className='logget-ut-advarsel__innhold'>
-        <Innholdstittel>Du er blitt logget ut, følg instruksjonene for ikke å miste data</Innholdstittel>
-        Tekst
+        <Innholdstittel>
+          <Oversettelse langKey={LangKey.LOGGET_UT} />
+        </Innholdstittel>
+        <Oversettelse
+          langKey={LangKey.LOGGETUTADVARSEL_INFO}
+          variables={{ innloggingUrl: loginServiceUrlAfterRedirect }}
+        />
         <InternLenke onClick={() => handleCloseModal()}>{t(LangKey.LOGGET_INN)}</InternLenke>
       </AlertStripeFeil>
     </ModalWrapper>
