@@ -547,6 +547,10 @@ const LanguageBundle: Record<LangKey, Locale> = {
   TOKEN_FORNYET: {
     nb: 'Token er fornyet',
     en: 'Token is renewed'
+  },
+  ADVARSEL_AVSLUTTES: {
+    nb: 'Denne ordningen er nå under avvikling. Du kan fortsatt kreve kompensasjon for perioder fram til 1. oktober 2021.',
+    en: 'This scheme is now being phased out. You can still claim compensation for periods up to October 1, 2021.'
   }
 };
 
