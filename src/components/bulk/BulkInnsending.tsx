@@ -239,7 +239,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               placeholder={t(LangKey.DATO_PLACEHOLDER)}
                               disabled={item.accepted}
                               minDate={minDate}
-                              maxDate={maxDate}
+                              maxDate={maxDate()}
                               className='input--fullbredde bulk-element'
                               onChange={(dato) => {
                                 dispatch({
@@ -265,7 +265,7 @@ const BulkInnsending = (props: BulkInnsendingProps) => {
                               placeholder={t(LangKey.DATO_PLACEHOLDER)}
                               disabled={item.accepted}
                               minDate={minDate}
-                              maxDate={maxDate}
+                              maxDate={maxDate()}
                               className='input--fullbredde'
                               onChange={(dato) => {
                                 dispatch({
