@@ -6,7 +6,7 @@ on:
 
 env:
   APP: grensekomp-frontend
-  IMAGE: ghcr.io/navikt/grensekomp-frontend:${{ github.sha }}
+  IMAGE: ghcr.io/${{ github.repository }}/grensekomp-frontend:${{ github.sha }}
   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
