@@ -8866,10 +8866,10 @@ nav-frontend-veilederpanel@1.x:
   resolved "https://registry.yarnpkg.com/nav-frontend-veilederpanel/-/nav-frontend-veilederpanel-1.1.4.tgz#3f730b485c56f795e30cd8b20f68f5da455a043b"
   integrity sha512-+gK7+o25E+OW+mhZi0WI3yQpvn9EhWW4r3dI4hEA3TcIfcQh07gKL1GRP2m1cY5fcP/z48pl3tmHRSP/G9UILw==
 
-nav-frontend-veilederpanel@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/nav-frontend-veilederpanel/-/nav-frontend-veilederpanel-2.0.1.tgz#5e3a1500a72cbc0a551086ebe6cc12a2c2697529"
-  integrity sha512-XfQH+Z/CjHFB5R0ynzPp4vD/M4isYjjRTiZk7Ww/VDk6PFouuTbLOj+jPlPG8rp90ivLSEA4TwwbnkiwVPpofw==
+nav-frontend-veilederpanel@2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/nav-frontend-veilederpanel/-/nav-frontend-veilederpanel-2.0.2.tgz#1e0c168d20f5033e9d0aec08ef60908b30ada741"
+  integrity sha512-epRZoh9TQpeVSgm+I5k7wukGSMPJhHnpP3Rw2CAzZbKP9MtLZQmbFA38/H4KQPO2/GvOAgKgpeswZHsblkoyoQ==
 
 negotiator@0.6.2:
   version "0.6.2"
