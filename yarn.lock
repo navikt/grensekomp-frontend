@@ -8788,10 +8788,10 @@ nav-frontend-tabell-style@1.x:
   resolved "https://registry.yarnpkg.com/nav-frontend-tabell-style/-/nav-frontend-tabell-style-1.1.2.tgz#b8d020e77f3576197c93311a2ed112c1bef14799"
   integrity sha512-Se5GoPpvta0EHux36GdAIlg/emveklttLEOcvM5TcOof1evcGHyaH6XZojshdfDSIRHK8yelVfokJ+uQ5r8ukQ==
 
-nav-frontend-tabell-style@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/nav-frontend-tabell-style/-/nav-frontend-tabell-style-2.0.2.tgz#91ccdeaff97cd5097621b4259388721fb29500d3"
-  integrity sha512-POUEDhijmIrqrvLULR4qyePGNsLHkN+337QK/R1RiUfP61/0F54XbSkIdMmuSM+qtzySj8HQscDmU/C4lIknTw==
+nav-frontend-tabell-style@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/nav-frontend-tabell-style/-/nav-frontend-tabell-style-2.1.1.tgz#b0c364ee9626f471978f0eb51b2aee14f9d166d5"
+  integrity sha512-aoMw6g+vh5uZTBJFQBGfQILZfo1cdWBlKiZLiKdgbg6b5t2A93JeYjjAUYERGkcHvJODJFbroqqll1jTIZeTAQ==
 
 nav-frontend-tekstomrade@2.x:
   version "2.1.3"
