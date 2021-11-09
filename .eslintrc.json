@@ -23,8 +23,7 @@
     "plugins": [
         "react-hooks",
         "@typescript-eslint",
-        "react",
-        "typescript"
+        "react"
     ],
     "rules": {
         "no-console": "warn",
@@ -52,7 +51,7 @@
             "single",
             { "avoidEscape": true }
         ],
-        "typescript/no-unused-vars": "error",
+        "@typescript-eslint/no-unused-vars": ["error"],
         "complexity": ["warn", 200]
     },
     "settings": {
