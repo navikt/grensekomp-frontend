@@ -42,7 +42,7 @@
     "@sentry/browser": "^6.14.0",
     "@sentry/tracing": "^6.14.0",
     "dayjs": "^1.10.7",
-    "i18next": "^21.4.0",
+    "i18next": "^21.4.2",
     "nav-frontend-alertstriper": "4.0.1",
     "nav-frontend-alertstriper-style": "3.0.1",
     "nav-frontend-chevron": "1.x",
