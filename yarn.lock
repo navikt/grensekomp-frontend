@@ -10602,7 +10602,7 @@ react-flatpickr@^3.x:
     flatpickr "^4.6.2"
     prop-types "^15.5.10"
 
-react-i18next@^11.13.0:
+react-i18next@^11.14.1:
   version "11.14.3"
   resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-11.14.3.tgz#b44b5c4d1aadac5211be011827a2830be60f2522"
   integrity sha512-Hf2aanbKgYxPjG8ZdKr+PBz9sY6sxXuZWizxCYyJD2YzvJ0W9JTQcddVEjDaKyBoCyd3+5HTerdhc9ehFugc6g==
