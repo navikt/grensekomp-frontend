@@ -35,12 +35,13 @@
     ]
   },
   "dependencies": {
-    "@navikt/bedriftsmeny": "3.4.0",
+    "@navikt/bedriftsmeny": "^3.5.0",
     "@navikt/fnrvalidator": "1.x",
-    "@navikt/helse-arbeidsgiver-felles-frontend": "^0.3.3",
+    "@navikt/helse-arbeidsgiver-felles-frontend": "^0.3.9",
     "@navikt/nav-dekoratoren-moduler": "^1.6.5",
     "@sentry/browser": "^6.14.0",
     "@sentry/tracing": "^6.14.0",
+    "classnames": "^2.3.1",
     "dayjs": "^1.10.7",
     "i18next": "^21.4.2",
     "nav-frontend-alertstriper": "4.0.1",
@@ -79,6 +80,7 @@
     "nav-frontend-veileder-style": "3.0.1",
     "nav-frontend-veilederpanel": "2.0.2",
     "nav-frontend-veilederpanel-style": "2.0.1",
+    "prop-types": "^15.7.2",
     "react": "17.x",
     "react-app-polyfill": "2.x",
     "react-dom": "^17.0.2",
