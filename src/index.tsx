@@ -3,7 +3,7 @@ import 'react-app-polyfill/stable';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
-import * as Sentry from '@sentry/browser';
+import * as Sentry from '@sentry/react';
 import { Integrations } from '@sentry/tracing';
 import '@navikt/bedriftsmeny/lib/bedriftsmeny.css';
 import 'nav-frontend-core/dist/main.css';
