@@ -4,10 +4,11 @@ on:
   push:
     branches:
       - main
+      - 'preprod/**'
 
 env:
   APP: grensekomp-frontend
-  IMAGE: ghcr.io/${{ github.repository }}/grensekomp-frontend:${{ github.sha }}
+  IMAGE: ghcr.io/${{ github.repository }}/${{ github.event.repository.name }}:${{ github.sha }}
   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -73,17 +74,3 @@ jobs:
           VARS: nais/dev-gcp.json
           REF: ${{ env.COMMIT }}
           IMAGE: ${{ env.IMAGE }}
-
-  Versjon:
-    needs: [Deploy]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '14.x'
-      - run: |
-          git config --local user.email "helsearbeidsgiver@nav.no"
-          git config --local user.name "HelseArbeidsgiver"
-          npm version patch
-          git push
